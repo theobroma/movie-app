@@ -6,24 +6,12 @@ body {
   min-height: 100vh;
 }
 
-#root {
+#root .HolyGrail {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
 
-.HolyGrail-body {
-  display: flex;
-  flex: 1;
-}
-
 .HolyGrail-content {
   flex: 1;
 }
-
-// .HolyGrail-nav {
-//   /* 12em is the width of the columns */
-//   flex: 0 0 12em;
-//   /* put the nav on the left */
-//   order: -1;
-// }

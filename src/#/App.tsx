@@ -12,13 +12,14 @@ export const AppContainer: React.FC = () => {
   // }, [dispatch]);
 
   return (
-    <div className="App">
+    <div className="HolyGrail">
       <Box mb={2}>
         <SimpleAppBar />
       </Box>
-      <Container maxWidth="lg">
-        {/* {picturesLoading && <LoadingPage />} */}
-        {/* <Box mb={2}>
+      <div className="HolyGrail-content">
+        <Container maxWidth="lg">
+          {/* {picturesLoading && <LoadingPage />} */}
+          {/* <Box mb={2}>
           <Paper elevation={3}>
             <Search />
           </Paper>
@@ -33,8 +34,9 @@ export const AppContainer: React.FC = () => {
             <Forecast />
           </Paper>
         </Box> */}
-        container
-      </Container>
+          container
+        </Container>
+      </div>
       <Footer />
     </div>
   );
