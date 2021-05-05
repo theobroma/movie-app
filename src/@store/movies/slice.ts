@@ -36,4 +36,4 @@ export const slice = createSlice({
   },
 });
 
-export const forecastReducer = slice.reducer;
+export const moviesReducer = slice.reducer;

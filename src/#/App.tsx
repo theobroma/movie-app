@@ -2,18 +2,14 @@ import React, { useEffect } from 'react';
 import { Box, Container, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { SimpleAppBar } from '../@components/AppBar/AppBar';
-import CurrentWeather from '../@components/CurrentWeather';
-import { getUserCoordinatesTC } from '../@store/current-weather/slice';
-import Forecast from '../@components/Forecast/Forecast';
-import Search from '../@components/Search/Search';
 import Footer from '../@components/Footer';
 
 export const AppContainer: React.FC = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserCoordinatesTC());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUserCoordinatesTC());
+  // }, [dispatch]);
 
   return (
     <div className="App">
@@ -22,7 +18,7 @@ export const AppContainer: React.FC = () => {
       </Box>
       <Container maxWidth="lg">
         {/* {picturesLoading && <LoadingPage />} */}
-        <Box mb={2}>
+        {/* <Box mb={2}>
           <Paper elevation={3}>
             <Search />
           </Paper>
@@ -36,7 +32,8 @@ export const AppContainer: React.FC = () => {
           <Paper elevation={3}>
             <Forecast />
           </Paper>
-        </Box>
+        </Box> */}
+        container
       </Container>
       <Footer />
     </div>

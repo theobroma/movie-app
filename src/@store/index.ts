@@ -1,12 +1,8 @@
 import { combineReducers } from 'redux';
-import { forecastReducer } from './forecast/slice';
-import { currentWeatherReducer } from './current-weather/slice';
-import { searchReducer } from './search/slice';
+import { moviesReducer } from './movies/slice';
 
 export const rootReducer = combineReducers({
-  currentWeather: currentWeatherReducer,
-  forecast: forecastReducer,
-  search: searchReducer,
+  movies: moviesReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
