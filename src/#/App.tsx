@@ -3,13 +3,14 @@ import { Box, Container, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { SimpleAppBar } from '../@components/AppBar/AppBar';
 import Footer from '../@components/Footer';
+import { getTrendingMoviesTC } from '../@store/movies/slice';
 
 export const AppContainer: React.FC = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getUserCoordinatesTC());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getTrendingMoviesTC({ page: 1 }));
+  }, [dispatch]);
 
   return (
     <div className="HolyGrail">

@@ -1,20 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { forecastAPI, ForecastdayResponseType } from '../../@api/forecast-api';
+import { moviesApi } from '../../@api/movies-api';
 
-const forecastInitialState = {
-  forecastday: [] as Array<ForecastdayResponseType>,
+const moviesInitialState = {
+  //   forecastday: [] as Array<ForecastdayResponseType>,
+  data: [] as any,
 };
 
-export const getForecastTC = createAsyncThunk(
-  'forecast/getForecast',
-  async (param: { days: number; lat: number; lon: number }, thunkAPI) => {
+export const getTrendingMoviesTC = createAsyncThunk(
+  'movies/getTrendingMovies',
+  async (param: { page: number }, thunkAPI) => {
     try {
-      const res = await forecastAPI.dailyWeather(
-        param.days,
-        param.lat,
-        param.lon,
-      );
-      return { forecastday: res.data.forecast.forecastday };
+      const res = await moviesApi.getTrendingMovies(1);
+      return { data: res.data };
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
@@ -24,13 +21,16 @@ export const getForecastTC = createAsyncThunk(
 );
 
 export const slice = createSlice({
-  name: 'forecast',
-  initialState: forecastInitialState,
+  name: 'movies',
+  initialState: moviesInitialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getForecastTC.fulfilled, (state, action) => {
+    builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
       if (action.payload) {
-        state.forecastday = action.payload.forecastday;
+        state.data = action.payload.data;
+        // state.data.total_pages = action.payload.data.total_pages;
+        // state.data.total_results = action.payload.data.total_results;
+        // state.data.results.push(...action.payload.data.results);
       }
     });
   },
