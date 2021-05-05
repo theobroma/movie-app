@@ -6,10 +6,10 @@ interface Props {
   poster: any;
   title: any;
   id: any;
-  url: any;
+  url?: any;
 }
 
-export const MoviesListItem: React.FC<Props> = ({ poster, title, id, url }) => {
+const MoviesListItem: React.FC<Props> = ({ poster, title, id, url }) => {
   return (
     <li className={s.item}>
       {/* <Link to={{ pathname: `${url}/${id}` }}>
@@ -29,3 +29,5 @@ export const MoviesListItem: React.FC<Props> = ({ poster, title, id, url }) => {
     </li>
   );
 };
+
+export default MoviesListItem;
