@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-// import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
 import {
   persistStore,
@@ -13,7 +14,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './@store/index';
-// export const history = createBrowserHistory();
+
+export const history = createBrowserHistory();
 
 const logger = createLogger({
   collapsed: true,
@@ -27,7 +29,7 @@ const persistConfig = {
 };
 
 // Middleware: Redux Persist Persisted Reducer
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer(history));
 
 // const middleware = [...getDefaultMiddleware(), logger];
 // https://github.com/rt2zz/redux-persist/issues/988#issuecomment-552242978
@@ -40,6 +42,7 @@ const middleware = [
     },
   }),
   logger,
+  routerMiddleware(history),
 ];
 
 export const store = configureStore({
@@ -50,4 +53,4 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-export default { store, persistor };
+export default { store, persistor, history };

@@ -4,8 +4,9 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { ConnectedRouter } from 'connected-react-router';
 import { AppContainer } from './#/App';
-import { store, persistor } from './configureStore';
+import { store, persistor, history } from './configureStore';
 import LoadingPage from './@components/UI/LoadingPage';
 import { theme } from './@themes/theme';
 import reportWebVitals from './reportWebVitals';
@@ -23,8 +24,10 @@ render(
     <Provider store={store}>
       <PersistGate loading={<LoadingPage />} persistor={persistor}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <AppContainer />
+          <ConnectedRouter history={history}>
+            <CssBaseline />
+            <AppContainer />
+          </ConnectedRouter>
         </ThemeProvider>
       </PersistGate>
     </Provider>
