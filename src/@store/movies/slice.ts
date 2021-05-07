@@ -6,6 +6,8 @@ const moviesInitialState = {
   data: [] as any,
 };
 
+export type MoviesInitialStateType = typeof moviesInitialState;
+
 export const getTrendingMoviesTC = createAsyncThunk(
   'movies/getTrendingMovies',
   async (param: { page: number }, thunkAPI) => {

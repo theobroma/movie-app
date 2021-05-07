@@ -104,7 +104,7 @@ const MoviesCard: React.FC<Props> = (props: any) => {
             <DialogContent>
               <DialogContentText>{movies.overview}</DialogContentText>
             </DialogContent>
-            <DialogContent>
+            {/* <DialogContent>
               <DialogContentText>
                 {namesGenre.map((genre: any) => (
                   <span>{genre.name} </span>
@@ -116,7 +116,7 @@ const MoviesCard: React.FC<Props> = (props: any) => {
                 <Divider />
                 {movies.original_language.toUpperCase()}
               </DialogContentText>
-            </DialogContent>
+            </DialogContent> */}
             <DialogActions>
               <Button onClick={() => setOpen(false)} color="primary" autoFocus>
                 Close
