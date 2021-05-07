@@ -1,7 +1,8 @@
+import { MoviesResponseType } from '../@types';
 import { instance } from './api';
 
 export const moviesApi = {
   getTrendingMovies(page: number) {
-    return instance.get<any>(`/trending/all/day?page=${page}`);
+    return instance.get<MoviesResponseType>(`/trending/all/day?page=${page}`);
   },
 };

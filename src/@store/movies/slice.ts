@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
+import { MoviesResponseType } from '../../@types';
 
 const moviesInitialState = {
-  //   forecastday: [] as Array<ForecastdayResponseType>,
-  data: [] as any,
+  data: {} as MoviesResponseType,
 };
 
 export type MoviesInitialStateType = typeof moviesInitialState;
