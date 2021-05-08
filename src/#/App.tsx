@@ -1,38 +1,48 @@
-import React, { useEffect } from 'react';
-import { Box, Container, Grid, Paper } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import { SimpleAppBar } from '../@components/AppBar/AppBar';
-import Footer from '../@components/Footer';
-import { getTrendingMoviesTC } from '../@store/movies/slice';
-import { moviesSelector } from '../@store/movies/selectors';
-import MoviesListItem from '../@components/MoviesListItem';
-import MoviesCard from '../@components/MoviesCard';
+import React, { lazy, Suspense } from 'react';
+import { Switch, Redirect, Route } from 'react-router-dom';
+import LoadingPage from '../@components/UI/LoadingPage';
+import { IRoute, ROUTES } from '../@types';
+// import HomeView from '../@views/HomeView';
+
+// const MUSIC = lazy(() => {
+//   return new Promise<any>((resolve) => {
+//     setTimeout(() => resolve(import('./Music')), 1000);
+//   });
+// });
+
+const HomeView = lazy(() => {
+  return Promise.all([
+    import('../@views/HomeView'),
+    new Promise((resolve) => setTimeout(resolve, 1000)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
+export const APP_MAIN_ROUTES: IRoute[] = [
+  {
+    component: HomeView,
+    path: ROUTES.ROOT,
+    // layout: UserLayout,
+  },
+];
 
 export const AppContainer: React.FC = () => {
-  const dispatch = useDispatch();
-  const movies = useSelector(moviesSelector).data.results;
-
-  useEffect(() => {
-    dispatch(getTrendingMoviesTC({ page: 1 }));
-  }, [dispatch]);
-
   return (
-    <div className="HolyGrail">
-      <Box mb={2}>
-        <SimpleAppBar />
-      </Box>
-      <div className="HolyGrail-content">
-        <Container maxWidth="lg">
-          <Grid container spacing={3} style={{ padding: 3 }}>
-            {movies?.map((movie: any) => (
-              <Grid item xs={12} sm={6} lg={4} xl={3} key={movie.id}>
-                <MoviesCard movies={movie} />
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </div>
-      <Footer />
-    </div>
+    <Suspense fallback={<LoadingPage />}>
+      <Switch>
+        <Redirect from="/index.html" to="/" exact />
+        {APP_MAIN_ROUTES.map((route: IRoute) => (
+          // <NestedRoute key={route.path} {...route} />
+          <Route
+            key={route.path}
+            {...route}
+            // exact={exact}
+            // path={path}
+            // render={renderRoute}
+            // location={location}
+          />
+        ))}
+        <Redirect to="/login" />
+      </Switch>
+    </Suspense>
   );
 };
