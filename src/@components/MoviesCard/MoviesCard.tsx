@@ -13,18 +13,18 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import Divider from '@material-ui/core/Divider';
 
+import { Link } from 'react-router-dom';
 import genresData from './genresData';
 
 interface Props {
-  movies: any;
+  movie: any;
 }
 
-const MoviesCard: React.FC<Props> = (props: any) => {
+const MoviesCard: React.FC<Props> = ({ movie }) => {
   const [opened, setOpen] = useState(false);
 
   const ResponsiveDialog = withMobileDialog({ breakpoint: 'xs' })(Dialog);
-  const { movies } = props;
-  const poster = `https://image.tmdb.org/t/p/w500/${movies.poster_path}`;
+  const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
   const styles = {
     root: {
@@ -63,21 +63,22 @@ const MoviesCard: React.FC<Props> = (props: any) => {
 
   // const rate = movies.vote_average;
   // const backPoster = `https://image.tmdb.org/t/p/w500/${movies.backdrop_path}`;
-  const currentMovieGenre = movies.genre_ids;
+  const currentMovieGenre = movie.genre_ids;
   const { genres } = genresData;
 
   const namesGenre = genres.filter((genre: any) =>
-    movies.genre_ids.includes(genre.id),
+    movie.genre_ids.includes(genre.id),
   );
 
   return (
     <div style={styles.root}>
-      <Paper style={styles.card}>
-        {/* <div style={styles.body}>
+      <Link to={{ pathname: `movies/${movie.id}` }}>
+        <Paper style={styles.card}>
+          {/* <div style={styles.body}>
           <Typography variant="h3">{movies.title}</Typography>
         </div> */}
-        <div className="buttons">
-          {/* <Button
+          <div className="buttons">
+            {/* <Button
             color="inherit"
             size="small"
             // href={`https://720p-izle.com/izle/altyazi/${movies?.title
@@ -89,22 +90,22 @@ const MoviesCard: React.FC<Props> = (props: any) => {
             button
             <PlayArrow />
           </Button> */}
-          <Button color="inherit" size="large" onClick={() => setOpen(true)}>
-            <Info />
-          </Button>
-          <ResponsiveDialog open={opened} onClose={() => setOpen(false)}>
-            <DialogTitle>
-              {movies.title}{' '}
-              {movies.original_title !== movies.title ? (
-                <strong style={{ fontSize: 12, display: 'block' }}>
-                  {movies.original_title}
-                </strong>
-              ) : null}
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText>{movies.overview}</DialogContentText>
-            </DialogContent>
-            {/* <DialogContent>
+            <Button color="inherit" size="large" onClick={() => setOpen(true)}>
+              <Info />
+            </Button>
+            <ResponsiveDialog open={opened} onClose={() => setOpen(false)}>
+              <DialogTitle>
+                {movie.title}{' '}
+                {movie.original_title !== movie.title ? (
+                  <strong style={{ fontSize: 12, display: 'block' }}>
+                    {movie.original_title}
+                  </strong>
+                ) : null}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText>{movie.overview}</DialogContentText>
+              </DialogContent>
+              {/* <DialogContent>
               <DialogContentText>
                 {namesGenre.map((genre: any) => (
                   <span>{genre.name} </span>
@@ -117,17 +118,22 @@ const MoviesCard: React.FC<Props> = (props: any) => {
                 {movies.original_language.toUpperCase()}
               </DialogContentText>
             </DialogContent> */}
-            <DialogActions>
-              <Button onClick={() => setOpen(false)} color="primary" autoFocus>
-                Close
-              </Button>
-            </DialogActions>
-          </ResponsiveDialog>
-          {/* <Button color="inherit" size="large">
+              <DialogActions>
+                <Button
+                  onClick={() => setOpen(false)}
+                  color="primary"
+                  autoFocus
+                >
+                  Close
+                </Button>
+              </DialogActions>
+            </ResponsiveDialog>
+            {/* <Button color="inherit" size="large">
             <Share />
           </Button> */}
-        </div>
-      </Paper>
+          </div>
+        </Paper>
+      </Link>
     </div>
   );
 };

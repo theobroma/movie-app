@@ -23,14 +23,18 @@ const useStyles = makeStyles(() => {
   };
 });
 
-const MoviesDetailsView: React.FC = () => {
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const movies = useSelector(moviesSelector).data.results;
+interface Props {
+  match: any;
+}
 
-  useEffect(() => {
-    dispatch(getTrendingMoviesTC({ page: 1 }));
-  }, [dispatch]);
+const MoviesDetailsView: React.FC<Props> = ({ match }) => {
+  //   const classes = useStyles();
+  //   const dispatch = useDispatch();
+  //   const movies = useSelector(moviesSelector).data.results;
+
+  //   useEffect(() => {
+  //     dispatch(getTrendingMoviesTC({ page: 1 }));
+  //   }, [dispatch]);
 
   return (
     <div className="HolyGrail">
@@ -47,6 +51,8 @@ const MoviesDetailsView: React.FC = () => {
             ))}
           </Grid> */}
           MoviesDetailsView
+          <br />
+          {match.params.id}
         </Container>
       </div>
       <Footer />
