@@ -16,6 +16,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import { NavLink } from 'react-router-dom';
 import { useStyles } from './AppBar.styles';
 
 export default function PersistentDrawerLeft() {
@@ -72,6 +73,37 @@ export default function PersistentDrawerLeft() {
             )}
           </IconButton>
         </div>
+        <Divider />
+        <List>
+          {/* 1 */}
+          <ListItem
+            button
+            key="Dashboard"
+            exact
+            component={NavLink}
+            to="/"
+            activeClassName="activeclass"
+          >
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="HomePage" />
+          </ListItem>
+          {/* 2 */}
+          <ListItem
+            button
+            key="Dashboard"
+            exact
+            component={NavLink}
+            to="/movies/1"
+            activeClassName="activeclass"
+          >
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="/movies/1" />
+          </ListItem>
+        </List>
         <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
