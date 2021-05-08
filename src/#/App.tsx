@@ -30,34 +30,6 @@ export const AppContainer: React.FC = () => {
               </Grid>
             ))}
           </Grid>
-          {/* <ul>
-            {movies?.map(({ poster_path, title, id }: any) => (
-              <MoviesListItem
-                key={id}
-                title={title}
-                poster={poster_path}
-                // url={url}
-                id={id}
-              />
-            ))}
-          </ul> */}
-          {/* {picturesLoading && <LoadingPage />} */}
-          {/* <Box mb={2}>
-          <Paper elevation={3}>
-            <Search />
-          </Paper>
-        </Box>
-        <Box mb={2}>
-          <Paper elevation={3}>
-            <CurrentWeather />
-          </Paper>
-        </Box>
-        <Box mb={2}>
-          <Paper elevation={3}>
-            <Forecast />
-          </Paper>
-        </Box> */}
-          container
         </Container>
       </div>
       <Footer />
