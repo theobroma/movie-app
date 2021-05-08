@@ -1,4 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+// https://github.com/supasate/connected-react-router/issues/312#issuecomment-647082777
+// keep history v.4.10.1 !
 import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
