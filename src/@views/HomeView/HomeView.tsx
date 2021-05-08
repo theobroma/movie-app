@@ -7,7 +7,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { SimpleAppBar } from '../../@components/AppBar/AppBar';
+import { PersistentDrawerLeft } from '../../@components/AppBar/AppBar';
 import Footer from '../../@components/Footer';
 import MoviesCard from '../../@components/MoviesCard';
 import { moviesSelector } from '../../@store/movies/selectors';
@@ -35,7 +35,7 @@ const HomeView: React.FC = () => {
   return (
     <div className="HolyGrail">
       <Box mb={2}>
-        <SimpleAppBar />
+        <PersistentDrawerLeft />
       </Box>
       <div className="HolyGrail-content">
         <Container maxWidth="lg">
