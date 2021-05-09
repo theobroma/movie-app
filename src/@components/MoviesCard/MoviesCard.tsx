@@ -1,29 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Share from '@material-ui/icons/ShareOutlined';
-import PlayArrow from '@material-ui/icons/PlayArrowOutlined';
-import Info from '@material-ui/icons/InfoOutlined';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import Divider from '@material-ui/core/Divider';
-
+import React from 'react';
 import { Link } from 'react-router-dom';
-import genresData from './genresData';
+import Paper from '@material-ui/core/Paper';
 
 interface Props {
   movie: any;
 }
 
 const MoviesCard: React.FC<Props> = ({ movie }) => {
-  const [opened, setOpen] = useState(false);
-
-  const ResponsiveDialog = withMobileDialog({ breakpoint: 'xs' })(Dialog);
   const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
   const styles = {
@@ -32,106 +15,46 @@ const MoviesCard: React.FC<Props> = ({ movie }) => {
       gridTemplateColumns: 'repeat(1, 1fr)',
       gridGap: '8px',
       boxShadow: '10px 10px 34px -6px rgba(0,0,0,0.75)',
+      borderRadius: 8,
     },
 
     card: {
-      backgroundColor: 'firebrick' /* firebrick, crimson, indianred */,
+      // backgroundColor: 'firebrick' /* firebrick, crimson, indianred */,
       display: 'grid',
       gridTemplateRows: '1fr auto',
-      gridGap: '4px',
-      minHeight: 550,
-      backgroundImage: `url(${poster})`,
+      // gridGap: '4px',
+      // minHeight: 550,
+      // backgroundImage: `url(${poster})`,
       backgroundSize: 'contain',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
+      borderRadius: 8,
     },
 
-    body: {
-      alignSelf: 'center',
-      textAlign: 'center',
-    },
-
-    actions: {
-      backgroundColor: 'whitesmoke',
-      display: 'flex',
-      justifyContent: 'space-between',
-      textDecoration: 'none',
-      color: 'black',
-      borderTop: '1px solid #D1D0CE',
+    poster: {
+      width: '100%',
+      borderRadius: 8,
+      height: '100%',
+      cursor: 'pointer',
+      backgroundColor: '#fff',
+      // transition: 'all 300ms linear',
+      // '&:hover': {
+      //   transform: 'scale(1.05)',
+      //   boxShadow: '0px 0px 10px 5px grey',
+      // },
     },
   };
-
-  // const rate = movies.vote_average;
-  // const backPoster = `https://image.tmdb.org/t/p/w500/${movies.backdrop_path}`;
-  const currentMovieGenre = movie.genre_ids;
-  const { genres } = genresData;
-
-  const namesGenre = genres.filter((genre: any) =>
-    movie.genre_ids.includes(genre.id),
-  );
 
   return (
     <div style={styles.root}>
       <Link to={{ pathname: `movies/${movie.id}` }}>
         <Paper style={styles.card}>
-          {/* <div style={styles.body}>
-          <Typography variant="h3">{movies.title}</Typography>
-        </div> */}
-          <div className="buttons">
-            {/* <Button
-            color="inherit"
-            size="small"
-            // href={`https://720p-izle.com/izle/altyazi/${movies?.title
-            //   .split(' ')
-            //   .join('-')
-            //   .toLowerCase()}.html`}
-            // target="_blank"
-          >
-            button
-            <PlayArrow />
-          </Button> */}
-            <Button color="inherit" size="large" onClick={() => setOpen(true)}>
-              <Info />
-            </Button>
-            <ResponsiveDialog open={opened} onClose={() => setOpen(false)}>
-              <DialogTitle>
-                {movie.title}{' '}
-                {movie.original_title !== movie.title ? (
-                  <strong style={{ fontSize: 12, display: 'block' }}>
-                    {movie.original_title}
-                  </strong>
-                ) : null}
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText>{movie.overview}</DialogContentText>
-              </DialogContent>
-              {/* <DialogContent>
-              <DialogContentText>
-                {namesGenre.map((genre: any) => (
-                  <span>{genre.name} </span>
-                ))}
-                <Divider />
-                {movies.popularity}
-                <Divider />
-                {movies.vote_average}
-                <Divider />
-                {movies.original_language.toUpperCase()}
-              </DialogContentText>
-            </DialogContent> */}
-              <DialogActions>
-                <Button
-                  onClick={() => setOpen(false)}
-                  color="primary"
-                  autoFocus
-                >
-                  Close
-                </Button>
-              </DialogActions>
-            </ResponsiveDialog>
-            {/* <Button color="inherit" size="large">
-            <Share />
-          </Button> */}
-          </div>
+          <img
+            // src={poster ? `https://image.tmdb.org/t/p/w500/${poster}` : noCover}
+            src={poster}
+            alt={movie.title}
+            style={styles.poster}
+          />
         </Paper>
       </Link>
     </div>
