@@ -7,11 +7,19 @@ import {
   Grid,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
 import MoviesCard from '../../@components/MoviesCard';
-import { moviesSelector } from '../../@store/movies/selectors';
-import { getTrendingMoviesTC } from '../../@store/movies/slice';
+import {
+  movieDetailsSelector,
+  moviesSelector,
+} from '../../@store/movies/selectors';
+import {
+  getMovieDetailsTC,
+  getTrendingMoviesTC,
+} from '../../@store/movies/slice';
+import MoviesDetails from '../../@components/MoviesDetails';
 
 const useStyles = makeStyles(() => {
   return {
@@ -28,13 +36,15 @@ interface Props {
 }
 
 const MoviesDetailsView: React.FC<Props> = ({ match }) => {
-  //   const classes = useStyles();
-  //   const dispatch = useDispatch();
-  //   const movies = useSelector(moviesSelector).data.results;
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const movieDetailsData = useSelector(movieDetailsSelector);
+  console.log(movieDetailsData);
+  const { id } = useParams<any>();
 
-  //   useEffect(() => {
-  //     dispatch(getTrendingMoviesTC({ page: 1 }));
-  //   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getMovieDetailsTC({ movieID: id }));
+  }, [dispatch, id]);
 
   return (
     <div className="HolyGrail">
@@ -50,7 +60,7 @@ const MoviesDetailsView: React.FC<Props> = ({ match }) => {
               </Grid>
             ))}
           </Grid> */}
-          MoviesDetailsView
+          <MoviesDetails />
           <br />
           {match.params.id}
         </Container>
