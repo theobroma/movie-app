@@ -51,7 +51,7 @@
     "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
     "serve": "serve -s build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "netlify deploy -p"
   },
   "husky": {
     "hooks": {
@@ -91,6 +91,7 @@
     "gh-pages": "^3.1.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
+    "netlify-cli": "^3.29.0",
     "prettier": "^2.2.1"
   }
 }
