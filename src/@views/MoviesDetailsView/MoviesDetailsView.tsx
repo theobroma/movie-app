@@ -19,7 +19,7 @@ import {
   getMovieDetailsTC,
   getTrendingMoviesTC,
 } from '../../@store/movies/slice';
-import MoviesDetails from '../../@components/MoviesDetails';
+import MovieInfo from '../../@components/MovieInfo';
 
 const useStyles = makeStyles(() => {
   return {
@@ -60,7 +60,7 @@ const MoviesDetailsView: React.FC<Props> = ({ match }) => {
               </Grid>
             ))}
           </Grid> */}
-          <MoviesDetails />
+          <MovieInfo />
           <br />
           {match.params.id}
         </Container>
