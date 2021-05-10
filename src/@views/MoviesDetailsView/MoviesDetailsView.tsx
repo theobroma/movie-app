@@ -52,18 +52,7 @@ const MoviesDetailsView: React.FC<Props> = ({ match }) => {
         <PersistentDrawerLeft />
       </Box>
       <div className="HolyGrail-content">
-        <Container maxWidth="lg">
-          {/* <Grid container spacing={3} style={{ padding: 3 }}>
-            {movies?.map((movie) => (
-              <Grid item xs={12} sm={6} lg={4} xl={3} key={movie.id}>
-                <MoviesCard movies={movie} />
-              </Grid>
-            ))}
-          </Grid> */}
-          <MovieInfo />
-          <br />
-          {match.params.id}
-        </Container>
+        <MovieInfo movie={movieDetailsData} />
       </div>
       <Footer />
     </div>
