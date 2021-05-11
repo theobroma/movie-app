@@ -5,7 +5,9 @@ import { waitForMe } from '../../@utils/waitforme';
 
 const moviesInitialState = {
   data: {} as MoviesResponseType,
-  movieDetails: {} as any,
+  movieDetails: {
+    isLoading: false,
+  } as any,
 };
 
 export type MoviesInitialStateType = typeof moviesInitialState;
@@ -55,11 +57,13 @@ export const slice = createSlice({
     // clear data before fetch new
     builder.addCase(getMovieDetailsTC.pending, (state, action) => {
       state.movieDetails = {};
+      state.movieDetails.isLoading = true;
     });
     builder.addCase(getMovieDetailsTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.movieDetails = action.payload.data;
       }
+      state.movieDetails.isLoading = false;
     });
   },
 });

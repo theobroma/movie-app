@@ -4,6 +4,7 @@ import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
+import MovieInfoSkeleton from '../Skeletons';
 
 interface Props {
   movie: any;
@@ -36,6 +37,7 @@ const MovieInfo: React.FC<Props> = ({ url, movie }) => {
     actors,
 
     isFavorite,
+    isLoading,
   } = movie;
   console.log(movie);
 
@@ -70,6 +72,78 @@ const MovieInfo: React.FC<Props> = ({ url, movie }) => {
   //   </>
   // );
 
+  const MovieInfoBlock = (
+    <Box py={3}>
+      <Grid container spacing={3} style={{ padding: 3 }}>
+        {/* poster */}
+        <Grid item md={3}>
+          <img
+            className={classes.poster}
+            src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+            alt={`Poster of ${title}`}
+          />
+        </Grid>
+        {/* info */}
+        <Grid item md={8} style={{ color: 'white' }}>
+          <div className={classes.releaseDate}>
+            {release_date && Formatter.formatDate(release_date)}
+            {` `}({productionCountries})
+          </div>
+          <Typography
+            variant="h4"
+            style={{ fontWeight: 'bold' }}
+            component="h1"
+          >
+            {title}
+          </Typography>
+          <ul className={classes.genreList}>
+            {genres?.map((genre: any) => (
+              <li className={classes.genre} key={genre.id}>
+                {genre.name}
+              </li>
+            ))}
+          </ul>
+          {/* Rating */}
+          <div className={classes.vote}>
+            <Rating value={vote_average / 2} readOnly />
+            <span style={{ margin: '2px 0px 0 6px' }}>{vote_average}/10</span>
+            {/* <Button
+            style={{ marginLeft: 16 }}
+            onClick={() => onFavorite(id)}
+            variant={isFavorite ? 'contained' : 'outlined'}
+            color="secondary"
+            aria-label="like"
+          >
+            <FavoriteIcon />
+          </Button> */}
+          </div>
+          <div style={{ marginTop: 10 }}>
+            <Typography component="div" style={{ marginRight: 15 }}>
+              <b>Duration:</b> {runtime} min.
+            </Typography>
+            <Typography component="div">
+              <b>Budget:</b>
+              {budget ? `$${Formatter.numberWithCommas(budget)}` : '-'}
+            </Typography>
+          </div>
+          {tagline && (
+            <>
+              <h3 className={classes.subtitle}>Legend</h3>
+              <Typography variant="body1">{tagline}</Typography>
+            </>
+          )}
+          {overview && (
+            <>
+              <h3 className={classes.subtitle}>Overview</h3>
+              <Typography variant="body1">{overview}</Typography>
+            </>
+          )}
+          {/* {CrewBlock} */}
+        </Grid>
+      </Grid>
+    </Box>
+  );
+
   return (
     <main style={{ position: 'relative' }}>
       <div className={classes.backdrop}>
@@ -80,77 +154,7 @@ const MovieInfo: React.FC<Props> = ({ url, movie }) => {
         />
       </div>
       <Container maxWidth="lg">
-        <Box py={3}>
-          <Grid container spacing={3} style={{ padding: 3 }}>
-            {/* poster */}
-            <Grid item md={3}>
-              <img
-                className={classes.poster}
-                src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-                alt={`Poster of ${title}`}
-              />
-            </Grid>
-            {/* info */}
-            <Grid item md={8} style={{ color: 'white' }}>
-              <div className={classes.releaseDate}>
-                {release_date && Formatter.formatDate(release_date)}
-                {` `}({productionCountries})
-              </div>
-              <Typography
-                variant="h4"
-                style={{ fontWeight: 'bold' }}
-                component="h1"
-              >
-                {title}
-              </Typography>
-              <ul className={classes.genreList}>
-                {genres?.map((genre: any) => (
-                  <li className={classes.genre} key={genre.id}>
-                    {genre.name}
-                  </li>
-                ))}
-              </ul>
-              {/* Rating */}
-              <div className={classes.vote}>
-                <Rating value={vote_average / 2} readOnly />
-                <span style={{ margin: '2px 0px 0 6px' }}>
-                  {vote_average}/10
-                </span>
-                {/* <Button
-                  style={{ marginLeft: 16 }}
-                  onClick={() => onFavorite(id)}
-                  variant={isFavorite ? 'contained' : 'outlined'}
-                  color="secondary"
-                  aria-label="like"
-                >
-                  <FavoriteIcon />
-                </Button> */}
-              </div>
-              <div style={{ marginTop: 10 }}>
-                <Typography component="div" style={{ marginRight: 15 }}>
-                  <b>Duration:</b> {runtime} min.
-                </Typography>
-                <Typography component="div">
-                  <b>Budget:</b>
-                  {budget ? `$${Formatter.numberWithCommas(budget)}` : '-'}
-                </Typography>
-              </div>
-              {tagline && (
-                <>
-                  <h3 className={classes.subtitle}>Legend</h3>
-                  <Typography variant="body1">{tagline}</Typography>
-                </>
-              )}
-              {overview && (
-                <>
-                  <h3 className={classes.subtitle}>Overview</h3>
-                  <Typography variant="body1">{overview}</Typography>
-                </>
-              )}
-              {/* {CrewBlock} */}
-            </Grid>
-          </Grid>
-        </Box>
+        {isLoading ? MovieInfoSkeleton : MovieInfoBlock}
       </Container>
     </main>
   );
