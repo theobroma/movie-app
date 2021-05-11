@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
 import { MoviesResponseType } from '../../@types';
+import { waitForMe } from '../../@utils/waitforme';
 
 const moviesInitialState = {
   data: {} as MoviesResponseType,
@@ -27,6 +28,7 @@ export const getMovieDetailsTC = createAsyncThunk(
   'movies/getMovieDetails',
   async (param: { movieID: number }, thunkAPI) => {
     try {
+      await waitForMe(2000);
       const res = await moviesApi.getMovieDetail(param.movieID);
       return { data: res.data };
     } catch (err) {
@@ -49,6 +51,10 @@ export const slice = createSlice({
         // state.data.total_results = action.payload.data.total_results;
         // state.data.results.push(...action.payload.data.results);
       }
+    });
+    // clear data before fetch new
+    builder.addCase(getMovieDetailsTC.pending, (state, action) => {
+      state.movieDetails = {};
     });
     builder.addCase(getMovieDetailsTC.fulfilled, (state, action) => {
       if (action.payload) {
