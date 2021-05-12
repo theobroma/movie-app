@@ -73,6 +73,20 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
           </ListItemIcon>
           <ListItemText primary="/movies/1" />
         </ListItem>
+        {/* 3 */}
+        <ListItem
+          button
+          key="FavouritesPage"
+          exact
+          component={NavLink}
+          to="/favourites"
+          activeClassName="activeclass"
+        >
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="FavouritesPage" />
+        </ListItem>
       </List>
     </Drawer>
   );

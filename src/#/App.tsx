@@ -2,31 +2,39 @@ import React, { lazy, Suspense } from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import LoadingPage from '../@components/UI/LoadingPage';
 import { IRoute, ROUTES } from '../@types';
-// import MoviesDetailsView from '../@views/MoviesDetailsView';
-// import HomeView from '../@views/HomeView';
 
-// const MUSIC = lazy(() => {
-//   return new Promise<any>((resolve) => {
-//     setTimeout(() => resolve(import('./Music')), 1000);
-//   });
-// });
 const MIN_LAZY_DELAY = 300;
 
 const HomeView = lazy(() => {
   return Promise.all([
-    import('../@views/HomeView'),
+    import(/* webpackChunkName: "HomeView" */ '../@views/HomeView'),
     new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
   ]).then(([moduleExports]) => moduleExports);
 });
 
 const MoviesDetailsView = lazy(() => {
   return Promise.all([
-    import('../@views/MoviesDetailsView'),
+    import(
+      /* webpackChunkName: "MoviesDetailsView" */ '../@views/MoviesDetailsView'
+    ),
+    new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
+const FavouritesView = lazy(() => {
+  return Promise.all([
+    import(/* webpackChunkName: "FavouritesView" */ '../@views/FavouritesView'),
     new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
   ]).then(([moduleExports]) => moduleExports);
 });
 
 export const APP_MAIN_ROUTES: IRoute[] = [
+  {
+    component: HomeView,
+    path: ROUTES.ROOT,
+    exact: true,
+    // layout: UserLayout,
+  },
   {
     component: MoviesDetailsView,
     path: ROUTES.MOVIE_DETAILS,
@@ -34,9 +42,9 @@ export const APP_MAIN_ROUTES: IRoute[] = [
     // layout: UserLayout,
   },
   {
-    component: HomeView,
-    path: ROUTES.ROOT,
-    exact: false,
+    component: FavouritesView,
+    path: ROUTES.FAVOURITES,
+    exact: true,
     // layout: UserLayout,
   },
 ];
