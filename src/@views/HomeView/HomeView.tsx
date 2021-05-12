@@ -41,7 +41,7 @@ const HomeView: React.FC = () => {
         <Container maxWidth="lg">
           <Grid container spacing={3} style={{ padding: 3 }}>
             {movies?.map((movie) => (
-              <Grid item xs={12} sm={6} lg={4} xl={3} key={movie.id}>
+              <Grid item xs={12} sm={4} md={2} key={movie.id}>
                 <MoviesCard movie={movie} />
               </Grid>
             ))}

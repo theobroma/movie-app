@@ -1,60 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
+import { Typography } from '@material-ui/core';
+import { getScoreColor } from '../../@utils/score-color';
+import { Formatter } from '../../@utils/formatter';
+import { useStyles } from './MoviesCard.styles';
 
 interface Props {
   movie: any;
 }
 
-const MoviesCard: React.FC<Props> = ({ movie }) => {
-  const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+const MoviesCard: React.FC<Props> = ({
+  movie: { id, title, poster_path, release_date, vote_average },
+}) => {
+  const classes = useStyles();
+  const poster = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
-  const styles = {
-    root: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(1, 1fr)',
-      gridGap: '8px',
-      boxShadow: '10px 10px 34px -6px rgba(0,0,0,0.75)',
-      borderRadius: 8,
-    },
+  const color = getScoreColor(vote_average);
 
-    card: {
-      // backgroundColor: 'firebrick' /* firebrick, crimson, indianred */,
-      display: 'grid',
-      gridTemplateRows: '1fr auto',
-      // gridGap: '4px',
-      // minHeight: 550,
-      // backgroundImage: `url(${poster})`,
-      backgroundSize: 'contain',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      borderRadius: 8,
-    },
-
-    poster: {
-      width: '100%',
-      borderRadius: 8,
-      height: '100%',
-      cursor: 'pointer',
-      backgroundColor: '#fff',
-      // transition: 'all 300ms linear',
-      // '&:hover': {
-      //   transform: 'scale(1.05)',
-      //   boxShadow: '0px 0px 10px 5px grey',
-      // },
-    },
-  };
+  const vote = vote_average > 0 ? vote_average : '-';
 
   return (
-    <div style={styles.root}>
-      <Link to={{ pathname: `movies/${movie.id}` }}>
-        <Paper style={styles.card}>
+    <div className={classes.root}>
+      <Link to={{ pathname: `movies/${id}` }}>
+        <Paper className={classes.card}>
           <img
             // src={poster ? `https://image.tmdb.org/t/p/w500/${poster}` : noCover}
             src={poster}
-            alt={movie.title}
-            style={styles.poster}
+            alt={title}
+            className={classes.poster}
           />
+          <div className={classes.details}>
+            <Typography component="h4" className={classes.movieName}>
+              {title}
+            </Typography>
+            <Typography
+              variant="body1"
+              className={classes.score}
+              style={{ backgroundColor: color }}
+            >
+              {vote}
+            </Typography>
+            <Typography variant="body1" className={classes.extraInfo}>
+              {release_date && Formatter.formatDate(release_date)}
+            </Typography>
+          </div>
         </Paper>
       </Link>
     </div>
