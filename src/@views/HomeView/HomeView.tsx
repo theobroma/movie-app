@@ -12,6 +12,7 @@ import Footer from '../../@components/Footer';
 import MoviesCard from '../../@components/MoviesCard';
 import { moviesSelector } from '../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../@store/movies/slice';
+import SingleContent from '../../@components/SingleContent';
 
 const useStyles = makeStyles(() => {
   return {
@@ -42,7 +43,8 @@ const HomeView: React.FC = () => {
           <Grid container spacing={3} style={{ padding: 3 }}>
             {movies?.map((movie) => (
               <Grid item xs={12} sm={4} md={2} key={movie.id}>
-                <MoviesCard movie={movie} />
+                {/* <MoviesCard movie={movie} /> */}
+                <SingleContent movie={movie} media_type="" />
               </Grid>
             ))}
           </Grid>
