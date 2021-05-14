@@ -24,8 +24,8 @@ const HomeView: React.FC = () => {
   };
 
   useEffect(() => {
-    dispatch(getTrendingMoviesTC({ page: 1 }));
-  }, [dispatch]);
+    dispatch(getTrendingMoviesTC({ page }));
+  }, [dispatch, page]);
 
   return (
     <div className="HolyGrail">

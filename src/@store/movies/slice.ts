@@ -21,7 +21,7 @@ export const getTrendingMoviesTC = createAsyncThunk(
   'movies/getTrendingMovies',
   async (param: { page: number }, thunkAPI) => {
     try {
-      const res = await moviesApi.getTrendingMovies(1);
+      const res = await moviesApi.getTrendingMovies(param.page);
       return { data: res.data };
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
@@ -58,13 +58,10 @@ export const slice = createSlice({
     builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.data = action.payload.data;
-        // state.data.total_pages = action.payload.data.total_pages;
-        // state.data.total_results = action.payload.data.total_results;
-        // state.data.results.push(...action.payload.data.results);
       }
     });
     // clear data before fetch new
-    builder.addCase(getMovieDetailsTC.pending, (state, action) => {
+    builder.addCase(getMovieDetailsTC.pending, (state) => {
       state.movieDetails = {};
       state.movieDetails.isLoading = true;
     });
