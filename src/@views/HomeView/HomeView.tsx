@@ -1,33 +1,27 @@
 import React, { useEffect } from 'react';
-import {
-  makeStyles,
-  createStyles,
-  Box,
-  Container,
-  Grid,
-} from '@material-ui/core';
+import { Box, Container, Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
-import MoviesCard from '../../@components/MoviesCard';
 import { moviesSelector } from '../../@store/movies/selectors';
-import { getTrendingMoviesTC } from '../../@store/movies/slice';
+import { getTrendingMoviesTC, setPageAC } from '../../@store/movies/slice';
 import SingleContent from '../../@components/SingleContent';
-
-const useStyles = makeStyles(() => {
-  return {
-    ...createStyles({
-      grow: {
-        flexGrow: 1,
-      },
-    }),
-  };
-});
+import CustomPagination from '../../@components/CustomPagination';
 
 const HomeView: React.FC = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
-  const movies = useSelector(moviesSelector).data.results;
+  const { page, total_pages, results: movies } = useSelector(
+    moviesSelector,
+  ).data;
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number,
+  ) => {
+    dispatch(setPageAC(value));
+    // Scroll to top when page changes
+    window.scroll(0, 0);
+  };
 
   useEffect(() => {
     dispatch(getTrendingMoviesTC({ page: 1 }));
@@ -43,10 +37,18 @@ const HomeView: React.FC = () => {
           <Grid container spacing={3} style={{ padding: 3 }}>
             {movies?.map((movie) => (
               <Grid item xs={12} sm={4} md={2} key={movie.id}>
-                {/* <MoviesCard movie={movie} /> */}
                 <SingleContent movie={movie} media_type="" />
               </Grid>
             ))}
+          </Grid>
+          <Grid container spacing={3} style={{ padding: 3 }}>
+            <Grid item xs={12}>
+              <CustomPagination
+                onChange={handlePageChange}
+                count={total_pages}
+                page={page}
+              />
+            </Grid>
           </Grid>
         </Container>
       </div>
