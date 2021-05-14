@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MovieType } from '../../@types';
 import { useStyles, StyledBadge } from './SingleContent.styles';
 
 // import { img_300, unavailable } from '../../config/config';
@@ -8,8 +9,7 @@ export const unavailable =
   'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
-  movie?: any;
-  media_type: string;
+  movie: MovieType;
 }
 
 const SingleContent: React.FC<Props> = ({
@@ -21,8 +21,8 @@ const SingleContent: React.FC<Props> = ({
     release_date: date,
     first_air_date,
     vote_average,
+    media_type,
   },
-  media_type,
 }) => {
   const classes = useStyles();
   return (

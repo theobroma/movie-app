@@ -37,7 +37,7 @@ const HomeView: React.FC = () => {
           <Grid container spacing={3} style={{ padding: 3 }}>
             {movies?.map((movie) => (
               <Grid item xs={12} sm={4} md={2} key={movie.id}>
-                <SingleContent movie={movie} media_type="" />
+                <SingleContent movie={movie} />
               </Grid>
             ))}
           </Grid>
