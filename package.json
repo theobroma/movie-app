@@ -1,5 +1,4 @@
 {
-  "homepage": "https://theobroma.github.io/movie-app/",
   "name": "movie-app",
   "version": "1.0.0",
   "private": false,
@@ -84,7 +83,6 @@
   "devDependencies": {
     "eslint": "^7.25.0",
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
-    "gh-pages": "^3.1.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
     "netlify-cli": "^3.29.0",
