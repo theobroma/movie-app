@@ -39,7 +39,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            MovieDB App
           </Typography>
         </Toolbar>
       </AppBar>

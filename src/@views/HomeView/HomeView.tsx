@@ -11,9 +11,10 @@ import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkel
 
 const HomeView: React.FC = () => {
   const dispatch = useDispatch();
-  const { page, total_pages, results: movies } = useSelector(
-    moviesSelector,
-  ).data;
+  const {
+    data: { page, total_pages, results: movies },
+    isLoading,
+  } = useSelector(moviesSelector);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -38,8 +39,11 @@ const HomeView: React.FC = () => {
           <Grid container spacing={3} style={{ padding: 3 }}>
             {movies?.map((movie) => (
               <Grid item xs={12} sm={4} md={2} key={movie.id}>
-                {/* <SingleContent movie={movie} /> */}
-                <SingleContentSkeleton />
+                {isLoading ? (
+                  <SingleContentSkeleton />
+                ) : (
+                  <SingleContent movie={movie} />
+                )}
               </Grid>
             ))}
           </Grid>
