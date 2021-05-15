@@ -7,6 +7,7 @@ import { moviesSelector } from '../../@store/movies/selectors';
 import { getTrendingMoviesTC, setPageAC } from '../../@store/movies/slice';
 import SingleContent from '../../@components/SingleContent';
 import CustomPagination from '../../@components/CustomPagination';
+import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 
 const HomeView: React.FC = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,8 @@ const HomeView: React.FC = () => {
           <Grid container spacing={3} style={{ padding: 3 }}>
             {movies?.map((movie) => (
               <Grid item xs={12} sm={4} md={2} key={movie.id}>
-                <SingleContent movie={movie} />
+                {/* <SingleContent movie={movie} /> */}
+                <SingleContentSkeleton />
               </Grid>
             ))}
           </Grid>

@@ -4,7 +4,7 @@ import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
-import MovieInfoSkeleton from '../Skeletons';
+import MovieInfoSkeleton from '../Skeletons/MovieInfoSkeleton/MovieInfoSkeleton';
 
 interface Props {
   movie: any;
