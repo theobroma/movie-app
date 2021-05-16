@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Box, Container, Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
 import { moviesSelector } from '../../@store/movies/selectors';
@@ -38,7 +39,7 @@ const HomeView: React.FC = () => {
         <Container maxWidth="lg">
           <Grid container spacing={3} style={{ padding: 3 }}>
             {movies?.map((movie) => (
-              <Grid item xs={12} sm={4} md={2} key={movie.id}>
+              <Grid item xs={12} sm={4} md={2} key={nanoid()}>
                 {isLoading ? (
                   <SingleContentSkeleton />
                 ) : (
