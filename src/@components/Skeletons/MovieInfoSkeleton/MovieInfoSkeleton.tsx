@@ -26,8 +26,9 @@ const MovieInfoSkeleton: React.FC = () => {
       className={classes.skeleton}
     />
   );
+
   const text = (rows: number) =>
-    Array.from(new Array(rows)).map((_, i) => (
+    Array.from(new Array(rows)).map(() => (
       <Skeleton
         variant="text"
         key={nanoid()}
@@ -42,7 +43,7 @@ const MovieInfoSkeleton: React.FC = () => {
       <Grid item md={3}>
         <Skeleton
           variant="rect"
-          height={356}
+          height={432}
           style={{ borderRadius: 10 }}
           width="100%"
           className={classes.skeleton}

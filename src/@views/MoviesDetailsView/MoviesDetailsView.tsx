@@ -7,6 +7,7 @@ import Footer from '../../@components/Footer';
 import { movieDetailsSelector } from '../../@store/movies/selectors';
 import { getMovieDetailsTC } from '../../@store/movies/slice';
 import MovieInfo from '../../@components/MovieInfo';
+import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
 
 interface Props {
   match: any;
@@ -30,6 +31,9 @@ const MoviesDetailsView: React.FC<Props> = ({ match }) => {
       </Box>
       <div className="HolyGrail-content">
         <MovieInfo movie={movieDetailsData} />
+        <Box my={5}>box</Box>
+        <MovieInfoSkeleton />
+        <Box my={5}>box</Box>
       </div>
       <Footer />
     </div>

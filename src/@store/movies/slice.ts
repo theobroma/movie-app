@@ -40,7 +40,7 @@ export const getMovieDetailsTC = createAsyncThunk(
   'movies/getMovieDetails',
   async (param: { movieID: number }, thunkAPI) => {
     try {
-      await waitForMe(2000);
+      // await waitForMe(2000);
       const res = await moviesApi.getMovieDetail(param.movieID);
       return { data: res.data };
     } catch (err) {
