@@ -16,7 +16,6 @@ const MovieInfo: React.FC<Props> = ({ movie }) => {
     genres,
     runtime,
     budget,
-    backdrop_path,
     poster_path,
     release_date,
     production_countries,
@@ -56,7 +55,7 @@ const MovieInfo: React.FC<Props> = ({ movie }) => {
   //   </>
   // );
 
-  const MovieInfoBlock = (
+  return (
     <Box py={3}>
       <Grid container spacing={3} style={{ padding: 3 }}>
         {/* poster */}
@@ -92,14 +91,14 @@ const MovieInfo: React.FC<Props> = ({ movie }) => {
             <Rating value={vote_average / 2} readOnly />
             <span style={{ margin: '2px 0px 0 6px' }}>{vote_average}/10</span>
             {/* <Button
-            style={{ marginLeft: 16 }}
-            onClick={() => onFavorite(id)}
-            variant={isFavorite ? 'contained' : 'outlined'}
-            color="secondary"
-            aria-label="like"
-          >
-            <FavoriteIcon />
-          </Button> */}
+          style={{ marginLeft: 16 }}
+          onClick={() => onFavorite(id)}
+          variant={isFavorite ? 'contained' : 'outlined'}
+          color="secondary"
+          aria-label="like"
+        >
+          <FavoriteIcon />
+        </Button> */}
           </div>
           <div style={{ marginTop: 10 }}>
             <Typography component="div" style={{ marginRight: 15 }}>
@@ -126,19 +125,6 @@ const MovieInfo: React.FC<Props> = ({ movie }) => {
         </Grid>
       </Grid>
     </Box>
-  );
-
-  return (
-    <main style={{ position: 'relative' }}>
-      <div className={classes.backdrop}>
-        <img
-          className={classes.backdropImage}
-          src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
-          alt={`Backdrop of ${title}`}
-        />
-      </div>
-      <Container maxWidth="lg">{MovieInfoBlock}</Container>
-    </main>
   );
 };
 
