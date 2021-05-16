@@ -17,7 +17,9 @@ interface Props {
 const MoviesDetailsView: React.FC<Props> = ({ match }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const movieDetailsData = useSelector(movieDetailsSelector);
+  const { data: movieDetailsData, isLoading } = useSelector(
+    movieDetailsSelector,
+  );
   const { id } = useParams<any>();
 
   useEffect(() => {
@@ -34,17 +36,20 @@ const MoviesDetailsView: React.FC<Props> = ({ match }) => {
       <div className="HolyGrail-content">
         <main style={{ position: 'relative' }}>
           <div className={classes.backdrop}>
-            <img
-              className={classes.backdropImage}
-              src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}
-              alt={`Backdrop of ${movieDetailsData.title}`}
-            />
+            {movieDetailsData && (
+              <img
+                className={classes.backdropImage}
+                src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}
+                alt={`Backdrop of ${movieDetailsData.title}`}
+              />
+            )}
           </div>
           <Container maxWidth="lg">
-            <MovieInfo movie={movieDetailsData} />
-            <Box my={5}>box</Box>
-            <MovieInfoSkeleton />
-            <Box my={5}>box</Box>
+            {!isLoading ? (
+              <MovieInfo movie={movieDetailsData} />
+            ) : (
+              <MovieInfoSkeleton />
+            )}
           </Container>
         </main>
       </div>

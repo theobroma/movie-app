@@ -12,6 +12,7 @@ const moviesInitialState = {
   } as MoviesResponseType,
   isLoading: true,
   movieDetails: {
+    data: {},
     isLoading: false,
   } as any,
 };
@@ -40,7 +41,7 @@ export const getMovieDetailsTC = createAsyncThunk(
   'movies/getMovieDetails',
   async (param: { movieID: number }, thunkAPI) => {
     try {
-      // await waitForMe(2000);
+      await waitForMe(500);
       const res = await moviesApi.getMovieDetail(param.movieID);
       return { data: res.data };
     } catch (err) {
@@ -75,7 +76,7 @@ export const slice = createSlice({
     });
     builder.addCase(getMovieDetailsTC.fulfilled, (state, action) => {
       if (action.payload) {
-        state.movieDetails = action.payload.data;
+        state.movieDetails.data = action.payload.data;
       }
       state.movieDetails.isLoading = false;
     });
