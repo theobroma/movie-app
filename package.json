@@ -1,5 +1,5 @@
 {
-  "name": "movie-app",
+  "name": "moviedb-app",
   "version": "1.0.0",
   "private": false,
   "dependencies": {

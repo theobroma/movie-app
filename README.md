@@ -1,12 +1,13 @@
-# Weather App
+# MovieDB App
 
-##### React & Material UI app utilizing the Weatherapi API.
+##### React & Material UI application.
 
-It is designed display your current and 3 day forecast weather.
-It uses geolocation to find your city. This still gives the user the option to search for another location.
+Powered by [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction).
+
+Search, See primary information, See trailers of different movies.
 
 Register your API Key at
-[https://www.weatherapi.com/](https://www.weatherapi.com/)
+[https://www.themoviedb.org/](https://www.themoviedb.org/)
 
 ## Quick Start
 
@@ -27,12 +28,18 @@ npm run format
 npm run lint
 ```
 
-## Deploy to GitHub Pages
+## Deploy to Netlify
 
 ```bash
-# Change "homepage"
-"homepage": "http://{username}.github.io/{repo-name}"
+# Generate a production build and deploy it
 
-# Generate a production build and deploy it to GitHub Pages
-npm run deploy
+  "scripts": {
+    ...
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
+  },
 ```
+
+### Status badge
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e5305ec2-b7f3-4150-9f4b-3e48763077f7/deploy-status)](https://app.netlify.com/sites/thirsty-swirles-283e34/deploys)
