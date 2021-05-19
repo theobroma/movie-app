@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
-import { moviesSelector } from '../../@store/movies/selectors';
-import { getTrendingMoviesTC, setPageAC } from '../../@store/movies/slice';
+import { trendingSelector } from '../../@store/trending/selectors';
+import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
 import SingleContent from '../../@components/SingleContent';
 import CustomPagination from '../../@components/CustomPagination';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
@@ -13,9 +13,9 @@ import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkel
 const HomeView: React.FC = () => {
   const dispatch = useDispatch();
   const {
-    data: { page, total_pages, results: movies },
+    data: { page, total_pages, results: trendingAllmovies },
     isLoading,
-  } = useSelector(moviesSelector);
+  } = useSelector(trendingSelector);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -27,7 +27,7 @@ const HomeView: React.FC = () => {
   };
 
   useEffect(() => {
-    dispatch(getTrendingMoviesTC({ page }));
+    dispatch(getTrendingAllTC({ page }));
   }, [dispatch, page]);
 
   return (
@@ -38,7 +38,7 @@ const HomeView: React.FC = () => {
       <div className="HolyGrail-content">
         <Container maxWidth="lg">
           <Grid container spacing={3} style={{ padding: 3 }}>
-            {movies?.map((movie) => (
+            {trendingAllmovies?.map((movie) => (
               <Grid item xs={12} sm={4} md={2} key={nanoid()}>
                 {isLoading ? (
                   <SingleContentSkeleton />
