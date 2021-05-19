@@ -37,7 +37,7 @@ export const APP_MAIN_ROUTES: IRoute[] = [
   },
   {
     component: MoviesDetailsView,
-    path: ROUTES.MOVIE_DETAILS,
+    path: ROUTES.SINGLE_DETAILS,
     exact: true,
     // layout: UserLayout,
   },

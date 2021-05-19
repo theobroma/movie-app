@@ -39,10 +39,16 @@ export const getTrendingMoviesTC = createAsyncThunk(
 
 export const getMovieDetailsTC = createAsyncThunk(
   'movies/getMovieDetails',
-  async (param: { movieID: number }, thunkAPI) => {
+  async (
+    param: { movieID: string | undefined; mediaType: string | undefined },
+    thunkAPI,
+  ) => {
     try {
       await waitForMe(500);
-      const res = await moviesApi.getMovieDetail(param.movieID);
+      const res = await moviesApi.getMovieDetail(
+        param.movieID,
+        param.mediaType,
+      );
       return { data: res.data };
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,

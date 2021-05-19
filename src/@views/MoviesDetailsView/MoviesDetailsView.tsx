@@ -10,23 +10,24 @@ import MovieInfo from '../../@components/MovieInfo';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
 import { useStyles } from './MoviesDetailsView.styles';
 
-interface Props {
-  match: any;
+interface ParamTypes {
+  id?: string | undefined;
+  mediaType?: string | undefined;
 }
 
-const MoviesDetailsView: React.FC<Props> = ({ match }) => {
+const MoviesDetailsView: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { data: movieDetailsData, isLoading } = useSelector(
     movieDetailsSelector,
   );
-  const { id } = useParams<any>();
+  const { id, mediaType } = useParams<ParamTypes>();
 
   useEffect(() => {
     if (id) {
-      dispatch(getMovieDetailsTC({ movieID: id }));
+      dispatch(getMovieDetailsTC({ movieID: id, mediaType }));
     }
-  }, [dispatch, id]);
+  }, [dispatch, id, mediaType]);
 
   return (
     <div className="HolyGrail">

@@ -1,12 +1,5 @@
 export enum ROUTES {
   ROOT = '/',
-  MOVIE_DETAILS = '/movies/:id',
-  TV_DETAILS = '/tv/:id',
+  SINGLE_DETAILS = '/details/:mediaType/:id',
   FAVOURITES = '/favourites',
-  //   LOGIN = '/login',
-  //   PROFILE = '/profile',
-  //   DIALOGS = '/dialogs',
-  //   USERS = '/users',
-  //   MUSIC = '/music',
-  //   SETTINGS = '/settings',
 }
