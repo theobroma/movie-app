@@ -8,4 +8,7 @@ export const moviesApi = {
   getMovieDetail(movieID: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`/${mediaType}/${movieID}`);
   },
+  getTrailers(id: string | undefined, mediaType: string | undefined) {
+    return instance.get<any>(`${mediaType}/${id}/videos`);
+  },
 };

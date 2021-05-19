@@ -45,11 +45,12 @@ export const getMovieDetailsTC = createAsyncThunk(
   ) => {
     try {
       await waitForMe(500);
-      const res = await moviesApi.getMovieDetail(
+      const res1 = await moviesApi.getMovieDetail(
         param.movieID,
         param.mediaType,
       );
-      return { data: res.data };
+      const res2 = await moviesApi.getTrailers(param.movieID, param.mediaType);
+      return { data: res1.data, trailers: res2.data };
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
@@ -83,6 +84,7 @@ export const slice = createSlice({
     builder.addCase(getMovieDetailsTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.movieDetails.data = action.payload.data;
+        state.movieDetails.trailers = action.payload.trailers;
       }
       state.movieDetails.isLoading = false;
     });

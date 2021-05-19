@@ -6,6 +6,7 @@ import {
   Container,
   Toolbar,
   Typography,
+  IconButton,
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() => {

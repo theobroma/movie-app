@@ -2,14 +2,16 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
 
 interface Props {
   movie: any;
+  trailer: any;
 }
 
-const MovieInfo: React.FC<Props> = ({ movie }) => {
+const MovieInfo: React.FC<Props> = ({ movie, trailer }) => {
   const classes = useStyles();
   const {
     title,
@@ -122,6 +124,15 @@ const MovieInfo: React.FC<Props> = ({ movie }) => {
             </>
           )}
           {/* {CrewBlock} */}
+          <Button
+            variant="contained"
+            startIcon={<YouTubeIcon />}
+            color="secondary"
+            target="__blank"
+            href={`https://www.youtube.com/watch?v=${trailer}`}
+          >
+            Watch the Trailer
+          </Button>
         </Grid>
       </Grid>
     </Box>
