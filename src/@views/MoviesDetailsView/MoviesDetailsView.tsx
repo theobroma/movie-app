@@ -21,7 +21,7 @@ const MoviesDetailsView: React.FC = () => {
   const { data: movieDetailsData, isLoading, trailers } = useSelector(
     movieDetailsSelector,
   );
-  const trailer = trailers?.results[0].key;
+  const trailer = null ?? trailers?.results[0]?.key;
   const { id, mediaType } = useParams<ParamTypes>();
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -125,16 +125,20 @@ const MovieInfo: React.FC<Props> = ({ movie, trailer }) => {
           )}
           {/* {CrewBlock} */}
           <Box py={3}>
-            <Button
-              className={classes.trailer}
-              variant="contained"
-              startIcon={<YouTubeIcon />}
-              color="secondary"
-              target="__blank"
-              href={`https://www.youtube.com/watch?v=${trailer}`}
-            >
-              Watch the Trailer
-            </Button>
+            {trailer ? (
+              <Button
+                className={classes.trailer}
+                variant="contained"
+                startIcon={<YouTubeIcon />}
+                color="secondary"
+                target="__blank"
+                href={`https://www.youtube.com/watch?v=${trailer}`}
+              >
+                Watch the Trailer
+              </Button>
+            ) : (
+              'No video trailer'
+            )}
           </Box>
         </Grid>
       </Grid>

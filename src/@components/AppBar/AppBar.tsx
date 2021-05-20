@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import { useStyles } from './AppBar.styles';
 import SimpleDrawer from './SimpleDrawer';
+import SearchInput from './Search/SearchInput';
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
@@ -51,6 +52,8 @@ export default function PersistentDrawerLeft() {
               MovieDB App
             </Link>
           </Typography>
+          {/* search */}
+          <SearchInput />
         </Toolbar>
       </AppBar>
       <SimpleDrawer open={open} handleDrawerClose={handleDrawerClose} />
