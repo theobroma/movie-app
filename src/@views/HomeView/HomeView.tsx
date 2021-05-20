@@ -39,7 +39,7 @@ const HomeView: React.FC = () => {
         <Container maxWidth="lg">
           <Grid container spacing={3} style={{ padding: 3 }}>
             {trendingAllmovies?.map((movie) => (
-              <Grid item xs={12} sm={4} md={2} key={nanoid()}>
+              <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                 {isLoading ? (
                   <SingleContentSkeleton />
                 ) : (

@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
 import { useStyles } from './AppBar.styles';
 import SimpleDrawer from './SimpleDrawer';
 
@@ -38,8 +39,17 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography variant="h6" noWrap>
-            MovieDB App
+            <Link
+              to={{ pathname: '/' }}
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+              }}
+            >
+              MovieDB App
+            </Link>
           </Typography>
         </Toolbar>
       </AppBar>

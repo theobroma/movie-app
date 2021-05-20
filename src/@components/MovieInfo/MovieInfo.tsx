@@ -124,15 +124,18 @@ const MovieInfo: React.FC<Props> = ({ movie, trailer }) => {
             </>
           )}
           {/* {CrewBlock} */}
-          <Button
-            variant="contained"
-            startIcon={<YouTubeIcon />}
-            color="secondary"
-            target="__blank"
-            href={`https://www.youtube.com/watch?v=${trailer}`}
-          >
-            Watch the Trailer
-          </Button>
+          <Box py={3}>
+            <Button
+              className={classes.trailer}
+              variant="contained"
+              startIcon={<YouTubeIcon />}
+              color="secondary"
+              target="__blank"
+              href={`https://www.youtube.com/watch?v=${trailer}`}
+            >
+              Watch the Trailer
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </Box>

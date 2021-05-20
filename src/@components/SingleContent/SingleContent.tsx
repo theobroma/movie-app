@@ -26,7 +26,12 @@ const SingleContent: React.FC<Props> = ({
 }) => {
   const classes = useStyles();
   return (
-    <Link to={{ pathname: `/details/${media_type}/${id}` }}>
+    <Link
+      to={{ pathname: `/details/${media_type}/${id}` }}
+      style={{
+        textDecoration: 'none',
+      }}
+    >
       <div
         className={classes.media}
         style={{ cursor: 'pointer' }}

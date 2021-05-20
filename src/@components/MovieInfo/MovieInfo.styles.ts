@@ -66,5 +66,8 @@ export const useStyles = makeStyles((theme: Theme) =>
       listStyle: 'none',
       padding: 0,
     },
+    trailer: {
+      color: 'white',
+    },
   }),
 );
