@@ -38,7 +38,7 @@ const MoviesDetailsView: React.FC = () => {
       <div className="HolyGrail-content">
         <main style={{ position: 'relative' }}>
           <div className={classes.backdrop}>
-            {movieDetailsData && (
+            {movieDetailsData?.backdrop_path && (
               <img
                 className={classes.backdropImage}
                 src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}

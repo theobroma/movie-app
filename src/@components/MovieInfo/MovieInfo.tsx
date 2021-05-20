@@ -62,11 +62,13 @@ const MovieInfo: React.FC<Props> = ({ movie, trailer }) => {
       <Grid container spacing={3} style={{ padding: 3 }}>
         {/* poster */}
         <Grid item md={3}>
-          <img
-            className={classes.poster}
-            src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-            alt={`Poster of ${title}`}
-          />
+          {poster_path && (
+            <img
+              className={classes.poster}
+              src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+              alt={`Poster of ${title}`}
+            />
+          )}
         </Grid>
         {/* info */}
         <Grid item md={8} style={{ color: 'white' }}>
