@@ -1,15 +1,8 @@
 import React, { useEffect } from 'react';
-import {
-  makeStyles,
-  createStyles,
-  Box,
-  Container,
-  Grid,
-} from '@material-ui/core';
+import { makeStyles, createStyles, Box } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
-import MoviesCard from '../../@components/MoviesCard';
 import { moviesSelector } from '../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../@store/movies/slice';
 

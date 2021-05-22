@@ -9,6 +9,7 @@ import { getMovieDetailsTC } from '../../@store/movies/slice';
 import MovieInfo from '../../@components/MovieInfo';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
 import { useStyles } from './MoviesDetailsView.styles';
+import { setMovieFavoriteAC } from '../../@store/user/slice';
 
 interface ParamTypes {
   id?: string | undefined;
@@ -29,6 +30,12 @@ const MoviesDetailsView: React.FC = () => {
       dispatch(getMovieDetailsTC({ movieID: id, mediaType }));
     }
   }, [dispatch, id, mediaType]);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(setMovieFavoriteAC(id));
+    }
+  }, [dispatch, id]);
 
   return (
     <div className="HolyGrail">
