@@ -28,6 +28,13 @@ const FavouritesView = lazy(() => {
   ]).then(([moduleExports]) => moduleExports);
 });
 
+const VisitedView = lazy(() => {
+  return Promise.all([
+    import(/* webpackChunkName: "VisitedView" */ '../@views/VisitedView'),
+    new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
 export const APP_MAIN_ROUTES: IRoute[] = [
   {
     component: HomeView,
@@ -44,6 +51,12 @@ export const APP_MAIN_ROUTES: IRoute[] = [
   {
     component: FavouritesView,
     path: ROUTES.FAVOURITES,
+    exact: true,
+    // layout: UserLayout,
+  },
+  {
+    component: VisitedView,
+    path: ROUTES.VISITED,
     exact: true,
     // layout: UserLayout,
   },
