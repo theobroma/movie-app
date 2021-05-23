@@ -5,10 +5,21 @@ export const moviesApi = {
   getTrendingAll(page: number) {
     return instance.get<MoviesResponseType>(`/trending/all/day?page=${page}`);
   },
-  getMovieDetail(movieID: string | undefined, mediaType: string | undefined) {
+  getMovieDetails(movieID: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`/${mediaType}/${movieID}`);
+  },
+  getFullMovieDetails(
+    movieID: string | undefined,
+    mediaType: string | undefined,
+  ) {
+    return instance.get<any>(
+      `/${mediaType}/${movieID}&append_to_response=videos,credits`,
+    );
   },
   getTrailers(id: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`${mediaType}/${id}/videos`);
+  },
+  getCredits(id: string | undefined, mediaType: string | undefined) {
+    return instance.get<any>(`${mediaType}/${id}/credits`);
   },
 };

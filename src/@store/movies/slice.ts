@@ -13,6 +13,10 @@ const moviesInitialState = {
   isLoading: true,
   movieDetails: {
     data: {},
+    trailers: {
+      results: [],
+    },
+    credits: {},
     isLoading: false,
   } as any,
 };
@@ -45,12 +49,13 @@ export const getMovieDetailsTC = createAsyncThunk(
   ) => {
     try {
       await waitForMe(500);
-      const res1 = await moviesApi.getMovieDetail(
+      const res1 = await moviesApi.getMovieDetails(
         param.movieID,
         param.mediaType,
       );
       const res2 = await moviesApi.getTrailers(param.movieID, param.mediaType);
-      return { data: res1.data, trailers: res2.data };
+      const res3 = await moviesApi.getCredits(param.movieID, param.mediaType);
+      return { data: res1.data, trailers: res2.data, credits: res3.data };
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
@@ -85,6 +90,7 @@ export const slice = createSlice({
       if (action.payload) {
         state.movieDetails.data = action.payload.data;
         state.movieDetails.trailers = action.payload.trailers;
+        state.movieDetails.credits = action.payload.credits;
       }
       state.movieDetails.isLoading = false;
     });
