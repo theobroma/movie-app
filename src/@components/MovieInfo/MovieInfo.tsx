@@ -1,5 +1,5 @@
 import React from 'react';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -9,9 +9,10 @@ import { useStyles } from './MovieInfo.styles';
 interface Props {
   movie: any;
   trailer: any;
+  credits: any;
 }
 
-const MovieInfo: React.FC<Props> = ({ movie, trailer }) => {
+const MovieInfo: React.FC<Props> = ({ movie, trailer, credits: { crew } }) => {
   const classes = useStyles();
   const {
     title,
@@ -32,30 +33,30 @@ const MovieInfo: React.FC<Props> = ({ movie, trailer }) => {
     })
     .join(', ');
 
-  // const CrewBlock = crew.length && (
-  //   <>
-  //     <h3 className={classes.subtitle}>Crew</h3>
-  //     <Grid container spacing={3} component="ul" className={classes.crewList}>
-  //       {crew.slice(0, 4).map((person: any) => (
-  //         <Grid
-  //           item
-  //           md={3}
-  //           sm={6}
-  //           component="li"
-  //           key={nanoid()}
-  //           style={{ paddingRight: 16 }}
-  //         >
-  //           <Typography variant="body2" style={{ fontWeight: 'bold' }}>
-  //             {person.name}
-  //           </Typography>
-  //           <Typography variant="body2">
-  //             {person.department}, {person.job}
-  //           </Typography>
-  //         </Grid>
-  //       ))}
-  //     </Grid>
-  //   </>
-  // );
+  const CrewBlock = crew?.length && (
+    <>
+      <h3 className={classes.subtitle}>Crew</h3>
+      <Grid container spacing={3} component="ul" className={classes.crewList}>
+        {crew.slice(0, 4).map((person: any) => (
+          <Grid
+            item
+            md={3}
+            sm={6}
+            component="li"
+            key={nanoid()}
+            style={{ paddingRight: 16 }}
+          >
+            <Typography variant="body2" style={{ fontWeight: 'bold' }}>
+              {person.name}
+            </Typography>
+            <Typography variant="body2">
+              {person.department}, {person.job}
+            </Typography>
+          </Grid>
+        ))}
+      </Grid>
+    </>
+  );
 
   return (
     <Box py={3}>
@@ -125,7 +126,8 @@ const MovieInfo: React.FC<Props> = ({ movie, trailer }) => {
               <Typography variant="body1">{overview}</Typography>
             </>
           )}
-          {/* {CrewBlock} */}
+          {CrewBlock}
+
           <Box py={3}>
             {trailer ? (
               <Button
