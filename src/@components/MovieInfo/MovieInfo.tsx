@@ -1,18 +1,27 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import Rating from '@material-ui/lab/Rating';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
 
 interface Props {
+  id: string | undefined;
   movie: any;
   trailer: any;
   credits: any;
+  onFavourite: any;
 }
 
-const MovieInfo: React.FC<Props> = ({ movie, trailer, credits: { crew } }) => {
+const MovieInfo: React.FC<Props> = ({
+  id,
+  movie,
+  trailer,
+  credits: { crew },
+  onFavourite,
+}) => {
   const classes = useStyles();
   const {
     title,
@@ -95,15 +104,16 @@ const MovieInfo: React.FC<Props> = ({ movie, trailer, credits: { crew } }) => {
           <div className={classes.vote}>
             <Rating value={vote_average / 2} readOnly />
             <span style={{ margin: '2px 0px 0 6px' }}>{vote_average}/10</span>
-            {/* <Button
-          style={{ marginLeft: 16 }}
-          onClick={() => onFavorite(id)}
-          variant={isFavorite ? 'contained' : 'outlined'}
-          color="secondary"
-          aria-label="like"
-        >
-          <FavoriteIcon />
-        </Button> */}
+            <Button
+              style={{ marginLeft: 16 }}
+              onClick={() => onFavourite(id)}
+              // variant={isFavorite ? 'contained' : 'outlined'}
+              variant="outlined"
+              color="secondary"
+              aria-label="like"
+            >
+              <FavoriteIcon />
+            </Button>
           </div>
           <div style={{ marginTop: 10 }}>
             <Typography component="div" style={{ marginRight: 15 }}>

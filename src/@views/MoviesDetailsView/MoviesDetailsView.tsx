@@ -9,7 +9,7 @@ import { getMovieDetailsTC } from '../../@store/movies/slice';
 import MovieInfo from '../../@components/MovieInfo';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
 import { useStyles } from './MoviesDetailsView.styles';
-import { setMovieFavoriteAC } from '../../@store/user/slice';
+import { setMovieVisitedAC, setMovieFavoriteAC } from '../../@store/user/slice';
 
 interface ParamTypes {
   id?: string | undefined;
@@ -34,9 +34,13 @@ const MoviesDetailsView: React.FC = () => {
 
   useEffect(() => {
     if (id) {
-      dispatch(setMovieFavoriteAC(id));
+      dispatch(setMovieVisitedAC(id));
     }
   }, [dispatch, id]);
+
+  const handleOnFavourite = () => {
+    dispatch(setMovieFavoriteAC(id));
+  };
 
   return (
     <div className="HolyGrail">
@@ -57,9 +61,11 @@ const MoviesDetailsView: React.FC = () => {
           <Container maxWidth="lg">
             {!isLoading ? (
               <MovieInfo
+                id={id}
                 movie={movieDetailsData}
                 trailer={trailer}
                 credits={credits}
+                onFavourite={handleOnFavourite}
               />
             ) : (
               <MovieInfoSkeleton />
