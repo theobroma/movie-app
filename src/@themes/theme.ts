@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeColorsType, THEME_COLORS } from '../@types';
 
 /**
  * Material UI theme "front" colors, "back" colors are different for Light and Dark modes
@@ -59,6 +60,8 @@ const DARK_THEME: any = {
   },
 };
 
-export const theme = false
-  ? createMuiTheme(DARK_THEME)
-  : createMuiTheme(LIGHT_THEME);
+export const theme = (currentTheme: ThemeColorsType) => {
+  return currentTheme === THEME_COLORS.DARK
+    ? createMuiTheme(DARK_THEME)
+    : createMuiTheme(LIGHT_THEME);
+};

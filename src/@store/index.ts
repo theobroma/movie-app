@@ -1,6 +1,7 @@
 import { History } from 'history';
 import { RouterState, connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
+import { UIInitialStateType, uiReducer } from './ui/slice';
 import { MoviesInitialStateType, moviesReducer } from './movies/slice';
 import { TrendingInitialStateType, trendingReducer } from './trending/slice';
 import { UserInitialStateType, userReducer } from './user/slice';
@@ -14,6 +15,7 @@ import { UserInitialStateType, userReducer } from './user/slice';
 export interface RootState {
   trending: TrendingInitialStateType;
   movies: MoviesInitialStateType;
+  ui: UIInitialStateType;
   user: UserInitialStateType;
   router: RouterState;
 }
@@ -23,6 +25,7 @@ export const rootReducer = (history: History) =>
   combineReducers<RootState>({
     trending: trendingReducer,
     movies: moviesReducer,
+    ui: uiReducer,
     user: userReducer,
     router: connectRouter(history),
   });

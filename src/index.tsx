@@ -17,13 +17,14 @@ import './@assets/styles/index.scss';
 // Open Source typefaces
 import 'typeface-roboto';
 
+const currentTheme = store.getState().ui.theme;
 const rootEl = document.getElementById('root');
 
 render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={<LoadingPage />} persistor={persistor}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme(currentTheme)}>
           <ConnectedRouter history={history}>
             <CssBaseline />
             <AppContainer />
