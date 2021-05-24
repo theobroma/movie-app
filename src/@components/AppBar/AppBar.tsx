@@ -72,7 +72,7 @@ export default function CustomAppBar() {
           <SearchInput />
           <Box>
             <IconButton aria-label="theme">
-              {currentTheme === THEME_COLORS.DARK ? (
+              {currentTheme === THEME_COLORS.LIGHT ? (
                 <NightIcon
                   onClick={() => handleSwitchDarkMode(THEME_COLORS.DARK)}
                 />
