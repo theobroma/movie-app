@@ -27,7 +27,7 @@ const persistConfig = {
   key: 'root',
   storage,
   // blacklist: ['filter'], // will not be persisted
-  whitelist: ['user'], // will be persisted
+  whitelist: ['ui', 'user'], // will be persisted
 };
 
 // Middleware: Redux Persist Persisted Reducer
