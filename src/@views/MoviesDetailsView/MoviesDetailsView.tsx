@@ -19,9 +19,12 @@ interface ParamTypes {
 const MoviesDetailsView: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { data: movieDetailsData, isLoading, trailers, credits } = useSelector(
-    movieDetailsSelector,
-  );
+  const {
+    data: movieDetailsData,
+    isLoading,
+    trailers,
+    credits,
+  } = useSelector(movieDetailsSelector);
 
   const trailer = null ?? trailers?.results[0]?.key;
   const { id, mediaType } = useParams<ParamTypes>();
