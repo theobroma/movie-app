@@ -1,5 +1,5 @@
+import { connectRouter, RouterState } from 'connected-react-router';
 import { History } from 'history';
-import { RouterState, connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
 import { MoviesInitialStateType, moviesReducer } from './movies/slice';
 import { SearchInitialStateType, searchReducer } from './search/slice';

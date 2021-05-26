@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +16,7 @@ import SearchInput from './Search/SearchInput';
 import { setThemeAC } from '../../@store/ui/slice';
 import { ThemeColorsType, THEME_COLORS } from '../../@types';
 import { themeSelector } from '../../@store/ui/selectors';
+import { searchTC } from '../../@store/search/slice';
 
 export default function CustomAppBar() {
   const classes = useStyles();
@@ -30,6 +31,10 @@ export default function CustomAppBar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    dispatch(searchTC('terminator'));
+  }, [dispatch]);
 
   const handleSwitchDarkMode = useCallback(
     (theme: ThemeColorsType) => {

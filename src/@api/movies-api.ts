@@ -22,4 +22,14 @@ export const moviesApi = {
   getCredits(id: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`${mediaType}/${id}/credits`);
   },
+
+  getSearch(
+    searchText: string | undefined,
+    mediaType: string | undefined = 'movie',
+    page = 1,
+  ) {
+    return instance.get<any>(
+      `/search/${mediaType}?query=${searchText}&page=${page}`,
+    );
+  },
 };

@@ -1,23 +1,25 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import { searchAPI } from '../../@api/search-api';
+import { moviesApi } from '../../@api/movies-api';
 import { searchPlaceResponseType } from '../../@types';
 
 const searchInitialState = {
-  data: [] as Array<searchPlaceResponseType>,
+  // data: [] as Array<searchPlaceResponseType>,
+  data: [] as any,
 };
 
 export type SearchInitialStateType = typeof searchInitialState;
-// export const searchTC = createAsyncThunk(
-//   'search/searchTC',
-//   async (place: string, thunkAPI) => {
-//     try {
-//       const res = await searchAPI.place(place);
-//       return { data: res.data };
-//     } catch (err) {
-//       return thunkAPI.rejectWithValue(err.response.data);
-//     }
-//   },
-// );
+
+export const searchTC = createAsyncThunk(
+  'search/searchTC',
+  async (searchText: string, thunkAPI) => {
+    try {
+      const res = await moviesApi.getSearch(searchText);
+      return { data: res.data };
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  },
+);
 
 export const slice = createSlice({
   name: 'search',
@@ -27,13 +29,13 @@ export const slice = createSlice({
       state.data = [];
     },
   },
-  //   extraReducers: (builder) => {
-  //     builder.addCase(searchTC.fulfilled, (state, action) => {
-  //       if (action.payload) {
-  //         state.data = action.payload.data;
-  //       }
-  //     });
-  //   },
+  extraReducers: (builder) => {
+    builder.addCase(searchTC.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.data = action.payload.data;
+      }
+    });
+  },
 });
 
 export const searchReducer = slice.reducer;
