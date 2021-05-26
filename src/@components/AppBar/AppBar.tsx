@@ -1,27 +1,30 @@
-import React, { useCallback, useEffect } from 'react';
-import clsx from 'clsx';
+import { Box } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
+import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 import NightIcon from '@material-ui/icons/Brightness3';
 import DayIcon from '@material-ui/icons/Brightness5';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Link } from 'react-router-dom';
-import { Box } from '@material-ui/core';
+import clsx from 'clsx';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useStyles } from './AppBar.styles';
-import SimpleDrawer from './SimpleDrawer';
-import SearchInput from './Search/SearchInput';
+import { Link } from 'react-router-dom';
+import { searchDataSelector } from '../../@store/search/selectors';
+import { searchTC } from '../../@store/search/slice';
+import { themeSelector } from '../../@store/ui/selectors';
 import { setThemeAC } from '../../@store/ui/slice';
 import { ThemeColorsType, THEME_COLORS } from '../../@types';
-import { themeSelector } from '../../@store/ui/selectors';
-import { searchTC } from '../../@store/search/slice';
+import { useStyles } from './AppBar.styles';
+import SearchInput from './Search/SearchInput';
+import SearchOutput from './Search/SearchOutput';
+import SimpleDrawer from './SimpleDrawer';
 
 export default function CustomAppBar() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const currentTheme = useSelector(themeSelector);
+  const searchData = useSelector(searchDataSelector).results;
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -90,6 +93,7 @@ export default function CustomAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
+      <SearchOutput movies={searchData} />
       <SimpleDrawer open={open} handleDrawerClose={handleDrawerClose} />
       {/* TODO: */}
       <main

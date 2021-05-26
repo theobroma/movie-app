@@ -17,8 +17,8 @@ const SingleContent: React.FC<Props> = ({
     id,
     title,
     original_name,
-    poster_path: poster,
-    release_date: date,
+    poster_path,
+    release_date,
     first_air_date,
     vote_average,
     media_type,
@@ -43,13 +43,15 @@ const SingleContent: React.FC<Props> = ({
         />
         <img
           className={classes.poster}
-          src={poster ? `${img_300}${poster}` : unavailable}
+          src={poster_path ? `${img_300}${poster_path}` : unavailable}
           alt={title}
         />
         <b className={classes.title}>{title || original_name}</b>
         <span className={classes.subTitle}>
           {media_type === 'tv' ? 'TV Series' : 'Movie'}
-          <span className={classes.subTitle}>{date || first_air_date}</span>
+          <span className={classes.subTitle}>
+            {release_date || first_air_date}
+          </span>
         </span>
       </div>
     </Link>
