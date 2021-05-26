@@ -7,16 +7,17 @@ import NightIcon from '@material-ui/icons/Brightness3';
 import DayIcon from '@material-ui/icons/Brightness5';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import useDebounce from '../../@hooks/useDebounce';
 import { searchDataSelector } from '../../@store/search/selectors';
 import { searchTC } from '../../@store/search/slice';
 import { themeSelector } from '../../@store/ui/selectors';
 import { setThemeAC } from '../../@store/ui/slice';
 import { ThemeColorsType, THEME_COLORS } from '../../@types';
 import { useStyles } from './AppBar.styles';
-import SearchInput from './Search/SearchInput';
+import SearchInput from './Search/SearchInput/SearchInput';
 import SearchOutput from './Search/SearchOutput';
 import SimpleDrawer from './SimpleDrawer';
 
@@ -25,7 +26,9 @@ export default function CustomAppBar() {
   const dispatch = useDispatch();
   const currentTheme = useSelector(themeSelector);
   const searchData = useSelector(searchDataSelector).results;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false); // sidebar
+  const [searchVal, setSearchVal] = useState('');
+  const debouncedSearchTerm = useDebounce(searchVal, 300);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -93,6 +96,7 @@ export default function CustomAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
+      {/* search output */}
       <SearchOutput movies={searchData} />
       <SimpleDrawer open={open} handleDrawerClose={handleDrawerClose} />
       {/* TODO: */}
