@@ -13,7 +13,6 @@ interface Props {
 
 const SearchOutput: React.FC<Props> = ({ movies = [] }) => {
   const classes = useStyles();
-  console.log(movies);
 
   return (
     <List className={classes.root} aria-labelledby="nested-list-subheader">
@@ -24,7 +23,7 @@ const SearchOutput: React.FC<Props> = ({ movies = [] }) => {
             button
             component={RouterLink}
             className={classes.item}
-            to={`/movie/${movie?.id}`}
+            to={`/details/movie/${movie?.id}`}
           >
             <img
               className={classes.itemImage}

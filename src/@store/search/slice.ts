@@ -30,6 +30,9 @@ export const slice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase('@@router/LOCATION_CHANGE', (state, action) => {
+      state.data = [];
+    });
     builder.addCase(searchTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.data = action.payload.data;

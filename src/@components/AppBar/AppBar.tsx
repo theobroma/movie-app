@@ -9,7 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useDebounce from '../../@hooks/useDebounce';
 import { searchDataSelector } from '../../@store/search/selectors';
 import { searchTC } from '../../@store/search/slice';
@@ -28,7 +28,7 @@ export default function CustomAppBar() {
   const searchData = useSelector(searchDataSelector).results;
   const [open, setOpen] = useState(false); // sidebar
   const [searchVal, setSearchVal] = useState('');
-  const debouncedSearchTerm = useDebounce(searchVal, 300);
+  const debouncedSearchTerm = useDebounce(searchVal, 500);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -38,9 +38,15 @@ export default function CustomAppBar() {
     setOpen(false);
   };
 
+  const handleSearchInputChange = (e: { target: HTMLInputElement }) => {
+    setSearchVal(e.target.value);
+  };
+
   useEffect(() => {
-    dispatch(searchTC('terminator'));
-  }, [dispatch]);
+    if (debouncedSearchTerm) {
+      dispatch(searchTC(debouncedSearchTerm));
+    }
+  }, [debouncedSearchTerm, dispatch]);
 
   const handleSwitchDarkMode = useCallback(
     (theme: ThemeColorsType) => {
@@ -80,7 +86,7 @@ export default function CustomAppBar() {
             </Link>
           </Typography>
           {/* search */}
-          <SearchInput />
+          <SearchInput onChange={handleSearchInputChange} />
           <Box>
             <IconButton aria-label="theme">
               {currentTheme === THEME_COLORS.LIGHT ? (
