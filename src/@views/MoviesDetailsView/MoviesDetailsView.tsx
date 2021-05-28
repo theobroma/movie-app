@@ -1,15 +1,15 @@
+import { Box, Container } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Box, Container } from '@material-ui/core';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
-import { movieDetailsSelector } from '../../@store/movies/selectors';
-import { getMovieDetailsTC } from '../../@store/movies/slice';
 import MovieInfo from '../../@components/MovieInfo';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
+import { movieDetailsSelector } from '../../@store/details/selectors';
+import { getMovieDetailsTC } from '../../@store/details/slice';
+import { setMovieFavoriteAC, setMovieVisitedAC } from '../../@store/user/slice';
 import { useStyles } from './MoviesDetailsView.styles';
-import { setMovieVisitedAC, setMovieFavoriteAC } from '../../@store/user/slice';
 
 interface ParamTypes {
   id?: string | undefined;

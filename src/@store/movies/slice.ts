@@ -11,14 +11,6 @@ const moviesInitialState = {
     total_results: 0,
   } as MoviesResponseType,
   isLoading: true,
-  movieDetails: {
-    data: {},
-    trailers: {
-      results: [],
-    },
-    credits: {},
-    isLoading: false,
-  } as any,
 };
 
 export type MoviesInitialStateType = typeof moviesInitialState;
@@ -41,29 +33,6 @@ export const getTrendingMoviesTC = createAsyncThunk(
   },
 );
 
-export const getMovieDetailsTC = createAsyncThunk(
-  'movies/getMovieDetails',
-  async (
-    param: { movieID: string | undefined; mediaType: string | undefined },
-    thunkAPI,
-  ) => {
-    try {
-      await waitForMe(500);
-      const res1 = await moviesApi.getMovieDetails(
-        param.movieID,
-        param.mediaType,
-      );
-      const res2 = await moviesApi.getTrailers(param.movieID, param.mediaType);
-      const res3 = await moviesApi.getCredits(param.movieID, param.mediaType);
-      return { data: res1.data, trailers: res2.data, credits: res3.data };
-    } catch (err) {
-      // Use `err.response.data` as `action.payload` for a `rejected` action,
-      // by explicitly returning it using the `rejectWithValue()` utility
-      return thunkAPI.rejectWithValue(err.response.data);
-    }
-  },
-);
-
 export const slice = createSlice({
   name: 'movies',
   initialState: moviesInitialState,
@@ -80,19 +49,6 @@ export const slice = createSlice({
       if (action.payload) {
         state.data = action.payload.data;
       }
-    });
-    // clear data before fetch new
-    builder.addCase(getMovieDetailsTC.pending, (state) => {
-      state.movieDetails = {};
-      state.movieDetails.isLoading = true;
-    });
-    builder.addCase(getMovieDetailsTC.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.movieDetails.data = action.payload.data;
-        state.movieDetails.trailers = action.payload.trailers;
-        state.movieDetails.credits = action.payload.credits;
-      }
-      state.movieDetails.isLoading = false;
     });
   },
 });
