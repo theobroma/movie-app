@@ -5,6 +5,10 @@ export const moviesApi = {
   getTrendingAll(page: number) {
     return instance.get<MoviesResponseType>(`/trending/all/day?page=${page}`);
   },
+  getTrendingMovies(page: number) {
+    return instance.get<MoviesResponseType>(`/trending/movie/day?page=${page}`);
+  },
+
   getMovieDetails(movieID: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`/${mediaType}/${movieID}`);
   },

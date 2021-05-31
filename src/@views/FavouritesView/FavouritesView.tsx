@@ -3,7 +3,7 @@ import { makeStyles, createStyles, Box } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
-import { moviesSelector } from '../../@store/movies/selectors';
+// import { moviesSelector } from '../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../@store/movies/slice';
 
 const useStyles = makeStyles(() => {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => {
 const FavouriteView: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const movies = useSelector(moviesSelector).data.results;
+  // const movies = useSelector(moviesSelector).data.results;
 
   useEffect(() => {
     dispatch(getTrendingMoviesTC({ page: 1 }));

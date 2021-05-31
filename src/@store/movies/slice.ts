@@ -1,19 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { normalize, schema } from 'normalizr';
 import { moviesApi } from '../../@api/movies-api';
 import { MoviesResponseType } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const moviesInitialState = {
-  data: {
-    page: 1,
-    results: Array(20).fill('none'),
-    total_pages: 10,
-    total_results: 0,
-  } as MoviesResponseType,
-  isLoading: true,
-};
+  // data: {
+  //   page: 1,
+  //   results: Array(20).fill('none'),
+  //   total_pages: 10,
+  //   total_results: 0,
+  // } as MoviesResponseType,
+  // isLoading: true,
+  ids: [],
+  entities: {},
+} as any;
 
 export type MoviesInitialStateType = typeof moviesInitialState;
+
+const movieEntity = new schema.Entity('movies');
 
 export const getTrendingMoviesTC = createAsyncThunk(
   'movies/getTrendingMovies',
@@ -21,8 +26,11 @@ export const getTrendingMoviesTC = createAsyncThunk(
     try {
       thunkAPI.dispatch(setLoadingAC(true));
       await waitForMe(500);
-      const res = await moviesApi.getTrendingAll(param.page);
-      return { data: res.data };
+      const res = await moviesApi.getTrendingMovies(param.page);
+      // Normalize the data before passing it to our reducer
+      const normalized = normalize(res.data, [movieEntity]);
+      console.log(normalized);
+      return normalized.entities;
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
@@ -32,6 +40,9 @@ export const getTrendingMoviesTC = createAsyncThunk(
     }
   },
 );
+
+// Define a movie schema
+// const movie = new schema.Entity('movies');
 
 export const slice = createSlice({
   name: 'movies',
@@ -45,10 +56,28 @@ export const slice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
+    //   if (action.payload) {
+    //     state.data = action.payload.data;
+    //   }
+    // });
+    //  BY HAND
+    // builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
+    //   // reduce the collection by the id property into a shape of { 1: { ...user }}
+    //   const entitiesbyId = action.payload.data.results.reduce(
+    //     (byId: any, movie: any) => {
+    //       byId[movie.id] = movie;
+    //       return byId;
+    //     },
+    //     {},
+    //   );
+    //   state.entities = entitiesbyId;
+    //   state.ids = Object.keys(entitiesbyId);
+    // });
+    // Normalizr
     builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.data = action.payload.data;
-      }
+      state.entities = action.payload.movies;
+      state.ids = Object.keys(action.payload.movies || []);
     });
   },
 });
