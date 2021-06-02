@@ -1,9 +1,9 @@
 import { RootState } from '..';
 
-export const visitedMoviesSelector = (state: RootState) => {
+export const visitedMoviesIdsSelector = (state: RootState) => {
   return state.user.visitedMovieIds;
 };
 
-export const favouriteMoviesSelector = (state: RootState) => {
-  return state.user.visitedMovieIds;
+export const favouriteMoviesIdsSelector = (state: RootState) => {
+  return state.user.favoriteMovieIds;
 };

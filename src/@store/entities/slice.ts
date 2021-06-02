@@ -34,11 +34,11 @@ export const slice = createSlice({
     //   //   state.isLoading = false; !rejected with error!
     // });
     // Normalizr
-    builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
-      console.log('getTrendingMoviesTC.fulfilled from entities');
-      state.entities = action.payload.movies;
-      state.ids = Object.keys(action.payload.movies || []);
-    });
+    // builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
+    //   console.log('getTrendingMoviesTC.fulfilled from entities');
+    //   state.entities = action.payload.movies;
+    //   state.ids = Object.keys(action.payload.movies || []);
+    // });
   },
 });
 

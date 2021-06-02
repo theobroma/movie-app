@@ -28,9 +28,10 @@ export const getTrendingMoviesTC = createAsyncThunk(
       await waitForMe(500);
       const res = await moviesApi.getTrendingMovies(param.page);
       // Normalize the data before passing it to our reducer
-      const normalized = normalize(res.data, [movieEntity]);
-      console.log(normalized);
-      return normalized.entities;
+      // const normalized = normalize(res.data, [movieEntity]);
+      // console.log(normalized);
+      // return normalized.entities;
+      return { data: res.data };
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
@@ -62,23 +63,23 @@ export const slice = createSlice({
     //   }
     // });
     //  BY HAND
-    // builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
-    //   // reduce the collection by the id property into a shape of { 1: { ...user }}
-    //   const entitiesbyId = action.payload.data.results.reduce(
-    //     (byId: any, movie: any) => {
-    //       byId[movie.id] = movie;
-    //       return byId;
-    //     },
-    //     {},
-    //   );
-    //   state.entities = entitiesbyId;
-    //   state.ids = Object.keys(entitiesbyId);
-    // });
-    // Normalizr
     builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
-      state.entities = action.payload.movies;
-      state.ids = Object.keys(action.payload.movies || []);
+      // reduce the collection by the id property into a shape of { 1: { ...user }}
+      const entitiesbyId = action.payload.data.results.reduce(
+        (byId: any, movie: any) => {
+          byId[movie.id] = movie;
+          return byId;
+        },
+        {},
+      );
+      state.entities = entitiesbyId;
+      state.ids = Object.keys(entitiesbyId);
     });
+    // Normalizr
+    // builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
+    //   state.entities = action.payload.movies;
+    //   state.ids = Object.keys(action.payload.movies || []);
+    // });
   },
 });
 

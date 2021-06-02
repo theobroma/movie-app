@@ -9,7 +9,7 @@ import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
 import SingleContent from '../../@components/SingleContent';
 import CustomPagination from '../../@components/CustomPagination';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
-import { visitedMoviesSelector } from '../../@store/user/selectors';
+import { visitedMoviesIdsSelector } from '../../@store/user/selectors';
 
 const VisitedView: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const VisitedView: React.FC = () => {
     isLoading,
   } = useSelector(trendingSelector);
 
-  const visited = useSelector(visitedMoviesSelector);
+  const visited = useSelector(visitedMoviesIdsSelector);
   console.log(visited);
 
   const handlePageChange = (

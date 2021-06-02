@@ -20,9 +20,9 @@ const SingleContent: React.FC<Props> = ({
     poster_path,
     release_date,
     first_air_date,
-    vote_average,
+    vote_average = 0,
     media_type,
-  },
+  } = {},
 }) => {
   const classes = useStyles();
   return (
