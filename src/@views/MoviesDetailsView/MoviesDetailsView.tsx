@@ -1,11 +1,14 @@
-import { Box, Container } from '@material-ui/core';
+import { Box, Container, Grid, Typography } from '@material-ui/core';
+import { nanoid } from 'nanoid';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
 import MovieInfo from '../../@components/MovieInfo';
+import SingleContent from '../../@components/SingleContent';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
+import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
 import { setMovieFavoriteAC, setMovieVisitedAC } from '../../@store/user/slice';
@@ -24,6 +27,7 @@ const MoviesDetailsView: React.FC = () => {
     isLoading,
     trailers,
     credits,
+    similar,
   } = useSelector(movieDetailsSelector);
 
   const trailer = null ?? trailers?.results[0]?.key;
@@ -44,6 +48,8 @@ const MoviesDetailsView: React.FC = () => {
   const handleOnFavourite = () => {
     dispatch(setMovieFavoriteAC(id));
   };
+  const MOVIES_PER_LIST = 6;
+  const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);
 
   return (
     <div className="HolyGrail">
@@ -73,6 +79,21 @@ const MoviesDetailsView: React.FC = () => {
             ) : (
               <MovieInfoSkeleton />
             )}
+            {/* similar */}
+            <Typography component="h3" variant="h5">
+              Similar movies
+            </Typography>
+            <Grid container spacing={3} style={{ padding: 3 }}>
+              {similarMovies?.map((movie: any) => (
+                <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
+                  {isLoading ? (
+                    <SingleContentSkeleton />
+                  ) : (
+                    <SingleContent movie={movie} />
+                  )}
+                </Grid>
+              ))}
+            </Grid>
           </Container>
         </main>
       </div>

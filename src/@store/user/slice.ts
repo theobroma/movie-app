@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const userInitialState = {
   visitedMovieIds: [] as Array<string>,
-  favoriteMovieIds: ['337404', '602734', '691179'] as Array<string>,
+  favoriteMovieIds: ['337404', '602734', '691179', '280'] as Array<string>,
 };
 
 export type UserInitialStateType = typeof userInitialState;

@@ -9,6 +9,9 @@ const detailsInitialState = {
   },
   credits: {},
   isLoading: false,
+  similar: {
+    results: [],
+  },
 } as any;
 
 export type DetailsInitialStateType = typeof detailsInitialState;
@@ -29,7 +32,13 @@ export const getMovieDetailsTC = createAsyncThunk(
       );
       const res2 = await moviesApi.getTrailers(param.movieID, param.mediaType);
       const res3 = await moviesApi.getCredits(param.movieID, param.mediaType);
-      return { data: res1.data, trailers: res2.data, credits: res3.data };
+      const res4 = await moviesApi.getSimilar(param.movieID, param.mediaType);
+      return {
+        data: res1.data,
+        trailers: res2.data,
+        credits: res3.data,
+        similar: res4.data,
+      };
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
@@ -58,6 +67,7 @@ export const slice = createSlice({
         state.data = action.payload.data;
         state.trailers = action.payload.trailers;
         state.credits = action.payload.credits;
+        state.similar = action.payload.similar;
       }
       //   state.isLoading = false; !rejected with error!
     });

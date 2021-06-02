@@ -42,6 +42,8 @@ const FavouriteView: React.FC = () => {
   const preparedMovies: any = [];
   favouriteMoviesIds.forEach((movieId) => {
     const movie = entities[movieId];
+    // TODO:
+    // console.log(entities[movieId] === undefined);
     preparedMovies.push(movie);
   });
 
