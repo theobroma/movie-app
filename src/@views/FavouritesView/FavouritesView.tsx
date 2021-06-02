@@ -5,6 +5,7 @@ import {
   Box,
   Container,
   Grid,
+  Typography,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
@@ -56,9 +57,13 @@ const FavouriteView: React.FC = () => {
         <PersistentDrawerLeft />
       </Box>
       <div className="HolyGrail-content">
-        fav
         <Container maxWidth="lg">
           <Grid container spacing={3} style={{ padding: 3 }}>
+            <Grid item xs={12}>
+              <Typography component="h2" variant="h4">
+                Favorite movies
+              </Typography>
+            </Grid>
             {preparedMovies.length > 0 &&
               preparedMovies?.map((movie: any) => (
                 <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>

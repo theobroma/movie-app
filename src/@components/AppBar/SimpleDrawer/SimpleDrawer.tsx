@@ -9,9 +9,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MovieIcon from '@material-ui/icons/Movie';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import MailIcon from '@material-ui/icons/Mail';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 import { useStyles } from './SimpleDrawer.styles';
 
 interface Props {
@@ -55,12 +58,12 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
           activeClassName="activeclass"
         >
           <ListItemIcon>
-            <InboxIcon />
+            <MovieIcon />
           </ListItemIcon>
           <ListItemText primary="HomePage" />
         </ListItem>
         {/* 2 */}
-        <ListItem
+        {/* <ListItem
           button
           key="MoviesDetails"
           exact
@@ -72,7 +75,7 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
             <MailIcon />
           </ListItemIcon>
           <ListItemText primary="/movies/1" />
-        </ListItem>
+        </ListItem> */}
         {/* 3 */}
         <ListItem
           button
@@ -83,7 +86,7 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
           activeClassName="activeclass"
         >
           <ListItemIcon>
-            <InboxIcon />
+            <FavoriteIcon />
           </ListItemIcon>
           <ListItemText primary="FavouritesPage" />
         </ListItem>
@@ -97,7 +100,7 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
           activeClassName="activeclass"
         >
           <ListItemIcon>
-            <InboxIcon />
+            <VisibilityIcon />
           </ListItemIcon>
           <ListItemText primary="VisitedPage" />
         </ListItem>
