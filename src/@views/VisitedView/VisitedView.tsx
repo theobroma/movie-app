@@ -6,6 +6,7 @@ import {
   Container,
   Grid,
   Typography,
+  Button,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
@@ -17,6 +18,7 @@ import { entitiesSelector } from '../../@store/entities/selectors';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import { visitedMoviesIdsSelector } from '../../@store/user/selectors';
+import { clearVisitedAC } from '../../@store/user/slice';
 
 const useStyles = makeStyles(() => {
   return {
@@ -51,6 +53,11 @@ const FavouriteView: React.FC = () => {
     dispatch(getTrendingMoviesTC({ page: 1 }));
   }, [dispatch]);
 
+  const handleClearButton = () => {
+    console.log('handleClearButton');
+    dispatch(clearVisitedAC(''));
+  };
+
   return (
     <div className="HolyGrail">
       <Box mb={2}>
@@ -60,9 +67,19 @@ const FavouriteView: React.FC = () => {
         <Container maxWidth="lg">
           <Grid container spacing={3} style={{ padding: 3 }}>
             <Grid item xs={12}>
-              <Typography component="h2" variant="h4">
-                Visited movies
-              </Typography>
+              <Box justifyContent="space-between" display="flex">
+                <Typography component="h2" variant="h4">
+                  Visited movies
+                </Typography>
+                <Button
+                  onClick={handleClearButton}
+                  style={{ marginLeft: 'auto' }}
+                  variant="outlined"
+                  // disabled={!movieIds.length}
+                >
+                  Clear history
+                </Button>
+              </Box>
             </Grid>
             {preparedMovies.length > 0 &&
               preparedMovies?.map((movie: any) => (

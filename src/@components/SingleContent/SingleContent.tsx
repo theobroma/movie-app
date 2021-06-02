@@ -15,11 +15,11 @@ interface Props {
 const SingleContent: React.FC<Props> = ({
   movie: {
     id,
-    title,
-    original_name,
+    title = 'title',
+    original_name = 'title',
     poster_path,
-    release_date,
-    first_air_date,
+    release_date = '1900-01-01',
+    first_air_date = '1900-01-01',
     vote_average = 0,
     media_type,
   } = {},

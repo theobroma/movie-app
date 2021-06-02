@@ -17,6 +17,9 @@ export const slice = createSlice({
     setMovieFavoriteAC(state, action) {
       state.favoriteMovieIds.push(action.payload);
     },
+    clearVisitedAC(state, action) {
+      state.visitedMovieIds = [];
+    },
   },
   //   extraReducers: (builder) => {
   //     builder.addCase(getTrendingAllTC.fulfilled, (state, action) => {
@@ -28,4 +31,5 @@ export const slice = createSlice({
 });
 
 export const userReducer = slice.reducer;
-export const { setMovieVisitedAC, setMovieFavoriteAC } = slice.actions;
+export const { setMovieVisitedAC, setMovieFavoriteAC, clearVisitedAC } =
+  slice.actions;
