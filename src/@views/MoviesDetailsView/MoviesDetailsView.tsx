@@ -57,43 +57,54 @@ const MoviesDetailsView: React.FC = () => {
         <PersistentDrawerLeft />
       </Box>
       <div className="HolyGrail-content">
-        <main style={{ position: 'relative' }}>
-          <div className={classes.backdrop}>
-            {movieDetailsData?.backdrop_path && (
-              <img
-                className={classes.backdropImage}
-                src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}
-                alt={`Backdrop of ${movieDetailsData.title}`}
-              />
-            )}
-          </div>
+        <main>
+          <Box style={{ position: 'relative' }}>
+            <div className={classes.backdrop}>
+              {movieDetailsData?.backdrop_path && (
+                <img
+                  className={classes.backdropImage}
+                  src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}
+                  alt={`Backdrop of ${movieDetailsData.title}`}
+                />
+              )}
+            </div>
+            <Container maxWidth="lg">
+              {!isLoading ? (
+                <MovieInfo
+                  id={id}
+                  movie={movieDetailsData}
+                  trailer={trailer}
+                  credits={credits}
+                  onFavourite={handleOnFavourite}
+                />
+              ) : (
+                <MovieInfoSkeleton />
+              )}
+            </Container>
+          </Box>
+          {/* Similar */}
           <Container maxWidth="lg">
-            {!isLoading ? (
-              <MovieInfo
-                id={id}
-                movie={movieDetailsData}
-                trailer={trailer}
-                credits={credits}
-                onFavourite={handleOnFavourite}
-              />
-            ) : (
-              <MovieInfoSkeleton />
-            )}
-            {/* similar */}
-            <Typography component="h3" variant="h5">
-              Similar movies
-            </Typography>
-            <Grid container spacing={3} style={{ padding: 3 }}>
-              {similarMovies?.map((movie: any) => (
-                <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                  {isLoading ? (
-                    <SingleContentSkeleton />
-                  ) : (
-                    <SingleContent movie={movie} />
-                  )}
-                </Grid>
-              ))}
-            </Grid>
+            <Box py={4}>
+              {!isLoading && (
+                <Typography component="h3" variant="h4">
+                  Similar movies
+                </Typography>
+              )}
+              <Grid container spacing={3} style={{ padding: 3 }}>
+                {similarMovies?.map((movie: any) => (
+                  <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
+                    {isLoading ? (
+                      <SingleContentSkeleton />
+                    ) : (
+                      <SingleContent
+                        movie={movie}
+                        parentMediaType={mediaType}
+                      />
+                    )}
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
           </Container>
         </main>
       </div>

@@ -10,6 +10,7 @@ export const unavailable =
 
 interface Props {
   movie: MovieType;
+  parentMediaType?: string; // crutch for similar movies
 }
 
 const SingleContent: React.FC<Props> = ({
@@ -23,11 +24,14 @@ const SingleContent: React.FC<Props> = ({
     vote_average = 0,
     media_type,
   } = {},
+  parentMediaType,
 }) => {
   const classes = useStyles();
   return (
     <Link
-      to={{ pathname: `/details/${media_type}/${id}` }}
+      to={{
+        pathname: `/details/${media_type || parentMediaType}/${id}`,
+      }}
       style={{
         textDecoration: 'none',
       }}
