@@ -73,8 +73,13 @@ export default function CustomAppBar() {
           >
             <MenuIcon />
           </IconButton>
-
-          <Typography variant="h6" noWrap>
+          <Typography
+            variant="h6"
+            noWrap
+            style={{
+              marginRight: '16px',
+            }}
+          >
             <Link
               to={{ pathname: '/' }}
               style={{
@@ -87,6 +92,7 @@ export default function CustomAppBar() {
           </Typography>
           {/* search */}
           <SearchInput onChange={handleSearchInputChange} />
+          <div className={classes.grow} />
           <Box>
             <IconButton aria-label="theme">
               {currentTheme === THEME_COLORS.LIGHT ? (
