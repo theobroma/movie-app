@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const userInitialState = {
   visitedMovieIds: [] as Array<string>,
-  favoriteMovieIds: ['337404', '602734', '691179', '280'] as Array<string>,
+  favoriteMovieIds: ['337404', '49849', '280'] as Array<string>,
 };
 
 export type UserInitialStateType = typeof userInitialState;
@@ -11,25 +11,25 @@ export const slice = createSlice({
   name: 'user',
   initialState: userInitialState,
   reducers: {
+    toggleMovieFavoriteAC(state, action) {
+      const id = action.payload;
+      const index = state.favoriteMovieIds.indexOf(id);
+      const isFavorite = index !== -1;
+      if (isFavorite) {
+        state.favoriteMovieIds.splice(index, 1);
+      } else {
+        state.favoriteMovieIds.push(id);
+      }
+    },
     setMovieVisitedAC(state, action) {
       state.visitedMovieIds.push(action.payload);
     },
-    setMovieFavoriteAC(state, action) {
-      state.favoriteMovieIds.push(action.payload);
-    },
-    clearVisitedAC(state, action) {
+    clearVisitedAC(state) {
       state.visitedMovieIds = [];
     },
   },
-  //   extraReducers: (builder) => {
-  //     builder.addCase(getTrendingAllTC.fulfilled, (state, action) => {
-  //       if (action.payload) {
-  //         state.data = action.payload.data;
-  //       }
-  //     });
-  //   },
 });
 
 export const userReducer = slice.reducer;
-export const { setMovieVisitedAC, setMovieFavoriteAC, clearVisitedAC } =
+export const { setMovieVisitedAC, toggleMovieFavoriteAC, clearVisitedAC } =
   slice.actions;

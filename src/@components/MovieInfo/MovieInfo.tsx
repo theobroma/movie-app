@@ -13,6 +13,7 @@ interface Props {
   trailer: any;
   credits: any;
   onFavourite: any;
+  isFavorite: boolean;
 }
 
 const MovieInfo: React.FC<Props> = ({
@@ -21,6 +22,7 @@ const MovieInfo: React.FC<Props> = ({
   trailer,
   credits: { crew },
   onFavourite,
+  isFavorite,
 }) => {
   const classes = useStyles();
   const {
@@ -107,12 +109,14 @@ const MovieInfo: React.FC<Props> = ({
             <Button
               style={{ marginLeft: 16 }}
               onClick={() => onFavourite(id)}
-              // variant={isFavorite ? 'contained' : 'outlined'}
-              variant="outlined"
+              variant={isFavorite ? 'contained' : 'outlined'}
+              // variant="outlined"
               color="secondary"
               aria-label="like"
             >
-              <FavoriteIcon />
+              <FavoriteIcon
+                style={{ color: isFavorite ? 'white' : 'secondary' }}
+              />
             </Button>
           </div>
           <div style={{ marginTop: 10 }}>

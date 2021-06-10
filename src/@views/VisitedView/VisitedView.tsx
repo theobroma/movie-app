@@ -1,37 +1,18 @@
 import React, { useEffect } from 'react';
-import {
-  makeStyles,
-  createStyles,
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Button,
-} from '@material-ui/core';
+import { Box, Container, Grid, Typography, Button } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
 import { moviesSelector } from '../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../@store/movies/slice';
-import { entitiesSelector } from '../../@store/entities/selectors';
+// import { entitiesSelector } from '../../@store/entities/selectors';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import { visitedMoviesIdsSelector } from '../../@store/user/selectors';
 import { clearVisitedAC } from '../../@store/user/slice';
 
-const useStyles = makeStyles(() => {
-  return {
-    ...createStyles({
-      grow: {
-        flexGrow: 1,
-      },
-    }),
-  };
-});
-
 const FavouriteView: React.FC = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const visitedMoviesIds = useSelector(visitedMoviesIdsSelector);
   // console.log(favouriteMoviesIds);
@@ -47,15 +28,12 @@ const FavouriteView: React.FC = () => {
     preparedMovies.push(movie);
   });
 
-  console.log(preparedMovies);
-
   useEffect(() => {
     dispatch(getTrendingMoviesTC({ page: 1 }));
   }, [dispatch]);
 
   const handleClearButton = () => {
-    console.log('handleClearButton');
-    dispatch(clearVisitedAC(''));
+    dispatch(clearVisitedAC());
   };
 
   return (
