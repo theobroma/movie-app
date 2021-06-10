@@ -9,6 +9,7 @@ import MovieInfo from '../../@components/MovieInfo';
 import SingleContent from '../../@components/SingleContent';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
+import EmptyBlock from '../../@components/UI/EmptyBlock';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
 import { favouriteMoviesIdsSelector } from '../../@store/user/selectors';
@@ -61,6 +62,20 @@ const MoviesDetailsView: React.FC = () => {
   const MOVIES_PER_LIST = 6;
   const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);
 
+  const SimilarMoviesBlock = (
+    <>
+      {similarMovies?.map((movie: any) => (
+        <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
+          {isLoading ? (
+            <SingleContentSkeleton />
+          ) : (
+            <SingleContent movie={movie} parentMediaType={mediaType} />
+          )}
+        </Grid>
+      ))}
+    </>
+  );
+
   return (
     <div className="HolyGrail">
       <Box mb={2}>
@@ -97,24 +112,21 @@ const MoviesDetailsView: React.FC = () => {
           <Container maxWidth="lg">
             <Box py={4}>
               {!isLoading && (
-                <Typography component="h3" variant="h4">
-                  Similar movies
-                </Typography>
-              )}
-              <Grid container spacing={3} style={{ padding: 3 }}>
-                {similarMovies?.map((movie: any) => (
-                  <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                    {isLoading ? (
-                      <SingleContentSkeleton />
+                <>
+                  <Typography component="h3" variant="h4">
+                    Similar movies
+                  </Typography>
+                  <Grid container spacing={3} style={{ padding: 3 }}>
+                    {similarMovies.length > 0 ? (
+                      SimilarMoviesBlock
                     ) : (
-                      <SingleContent
-                        movie={movie}
-                        parentMediaType={mediaType}
-                      />
+                      <Grid item xs={12}>
+                        <EmptyBlock>There is no data</EmptyBlock>
+                      </Grid>
                     )}
                   </Grid>
-                ))}
-              </Grid>
+                </>
+              )}
             </Box>
           </Container>
         </main>
