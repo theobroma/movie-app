@@ -60,7 +60,7 @@ const FavouriteView: React.FC = () => {
               </Box>
             </Grid>
             {preparedMovies.length > 0 &&
-              preparedMovies?.map((movie: any) => (
+              preparedMovies?.reverse().map((movie: any) => (
                 <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                   {isLoading ? (
                     <SingleContentSkeleton />

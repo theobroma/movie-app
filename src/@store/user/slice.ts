@@ -22,6 +22,13 @@ export const slice = createSlice({
       }
     },
     setMovieVisitedAC(state, action) {
+      const id = action.payload;
+      const index = state.visitedMovieIds.indexOf(id);
+      const isVisited = index !== -1;
+      // remove if exist and add again in the begin
+      if (isVisited) {
+        state.visitedMovieIds.splice(index, 1);
+      }
       state.visitedMovieIds.push(action.payload);
     },
     clearVisitedAC(state) {
