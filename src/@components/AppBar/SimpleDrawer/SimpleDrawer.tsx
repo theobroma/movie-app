@@ -6,16 +6,12 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import MovieIcon from '@material-ui/icons/Movie';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import MailIcon from '@material-ui/icons/Mail';
-import { Link, NavLink } from 'react-router-dom';
-import { Typography } from '@material-ui/core';
 import { useStyles } from './SimpleDrawer.styles';
+import SideBarLink from './SideBarLink';
+import { ROUTES } from '../../../@types';
 
 interface Props {
   open: boolean;
@@ -48,63 +44,19 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
       </div>
       <Divider />
       <List>
-        {/* 1 */}
-        <ListItem
-          button
-          key="HomePage"
-          exact
-          component={NavLink}
-          to="/"
-          activeClassName="activeclass"
-        >
-          <ListItemIcon>
-            <MovieIcon />
-          </ListItemIcon>
-          <ListItemText primary="HomePage" />
-        </ListItem>
-        {/* 2 */}
-        {/* <ListItem
-          button
-          key="MoviesDetails"
-          exact
-          component={NavLink}
-          to="/movies/1"
-          activeClassName="activeclass"
-        >
-          <ListItemIcon>
-            <MailIcon />
-          </ListItemIcon>
-          <ListItemText primary="/movies/1" />
-        </ListItem> */}
-        {/* 3 */}
-        <ListItem
-          button
-          key="FavouritesPage"
-          exact
-          component={NavLink}
-          to="/favourites"
-          activeClassName="activeclass"
-        >
-          <ListItemIcon>
-            <FavoriteIcon />
-          </ListItemIcon>
-          <ListItemText primary="FavouritesPage" />
-        </ListItem>
-        {/* 4 */}
-        <ListItem
-          button
-          key="VisitedPage"
-          exact
-          component={NavLink}
-          to="/visited"
-          activeClassName="activeclass"
-        >
-          <ListItemIcon>
-            <VisibilityIcon />
-          </ListItemIcon>
-          <ListItemText primary="VisitedPage" />
-        </ListItem>
+        <SideBarLink text="Home" to={ROUTES.ROOT} icon={<MovieIcon />} />
+        <SideBarLink
+          text="Favourites"
+          to={ROUTES.FAVOURITES}
+          icon={<FavoriteIcon />}
+        />
+        <SideBarLink
+          text="Visited"
+          to={ROUTES.VISITED}
+          icon={<VisibilityIcon />}
+        />
       </List>
+      <Divider />
     </Drawer>
   );
 };
