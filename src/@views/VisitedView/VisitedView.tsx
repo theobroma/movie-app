@@ -1,5 +1,15 @@
 import React, { useEffect } from 'react';
-import { Box, Container, Grid, Typography, Button } from '@material-ui/core';
+import { Link, Route, Switch, useLocation, Redirect } from 'react-router-dom';
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  Button,
+  Paper,
+  Tab,
+  Tabs,
+} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import PersistentDrawerLeft from '../../@components/AppBar';
@@ -11,8 +21,9 @@ import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import { visitedMoviesIdsSelector } from '../../@store/user/selectors';
 import { clearVisitedAC } from '../../@store/user/slice';
+import { ROUTES } from '../../@types';
 
-const FavouriteView: React.FC = () => {
+const VisitedView: React.FC = () => {
   const dispatch = useDispatch();
   const visitedMoviesIds = useSelector(visitedMoviesIdsSelector);
   // console.log(favouriteMoviesIds);
@@ -44,6 +55,10 @@ const FavouriteView: React.FC = () => {
       <div className="HolyGrail-content">
         <Container maxWidth="lg">
           <Grid container spacing={3} style={{ padding: 3 }}>
+            {/* TABS */}
+            <Grid item xs={12}>
+              <DisabledTabs />
+            </Grid>
             <Grid item xs={12}>
               <Box justifyContent="space-between" display="flex">
                 <Typography component="h2" variant="h4">
@@ -77,4 +92,45 @@ const FavouriteView: React.FC = () => {
   );
 };
 
-export default FavouriteView;
+function DisabledTabs() {
+  const location = useLocation();
+  console.log(location);
+  const [value, setValue] = React.useState(2);
+
+  const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Paper square>
+      {/* <Tabs
+        value={value}
+        indicatorColor="primary"
+        textColor="primary"
+        onChange={handleChange}
+        aria-label="disabled tabs example"
+      >
+        <Tab label="Active" />
+        <Tab label="Disabled" disabled />
+        <Tab label="Active" />
+      </Tabs> */}
+
+      <Tabs value={location.pathname}>
+        <Tab
+          label="Movies"
+          component={Link}
+          to={ROUTES.VISITED_MOVIES}
+          value={ROUTES.VISITED_MOVIES}
+        />
+        <Tab
+          label="TV Shows"
+          component={Link}
+          to={ROUTES.VISITED_TV}
+          value={ROUTES.VISITED_TV}
+        />
+      </Tabs>
+    </Paper>
+  );
+}
+
+export default VisitedView;

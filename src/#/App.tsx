@@ -35,6 +35,24 @@ const VisitedView = lazy(() => {
   ]).then(([moduleExports]) => moduleExports);
 });
 
+const VisitedMovieView = lazy(() => {
+  return Promise.all([
+    import(
+      /* webpackChunkName: "VisitedMovieView" */ '../@views/VisitedView/VisitedMoviesView'
+    ),
+    new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
+const VisitedTVView = lazy(() => {
+  return Promise.all([
+    import(
+      /* webpackChunkName: "VisitedTVView" */ '../@views/VisitedView/VisitedTVView'
+    ),
+    new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
 export const APP_MAIN_ROUTES: IRoute[] = [
   {
     component: HomeView,
@@ -57,6 +75,18 @@ export const APP_MAIN_ROUTES: IRoute[] = [
   {
     component: VisitedView,
     path: ROUTES.VISITED,
+    exact: true,
+    // layout: UserLayout,
+  },
+  {
+    component: VisitedMovieView,
+    path: ROUTES.VISITED_MOVIES,
+    exact: true,
+    // layout: UserLayout,
+  },
+  {
+    component: VisitedTVView,
+    path: ROUTES.VISITED_TV,
     exact: true,
     // layout: UserLayout,
   },
