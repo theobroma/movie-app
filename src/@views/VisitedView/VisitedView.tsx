@@ -22,6 +22,7 @@ import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkel
 import { visitedMediaIdsSelector } from '../../@store/user/selectors';
 import { clearVisitedAC } from '../../@store/user/slice';
 import { ROUTES } from '../../@types';
+import MediaTabs from './MediaTabs';
 
 const VisitedView: React.FC = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const VisitedView: React.FC = () => {
           <Grid container spacing={3} style={{ padding: 3 }}>
             {/* TABS */}
             <Grid item xs={12}>
-              <DisabledTabs />
+              <MediaTabs />
             </Grid>
             <Grid item xs={12}>
               <Box justifyContent="space-between" display="flex">
@@ -91,46 +92,5 @@ const VisitedView: React.FC = () => {
     </div>
   );
 };
-
-function DisabledTabs() {
-  const location = useLocation();
-  console.log(location);
-  const [value, setValue] = React.useState(2);
-
-  const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
-    setValue(newValue);
-  };
-
-  return (
-    <Paper square>
-      {/* <Tabs
-        value={value}
-        indicatorColor="primary"
-        textColor="primary"
-        onChange={handleChange}
-        aria-label="disabled tabs example"
-      >
-        <Tab label="Active" />
-        <Tab label="Disabled" disabled />
-        <Tab label="Active" />
-      </Tabs> */}
-
-      <Tabs value={location.pathname}>
-        <Tab
-          label="Movies"
-          component={Link}
-          to={ROUTES.VISITED_MOVIES}
-          value={ROUTES.VISITED_MOVIES}
-        />
-        <Tab
-          label="TV Shows"
-          component={Link}
-          to={ROUTES.VISITED_TV}
-          value={ROUTES.VISITED_TV}
-        />
-      </Tabs>
-    </Paper>
-  );
-}
 
 export default VisitedView;
