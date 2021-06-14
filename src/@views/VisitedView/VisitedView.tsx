@@ -19,13 +19,13 @@ import { getTrendingMoviesTC } from '../../@store/movies/slice';
 // import { entitiesSelector } from '../../@store/entities/selectors';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
-import { visitedMoviesIdsSelector } from '../../@store/user/selectors';
+import { visitedMediaIdsSelector } from '../../@store/user/selectors';
 import { clearVisitedAC } from '../../@store/user/slice';
 import { ROUTES } from '../../@types';
 
 const VisitedView: React.FC = () => {
   const dispatch = useDispatch();
-  const visitedMoviesIds = useSelector(visitedMoviesIdsSelector);
+  const visitedMediaIds = useSelector(visitedMediaIdsSelector);
   // console.log(favouriteMoviesIds);
   // const entities = useSelector(entitiesSelector);
   // console.log(entities);
@@ -34,10 +34,10 @@ const VisitedView: React.FC = () => {
   const isLoading = false;
 
   const preparedMovies: any = [];
-  visitedMoviesIds.forEach((movieId) => {
-    const movie = entities[movieId];
-    preparedMovies.push(movie);
-  });
+  // visitedMoviesIds.forEach((movieId) => {
+  //   const movie = entities[movieId];
+  //   preparedMovies.push(movie);
+  // });
 
   useEffect(() => {
     dispatch(getTrendingMoviesTC({ page: 1 }));

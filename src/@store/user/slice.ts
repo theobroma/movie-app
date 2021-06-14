@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const userInitialState = {
-  visitedMovieIds: [] as Array<string>,
+  visitedMediaIds: [] as Array<{ id: string; mediaType: string }>,
   favoriteMovieIds: ['337404', '49849', '280'] as Array<string>,
 };
 
@@ -22,17 +22,21 @@ export const slice = createSlice({
       }
     },
     setMovieVisitedAC(state, action) {
-      const id = action.payload;
-      const index = state.visitedMovieIds.indexOf(id);
+      const { id, mediaType } = action.payload;
+      // const index = state.visitedMovieIds.indexOf(id);
+      const index = state.visitedMediaIds.findIndex(
+        (element) => element.id === id && element.mediaType === mediaType,
+      );
+
       const isVisited = index !== -1;
       // remove if exist and add again in the begin
       if (isVisited) {
-        state.visitedMovieIds.splice(index, 1);
+        state.visitedMediaIds.splice(index, 1);
       }
-      state.visitedMovieIds.push(action.payload);
+      state.visitedMediaIds.push(action.payload);
     },
     clearVisitedAC(state) {
-      state.visitedMovieIds = [];
+      state.visitedMediaIds = [];
     },
   },
 });

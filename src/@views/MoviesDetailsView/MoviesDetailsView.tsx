@@ -51,10 +51,11 @@ const MoviesDetailsView: React.FC = () => {
   }, [dispatch, id, mediaType]);
 
   useEffect(() => {
+    // TODO: check if movie exist. for example /details/movie/96677
     if (id) {
-      dispatch(setMovieVisitedAC(id));
+      dispatch(setMovieVisitedAC({ id, mediaType }));
     }
-  }, [dispatch, id]);
+  }, [dispatch, id, mediaType]);
 
   const handleOnFavourite = () => {
     dispatch(toggleMovieFavoriteAC(id));
