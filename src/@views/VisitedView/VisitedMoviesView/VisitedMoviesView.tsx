@@ -16,8 +16,6 @@ const VisitedMovieView: React.FC = () => {
   const dispatch = useDispatch();
   const visitedMediaIds = useSelector(visitedMediaIdsSelector);
   // console.log(favouriteMoviesIds);
-  // const entities = useSelector(entitiesSelector);
-  // console.log(entities);
   const { ids, entities } = useSelector(moviesSelector);
   // console.log(entities[ids[0]]);
   const isLoading = false;

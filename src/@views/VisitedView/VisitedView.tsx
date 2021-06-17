@@ -16,7 +16,6 @@ import PersistentDrawerLeft from '../../@components/AppBar';
 import Footer from '../../@components/Footer';
 import { moviesSelector } from '../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../@store/movies/slice';
-// import { entitiesSelector } from '../../@store/entities/selectors';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import { visitedMediaIdsSelector } from '../../@store/user/selectors';
@@ -27,9 +26,6 @@ import MediaTabs from './MediaTabs';
 const VisitedView: React.FC = () => {
   const dispatch = useDispatch();
   const visitedMediaIds = useSelector(visitedMediaIdsSelector);
-  // console.log(favouriteMoviesIds);
-  // const entities = useSelector(entitiesSelector);
-  // console.log(entities);
   const { ids, entities } = useSelector(moviesSelector);
   // console.log(entities[ids[0]]);
   const isLoading = false;
