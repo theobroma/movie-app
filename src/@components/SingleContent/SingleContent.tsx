@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MovieType } from '../../@types';
+import { MEDIA_TYPE, MovieType } from '../../@types';
 import { useStyles, StyledBadge } from './SingleContent.styles';
 
 // import { img_300, unavailable } from '../../config/config';
@@ -27,10 +27,11 @@ const SingleContent: React.FC<Props> = ({
   parentMediaType,
 }) => {
   const classes = useStyles();
+  const mediaType = media_type || parentMediaType;
   return (
     <Link
       to={{
-        pathname: `/details/${media_type || parentMediaType}/${id}`,
+        pathname: `/details/${mediaType}/${id}`,
       }}
       style={{
         textDecoration: 'none',
@@ -52,7 +53,7 @@ const SingleContent: React.FC<Props> = ({
         />
         <b className={classes.title}>{title || original_name}</b>
         <span className={classes.subTitle}>
-          {media_type === 'tv' ? 'TV Series' : 'Movie'}
+          {mediaType === MEDIA_TYPE.TV ? 'TV Series' : 'Movie'}
           <span className={classes.subTitle}>
             {release_date || first_air_date}
           </span>
