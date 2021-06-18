@@ -16,8 +16,8 @@ interface Props {
 const SingleContent: React.FC<Props> = ({
   movie: {
     id,
-    title = 'title',
-    original_name = 'title',
+    title = '',
+    original_name = '',
     poster_path,
     release_date = '',
     first_air_date = '',
@@ -28,6 +28,7 @@ const SingleContent: React.FC<Props> = ({
 }) => {
   const classes = useStyles();
   const mediaType = media_type || parentMediaType;
+  const mediaTitle = title || original_name || 'title';
   return (
     <Link
       to={{
@@ -51,7 +52,7 @@ const SingleContent: React.FC<Props> = ({
           src={poster_path ? `${img_300}${poster_path}` : unavailable}
           alt={title}
         />
-        <b className={classes.title}>{title || original_name}</b>
+        <b className={classes.title}>{mediaTitle}</b>
         <span className={classes.subTitle}>
           {mediaType === MEDIA_TYPE.TV ? 'TV Series' : 'Movie'}
           <span className={classes.subTitle}>
