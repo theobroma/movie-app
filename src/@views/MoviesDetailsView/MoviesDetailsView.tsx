@@ -12,7 +12,7 @@ import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkel
 import EmptyBlock from '../../@components/UI/EmptyBlock';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
-import { favouriteMoviesIdsSelector } from '../../@store/user/selectors';
+import { favouriteMovieIdsSelector } from '../../@store/user/selectors';
 import {
   toggleMovieFavoriteAC,
   setMovieVisitedAC,
@@ -34,7 +34,7 @@ const MoviesDetailsView: React.FC = () => {
     credits,
     similar,
   } = useSelector(movieDetailsSelector);
-  const favoriteMovieIds = useSelector(favouriteMoviesIdsSelector);
+  const favoriteMovieIds = useSelector(favouriteMovieIdsSelector);
 
   const trailer = null ?? trailers?.results[0]?.key;
   const { id, mediaType } = useParams<ParamTypes>();

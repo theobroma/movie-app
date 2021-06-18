@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const userInitialState = {
   visitedMediaIds: [] as Array<{ id: string; mediaType: string }>,
-  favoriteMovieIds: ['337404', '49849', '280'] as Array<string>,
+  favoriteMediaIds: [] as Array<{ id: string; mediaType: string }>,
 };
 
 export type UserInitialStateType = typeof userInitialState;
@@ -13,12 +13,12 @@ export const slice = createSlice({
   reducers: {
     toggleMovieFavoriteAC(state, action) {
       const id = action.payload;
-      const index = state.favoriteMovieIds.indexOf(id);
+      const index = state.favoriteMediaIds.indexOf(id);
       const isFavorite = index !== -1;
       if (isFavorite) {
-        state.favoriteMovieIds.splice(index, 1);
+        state.favoriteMediaIds.splice(index, 1);
       } else {
-        state.favoriteMovieIds.push(id);
+        state.favoriteMediaIds.push(id);
       }
     },
     setMovieVisitedAC(state, action) {

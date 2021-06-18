@@ -28,6 +28,15 @@ const FavouritesView = lazy(() => {
   ]).then(([moduleExports]) => moduleExports);
 });
 
+const FavouritesMoviesView = lazy(() => {
+  return Promise.all([
+    import(
+      /* webpackChunkName: "FavouritesMovieView" */ '../@views/FavouritesView/FavouritesMoviesView'
+    ),
+    new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
 const VisitedView = lazy(() => {
   return Promise.all([
     import(/* webpackChunkName: "VisitedView" */ '../@views/VisitedView'),
@@ -35,7 +44,7 @@ const VisitedView = lazy(() => {
   ]).then(([moduleExports]) => moduleExports);
 });
 
-const VisitedMovieView = lazy(() => {
+const VisitedMoviesView = lazy(() => {
   return Promise.all([
     import(
       /* webpackChunkName: "VisitedMovieView" */ '../@views/VisitedView/VisitedMoviesView'
@@ -73,13 +82,19 @@ export const APP_MAIN_ROUTES: IRoute[] = [
     // layout: UserLayout,
   },
   {
+    component: FavouritesMoviesView,
+    path: ROUTES.FAVOURITES_MOVIES,
+    exact: true,
+    // layout: UserLayout,
+  },
+  {
     component: VisitedView,
     path: ROUTES.VISITED,
     exact: true,
     // layout: UserLayout,
   },
   {
-    component: VisitedMovieView,
+    component: VisitedMoviesView,
     path: ROUTES.VISITED_MOVIES,
     exact: true,
     // layout: UserLayout,

@@ -22,6 +22,22 @@ export const visitedTVIdsSelector = createSelector(
   },
 );
 
-export const favouriteMoviesIdsSelector = (state: RootState) => {
-  return state.user.favoriteMovieIds;
+export const favouriteMediaSelector = (state: RootState) => {
+  return state.user.favoriteMediaIds;
 };
+
+export const favouriteMovieIdsSelector = createSelector(
+  favouriteMediaSelector,
+  (medias) => {
+    return medias
+      .filter((m) => m.mediaType === MEDIA_TYPE.MOVIE)
+      .map((m) => m.id);
+  },
+);
+
+export const favouriteTVIdsSelector = createSelector(
+  favouriteMediaSelector,
+  (medias) => {
+    return medias.filter((m) => m.mediaType === MEDIA_TYPE.TV).map((m) => m.id);
+  },
+);

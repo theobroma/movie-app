@@ -47,12 +47,12 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
         <SideBarLink text="Home" to={ROUTES.ROOT} icon={<MovieIcon />} />
         <SideBarLink
           text="Favourites"
-          to={ROUTES.FAVOURITES}
+          to={ROUTES.FAVOURITES_MOVIES}
           icon={<FavoriteIcon />}
         />
         <SideBarLink
           text="Visited"
-          to={ROUTES.VISITED_MOVIES}
+          to={ROUTES.FAVOURITES_TV}
           icon={<VisibilityIcon />}
         />
       </List>

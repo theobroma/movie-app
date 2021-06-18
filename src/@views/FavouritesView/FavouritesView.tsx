@@ -15,7 +15,7 @@ import { moviesSelector } from '../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../@store/movies/slice';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
-import { favouriteMoviesIdsSelector } from '../../@store/user/selectors';
+import { favouriteMovieIdsSelector } from '../../@store/user/selectors';
 
 const useStyles = makeStyles(() => {
   return {
@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => {
 const FavouriteView: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const favouriteMoviesIds = useSelector(favouriteMoviesIdsSelector);
+  const favouriteMoviesIds = useSelector(favouriteMovieIdsSelector);
   // console.log(favouriteMoviesIds);
   const { ids, entities } = useSelector(moviesSelector);
   // console.log(entities[ids[0]]);
