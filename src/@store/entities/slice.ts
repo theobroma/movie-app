@@ -1,10 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
+import { MEDIA_TYPE } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const entitiesInitialState = {
-  ids: [],
-  entities: {},
+  movies: {
+    ids: [],
+    entities: {},
+  },
+  tv: {
+    ids: [],
+    entities: {},
+  },
 } as any;
 
 export type EntitiesInitialStateType = typeof entitiesInitialState;
@@ -25,6 +32,7 @@ export const getMediaDetailsTC = createAsyncThunk(
       );
       return {
         data: res1.data,
+        mediaType: param.mediaType,
       };
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response.data);
@@ -38,9 +46,9 @@ export const slice = createSlice({
   name: 'entities',
   initialState: entitiesInitialState,
   reducers: {
-    setPageAC(state, action) {
-      state.data.page = action.payload;
-    },
+    // setPageAC(state, action) {
+    //   state.data.page = action.payload;
+    // },
     // setLoadingAC(state, action) {
     //   state.isLoading = action.payload;
     // },
@@ -49,31 +57,18 @@ export const slice = createSlice({
     //  BY HAND
     builder.addCase(getMediaDetailsTC.fulfilled, (state, action) => {
       // reduce the collection by the id property into a shape of { 1: { ...user }}
-      // const entitiesbyId = action.payload.data.results.reduce(
-      //   (byId: any, movie: any) => {
-      //     byId[movie.id] = movie;
-      //     return byId;
-      //   },
-      //   {},
-      // );
-      // state.entities = entitiesbyId;
-      // state.ids = Object.keys(entitiesbyId)
-      // ========================;
-      // const { id } = action.payload.data;
-      // const index = state.ids.indexOf(id);
-      // const isVisited = index !== -1;
-      // // remove if exist and add again in the begin
-      // if (isVisited) {
-      //   state.ids.splice(index, 1);
-      // }
-      // state.ids.push(id);
-      // ========================
       const obj = action.payload.data;
-      state.entities[obj.id] = obj;
-      state.ids = Object.keys(state.entities);
+      const { mediaType } = action.payload;
+      if (mediaType === MEDIA_TYPE.TV) {
+        state.tv.entities[obj.id] = obj;
+        state.tv.ids = Object.keys(state.tv.entities || {});
+      } else {
+        state.movies.entities[obj.id] = obj;
+        state.movies.ids = Object.keys(state.movies.entities || {});
+      }
     });
   },
 });
 
 export const entitiesReducer = slice.reducer;
-export const { setPageAC } = slice.actions;
+// export const { setPageAC } = slice.actions;

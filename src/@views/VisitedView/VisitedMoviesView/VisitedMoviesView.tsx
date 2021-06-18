@@ -6,7 +6,7 @@ import PersistentDrawerLeft from '../../../@components/AppBar';
 import Footer from '../../../@components/Footer';
 import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/Skeletons/SingleContentSkeleton';
-import { entitiesSelector } from '../../../@store/entities/selectors';
+import { entitiesMoviesSelector } from '../../../@store/entities/selectors';
 import { getMediaDetailsTC } from '../../../@store/entities/slice';
 import { moviesSelector } from '../../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../../@store/movies/slice';
@@ -96,7 +96,7 @@ const MovieCardFetch: React.FC<any> = ({
   mediaType,
 }) => {
   const dispatch = useDispatch();
-  const { ids, entities } = useSelector(entitiesSelector);
+  const { ids, entities } = useSelector(entitiesMoviesSelector);
   // console.log(entities[ids[0]]);
 
   useEffect(() => {
