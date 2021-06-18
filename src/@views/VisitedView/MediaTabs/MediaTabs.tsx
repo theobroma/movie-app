@@ -8,19 +8,11 @@ const MediaTabs: React.FC = () => {
 
   return (
     <Paper square>
-      {/* <Tabs
-          value={value}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={handleChange}
-          aria-label="disabled tabs example"
-        >
-          <Tab label="Active" />
-          <Tab label="Disabled" disabled />
-          <Tab label="Active" />
-        </Tabs> */}
-
-      <Tabs value={location.pathname}>
+      <Tabs
+        indicatorColor="primary"
+        textColor="primary"
+        value={location.pathname}
+      >
         <Tab
           label="Movies"
           component={Link}
