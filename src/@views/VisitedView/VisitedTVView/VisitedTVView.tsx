@@ -8,13 +8,13 @@ import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/Skeletons/SingleContentSkeleton';
 import { moviesSelector } from '../../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../../@store/movies/slice';
-import { visitedMediaIdsSelector } from '../../../@store/user/selectors';
+import { visitedMediaSelector } from '../../../@store/user/selectors';
 import { clearVisitedAC } from '../../../@store/user/slice';
 import MediaTabs from '../MediaTabs';
 
 const VisitedTVView: React.FC = () => {
   const dispatch = useDispatch();
-  const visitedMediaIds = useSelector(visitedMediaIdsSelector);
+  const visitedMediaIds = useSelector(visitedMediaSelector);
   // console.log(favouriteMoviesIds);
   const { ids, entities } = useSelector(moviesSelector);
   // console.log(entities[ids[0]]);

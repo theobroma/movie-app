@@ -6,16 +6,22 @@ import PersistentDrawerLeft from '../../../@components/AppBar';
 import Footer from '../../../@components/Footer';
 import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/Skeletons/SingleContentSkeleton';
+import { getMediaDetailsTC } from '../../../@store/entities/slice';
 import { moviesSelector } from '../../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../../@store/movies/slice';
-import { visitedMediaIdsSelector } from '../../../@store/user/selectors';
+import {
+  visitedMediaSelector,
+  visitedMovieIdsSelector,
+} from '../../../@store/user/selectors';
 import { clearVisitedAC } from '../../../@store/user/slice';
 import MediaTabs from '../MediaTabs';
 
 const VisitedMovieView: React.FC = () => {
   const dispatch = useDispatch();
-  const visitedMediaIds = useSelector(visitedMediaIdsSelector);
-  // console.log(favouriteMoviesIds);
+  // const visitedMediaIds = useSelector(visitedMediaSelector);
+  const visitedMovieIds = useSelector(visitedMovieIdsSelector);
+
+  console.log(visitedMovieIds);
   const { ids, entities } = useSelector(moviesSelector);
   // console.log(entities[ids[0]]);
   const isLoading = false;
@@ -78,5 +84,22 @@ const VisitedMovieView: React.FC = () => {
     </div>
   );
 };
+
+// function MovieCardFetch({ id, movie, ready, fetch, onFavorite }) {
+//   const dispatch = useDispatch();
+//   useEffect(dispatch(getMediaDetailsTC({ movieID: id, mediaType })), [
+//     id,
+//     movie,
+//     fetch,
+//     ready,
+//   ]);
+
+//   return movie ? (
+//     // <MovieCard {...movie} onFavorite={onFavorite} />
+//     <SingleContent movie={movie} />
+//   ) : (
+//     <SingleContentSkeleton />
+//   );
+// }
 
 export default VisitedMovieView;

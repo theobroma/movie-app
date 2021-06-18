@@ -18,14 +18,14 @@ import { moviesSelector } from '../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../@store/movies/slice';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
-import { visitedMediaIdsSelector } from '../../@store/user/selectors';
+import { visitedMediaSelector } from '../../@store/user/selectors';
 import { clearVisitedAC } from '../../@store/user/slice';
 import { ROUTES } from '../../@types';
 import MediaTabs from './MediaTabs';
 
 const VisitedView: React.FC = () => {
   const dispatch = useDispatch();
-  const visitedMediaIds = useSelector(visitedMediaIdsSelector);
+  const visitedMediaIds = useSelector(visitedMediaSelector);
   const { ids, entities } = useSelector(moviesSelector);
   // console.log(entities[ids[0]]);
   const isLoading = false;

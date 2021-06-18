@@ -1,46 +1,66 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
 import { waitForMe } from '../../@utils/waitforme';
-import { getTrendingMoviesTC } from '../movies/slice';
 
-const entitiesInitialState = {
-  //   moviesById: {},
-  //   genresById: {},
-  entities: {},
+const moviesInitialState = {
   ids: [],
+  entities: {},
 } as any;
 
-export type entitiesInitialStateType = typeof entitiesInitialState;
+export type EntitiesInitialStateType = typeof moviesInitialState;
+
+export const getMediaDetailsTC = createAsyncThunk(
+  'entities/getMovieDetails',
+  async (
+    param: { movieID: string | undefined; mediaType: string | undefined },
+    thunkAPI,
+  ) => {
+    try {
+      // thunkAPI.dispatch(resetStateAC());
+      thunkAPI.dispatch(setLoadingAC(true));
+      await waitForMe(500);
+      const res1 = await moviesApi.getMovieDetails(
+        param.movieID,
+        param.mediaType,
+      );
+      return {
+        data: res1.data,
+      };
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response.data);
+    } finally {
+      thunkAPI.dispatch(setLoadingAC(false));
+    }
+  },
+);
 
 export const slice = createSlice({
   name: 'entities',
-  initialState: entitiesInitialState,
+  initialState: moviesInitialState,
   reducers: {
-    // setLoadingAC(state, action) {
-    //   state.isLoading = action.payload;
-    // },
-    resetStateAC: () => entitiesInitialState,
+    setPageAC(state, action) {
+      state.data.page = action.payload;
+    },
+    setLoadingAC(state, action) {
+      state.isLoading = action.payload;
+    },
   },
   extraReducers: (builder) => {
-    // builder.addCase(getMovieDetailsTC.pending, (state) => {
-    //   //   state.isLoading = true; !rejected with error!
-    // });
-    // builder.addCase(getMovieDetailsTC.fulfilled, (state, action) => {
-    //   if (action.payload) {
-    //     state.data = action.payload.data;
-    //     state.trailers = action.payload.trailers;
-    //     state.credits = action.payload.credits;
-    //   }
-    //   //   state.isLoading = false; !rejected with error!
-    // });
-    // Normalizr
-    // builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
-    //   console.log('getTrendingMoviesTC.fulfilled from entities');
-    //   state.entities = action.payload.movies;
-    //   state.ids = Object.keys(action.payload.movies || []);
-    // });
+    //  BY HAND
+    builder.addCase(getMediaDetailsTC.fulfilled, (state, action) => {
+      // reduce the collection by the id property into a shape of { 1: { ...user }}
+      const entitiesbyId = action.payload.data.results.reduce(
+        (byId: any, movie: any) => {
+          byId[movie.id] = movie;
+          return byId;
+        },
+        {},
+      );
+      state.entities = entitiesbyId;
+      state.ids = Object.keys(entitiesbyId);
+    });
   },
 });
 
 export const entitiesReducer = slice.reducer;
-export const { resetStateAC } = slice.actions;
+export const { setPageAC, setLoadingAC } = slice.actions;
