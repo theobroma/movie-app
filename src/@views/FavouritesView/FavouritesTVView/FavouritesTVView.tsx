@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography, Button } from '@material-ui/core';
+import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,19 +8,12 @@ import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/Skeletons/SingleContentSkeleton';
 import { entitiesTVSelector } from '../../../@store/entities/selectors';
 import { getMediaDetailsTC } from '../../../@store/entities/slice';
-import { visitedTVIdsSelector } from '../../../@store/user/selectors';
-import { clearVisitedAC } from '../../../@store/user/slice';
+import { favouriteTVIdsSelector } from '../../../@store/user/selectors';
 import { MEDIA_TYPE } from '../../../@types';
 import MediaTabs from '../MediaTabs';
 
-const VisitedTVView: React.FC = () => {
-  const dispatch = useDispatch();
-  const visitedTVIds = useSelector(visitedTVIdsSelector);
-  // const isLoading = false;
-
-  const handleClearButton = () => {
-    dispatch(clearVisitedAC());
-  };
+const FavouritesTVView: React.FC = () => {
+  const favouriteTVIds = useSelector(favouriteTVIdsSelector);
 
   return (
     <div className="HolyGrail">
@@ -37,20 +30,12 @@ const VisitedTVView: React.FC = () => {
             <Grid item xs={12}>
               <Box justifyContent="space-between" display="flex">
                 <Typography component="h2" variant="h4">
-                  Visited TV Shows
+                  Favourites TV Shows
                 </Typography>
-                <Button
-                  onClick={handleClearButton}
-                  style={{ marginLeft: 'auto' }}
-                  variant="outlined"
-                  disabled={!visitedTVIds.length}
-                >
-                  Clear history
-                </Button>
               </Box>
             </Grid>
-            {visitedTVIds.length > 0 &&
-              visitedTVIds?.reverse().map((movieId: any) => (
+            {favouriteTVIds.length > 0 &&
+              favouriteTVIds?.reverse().map((movieId: any) => (
                 <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                   {/* {isLoading ? (
                     <SingleContentSkeleton />
@@ -99,4 +84,4 @@ const MovieCardFetch: React.FC<any> = ({
   );
 };
 
-export default VisitedTVView;
+export default FavouritesTVView;

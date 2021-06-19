@@ -37,6 +37,15 @@ const FavouritesMoviesView = lazy(() => {
   ]).then(([moduleExports]) => moduleExports);
 });
 
+const FavouritesTVView = lazy(() => {
+  return Promise.all([
+    import(
+      /* webpackChunkName: "FavouritesTVView" */ '../@views/FavouritesView/FavouritesTVView'
+    ),
+    new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
 const VisitedView = lazy(() => {
   return Promise.all([
     import(/* webpackChunkName: "VisitedView" */ '../@views/VisitedView'),
@@ -84,6 +93,12 @@ export const APP_MAIN_ROUTES: IRoute[] = [
   {
     component: FavouritesMoviesView,
     path: ROUTES.FAVOURITES_MOVIES,
+    exact: true,
+    // layout: UserLayout,
+  },
+  {
+    component: FavouritesTVView,
+    path: ROUTES.FAVOURITES_TV,
     exact: true,
     // layout: UserLayout,
   },

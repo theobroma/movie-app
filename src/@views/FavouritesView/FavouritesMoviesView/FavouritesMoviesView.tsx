@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography, Button } from '@material-ui/core';
+import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,23 +8,12 @@ import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/Skeletons/SingleContentSkeleton';
 import { entitiesMoviesSelector } from '../../../@store/entities/selectors';
 import { getMediaDetailsTC } from '../../../@store/entities/slice';
-import { getTrendingMoviesTC } from '../../../@store/movies/slice';
 import { favouriteMovieIdsSelector } from '../../../@store/user/selectors';
-import { clearVisitedAC } from '../../../@store/user/slice';
 import { MEDIA_TYPE } from '../../../@types';
 import MediaTabs from '../MediaTabs';
 
 const FavouritesMoviesView: React.FC = () => {
-  const dispatch = useDispatch();
   const favouriteMovieIds = useSelector(favouriteMovieIdsSelector);
-
-  useEffect(() => {
-    dispatch(getTrendingMoviesTC({ page: 1 }));
-  }, [dispatch]);
-
-  const handleClearButton = () => {
-    dispatch(clearVisitedAC());
-  };
 
   return (
     <div className="HolyGrail">
@@ -43,14 +32,6 @@ const FavouritesMoviesView: React.FC = () => {
                 <Typography component="h2" variant="h4">
                   Favourites Movies
                 </Typography>
-                <Button
-                  onClick={handleClearButton}
-                  style={{ marginLeft: 'auto' }}
-                  variant="outlined"
-                  // disabled={!movieIds.length}
-                >
-                  Clear history
-                </Button>
               </Box>
             </Grid>
             {favouriteMovieIds.length > 0 &&
@@ -95,7 +76,7 @@ const MovieCardFetch: React.FC<any> = ({
     movie = entities[id];
   }
 
-  return movie ? (
+  return isExist ? (
     // <MovieCard {...movie} onFavorite={onFavorite} />
     <SingleContent movie={movie} parentMediaType={MEDIA_TYPE.MOVIE} />
   ) : (

@@ -8,34 +8,15 @@ import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/Skeletons/SingleContentSkeleton';
 import { entitiesMoviesSelector } from '../../../@store/entities/selectors';
 import { getMediaDetailsTC } from '../../../@store/entities/slice';
-import { moviesSelector } from '../../../@store/movies/selectors';
-import { getTrendingMoviesTC } from '../../../@store/movies/slice';
-import {
-  visitedMediaSelector,
-  visitedMovieIdsSelector,
-} from '../../../@store/user/selectors';
+import { visitedMovieIdsSelector } from '../../../@store/user/selectors';
 import { clearVisitedAC } from '../../../@store/user/slice';
 import { MEDIA_TYPE } from '../../../@types';
 import MediaTabs from '../MediaTabs';
 
 const VisitedMovieView: React.FC = () => {
   const dispatch = useDispatch();
-  // const entities = useSelector(entitiesSelector);
   const visitedMovieIds = useSelector(visitedMovieIdsSelector);
-
-  // const { ids, entities } = useSelector(entitiesSelector);
-  // console.log(entities[ids[0]]);
-  const isLoading = false;
-
-  // const preparedMovies: any = [];
-  // visitedMovieIds.forEach((movieId) => {
-  //   const movie = entities[movieId];
-  //   preparedMovies.push(movie);
-  // });
-
-  useEffect(() => {
-    dispatch(getTrendingMoviesTC({ page: 1 }));
-  }, [dispatch]);
+  // const isLoading = false;
 
   const handleClearButton = () => {
     dispatch(clearVisitedAC());
@@ -62,7 +43,7 @@ const VisitedMovieView: React.FC = () => {
                   onClick={handleClearButton}
                   style={{ marginLeft: 'auto' }}
                   variant="outlined"
-                  // disabled={!movieIds.length}
+                  disabled={!visitedMovieIds.length}
                 >
                   Clear history
                 </Button>
@@ -110,7 +91,7 @@ const MovieCardFetch: React.FC<any> = ({
     movie = entities[id];
   }
 
-  return movie ? (
+  return isExist ? (
     // <MovieCard {...movie} onFavorite={onFavorite} />
     <SingleContent movie={movie} parentMediaType={MEDIA_TYPE.MOVIE} />
   ) : (
