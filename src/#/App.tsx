@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import LoadingPage from '../@components/UI/LoadingPage';
 import { IRoute, ROUTES } from '../@types';
+import Page404View from '../@views/Page404View';
 
 const MIN_LAZY_DELAY = 300;
 
@@ -104,7 +105,7 @@ export const AppContainer: React.FC = () => {
         {APP_MAIN_ROUTES.map((route: IRoute) => (
           <Route key={route.path} {...route} />
         ))}
-        <Redirect to="/login" />
+        <Route component={Page404View} />
       </Switch>
     </Suspense>
   );
