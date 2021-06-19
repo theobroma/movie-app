@@ -21,13 +21,6 @@ const MoviesDetailsView = lazy(() => {
   ]).then(([moduleExports]) => moduleExports);
 });
 
-const FavouritesView = lazy(() => {
-  return Promise.all([
-    import(/* webpackChunkName: "FavouritesView" */ '../@views/FavouritesView'),
-    new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
-  ]).then(([moduleExports]) => moduleExports);
-});
-
 const FavouritesMoviesView = lazy(() => {
   return Promise.all([
     import(
@@ -42,13 +35,6 @@ const FavouritesTVView = lazy(() => {
     import(
       /* webpackChunkName: "FavouritesTVView" */ '../@views/FavouritesView/FavouritesTVView'
     ),
-    new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
-  ]).then(([moduleExports]) => moduleExports);
-});
-
-const VisitedView = lazy(() => {
-  return Promise.all([
-    import(/* webpackChunkName: "VisitedView" */ '../@views/VisitedView'),
     new Promise((resolve) => setTimeout(resolve, MIN_LAZY_DELAY)),
   ]).then(([moduleExports]) => moduleExports);
 });
@@ -85,12 +71,6 @@ export const APP_MAIN_ROUTES: IRoute[] = [
     // layout: UserLayout,
   },
   {
-    component: FavouritesView,
-    path: ROUTES.FAVOURITES,
-    exact: true,
-    // layout: UserLayout,
-  },
-  {
     component: FavouritesMoviesView,
     path: ROUTES.FAVOURITES_MOVIES,
     exact: true,
@@ -99,12 +79,6 @@ export const APP_MAIN_ROUTES: IRoute[] = [
   {
     component: FavouritesTVView,
     path: ROUTES.FAVOURITES_TV,
-    exact: true,
-    // layout: UserLayout,
-  },
-  {
-    component: VisitedView,
-    path: ROUTES.VISITED,
     exact: true,
     // layout: UserLayout,
   },
@@ -128,15 +102,7 @@ export const AppContainer: React.FC = () => {
       <Switch>
         <Redirect from="/index.html" to="/" exact />
         {APP_MAIN_ROUTES.map((route: IRoute) => (
-          // <NestedRoute key={route.path} {...route} />
-          <Route
-            key={route.path}
-            {...route}
-            // exact={route.exact}
-            // path={path}
-            // render={renderRoute}
-            // location={location}
-          />
+          <Route key={route.path} {...route} />
         ))}
         <Redirect to="/login" />
       </Switch>
