@@ -12,7 +12,7 @@ import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkel
 import EmptyBlock from '../../@components/UI/EmptyBlock';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
-import { favouriteMovieIdsSelector } from '../../@store/user/selectors';
+import { favouriteMediaSelector } from '../../@store/user/selectors';
 import {
   toggleMovieFavoriteAC,
   setMovieVisitedAC,
@@ -34,14 +34,17 @@ const MoviesDetailsView: React.FC = () => {
     credits,
     similar,
   } = useSelector(movieDetailsSelector);
-  const favoriteMovieIds = useSelector(favouriteMovieIdsSelector);
+  const favouriteMedia = useSelector(favouriteMediaSelector);
 
   const trailer = null ?? trailers?.results[0]?.key;
   const { id, mediaType } = useParams<ParamTypes>();
 
   let isFavorite = false;
-  if (id) {
-    isFavorite = favoriteMovieIds.indexOf(id) !== -1;
+  if (id && mediaType) {
+    const index = favouriteMedia.findIndex(
+      (element) => element.id === id && element.mediaType === mediaType,
+    );
+    isFavorite = index !== -1;
   }
 
   useEffect(() => {
@@ -58,7 +61,7 @@ const MoviesDetailsView: React.FC = () => {
   }, [dispatch, id, mediaType]);
 
   const handleOnFavourite = () => {
-    dispatch(toggleMovieFavoriteAC(id));
+    dispatch(toggleMovieFavoriteAC({ id, mediaType }));
   };
   const MOVIES_PER_LIST = 6;
   const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);

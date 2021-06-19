@@ -12,13 +12,16 @@ export const slice = createSlice({
   initialState: userInitialState,
   reducers: {
     toggleMovieFavoriteAC(state, action) {
-      const id = action.payload;
-      const index = state.favoriteMediaIds.indexOf(id);
+      const { id, mediaType } = action.payload;
+      const index = state.favoriteMediaIds.findIndex(
+        (element) => element.id === id && element.mediaType === mediaType,
+      );
       const isFavorite = index !== -1;
+
       if (isFavorite) {
         state.favoriteMediaIds.splice(index, 1);
       } else {
-        state.favoriteMediaIds.push(id);
+        state.favoriteMediaIds.push({ id, mediaType });
       }
     },
     setMovieVisitedAC(state, action) {
@@ -33,7 +36,7 @@ export const slice = createSlice({
       if (isVisited) {
         state.visitedMediaIds.splice(index, 1);
       }
-      state.visitedMediaIds.push(action.payload);
+      state.visitedMediaIds.push({ id, mediaType });
     },
     clearVisitedAC(state) {
       state.visitedMediaIds = [];

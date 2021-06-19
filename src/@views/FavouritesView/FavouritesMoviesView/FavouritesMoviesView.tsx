@@ -8,30 +8,15 @@ import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/Skeletons/SingleContentSkeleton';
 import { entitiesMoviesSelector } from '../../../@store/entities/selectors';
 import { getMediaDetailsTC } from '../../../@store/entities/slice';
-import { moviesSelector } from '../../../@store/movies/selectors';
 import { getTrendingMoviesTC } from '../../../@store/movies/slice';
-import {
-  visitedMediaSelector,
-  visitedMovieIdsSelector,
-} from '../../../@store/user/selectors';
+import { favouriteMovieIdsSelector } from '../../../@store/user/selectors';
 import { clearVisitedAC } from '../../../@store/user/slice';
 import { MEDIA_TYPE } from '../../../@types';
 import MediaTabs from '../MediaTabs';
 
-const VisitedMovieView: React.FC = () => {
+const FavouritesMoviesView: React.FC = () => {
   const dispatch = useDispatch();
-  // const entities = useSelector(entitiesSelector);
-  const visitedMovieIds = useSelector(visitedMovieIdsSelector);
-
-  // const { ids, entities } = useSelector(entitiesSelector);
-  // console.log(entities[ids[0]]);
-  const isLoading = false;
-
-  // const preparedMovies: any = [];
-  // visitedMovieIds.forEach((movieId) => {
-  //   const movie = entities[movieId];
-  //   preparedMovies.push(movie);
-  // });
+  const favouriteMovieIds = useSelector(favouriteMovieIdsSelector);
 
   useEffect(() => {
     dispatch(getTrendingMoviesTC({ page: 1 }));
@@ -68,8 +53,8 @@ const VisitedMovieView: React.FC = () => {
                 </Button>
               </Box>
             </Grid>
-            {visitedMovieIds.length > 0 &&
-              visitedMovieIds?.reverse().map((movieId: any) => (
+            {favouriteMovieIds.length > 0 &&
+              favouriteMovieIds?.reverse().map((movieId: any) => (
                 <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                   {/* {isLoading ? (
                     <SingleContentSkeleton />
@@ -118,4 +103,4 @@ const MovieCardFetch: React.FC<any> = ({
   );
 };
 
-export default VisitedMovieView;
+export default FavouritesMoviesView;

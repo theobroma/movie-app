@@ -52,7 +52,7 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
         />
         <SideBarLink
           text="Visited"
-          to={ROUTES.FAVOURITES_TV}
+          to={ROUTES.VISITED_MOVIES}
           icon={<VisibilityIcon />}
         />
       </List>

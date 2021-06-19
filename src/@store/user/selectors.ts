@@ -22,6 +22,8 @@ export const visitedTVIdsSelector = createSelector(
   },
 );
 
+// ====================favourites==============================
+
 export const favouriteMediaSelector = (state: RootState) => {
   return state.user.favoriteMediaIds;
 };
