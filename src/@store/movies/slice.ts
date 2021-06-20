@@ -1,3 +1,4 @@
+// !reducer just for normalizr sandbox
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { normalize, schema } from 'normalizr';
 import { moviesApi } from '../../@api/movies-api';

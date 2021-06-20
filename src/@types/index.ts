@@ -1,5 +1,5 @@
 export * from './General';
 export * from './Search';
-export * from './Movies';
+export * from './Media';
 export * from './IRoute';
 export * from './Routes';
