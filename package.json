@@ -8,14 +8,14 @@
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@reduxjs/toolkit": "^1.6.0",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
+    "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.1.9",
     "@types/history": "^4.7.8",
     "@types/jest": "^26.0.23",
     "@types/nanoid": "^2.1.0",
-    "@types/node": "^15.12.2",
+    "@types/node": "^15.12.5",
     "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.7",
+    "@types/react-dom": "^17.0.8",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "@types/redux-logger": "^3.0.8",
@@ -82,11 +82,11 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
-    "netlify-cli": "^3.37.24",
-    "prettier": "^2.3.1"
+    "netlify-cli": "^3.39.4",
+    "prettier": "^2.3.2"
   }
 }
