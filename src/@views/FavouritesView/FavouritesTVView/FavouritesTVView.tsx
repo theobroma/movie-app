@@ -32,9 +32,9 @@ const FavouritesTVView: React.FC = () => {
               </Box>
             </Grid>
             {favouriteTVIds.length > 0 &&
-              favouriteTVIds?.reverse().map((movieId: any) => (
+              favouriteTVIds?.reverse().map((TVId: any) => (
                 <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                  <SingleContentFetch id={movieId} mediaType={MEDIA_TYPE.TV} />
+                  <SingleContentFetch id={TVId} mediaType={MEDIA_TYPE.TV} />
                 </Grid>
               ))}
           </Grid>
