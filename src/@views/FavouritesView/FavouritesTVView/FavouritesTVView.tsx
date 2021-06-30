@@ -1,13 +1,10 @@
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import PersistentDrawerLeft from '../../../@components/AppBar';
 import Footer from '../../../@components/Footer';
-import SingleContent from '../../../@components/SingleContent';
-import SingleContentSkeleton from '../../../@components/Skeletons/SingleContentSkeleton';
-import { entitiesTVSelector } from '../../../@store/entities/selectors';
-import { getMediaDetailsTC } from '../../../@store/entities/slice';
+import SingleContentFetch from '../../../@components/SingleContentFetch';
 import { favouriteTVIdsSelector } from '../../../@store/user/selectors';
 import { MEDIA_TYPE } from '../../../@types';
 import MediaTabs from '../MediaTabs';
@@ -37,12 +34,7 @@ const FavouritesTVView: React.FC = () => {
             {favouriteTVIds.length > 0 &&
               favouriteTVIds?.reverse().map((movieId: any) => (
                 <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                  {/* {isLoading ? (
-                    <SingleContentSkeleton />
-                  ) : (
-                    <SingleContent movie={movie} />
-                  )} */}
-                  <MovieCardFetch id={movieId} />
+                  <SingleContentFetch id={movieId} mediaType={MEDIA_TYPE.TV} />
                 </Grid>
               ))}
           </Grid>
@@ -50,37 +42,6 @@ const FavouritesTVView: React.FC = () => {
       </div>
       <Footer />
     </div>
-  );
-};
-
-const MovieCardFetch: React.FC<any> = ({
-  id,
-  // movie,
-  ready,
-  fetch,
-  onFavorite,
-  mediaType,
-}) => {
-  const dispatch = useDispatch();
-  const { ids, entities } = useSelector(entitiesTVSelector);
-  // console.log(entities[ids[0]]);
-
-  useEffect(() => {
-    dispatch(getMediaDetailsTC({ movieID: id, mediaType: MEDIA_TYPE.TV }));
-  }, [dispatch, id, mediaType]);
-
-  let movie = {} as any;
-  const index = ids.indexOf(id);
-  const isExist = index !== -1;
-  if (isExist) {
-    movie = entities[id];
-  }
-
-  return isExist ? (
-    // <MovieCard {...movie} onFavorite={onFavorite} />
-    <SingleContent movie={movie} parentMediaType={MEDIA_TYPE.TV} />
-  ) : (
-    <SingleContentSkeleton />
   );
 };
 
