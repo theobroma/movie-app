@@ -124,14 +124,17 @@ export default function CustomAppBar() {
         {showMobileSearch && (
           <div style={{ margin: '5px 15px 10px 15px' }}>
             <SearchInput
+              value={searchVal}
               onChange={handleSearchInputChange}
               style={{ width: '100%', height: 50 }}
+              // onBlur={() => !searchVal && setShowOutput(false)}
+              // onFocus={() => setShowOutput(true)}
             />
           </div>
         )}
       </AppBar>
       {/* search output */}
-      <SearchOutput movies={searchData} />
+      {searchVal && showMobileSearch && <SearchOutput movies={searchData} />}
       <SimpleDrawer open={open} handleDrawerClose={handleDrawerClose} />
       {/* TODO: */}
       {/* <main
