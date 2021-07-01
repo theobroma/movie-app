@@ -6,10 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import NightIcon from '@material-ui/icons/Brightness3';
 import DayIcon from '@material-ui/icons/Brightness5';
 import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useDebounce from '../../@hooks/useDebounce';
 import { searchDataSelector } from '../../@store/search/selectors';
 import { searchTC } from '../../@store/search/slice';
@@ -27,6 +28,7 @@ export default function CustomAppBar() {
   const currentTheme = useSelector(themeSelector);
   const searchData = useSelector(searchDataSelector).results;
   const [open, setOpen] = useState(false); // sidebar
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [searchVal, setSearchVal] = useState('');
   const debouncedSearchTerm = useDebounce(searchVal, 500);
 
@@ -58,7 +60,7 @@ export default function CustomAppBar() {
   return (
     <div className={classes.root}>
       <AppBar
-        position="fixed"
+        position="sticky"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -91,8 +93,19 @@ export default function CustomAppBar() {
             </Link>
           </Typography>
           {/* search */}
-          <SearchInput onChange={handleSearchInputChange} />
+          {/* <div style={{ margin: '5px 15px 10px 15px' }}>
+            <SearchInput
+              onChange={handleSearchInputChange}
+              style={{ width: '100%', height: 50 }}
+            />
+          </div> */}
           <div className={classes.grow} />
+          <IconButton
+            onClick={(e) => setShowMobileSearch(!showMobileSearch)}
+            style={{ marginLeft: 'auto' }}
+          >
+            <SearchIcon />
+          </IconButton>
           <Box>
             <IconButton aria-label="theme">
               {currentTheme === THEME_COLORS.LIGHT ? (
@@ -107,19 +120,28 @@ export default function CustomAppBar() {
             </IconButton>
           </Box>
         </Toolbar>
+        {/* search */}
+        {showMobileSearch && (
+          <div style={{ margin: '5px 15px 10px 15px' }}>
+            <SearchInput
+              onChange={handleSearchInputChange}
+              style={{ width: '100%', height: 50 }}
+            />
+          </div>
+        )}
       </AppBar>
       {/* search output */}
       <SearchOutput movies={searchData} />
       <SimpleDrawer open={open} handleDrawerClose={handleDrawerClose} />
       {/* TODO: */}
-      <main
+      {/* <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
       >
         mb content here...
         <div className={classes.drawerHeader} />
-      </main>
+      </main> */}
     </div>
   );
 }
