@@ -40,7 +40,7 @@ export default function CustomAppBar() {
     setOpen(false);
   };
 
-  const handleSearchInputChange = (e: { target: HTMLInputElement }) => {
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(e.target.value);
   };
 

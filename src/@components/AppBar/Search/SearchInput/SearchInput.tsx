@@ -1,24 +1,24 @@
-import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import React from 'react';
 import { useStyles } from './SearchInput.styles';
 
 interface Props {
-  value?: any;
-  placeholder?: any;
-  onChange?: any;
-  onFocus?: any;
-  onBlur?: any;
-  style?: any;
+  onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onChange?: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  placeholder?: string;
+  style?: React.CSSProperties;
+  value?: unknown;
 }
 
 const SearchInput: React.FC<Props> = ({
-  value,
-  placeholder,
+  onBlur,
   onChange,
   onFocus,
-  onBlur,
+  placeholder,
   style,
+  value,
 }) => {
   const classes = useStyles();
 
@@ -36,6 +36,7 @@ const SearchInput: React.FC<Props> = ({
         onBlur={onBlur}
         placeholder={placeholder}
         inputProps={{ 'aria-label': 'search' }}
+        autoFocus
       />
     </div>
   );
