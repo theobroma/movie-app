@@ -13,6 +13,7 @@ import EmptyBlock from '../../@components/UI/EmptyBlock';
 import { SnackBar } from '../../@components/UI/SnackBar';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
+import { enqueueSnackbarAC } from '../../@store/notifications/slice';
 import { favouriteMediaSelector } from '../../@store/user/selectors';
 import {
   toggleMovieFavoriteAC,
@@ -28,6 +29,8 @@ interface ParamTypes {
 const MoviesDetailsView: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const enqueueSnackbar = (...args: any[]) =>
+    dispatch(enqueueSnackbarAC({ ...args }));
   const {
     data: movieDetailsData,
     isLoading,
@@ -63,6 +66,13 @@ const MoviesDetailsView: React.FC = () => {
 
   const handleOnFavourite = () => {
     dispatch(toggleMovieFavoriteAC({ id, mediaType }));
+    enqueueSnackbar({
+      message: 'Added to favourites',
+      options: {
+        key: new Date().getTime() + Math.random(),
+        variant: 'warning',
+      },
+    });
   };
   const MOVIES_PER_LIST = 6;
   const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);
