@@ -8,8 +8,8 @@ const SnackBarProvider: React.FC = ({ children }) => {
     <NotiStackSnackbarProvider
       maxSnack={SNACKBAR_MAX_COUNT}
       anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
+        vertical: 'top',
+        horizontal: 'right',
       }}
     >
       {children}

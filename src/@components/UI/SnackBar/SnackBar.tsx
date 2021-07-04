@@ -18,14 +18,14 @@ interface Props {
   // elevation: number;
   // className: string;
   // onClose?: (event: React.SyntheticEvent) => void;
-  autoHideDuration: number;
-  autoOpen: any;
+  autoHideDuration?: number;
+  autoOpen?: any;
   className?: string;
-  elevation: any;
-  message: any;
-  severity: any;
-  variant: any;
-  onClose: any;
+  elevation?: any;
+  message: string;
+  severity?: any;
+  variant?: any;
+  onClose?: any;
 }
 
 const SnackBar: React.FC<Props> = ({

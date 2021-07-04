@@ -10,6 +10,7 @@ import SingleContent from '../../@components/SingleContent';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import EmptyBlock from '../../@components/UI/EmptyBlock';
+import { SnackBar } from '../../@components/UI/SnackBar';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
 import { favouriteMediaSelector } from '../../@store/user/selectors';
@@ -133,6 +134,10 @@ const MoviesDetailsView: React.FC = () => {
               )}
             </Box>
           </Container>
+          {/* <SnackBar
+            autoOpen
+            message="By default the SnackBar shown for 5 seconds only"
+          /> */}
         </main>
       </div>
       <Footer />
