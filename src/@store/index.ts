@@ -4,6 +4,10 @@ import { combineReducers } from 'redux';
 import { DetailsInitialStateType, detailsReducer } from './details/slice';
 import { EntitiesInitialStateType, entitiesReducer } from './entities/slice';
 import { MoviesInitialStateType, moviesReducer } from './movies/slice';
+import {
+  NotificationsInitialStateType,
+  notificationsReducer,
+} from './notifications/slice';
 import { SearchInitialStateType, searchReducer } from './search/slice';
 import { TrendingInitialStateType, trendingReducer } from './trending/slice';
 import { UIInitialStateType, uiReducer } from './ui/slice';
@@ -13,6 +17,7 @@ export interface RootState {
   details: DetailsInitialStateType;
   entities: EntitiesInitialStateType;
   movies: MoviesInitialStateType;
+  notifications: NotificationsInitialStateType;
   router: RouterState;
   search: SearchInitialStateType;
   trending: TrendingInitialStateType;
@@ -26,6 +31,7 @@ export const rootReducer = (history: History) =>
     details: detailsReducer,
     entities: entitiesReducer,
     movies: moviesReducer,
+    notifications: notificationsReducer,
     router: connectRouter(history),
     search: searchReducer,
     trending: trendingReducer,
