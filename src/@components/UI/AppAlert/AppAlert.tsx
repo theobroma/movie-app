@@ -23,8 +23,9 @@ interface Props {
   severity?: Color;
   variant: Variant;
   elevation: number;
-  className: string;
-  onClose?: (event: React.SyntheticEvent) => void;
+  className?: string;
+  // onClose?: (event: React.SyntheticEvent) => void;
+  onClose?: any;
 }
 
 const AppAlert: React.FC<Props> = ({

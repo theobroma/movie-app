@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { AppContainer } from './#/App';
 import { store, persistor, history } from './configureStore';
 import LoadingPage from './@components/UI/LoadingPage';
+import SnackBarProvider from './@components/UI/SnackBar/SnackBarProvider';
 import AppThemeProvider from './@themes/theme';
 import reportWebVitals from './reportWebVitals';
 
@@ -27,9 +28,11 @@ render(
         onBeforeLift={() => new Promise((resolve) => setTimeout(resolve, 100))} // delay
       >
         <AppThemeProvider>
-          <ConnectedRouter history={history}>
-            <AppContainer />
-          </ConnectedRouter>
+          <SnackBarProvider>
+            <ConnectedRouter history={history}>
+              <AppContainer />
+            </ConnectedRouter>
+          </SnackBarProvider>
         </AppThemeProvider>
       </PersistGate>
     </Provider>
