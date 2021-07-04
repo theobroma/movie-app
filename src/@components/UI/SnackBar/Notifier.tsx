@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
+import { Button } from '@material-ui/core';
 // import { removeSnackbar } from './redux/actions';
 
 let displayed = [] as any;
@@ -10,7 +11,15 @@ const Notifier = () => {
   //   const notifications = useSelector(
   //     (store) => store.notifications.notifications || [],
   //   );
-  const notifications = [] as any;
+  const notifications = [
+    {
+      message: 'Failed fetching data.',
+      options: {
+        key: new Date().getTime() + Math.random(),
+        variant: 'warning',
+      },
+    },
+  ] as any;
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const storeDisplayed = (id: any) => {

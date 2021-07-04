@@ -8,6 +8,7 @@ import { AppContainer } from './#/App';
 import { store, persistor, history } from './configureStore';
 import LoadingPage from './@components/UI/LoadingPage';
 import SnackBarProvider from './@components/UI/SnackBar/SnackBarProvider';
+import { Notifier } from './@components/UI/SnackBar';
 import AppThemeProvider from './@themes/theme';
 import reportWebVitals from './reportWebVitals';
 
@@ -31,6 +32,7 @@ render(
           <SnackBarProvider>
             <ConnectedRouter history={history}>
               <AppContainer />
+              <Notifier />
             </ConnectedRouter>
           </SnackBarProvider>
         </AppThemeProvider>
