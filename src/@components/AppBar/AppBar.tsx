@@ -8,10 +8,12 @@ import DayIcon from '@material-ui/icons/Brightness5';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useSnackbar } from 'notistack';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useDebounce from '../../@hooks/useDebounce';
+import { useNonInitialEffect } from '../../@hooks/useNonInitialEffect';
 import { searchDataSelector } from '../../@store/search/selectors';
 import { searchTC } from '../../@store/search/slice';
 import { themeSelector } from '../../@store/ui/selectors';
@@ -25,9 +27,11 @@ import SimpleDrawer from './SimpleDrawer';
 export default function CustomAppBar() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
   const currentTheme = useSelector(themeSelector);
   const searchData = useSelector(searchDataSelector).results;
   const [open, setOpen] = useState(false); // sidebar
+  // const initialRender = useRef(true); // just for snack
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [searchVal, setSearchVal] = useState('');
   const debouncedSearchTerm = useDebounce(searchVal, 500);
@@ -49,6 +53,22 @@ export default function CustomAppBar() {
       dispatch(searchTC(debouncedSearchTerm));
     }
   }, [debouncedSearchTerm, dispatch]);
+
+  // useEffect(() => {
+  //   if (initialRender.current) {
+  //     initialRender.current = false;
+  //   } else {
+  //     enqueueSnackbar(`Theme changed to ${currentTheme}`, {
+  //       variant: 'warning',
+  //     });
+  //   }
+  // }, [enqueueSnackbar, currentTheme]);
+
+  useNonInitialEffect(() => {
+    enqueueSnackbar(`Theme changed to ${currentTheme}`, {
+      variant: 'warning',
+    });
+  }, [enqueueSnackbar, currentTheme]);
 
   const handleSwitchDarkMode = useCallback(
     (theme: ThemeColorsType) => {
