@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
 import { Button } from '@material-ui/core';
 import { notificationsSelector } from '../../../@store/notifications/selectors';
+import { removeSnackbarAC } from '../../../@store/notifications/slice';
 // import { removeSnackbar } from './redux/actions';
 
 let displayed = [] as any;
@@ -44,7 +45,8 @@ const Notifier = () => {
           },
           onExited: (event, myKey) => {
             // remove this snackbar from redux store
-            // dispatch(removeSnackbar(myKey));
+            console.log(`removing ${myKey}`);
+            dispatch(removeSnackbarAC(myKey));
             removeDisplayed(myKey);
           },
         });
