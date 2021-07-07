@@ -31,7 +31,6 @@ export default function CustomAppBar() {
   const currentTheme = useSelector(themeSelector);
   const searchData = useSelector(searchDataSelector).results;
   const [open, setOpen] = useState(false); // sidebar
-  // const initialRender = useRef(true); // just for snack
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [searchVal, setSearchVal] = useState('');
   const debouncedSearchTerm = useDebounce(searchVal, 500);
@@ -53,16 +52,6 @@ export default function CustomAppBar() {
       dispatch(searchTC(debouncedSearchTerm));
     }
   }, [debouncedSearchTerm, dispatch]);
-
-  // useEffect(() => {
-  //   if (initialRender.current) {
-  //     initialRender.current = false;
-  //   } else {
-  //     enqueueSnackbar(`Theme changed to ${currentTheme}`, {
-  //       variant: 'warning',
-  //     });
-  //   }
-  // }, [enqueueSnackbar, currentTheme]);
 
   useNonInitialEffect(() => {
     enqueueSnackbar(`Theme changed to ${currentTheme}`, {

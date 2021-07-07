@@ -11,6 +11,7 @@ import SingleContent from '../../@components/SingleContent';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import EmptyBlock from '../../@components/UI/EmptyBlock';
+import { useNonInitialEffect } from '../../@hooks/useNonInitialEffect';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
 import { favouriteMediaSelector } from '../../@store/user/selectors';
@@ -62,14 +63,16 @@ const MoviesDetailsView: React.FC = () => {
     }
   }, [dispatch, id, mediaType]);
 
-  const handleOnFavourite = () => {
-    dispatch(toggleMovieFavoriteAC({ id, mediaType }));
-
+  useNonInitialEffect(() => {
     if (!isFavorite) {
       enqueueSnackbar('Added to favourites', { variant: 'success' });
     } else {
       enqueueSnackbar('Removed from favourites', { variant: 'success' });
     }
+  }, [enqueueSnackbar, isFavorite]);
+
+  const handleOnFavourite = () => {
+    dispatch(toggleMovieFavoriteAC({ id, mediaType }));
   };
   const MOVIES_PER_LIST = 6;
   const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);

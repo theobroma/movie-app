@@ -1,5 +1,6 @@
-import { Box, Container, Grid, Typography, Button } from '@material-ui/core';
+import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
+import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PersistentDrawerLeft from '../../../@components/AppBar';
@@ -12,10 +13,12 @@ import MediaTabs from '../MediaTabs';
 
 const VisitedMovieView: React.FC = () => {
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
   const visitedMovieIds = useSelector(visitedMovieIdsSelector);
 
   const handleClearButton = () => {
     dispatch(clearVisitedAC());
+    enqueueSnackbar('Cleared visited movies and tv shows', { variant: 'info' });
   };
 
   return (
