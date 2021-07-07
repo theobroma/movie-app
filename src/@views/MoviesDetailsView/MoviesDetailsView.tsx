@@ -1,5 +1,6 @@
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
+import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -10,14 +11,12 @@ import SingleContent from '../../@components/SingleContent';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import EmptyBlock from '../../@components/UI/EmptyBlock';
-import { SnackBar } from '../../@components/UI/SnackBar';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
-import { enqueueSnackbarAC } from '../../@store/notifications/slice';
 import { favouriteMediaSelector } from '../../@store/user/selectors';
 import {
-  toggleMovieFavoriteAC,
   setMovieVisitedAC,
+  toggleMovieFavoriteAC,
 } from '../../@store/user/slice';
 import { useStyles } from './MoviesDetailsView.styles';
 
@@ -29,8 +28,7 @@ interface ParamTypes {
 const MoviesDetailsView: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const enqueueSnackbar = (...args: any[]) =>
-    dispatch(enqueueSnackbarAC({ ...args }));
+  const { enqueueSnackbar } = useSnackbar();
   const {
     data: movieDetailsData,
     isLoading,
@@ -66,13 +64,12 @@ const MoviesDetailsView: React.FC = () => {
 
   const handleOnFavourite = () => {
     dispatch(toggleMovieFavoriteAC({ id, mediaType }));
-    enqueueSnackbar({
-      message: 'Added to favourites',
-      options: {
-        key: new Date().getTime() + Math.random(),
-        variant: 'warning',
-      },
-    });
+
+    if (!isFavorite) {
+      enqueueSnackbar('Added to favourites', { variant: 'success' });
+    } else {
+      enqueueSnackbar('Removed from favourites', { variant: 'success' });
+    }
   };
   const MOVIES_PER_LIST = 6;
   const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);
@@ -144,10 +141,6 @@ const MoviesDetailsView: React.FC = () => {
               )}
             </Box>
           </Container>
-          {/* <SnackBar
-            autoOpen
-            message="By default the SnackBar shown for 5 seconds only"
-          /> */}
         </main>
       </div>
       <Footer />
