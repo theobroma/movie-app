@@ -63,17 +63,24 @@ const MoviesDetailsView: React.FC = () => {
     }
   }, [dispatch, id, mediaType]);
 
-  useNonInitialEffect(() => {
+  // TODO: problem if change router from one movie to another
+  // useNonInitialEffect(() => {
+  //   if (isFavorite) {
+  //     enqueueSnackbar('Added to favourites', { variant: 'success' });
+  //   } else {
+  //     enqueueSnackbar('Removed from favourites', { variant: 'success' });
+  //   }
+  // }, [enqueueSnackbar, isFavorite]);
+
+  const handleOnFavourite = () => {
+    dispatch(toggleMovieFavoriteAC({ id, mediaType }));
     if (!isFavorite) {
       enqueueSnackbar('Added to favourites', { variant: 'success' });
     } else {
       enqueueSnackbar('Removed from favourites', { variant: 'success' });
     }
-  }, [enqueueSnackbar, isFavorite]);
-
-  const handleOnFavourite = () => {
-    dispatch(toggleMovieFavoriteAC({ id, mediaType }));
   };
+
   const MOVIES_PER_LIST = 6;
   const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);
 
