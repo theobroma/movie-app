@@ -1,4 +1,4 @@
-import { Box } from '@material-ui/core';
+import { Box, Tooltip } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,7 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
 import { useSnackbar } from 'notistack';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useDebounce from '../../@hooks/useDebounce';
@@ -116,17 +116,23 @@ export default function CustomAppBar() {
             <SearchIcon />
           </IconButton>
           <Box>
-            <IconButton aria-label="theme">
-              {currentTheme === THEME_COLORS.LIGHT ? (
-                <NightIcon
-                  onClick={() => handleSwitchDarkMode(THEME_COLORS.DARK)}
-                />
-              ) : (
-                <DayIcon
-                  onClick={() => handleSwitchDarkMode(THEME_COLORS.LIGHT)}
-                />
-              )}
-            </IconButton>
+            {currentTheme === THEME_COLORS.LIGHT ? (
+              <Tooltip title="Switch theme to Dark">
+                <IconButton aria-label="theme">
+                  <NightIcon
+                    onClick={() => handleSwitchDarkMode(THEME_COLORS.DARK)}
+                  />
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <Tooltip title="Switch theme to Light">
+                <IconButton aria-label="theme">
+                  <DayIcon
+                    onClick={() => handleSwitchDarkMode(THEME_COLORS.LIGHT)}
+                  />
+                </IconButton>
+              </Tooltip>
+            )}
           </Box>
         </Toolbar>
         {/* search */}

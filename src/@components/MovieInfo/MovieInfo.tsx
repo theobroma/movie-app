@@ -1,6 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Rating from '@material-ui/lab/Rating';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -106,18 +106,24 @@ const MovieInfo: React.FC<Props> = ({
           <div className={classes.vote}>
             <Rating value={vote_average / 2} readOnly />
             <span style={{ margin: '2px 0px 0 6px' }}>{vote_average}/10</span>
-            <Button
-              style={{ marginLeft: 16 }}
-              onClick={() => onFavourite(id)}
-              variant={isFavorite ? 'contained' : 'outlined'}
-              // variant="outlined"
-              color="secondary"
-              aria-label="like"
+            <Tooltip
+              title={
+                isFavorite ? 'Remove from favourites' : 'Add to favourites'
+              }
             >
-              <FavoriteIcon
-                style={{ color: isFavorite ? 'white' : 'secondary' }}
-              />
-            </Button>
+              <Button
+                style={{ marginLeft: 16 }}
+                onClick={() => onFavourite(id)}
+                variant={isFavorite ? 'contained' : 'outlined'}
+                // variant="outlined"
+                color="secondary"
+                aria-label="like"
+              >
+                <FavoriteIcon
+                  style={{ color: isFavorite ? 'white' : 'secondary' }}
+                />
+              </Button>
+            </Tooltip>
           </div>
           <div style={{ marginTop: 10 }}>
             <Typography component="div" style={{ marginRight: 15 }}>
