@@ -3,7 +3,7 @@ import {
   ProductionCompaniesEntity,
   ProductionCountriesEntity,
   SpokenLanguagesEntity,
-} from './i.media';
+} from './i.media-shared';
 
 export interface ITVFull {
   backdrop_path: string;
