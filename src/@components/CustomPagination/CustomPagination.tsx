@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
-import { Pagination } from '@material-ui/lab';
+import { Pagination, UsePaginationProps } from '@material-ui/lab';
 
 const useStyles = makeStyles(() => {
   return {
@@ -16,14 +16,12 @@ const useStyles = makeStyles(() => {
   };
 });
 
-interface Props {
-  // onChange: () => void;
-  onChange: any;
-  count: number;
-  page: number;
-}
-
-const CustomPagination: React.FC<Props> = ({ onChange, count, page }) => {
+const CustomPagination: React.FC<UsePaginationProps> = ({
+  onChange,
+  count,
+  page,
+  ...rest
+}) => {
   const classes = useStyles();
 
   return (
@@ -35,6 +33,7 @@ const CustomPagination: React.FC<Props> = ({ onChange, count, page }) => {
         color="primary"
         hideNextButton
         hidePrevButton
+        {...rest}
       />
     </div>
   );

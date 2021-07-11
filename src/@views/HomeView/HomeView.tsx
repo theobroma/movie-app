@@ -19,9 +19,9 @@ const HomeView: React.FC = () => {
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
-    value: number,
+    pageValue: number,
   ) => {
-    dispatch(setPageAC(value));
+    dispatch(setPageAC(pageValue));
     // Scroll to top when page changes
     window.scroll(0, 0);
   };
