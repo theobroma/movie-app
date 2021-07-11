@@ -1,6 +1,6 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core';
 
-export const useStyles = makeStyles((theme: Theme) =>
+export const useStyles = makeStyles(() =>
   createStyles({
     backdrop: {
       position: 'absolute',

@@ -110,7 +110,7 @@ export default function CustomAppBar() {
           </div> */}
           <div className={classes.grow} />
           <IconButton
-            onClick={(e) => setShowMobileSearch(!showMobileSearch)}
+            onClick={() => setShowMobileSearch(!showMobileSearch)}
             style={{ marginLeft: 'auto' }}
           >
             <SearchIcon />
