@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, PaletteType } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../@store/ui/selectors';
@@ -30,9 +30,9 @@ const FRONT_COLORS = {
 /**
  * Material UI theme config for "Light Mode"
  */
-const LIGHT_THEME: any = {
+const LIGHT_THEME = {
   palette: {
-    type: 'light',
+    type: 'light' as PaletteType,
     background: {
       paper: '#f5f5f5', // Gray 100 - Background of "Paper" based component
       default: '#FFFFFF',
@@ -56,9 +56,9 @@ const LIGHT_THEME: any = {
 /**
  * Material UI theme config for "Dark Mode"
  */
-const DARK_THEME: any = {
+const DARK_THEME = {
   palette: {
-    type: 'dark',
+    type: 'dark' as PaletteType,
     background: {
       paper: '#424242', // Gray 800 - Background of "Paper" based component
       default: '#303030',
