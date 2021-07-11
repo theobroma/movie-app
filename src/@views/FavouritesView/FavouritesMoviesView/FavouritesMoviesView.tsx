@@ -32,7 +32,7 @@ const FavouritesMoviesView: React.FC = () => {
               </Box>
             </Grid>
             {favouriteMovieIds.length > 0 &&
-              favouriteMovieIds?.reverse().map((movieId: any) => (
+              favouriteMovieIds?.reverse().map((movieId: string) => (
                 <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                   <SingleContentFetch
                     id={movieId}

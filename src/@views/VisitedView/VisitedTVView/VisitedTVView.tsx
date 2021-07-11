@@ -1,4 +1,11 @@
-import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Tooltip,
+  Typography,
+} from '@material-ui/core';
 import { nanoid } from 'nanoid';
 import { useSnackbar } from 'notistack';
 import React from 'react';
@@ -38,18 +45,20 @@ const VisitedTVView: React.FC = () => {
                 <Typography component="h2" variant="h4">
                   Visited TV Shows
                 </Typography>
-                <Button
-                  onClick={handleClearButton}
-                  style={{ marginLeft: 'auto' }}
-                  variant="outlined"
-                  disabled={!visitedTVIds.length}
-                >
-                  Clear history
-                </Button>
+                <Tooltip title="Clear visited movies and tv shows">
+                  <Button
+                    onClick={handleClearButton}
+                    style={{ marginLeft: 'auto' }}
+                    variant="outlined"
+                    disabled={!visitedTVIds.length}
+                  >
+                    Clear history
+                  </Button>
+                </Tooltip>
               </Box>
             </Grid>
             {visitedTVIds.length > 0 &&
-              visitedTVIds?.reverse().map((TVId: any) => (
+              visitedTVIds?.reverse().map((TVId: string) => (
                 <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                   <SingleContentFetch id={TVId} mediaType={MEDIA_TYPE.TV} />
                 </Grid>
