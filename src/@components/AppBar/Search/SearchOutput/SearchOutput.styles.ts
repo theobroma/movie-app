@@ -4,7 +4,7 @@ export const useStyles = makeStyles((theme: Theme) => {
   return {
     ...createStyles({
       root: {
-        position: 'fixed',
+        position: 'absolute',
         maxHeight: 400,
         width: '100%',
         overflowY: 'auto',
