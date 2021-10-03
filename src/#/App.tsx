@@ -105,7 +105,10 @@ export const AppContainer: React.FC = () => {
         {APP_MAIN_ROUTES.map((route: IRoute) => (
           <Route key={route.path} {...route} />
         ))}
-        <Route component={Page404View} />
+        {/* 404 */}
+        {/* https://stackoverflow.com/a/37491381/3988363 */}
+        <Route path="/404" render={() => <Page404View />} />
+        <Redirect to="/404" />
       </Switch>
     </Suspense>
   );
