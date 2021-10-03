@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography } from '@material-ui/core';
-import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
 import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

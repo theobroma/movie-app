@@ -1,93 +1,92 @@
 {
-  "name": "moviedb-app",
-  "version": "1.0.0",
-  "private": false,
-  "dependencies": {
-    "@material-ui/core": "^4.12.2",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.60",
-    "@reduxjs/toolkit": "^1.6.1",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.0",
-    "@types/history": "^4.7.9",
-    "@types/jest": "^26.0.24",
-    "@types/nanoid": "^2.1.0",
-    "@types/node": "^16.4.0",
-    "@types/react": "^17.0.14",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-redux": "^7.1.18",
-    "@types/react-router-dom": "^5.1.8",
-    "@types/redux-logger": "^3.0.9",
-    "axios": "^0.21.1",
-    "clsx": "^1.1.1",
-    "connected-react-router": "^6.9.1",
-    "history": "^4.10.1",
-    "nanoid": "^3.1.23",
-    "node-sass": "^4.14.1",
-    "normalizr": "^3.6.1",
-    "notistack": "^1.0.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "redux": "^4.1.0",
-    "redux-logger": "^3.0.6",
-    "redux-persist": "^6.0.0",
-    "typeface-roboto": "^1.1.13",
-    "typescript": "^4.3.5",
-    "web-vitals": "^2.1.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,yml,json,css,scss,md}",
-    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
-    "serve": "serve -s build",
-    "predeploy": "npm run build",
-    "deploy": "netlify deploy -p"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "moviedb-app",
+    "version": "1.0.0",
+    "private": false,
+    "license": "ISC",
+    "dependencies": {
+        "@material-ui/core": "^4.12.3",
+        "@material-ui/icons": "^4.11.2",
+        "@material-ui/lab": "^4.0.0-alpha.60",
+        "@reduxjs/toolkit": "^1.6.1",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^12.1.2",
+        "@testing-library/user-event": "^13.2.1",
+        "@types/history": "^4.7.9",
+        "@types/jest": "^27.0.2",
+        "@types/node": "^16.10.2",
+        "@types/react": "^17.0.27",
+        "@types/react-dom": "^17.0.9",
+        "@types/react-redux": "^7.1.18",
+        "@types/react-router-dom": "^5.3.0",
+        "@types/redux-logger": "^3.0.9",
+        "axios": "^0.22.0",
+        "clsx": "^1.1.1",
+        "connected-react-router": "^6.9.1",
+        "history": "^4.x",
+        "node-sass": "^4.x",
+        "normalizr": "^3.6.1",
+        "notistack": "^1.x",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-redux": "^7.2.5",
+        "react-router-dom": "^5.3.0",
+        "react-scripts": "4.0.3",
+        "redux": "^4.1.1",
+        "redux-logger": "^3.0.6",
+        "redux-persist": "^6.0.0",
+        "typeface-roboto": "^1.1.13",
+        "typescript": "^4.4.3",
+        "web-vitals": "^2.1.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "format": "prettier --write src/**/*.{js,jsx,ts,tsx,yml,json,css,scss,md}",
+        "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
+        "serve": "serve -s build",
+        "predeploy": "npm run build",
+        "deploy": "netlify deploy -p"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{yml,json,css,scss,md}": [
+            "prettier --write"
+        ]
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb-typescript-prettier": "^4.2.0",
+        "husky": "^7.0.2",
+        "lint-staged": "^11.1.2",
+        "netlify-cli": "^6.9.28",
+        "prettier": "^2.4.1"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{yml,json,css,scss,md}": [
-      "prettier --write"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "eslint": "^7.31.0",
-    "eslint-config-airbnb-typescript-prettier": "^4.2.0",
-    "husky": "^7.0.1",
-    "lint-staged": "^11.0.1",
-    "netlify-cli": "^5.0.0",
-    "prettier": "^2.3.2"
-  }
 }

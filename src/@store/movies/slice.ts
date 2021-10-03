@@ -33,7 +33,7 @@ export const getTrendingMoviesTC = createAsyncThunk(
       // console.log(normalized);
       // return normalized.entities;
       return { data: res.data };
-    } catch (err) {
+    } catch (err: any) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
       return thunkAPI.rejectWithValue(err.response.data);

@@ -23,7 +23,7 @@ export const getTrendingAllTC = createAsyncThunk(
       await waitForMe(500);
       const res = await moviesApi.getTrendingAll(param.page);
       return { data: res.data };
-    } catch (err) {
+    } catch (err: any) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
       return thunkAPI.rejectWithValue(err.response.data);

@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography } from '@material-ui/core';
-import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PersistentDrawerLeft from '../../../@components/AppBar';

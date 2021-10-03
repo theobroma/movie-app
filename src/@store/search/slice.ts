@@ -15,7 +15,7 @@ export const searchTC = createAsyncThunk(
     try {
       const res = await moviesApi.getSearch(searchText);
       return { data: res.data };
-    } catch (err) {
+    } catch (err: any) {
       return thunkAPI.rejectWithValue(err.response.data);
     }
   },

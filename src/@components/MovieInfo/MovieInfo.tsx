@@ -1,9 +1,9 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Rating from '@material-ui/lab/Rating';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import { nanoid } from '@reduxjs/toolkit';
 import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
 

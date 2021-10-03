@@ -34,7 +34,7 @@ export const getMediaDetailsTC = createAsyncThunk(
         data: res1.data,
         mediaType: param.mediaType,
       };
-    } catch (err) {
+    } catch (err: any) {
       return thunkAPI.rejectWithValue(err.response.data);
     } finally {
       // thunkAPI.dispatch(setLoadingAC(false));

@@ -39,7 +39,7 @@ export const getMovieDetailsTC = createAsyncThunk(
         credits: res3.data,
         similar: res4.data,
       };
-    } catch (err) {
+    } catch (err: any) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
       return thunkAPI.rejectWithValue(err.response.data);

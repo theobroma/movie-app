@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
 import { Box, Container, Grid } from '@material-ui/core';
+import { nanoid } from '@reduxjs/toolkit';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
 import PersistentDrawerLeft from '../../@components/AppBar';
+import CustomPagination from '../../@components/CustomPagination';
 import Footer from '../../@components/Footer';
+import SingleContent from '../../@components/SingleContent';
+import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import { trendingSelector } from '../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
-import SingleContent from '../../@components/SingleContent';
-import CustomPagination from '../../@components/CustomPagination';
-import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 
 const HomeView: React.FC = () => {
   const dispatch = useDispatch();
