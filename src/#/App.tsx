@@ -103,7 +103,7 @@ export const AppContainer: React.FC = () => {
       <Switch>
         <Redirect from="/index.html" to="/" exact />
         {APP_MAIN_ROUTES.map((route: IRoute) => (
-          <Route key={route.path} {...route} />
+          <Route key={`${route.path}`} {...route} />
         ))}
         {/* 404 */}
         {/* https://stackoverflow.com/a/37491381/3988363 */}

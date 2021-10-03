@@ -1,14 +1,7 @@
-import { ComponentType } from 'react';
+// import { ComponentType } from 'react';
+import { RouteProps } from 'react-router-dom';
 
-export interface IRoute {
-  component?: ComponentType;
-  // computedMatch?: any;
-  exact?: boolean;
-  // getReducers?: any;
-  // icon?: ComponentType | any;
-  layout?: ComponentType;
-  path: string;
-  redirect?: string;
-  // routes?: IRoute[];
-  // title?: string;
+export interface IRoute extends RouteProps {
+  // layout: ComponentType;
+  routes?: IRoute[];
 }
