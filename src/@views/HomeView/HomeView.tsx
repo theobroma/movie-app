@@ -2,7 +2,7 @@ import { Box, Container, Grid } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useQueryParam, NumberParam, StringParam } from 'use-query-params';
+import { useQueryParam, NumberParam } from 'use-query-params';
 import PersistentDrawerLeft from '../../@components/AppBar';
 import CustomPagination from '../../@components/CustomPagination';
 import Footer from '../../@components/Footer';
@@ -18,21 +18,26 @@ const HomeView: React.FC = () => {
     isLoading,
   } = useSelector(trendingSelector);
 
-  // const [num, setNum] = useQueryParam('x', NumberParam);
-  // const [foo, setFoo] = useQueryParam('foo', StringParam);
+  const [queryPage, setQueryPage] = useQueryParam('page', NumberParam);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     pageValue: number,
   ) => {
     dispatch(setPageAC(pageValue));
+    if (pageValue !== 1) {
+      setQueryPage(pageValue);
+    } else {
+      setQueryPage(undefined);
+    }
     // Scroll to top when page changes
     window.scroll(0, 0);
   };
 
   useEffect(() => {
-    dispatch(getTrendingAllTC({ page }));
-  }, [dispatch, page]);
+    const pageValue = queryPage || 1;
+    dispatch(getTrendingAllTC({ page: pageValue }));
+  }, [dispatch, queryPage]);
 
   return (
     <div className="HolyGrail">
@@ -40,16 +45,6 @@ const HomeView: React.FC = () => {
         <PersistentDrawerLeft />
       </Box>
       <div className="HolyGrail-content">
-        {/* <div>
-          <h1>num is {num}</h1>
-          <button type="button" onClick={() => setNum(Math.random())}>
-            Change
-          </button>
-          <h1>foo is {foo}</h1>
-          <button type="button" onClick={() => setFoo(`str${Math.random()}`)}>
-            Change
-          </button>
-        </div> */}
         <Container maxWidth="lg">
           <Grid container spacing={3} style={{ padding: 3 }}>
             {trendingAllmovies?.map((movie) => (
