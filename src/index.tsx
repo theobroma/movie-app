@@ -4,6 +4,8 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ConnectedRouter } from 'connected-react-router';
+import { Route } from 'react-router-dom';
+import { QueryParamProvider } from 'use-query-params';
 import { AppContainer } from './#/App';
 import { store, persistor, history } from './configureStore';
 import LoadingPage from './@components/UI/LoadingPage';
@@ -31,8 +33,10 @@ render(
         <AppThemeProvider>
           <SnackBarProvider>
             <ConnectedRouter history={history}>
-              <AppContainer />
-              <Notifier />
+              <QueryParamProvider ReactRouterRoute={Route}>
+                <AppContainer />
+                <Notifier />
+              </QueryParamProvider>
             </ConnectedRouter>
           </SnackBarProvider>
         </AppThemeProvider>
