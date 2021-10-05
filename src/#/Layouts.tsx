@@ -11,7 +11,7 @@ interface ILayout {
 export const GuestLayout: React.FC<ILayout> = ({ children }) => {
   return (
     <div className="HolyGrail">
-      <Box mb={2}>
+      <Box>
         <PersistentDrawerLeft />
       </Box>
       <main className="HolyGrail-content">{children}</main>

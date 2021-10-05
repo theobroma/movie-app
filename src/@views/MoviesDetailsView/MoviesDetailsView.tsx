@@ -109,18 +109,20 @@ const MoviesDetailsView: React.FC = () => {
           )}
         </div>
         <Container maxWidth="lg">
-          {!isLoading ? (
-            <MovieInfo
-              id={id}
-              movie={movieDetailsData}
-              trailer={trailer}
-              credits={credits}
-              onFavourite={handleOnFavourite}
-              isFavorite={isFavorite}
-            />
-          ) : (
-            <MovieInfoSkeleton />
-          )}
+          <Box py={3}>
+            {!isLoading ? (
+              <MovieInfo
+                id={id}
+                movie={movieDetailsData}
+                trailer={trailer}
+                credits={credits}
+                onFavourite={handleOnFavourite}
+                isFavorite={isFavorite}
+              />
+            ) : (
+              <MovieInfoSkeleton />
+            )}
+          </Box>
         </Container>
       </Box>
       {/* Similar */}

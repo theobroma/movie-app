@@ -70,103 +70,95 @@ const MovieInfo: React.FC<Props> = ({
   );
 
   return (
-    <Box py={3}>
-      <Grid container spacing={3} style={{ padding: 3 }}>
-        {/* poster */}
-        <Grid item md={3}>
-          {poster_path && (
-            <img
-              className={classes.poster}
-              src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-              alt={`Poster of ${title}`}
-            />
-          )}
-        </Grid>
-        {/* info */}
-        <Grid item md={8} style={{ color: 'white' }}>
-          <div className={classes.releaseDate}>
-            {release_date && Formatter.formatDate(release_date)}
-            {` `}({productionCountries})
-          </div>
-          <Typography
-            variant="h4"
-            style={{ fontWeight: 'bold' }}
-            component="h1"
-          >
-            {title}
-          </Typography>
-          <ul className={classes.genreList}>
-            {genres?.map((genre: any) => (
-              <li className={classes.genre} key={genre.id}>
-                {genre.name}
-              </li>
-            ))}
-          </ul>
-          {/* Rating */}
-          <div className={classes.vote}>
-            <Rating value={vote_average / 2} readOnly />
-            <span style={{ margin: '2px 0px 0 6px' }}>{vote_average}/10</span>
-            <Tooltip
-              title={
-                isFavorite ? 'Remove from favourites' : 'Add to favourites'
-              }
-            >
-              <Button
-                style={{ marginLeft: 16 }}
-                onClick={() => onFavourite(id)}
-                variant={isFavorite ? 'contained' : 'outlined'}
-                // variant="outlined"
-                color="secondary"
-                aria-label="like"
-              >
-                <FavoriteIcon
-                  style={{ color: isFavorite ? 'white' : 'secondary' }}
-                />
-              </Button>
-            </Tooltip>
-          </div>
-          <div style={{ marginTop: 10 }}>
-            <Typography component="div" style={{ marginRight: 15 }}>
-              <b>Duration:</b> {runtime} min.
-            </Typography>
-            <Typography component="div">
-              <b>Budget:</b>
-              {budget ? `$${Formatter.numberWithCommas(budget)}` : '-'}
-            </Typography>
-          </div>
-          {tagline && (
-            <>
-              <h3 className={classes.subtitle}>Legend</h3>
-              <Typography variant="body1">{tagline}</Typography>
-            </>
-          )}
-          {overview && (
-            <>
-              <h3 className={classes.subtitle}>Overview</h3>
-              <Typography variant="body1">{overview}</Typography>
-            </>
-          )}
-          {CrewBlock}
-
-          <Box py={3}>
-            {trailer ? (
-              <Button
-                className={classes.trailer}
-                variant="contained"
-                startIcon={<YouTubeIcon />}
-                color="secondary"
-                target="__blank"
-                href={`https://www.youtube.com/watch?v=${trailer}`}
-              >
-                Watch the Trailer
-              </Button>
-            ) : (
-              'No video trailer'
-            )}
-          </Box>
-        </Grid>
+    <Grid container spacing={3} style={{ padding: 3 }}>
+      {/* poster */}
+      <Grid item md={3}>
+        {poster_path && (
+          <img
+            className={classes.poster}
+            src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+            alt={`Poster of ${title}`}
+          />
+        )}
       </Grid>
-    </Box>
+      {/* info */}
+      <Grid item md={8} style={{ color: 'white' }}>
+        <div className={classes.releaseDate}>
+          {release_date && Formatter.formatDate(release_date)}
+          {` `}({productionCountries})
+        </div>
+        <Typography variant="h4" style={{ fontWeight: 'bold' }} component="h1">
+          {title}
+        </Typography>
+        <ul className={classes.genreList}>
+          {genres?.map((genre: any) => (
+            <li className={classes.genre} key={genre.id}>
+              {genre.name}
+            </li>
+          ))}
+        </ul>
+        {/* Rating */}
+        <div className={classes.vote}>
+          <Rating value={vote_average / 2} readOnly />
+          <span style={{ margin: '2px 0px 0 6px' }}>{vote_average}/10</span>
+          <Tooltip
+            title={isFavorite ? 'Remove from favourites' : 'Add to favourites'}
+          >
+            <Button
+              style={{ marginLeft: 16 }}
+              onClick={() => onFavourite(id)}
+              variant={isFavorite ? 'contained' : 'outlined'}
+              // variant="outlined"
+              color="secondary"
+              aria-label="like"
+            >
+              <FavoriteIcon
+                style={{ color: isFavorite ? 'white' : 'secondary' }}
+              />
+            </Button>
+          </Tooltip>
+        </div>
+        <div style={{ marginTop: 10 }}>
+          <Typography component="div" style={{ marginRight: 15 }}>
+            <b>Duration:</b> {runtime} min.
+          </Typography>
+          <Typography component="div">
+            <b>Budget:</b>
+            {budget ? `$${Formatter.numberWithCommas(budget)}` : '-'}
+          </Typography>
+        </div>
+        {tagline && (
+          <>
+            <h3 className={classes.subtitle}>Legend</h3>
+            <Typography variant="body1">{tagline}</Typography>
+          </>
+        )}
+        {overview && (
+          <>
+            <h3 className={classes.subtitle}>Overview</h3>
+            <Typography variant="body1">{overview}</Typography>
+          </>
+        )}
+        {CrewBlock}
+
+        <Box py={3}>
+          {trailer ? (
+            <Button
+              className={classes.trailer}
+              variant="contained"
+              startIcon={<YouTubeIcon />}
+              color="secondary"
+              target="__blank"
+              href={`https://www.youtube.com/watch?v=${trailer}`}
+            >
+              Watch the Trailer
+            </Button>
+          ) : (
+            'No video trailer'
+          )}
+        </Box>
+      </Grid>
+    </Grid>
   );
 };
 
