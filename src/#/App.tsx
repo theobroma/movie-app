@@ -3,6 +3,7 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 import LoadingPage from '../@components/UI/LoadingPage';
 import { IRoute, ROUTES } from '../@types';
 import Page404View from '../@views/Page404View';
+import { GuestLayout } from './Layouts';
 
 const MIN_LAZY_DELAY = 300;
 
@@ -107,7 +108,14 @@ export const AppContainer: React.FC = () => {
         ))}
         {/* 404 */}
         {/* https://stackoverflow.com/a/37491381/3988363 */}
-        <Route path="/404" render={() => <Page404View />} />
+        <Route
+          path="/404"
+          render={() => (
+            <GuestLayout>
+              <Page404View />
+            </GuestLayout>
+          )}
+        />
         <Redirect to="/404" />
       </Switch>
     </Suspense>
