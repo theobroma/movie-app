@@ -4,8 +4,6 @@ import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import PersistentDrawerLeft from '../../@components/AppBar';
-import Footer from '../../@components/Footer';
 import MovieInfo from '../../@components/MovieInfo';
 import SingleContent from '../../@components/SingleContent';
 import MovieInfoSkeleton from '../../@components/Skeletons/MovieInfoSkeleton';
@@ -99,61 +97,53 @@ const MoviesDetailsView: React.FC = () => {
   );
 
   return (
-    <div className="HolyGrail">
-      <Box mb={2}>
-        <PersistentDrawerLeft />
+    <div>
+      <Box style={{ position: 'relative' }}>
+        <div className={classes.backdrop}>
+          {movieDetailsData?.backdrop_path && (
+            <img
+              className={classes.backdropImage}
+              src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}
+              alt={`Backdrop of ${movieDetailsData.title}`}
+            />
+          )}
+        </div>
+        <Container maxWidth="lg">
+          {!isLoading ? (
+            <MovieInfo
+              id={id}
+              movie={movieDetailsData}
+              trailer={trailer}
+              credits={credits}
+              onFavourite={handleOnFavourite}
+              isFavorite={isFavorite}
+            />
+          ) : (
+            <MovieInfoSkeleton />
+          )}
+        </Container>
       </Box>
-      <div className="HolyGrail-content">
-        <main>
-          <Box style={{ position: 'relative' }}>
-            <div className={classes.backdrop}>
-              {movieDetailsData?.backdrop_path && (
-                <img
-                  className={classes.backdropImage}
-                  src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}
-                  alt={`Backdrop of ${movieDetailsData.title}`}
-                />
-              )}
-            </div>
-            <Container maxWidth="lg">
-              {!isLoading ? (
-                <MovieInfo
-                  id={id}
-                  movie={movieDetailsData}
-                  trailer={trailer}
-                  credits={credits}
-                  onFavourite={handleOnFavourite}
-                  isFavorite={isFavorite}
-                />
-              ) : (
-                <MovieInfoSkeleton />
-              )}
-            </Container>
-          </Box>
-          {/* Similar */}
-          <Container maxWidth="lg">
-            <Box py={4}>
-              {!isLoading && (
-                <>
-                  <Typography component="h3" variant="h4">
-                    Similar movies
-                  </Typography>
-                  <Grid container spacing={3} style={{ padding: 3 }}>
-                    {similarMovies.length > 0 ? (
-                      SimilarMoviesBlock
-                    ) : (
-                      <Grid item xs={12}>
-                        <EmptyBlock>There is no data</EmptyBlock>
-                      </Grid>
-                    )}
+      {/* Similar */}
+      <Container maxWidth="lg">
+        <Box py={4}>
+          {!isLoading && (
+            <>
+              <Typography component="h3" variant="h4">
+                Similar movies
+              </Typography>
+              <Grid container spacing={3} style={{ padding: 3 }}>
+                {similarMovies.length > 0 ? (
+                  SimilarMoviesBlock
+                ) : (
+                  <Grid item xs={12}>
+                    <EmptyBlock>There is no data</EmptyBlock>
                   </Grid>
-                </>
-              )}
-            </Box>
-          </Container>
-        </main>
-      </div>
-      <Footer />
+                )}
+              </Grid>
+            </>
+          )}
+        </Box>
+      </Container>
     </div>
   );
 };

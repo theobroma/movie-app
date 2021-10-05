@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import LoadingPage from '../@components/UI/LoadingPage';
 import { IRoute, ROUTES } from '../@types';
-import Page404View from '../@views/Page404View';
 import { GuestLayout } from './Layouts';
 
 const MIN_LAZY_DELAY = 300;
@@ -59,42 +58,44 @@ const VisitedTVView = lazy(() => {
   ]).then(([moduleExports]) => moduleExports);
 });
 
+const Page404View = lazy(() => import('../@views/Page404View'));
+
 export const APP_MAIN_ROUTES: IRoute[] = [
   {
-    component: HomeView,
+    comp: HomeView,
     path: ROUTES.ROOT,
     exact: true,
-    // layout: UserLayout,
+    layout: GuestLayout,
   },
   {
-    component: MoviesDetailsView,
+    comp: MoviesDetailsView,
     path: ROUTES.SINGLE_DETAILS,
     exact: true,
-    // layout: UserLayout,
+    layout: GuestLayout,
   },
   {
-    component: FavouritesMoviesView,
+    comp: FavouritesMoviesView,
     path: ROUTES.FAVOURITES_MOVIES,
     exact: true,
-    // layout: UserLayout,
+    layout: GuestLayout,
   },
   {
-    component: FavouritesTVView,
+    comp: FavouritesTVView,
     path: ROUTES.FAVOURITES_TV,
     exact: true,
-    // layout: UserLayout,
+    layout: GuestLayout,
   },
   {
-    component: VisitedMoviesView,
+    comp: VisitedMoviesView,
     path: ROUTES.VISITED_MOVIES,
     exact: true,
-    // layout: UserLayout,
+    layout: GuestLayout,
   },
   {
-    component: VisitedTVView,
+    comp: VisitedTVView,
     path: ROUTES.VISITED_TV,
     exact: true,
-    // layout: UserLayout,
+    layout: GuestLayout,
   },
 ];
 
@@ -104,7 +105,11 @@ export const AppContainer: React.FC = () => {
       <Switch>
         <Redirect from="/index.html" to="/" exact />
         {APP_MAIN_ROUTES.map((route: IRoute) => (
-          <Route key={`${route.path}`} {...route} />
+          <Route key={`${route.path}`} {...route}>
+            <route.layout>
+              <route.comp />
+            </route.layout>
+          </Route>
         ))}
         {/* 404 */}
         {/* https://stackoverflow.com/a/37491381/3988363 */}
