@@ -17,8 +17,11 @@ import reportWebVitals from './reportWebVitals';
 // All styles
 import './@assets/styles/index.scss';
 
-// Open Source typefaces
-import 'typeface-roboto';
+// Open Source fonts
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const rootEl = document.getElementById('root');
 
