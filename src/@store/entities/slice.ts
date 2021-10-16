@@ -16,7 +16,7 @@ const entitiesInitialState = {
 
 export type EntitiesInitialStateType = typeof entitiesInitialState;
 
-export const getMediaDetailsTC = createAsyncThunk(
+export const getMediaDetailsTC = createAsyncThunk<any, any, any>(
   'entities/getMovieDetails',
   async (
     param: { movieID: string | undefined; mediaType: string | undefined },

@@ -15,7 +15,7 @@ const trendingInitialState = {
 
 export type TrendingInitialStateType = typeof trendingInitialState;
 
-export const getTrendingAllTC = createAsyncThunk(
+export const getTrendingAllTC = createAsyncThunk<any, any, any>(
   'trending/getTrendingAll',
   async (param: { page: number }, thunkAPI) => {
     try {

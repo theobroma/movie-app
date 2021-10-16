@@ -21,7 +21,7 @@ export type MoviesInitialStateType = typeof moviesInitialState;
 
 const movieEntity = new schema.Entity('movies');
 
-export const getTrendingMoviesTC = createAsyncThunk(
+export const getTrendingMoviesTC = createAsyncThunk<any, any, any>(
   'movies/getTrendingMovies',
   async (param: { page: number }, thunkAPI) => {
     try {

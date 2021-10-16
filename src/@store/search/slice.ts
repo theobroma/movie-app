@@ -9,7 +9,7 @@ const searchInitialState = {
 
 export type SearchInitialStateType = typeof searchInitialState;
 
-export const searchTC = createAsyncThunk(
+export const searchTC = createAsyncThunk<any, any, any>(
   'search/searchTC',
   async (searchText: string, thunkAPI) => {
     try {

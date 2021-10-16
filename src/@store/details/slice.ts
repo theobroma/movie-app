@@ -16,7 +16,7 @@ const detailsInitialState = {
 
 export type DetailsInitialStateType = typeof detailsInitialState;
 
-export const getMovieDetailsTC = createAsyncThunk(
+export const getMovieDetailsTC = createAsyncThunk<any, any, any>(
   'details/getMovieDetails',
   async (
     param: { movieID: string | undefined; mediaType: string | undefined },
