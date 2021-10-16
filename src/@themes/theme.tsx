@@ -1,9 +1,8 @@
 import React from 'react';
 import { CssBaseline, PaletteType } from '@material-ui/core';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../@store/ui/selectors';
-import { THEME_COLORS } from '../@types';
 
 /**
  * Material UI theme "front" colors, "back" colors are different for Light and Dark modes
@@ -75,12 +74,55 @@ const DARK_THEME = {
   },
 };
 
+const DEEP_PURPLE_AMBER_THEME = {
+  palette: {
+    type: 'light' as PaletteType,
+    background: {
+      paper: '#f5f5f5', // Gray 100 - Background of "Paper" based component
+      default: '#FFFFFF',
+    },
+    primary: {
+      main: '#673ab7',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#ffd740',
+      contrastText: '#000',
+    },
+    ...FRONT_COLORS,
+  },
+};
+
+const PINK_BLUE_GREY_THEME = {
+  palette: {
+    type: 'dark' as PaletteType,
+    background: {
+      paper: '#424242', // Gray 800 - Background of "Paper" based component
+      default: '#303030',
+    },
+    primary: {
+      main: '#e91e63;', // Green 300
+      contrastText: '#000000',
+    },
+    secondary: {
+      main: '#607d8b;', // Orange 300
+      contrastText: '#000',
+    },
+    ...FRONT_COLORS,
+  },
+};
+
+// original
+const themeMap = {
+  light: LIGHT_THEME,
+  dark: DARK_THEME,
+  deepPurpleAmber: DEEP_PURPLE_AMBER_THEME,
+  pinkBlueGrey: PINK_BLUE_GREY_THEME,
+};
+
 const AppThemeProvider: React.FC = ({ children }) => {
   const currentTheme = useSelector(themeSelector);
-  const theme =
-    currentTheme === THEME_COLORS.DARK
-      ? createMuiTheme(DARK_THEME)
-      : createMuiTheme(LIGHT_THEME);
+  const theme = createTheme(themeMap[currentTheme]);
 
   return (
     <ThemeProvider theme={theme}>
