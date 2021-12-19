@@ -82,20 +82,6 @@ const MoviesDetailsView: React.FC = () => {
   const MOVIES_PER_LIST = 6;
   const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);
 
-  const SimilarMoviesBlock = (
-    <>
-      {similarMovies?.map((movie: any) => (
-        <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-          {isLoading ? (
-            <SingleContentSkeleton />
-          ) : (
-            <SingleContent movie={movie} parentMediaType={mediaType} />
-          )}
-        </Grid>
-      ))}
-    </>
-  );
-
   return (
     <div>
       <Box style={{ position: 'relative' }}>
@@ -135,7 +121,18 @@ const MoviesDetailsView: React.FC = () => {
               </Typography>
               <Grid container spacing={3} style={{ padding: 3 }}>
                 {similarMovies.length > 0 ? (
-                  SimilarMoviesBlock
+                  similarMovies?.map((movie: any) => (
+                    <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
+                      {isLoading ? (
+                        <SingleContentSkeleton />
+                      ) : (
+                        <SingleContent
+                          movie={movie}
+                          parentMediaType={mediaType}
+                        />
+                      )}
+                    </Grid>
+                  ))
                 ) : (
                   <Grid item xs={12}>
                     <EmptyBlock>There is no data</EmptyBlock>

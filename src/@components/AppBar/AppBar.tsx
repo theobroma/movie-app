@@ -24,7 +24,7 @@ import SearchInput from './Search/SearchInput/SearchInput';
 import SearchOutput from './Search/SearchOutput';
 import SimpleDrawer from './SimpleDrawer';
 
-export default function CustomAppBar() {
+const CustomAppBar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
@@ -162,4 +162,6 @@ export default function CustomAppBar() {
       </main> */}
     </div>
   );
-}
+};
+
+export default CustomAppBar;

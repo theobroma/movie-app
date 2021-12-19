@@ -6,7 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
-import { AppContainer } from './#/App';
+import { AppContainer } from './@routes/AppContainer';
 import { store, persistor, history } from './configureStore';
 import LoadingPage from './@components/UI/LoadingPage';
 import SnackBarProvider from './@components/UI/SnackBar/SnackBarProvider';
@@ -30,7 +30,8 @@ render(
       <PersistGate
         loading={<LoadingPage />}
         persistor={persistor}
-        onBeforeLift={() => new Promise((resolve) => setTimeout(resolve, 100))} // delay
+        // TODO: reimplement without err
+        // onBeforeLift={() => new Promise((resolve) => setTimeout(resolve, 100))} // delay
       >
         <AppThemeProvider>
           <SnackBarProvider>
