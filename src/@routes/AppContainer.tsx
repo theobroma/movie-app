@@ -1,8 +1,15 @@
 // https://stackoverflow.com/questions/54158994/react-suspense-lazy-delay
 // https://stackoverflow.com/a/37491381/3988363
+// https://github.com/pbeshai/use-query-params/issues/108
 import pMinDelay from 'p-min-delay';
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
 import LoadingPage from '../@components/UI/LoadingPage';
 import { IRoute, ROUTES } from '../@types';
@@ -52,20 +59,21 @@ export const AppContainer = () => {
   return (
     <Suspense fallback={<LoadingPage />}>
       <BrowserRouter>
-        {/* <QueryParamProvider ReactRouterRoute={Route}> */}
-        <Routes>
-          <Route path="/" element={<AppLayout />}>
-            <Route index element={<div>Home</div>} />
-            {/* <Route
+        {/* adapt for react-router v6 */}
+        <QueryParamProvider ReactRouterRoute={RouteAdapter}>
+          <Routes>
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<HomeView />} />
+              {/* <Route
                 path="cryptocurrencies/:id"
                 element={<CryptoDetailsView />}
               />
               <Route path="cryptocurrencies" element={<MainView />} /> */}
-            <Route path="exchanges" element={<div>exchanges</div>} />
-            <Route path="*" element={<div>Not Found</div>} />
-          </Route>
-        </Routes>
-        {/* <Switch>
+              <Route path="exchanges" element={<div>exchanges</div>} />
+              <Route path="*" element={<div>Not Found</div>} />
+            </Route>
+          </Routes>
+          {/* <Switch>
             <Redirect from="/index.html" to="/" exact />
             {APP_MAIN_ROUTES.map((route: IRoute) => (
               <Route key={`${route.path}`} {...route}>
@@ -85,8 +93,34 @@ export const AppContainer = () => {
             />
             <Redirect to="/404" />
           </Switch> */}
-        {/* </QueryParamProvider> */}
+        </QueryParamProvider>
       </BrowserRouter>
     </Suspense>
   );
+};
+
+// TODO: mb move from this
+// https://github.com/pbeshai/use-query-params/issues/108#issuecomment-785209454
+/**
+ * This is the main thing you need to use to adapt the react-router v6
+ * API to what use-query-params expects.
+ *
+ * Pass this as the `ReactRouterRoute` prop to QueryParamProvider.
+ */
+const RouteAdapter = ({ children }: any) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const adaptedHistory = React.useMemo(
+    () => ({
+      replace(loc: any) {
+        navigate(loc, { replace: true, state: location.state });
+      },
+      push(loc: any) {
+        navigate(loc, { replace: false, state: location.state });
+      },
+    }),
+    [navigate, location],
+  );
+  return children({ history: adaptedHistory, location });
 };
