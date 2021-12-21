@@ -22,8 +22,6 @@
         "@types/redux-logger": "^3.0.9",
         "axios": "^0.24.0",
         "clsx": "^1.1.1",
-        "connected-react-router": "^6.9.2",
-        "history": "^4.x",
         "node-sass": "^6.x",
         "normalizr": "^3.6.1",
         "notistack": "^1.x",
