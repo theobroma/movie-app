@@ -1,3 +1,4 @@
+// https://stackoverflow.com/a/61839489/3988363
 import { Paper, Tab, Tabs } from '@material-ui/core';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -5,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 const MediaTabs = () => {
   const location = useLocation();
   const pathArr = location.pathname.split('/');
-  const pathValue = pathArr.slice(-1)[0]; // last
+  const pathValue = pathArr[pathArr.length - 1];
 
   return (
     <Paper square>
