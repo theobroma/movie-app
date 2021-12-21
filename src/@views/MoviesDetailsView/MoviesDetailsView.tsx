@@ -19,10 +19,10 @@ import {
 } from '../../@store/user/slice';
 import { useStyles } from './MoviesDetailsView.styles';
 
-interface ParamTypes {
-  id?: string | undefined;
-  mediaType?: string | undefined;
-}
+// interface ParamTypes {
+//   id?: string | undefined;
+//   mediaType?: string | undefined;
+// }
 
 const MoviesDetailsView: React.FC = () => {
   const classes = useStyles();
@@ -38,7 +38,8 @@ const MoviesDetailsView: React.FC = () => {
   const favouriteMedia = useSelector(favouriteMediaSelector);
 
   const trailer = null ?? trailers?.results[0]?.key;
-  const { id, mediaType } = useParams<ParamTypes>();
+  // const { id, mediaType } = useParams<ParamTypes>();
+  const { id, mediaType } = useParams<any>();
 
   let isFavorite = false;
   if (id && mediaType) {

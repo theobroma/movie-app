@@ -10,7 +10,7 @@ import MovieIcon from '@material-ui/icons/Movie';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useStyles } from './SimpleDrawer.styles';
-import SideBarLink from './SideBarLink';
+import ListItemLink from './ListItemLink';
 import { ROUTES } from '../../../@types';
 
 interface Props {
@@ -44,14 +44,14 @@ const SimpleDrawer: React.FC<Props> = ({ open, handleDrawerClose }) => {
       </div>
       <Divider />
       <List>
-        <SideBarLink text="Home" to={ROUTES.ROOT} icon={<MovieIcon />} />
-        <SideBarLink
-          text="Favourites"
+        <ListItemLink primary="Home" to={ROUTES.ROOT} icon={<MovieIcon />} />
+        <ListItemLink
+          primary="Favourites"
           to={ROUTES.FAVOURITES_MOVIES}
           icon={<FavoriteIcon />}
         />
-        <SideBarLink
-          text="Visited"
+        <ListItemLink
+          primary="Visited"
           to={ROUTES.VISITED_MOVIES}
           icon={<VisibilityIcon />}
         />
