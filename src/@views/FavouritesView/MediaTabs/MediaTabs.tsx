@@ -2,7 +2,7 @@ import { Paper, Tabs, Tab } from '@material-ui/core';
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
-const MediaTabs: React.FC = () => {
+const MediaTabs = () => {
   const location = useLocation();
   const pathArr = location.pathname.split('/');
   const pathValue = pathArr.slice(-1)[0]; // last

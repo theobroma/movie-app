@@ -42,6 +42,9 @@ const FavouritesTVView = lazy(() =>
     MIN_LAZY_DELAY,
   ),
 );
+const VisitedLayout = lazy(() =>
+  pMinDelay(import('../@views/VisitedView/VisitedLayout'), MIN_LAZY_DELAY),
+);
 const VisitedMoviesView = lazy(() =>
   pMinDelay(import('../@views/VisitedView/VisitedMoviesView'), MIN_LAZY_DELAY),
 );
@@ -72,7 +75,7 @@ export const AppContainer = () => {
                 <Route index element={<div>Click any tab.</div>} />
               </Route>
               {/* Nested visited */}
-              <Route path="visited" element={<Outlet />}>
+              <Route path="visited" element={<VisitedLayout />}>
                 <Route path="movies" element={<VisitedMoviesView />} />
                 <Route path="tv" element={<VisitedTVView />} />
                 <Route index element={<div>Click any tab.</div>} />
