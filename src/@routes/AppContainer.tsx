@@ -1,6 +1,7 @@
 // https://stackoverflow.com/questions/54158994/react-suspense-lazy-delay
 // https://stackoverflow.com/a/37491381/3988363
 // https://github.com/pbeshai/use-query-params/issues/108
+// https://github.com/pbeshai/use-query-params/issues/196
 import pMinDelay from 'p-min-delay';
 import React, { lazy, Suspense } from 'react';
 import {
@@ -9,10 +10,10 @@ import {
   Routes,
   useLocation,
   useNavigate,
+  Outlet,
 } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
 import LoadingPage from '../@components/UI/LoadingPage';
-import { IRoute, ROUTES } from '../@types';
 import { AppLayout } from './AppLayout';
 
 const MIN_LAZY_DELAY = 300;
@@ -44,17 +45,6 @@ const VisitedTVView = lazy(() =>
 
 const Page404View = lazy(() => import('../@views/Page404View'));
 
-export enum ROUTESssss {
-  ROOT = '/',
-  SINGLE_DETAILS = '/details/:mediaType/:id',
-  FAVOURITES = '/favourites',
-  FAVOURITES_MOVIES = '/favourites/movies',
-  FAVOURITES_TV = '/favourites/tv',
-  VISITED = '/visited',
-  VISITED_MOVIES = '/visited/movies',
-  VISITED_TV = '/visited/tv',
-}
-
 export const AppContainer = () => {
   return (
     <Suspense fallback={<LoadingPage />}>
@@ -63,36 +53,27 @@ export const AppContainer = () => {
         <QueryParamProvider ReactRouterRoute={RouteAdapter}>
           <Routes>
             <Route path="/" element={<AppLayout />}>
+              {/* index means default */}
               <Route index element={<HomeView />} />
-              {/* <Route
-                path="cryptocurrencies/:id"
-                element={<CryptoDetailsView />}
+              <Route
+                path="/details/:mediaType/:id"
+                element={<MoviesDetailsView />}
               />
-              <Route path="cryptocurrencies" element={<MainView />} /> */}
-              <Route path="exchanges" element={<div>exchanges</div>} />
-              <Route path="*" element={<div>Not Found</div>} />
+              {/* Nested favourites */}
+              <Route path="favourites" element={<Outlet />}>
+                <Route path="movies" element={<FavouritesMoviesView />} />
+                <Route path="tv" element={<FavouritesTVView />} />
+                {/* <Route index element={<div>favourites</div>} /> */}
+              </Route>
+              {/* Nested visited */}
+              <Route path="visited" element={<Outlet />}>
+                <Route path="movies" element={<VisitedMoviesView />} />
+                <Route path="tv" element={<VisitedTVView />} />
+                {/* <Route index element={<div>visited</div>} /> */}
+              </Route>
+              <Route path="*" element={<Page404View />} />
             </Route>
           </Routes>
-          {/* <Switch>
-            <Redirect from="/index.html" to="/" exact />
-            {APP_MAIN_ROUTES.map((route: IRoute) => (
-              <Route key={`${route.path}`} {...route}>
-                <route.layout>
-                  <route.comp />
-                </route.layout>
-              </Route>
-            ))}
-
-            <Route
-              path="/404"
-              render={() => (
-                <GuestLayout>
-                  <Page404View />
-                </GuestLayout>
-              )}
-            />
-            <Redirect to="/404" />
-          </Switch> */}
         </QueryParamProvider>
       </BrowserRouter>
     </Suspense>
@@ -101,6 +82,7 @@ export const AppContainer = () => {
 
 // TODO: mb move from this
 // https://github.com/pbeshai/use-query-params/issues/108#issuecomment-785209454
+
 /**
  * This is the main thing you need to use to adapt the react-router v6
  * API to what use-query-params expects.
@@ -113,10 +95,10 @@ const RouteAdapter = ({ children }: any) => {
 
   const adaptedHistory = React.useMemo(
     () => ({
-      replace(loc: any) {
+      replace(loc: Location) {
         navigate(loc, { replace: true, state: location.state });
       },
-      push(loc: any) {
+      push(loc: Location) {
         navigate(loc, { replace: false, state: location.state });
       },
     }),
