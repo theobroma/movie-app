@@ -24,6 +24,12 @@ const HomeView = lazy(() =>
 const MoviesDetailsView = lazy(() =>
   pMinDelay(import('../@views/MoviesDetailsView'), MIN_LAZY_DELAY),
 );
+const FavouritesLayout = lazy(() =>
+  pMinDelay(
+    import('../@views/FavouritesView/FavouritesLayout'),
+    MIN_LAZY_DELAY,
+  ),
+);
 const FavouritesMoviesView = lazy(() =>
   pMinDelay(
     import('../@views/FavouritesView/FavouritesMoviesView'),
@@ -60,16 +66,16 @@ export const AppContainer = () => {
                 element={<MoviesDetailsView />}
               />
               {/* Nested favourites */}
-              <Route path="favourites" element={<Outlet />}>
+              <Route path="favourites" element={<FavouritesLayout />}>
                 <Route path="movies" element={<FavouritesMoviesView />} />
                 <Route path="tv" element={<FavouritesTVView />} />
-                {/* <Route index element={<div>favourites</div>} /> */}
+                <Route index element={<div>Click any tab.</div>} />
               </Route>
               {/* Nested visited */}
               <Route path="visited" element={<Outlet />}>
                 <Route path="movies" element={<VisitedMoviesView />} />
                 <Route path="tv" element={<VisitedTVView />} />
-                {/* <Route index element={<div>visited</div>} /> */}
+                <Route index element={<div>Click any tab.</div>} />
               </Route>
               <Route path="*" element={<Page404View />} />
             </Route>
