@@ -118,18 +118,20 @@ const CustomAppBar = () => {
           <Box>
             {currentTheme === THEME_COLORS.LIGHT ? (
               <Tooltip title="Switch theme to Dark">
-                <IconButton aria-label="theme">
-                  <NightIcon
-                    onClick={() => handleSwitchDarkMode(THEME_COLORS.DARK)}
-                  />
+                <IconButton
+                  aria-label="theme"
+                  onClick={() => handleSwitchDarkMode(THEME_COLORS.DARK)}
+                >
+                  <NightIcon />
                 </IconButton>
               </Tooltip>
             ) : (
               <Tooltip title="Switch theme to Light">
-                <IconButton aria-label="theme">
-                  <DayIcon
-                    onClick={() => handleSwitchDarkMode(THEME_COLORS.LIGHT)}
-                  />
+                <IconButton
+                  aria-label="theme"
+                  onClick={() => handleSwitchDarkMode(THEME_COLORS.LIGHT)}
+                >
+                  <DayIcon />
                 </IconButton>
               </Tooltip>
             )}
