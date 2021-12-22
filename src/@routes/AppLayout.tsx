@@ -16,7 +16,7 @@ export const AppLayout = () => {
         <Outlet />
       </main>
       {/* Test WDYR */}
-      <ComponentWithProblem />
+      {/* <ComponentWithProblem /> */}
       <Footer />
     </div>
   );

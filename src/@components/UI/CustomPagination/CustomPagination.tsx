@@ -39,4 +39,6 @@ const CustomPagination: React.FC<UsePaginationProps> = ({
   );
 };
 
+CustomPagination.whyDidYouRender = true;
+
 export default CustomPagination;

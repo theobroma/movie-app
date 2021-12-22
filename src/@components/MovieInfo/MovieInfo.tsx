@@ -171,4 +171,6 @@ const MovieInfo: React.FC<Props> = ({
   );
 };
 
+MovieInfo.whyDidYouRender = true;
+
 export default MovieInfo;

@@ -64,4 +64,6 @@ const ListItemLink = (props: ListItemLinkProps) => {
   );
 };
 
+ListItemLink.whyDidYouRender = true;
+
 export default ListItemLink;

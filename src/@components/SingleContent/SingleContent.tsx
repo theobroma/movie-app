@@ -66,4 +66,6 @@ const SingleContent: React.FC<Props> = ({
   );
 };
 
+SingleContent.whyDidYouRender = true;
+
 export default SingleContent;
