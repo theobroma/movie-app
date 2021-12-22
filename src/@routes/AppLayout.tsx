@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Footer from '../@components/Footer';
 import AppBar from '../@components/AppBar';
 import PersistentDrawerLeft from '../@components/AppBar/PersistentDrawerLeft/PersistentDrawerLeft';
+import ComponentWithProblem from '../@components/WDYR/ComponentWithProblem';
 
 export const AppLayout = () => {
   return (
@@ -14,6 +15,8 @@ export const AppLayout = () => {
       <main className="HolyGrail-content">
         <Outlet />
       </main>
+      {/* Test WDYR */}
+      <ComponentWithProblem />
       <Footer />
     </div>
   );
