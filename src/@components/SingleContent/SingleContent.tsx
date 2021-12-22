@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { MEDIA_TYPE, MovieType } from '../../@types';
 import { useStyles, StyledBadge } from './SingleContent.styles';
 
-// import { img_300, unavailable } from '../../config/config';
 export const img_300 = 'https://image.tmdb.org/t/p/w300';
 export const unavailable =
   'https://www.movienewz.com/img/films/poster-holder.jpg';
@@ -28,7 +27,10 @@ const SingleContent: React.FC<Props> = ({
 }) => {
   const classes = useStyles();
   const mediaType = media_type || parentMediaType;
+  // DIFFERENT FIELDS FOR MOVIE AND TV
   const mediaTitle = title || original_name || 'title';
+  const mediaReleaseDate = release_date || first_air_date;
+  // 2 digits after comma
   const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;
 
   return (
@@ -57,9 +59,7 @@ const SingleContent: React.FC<Props> = ({
         <b className={classes.title}>{mediaTitle}</b>
         <span className={classes.subTitle}>
           {mediaType === MEDIA_TYPE.TV ? 'TV Series' : 'Movie'}
-          <span className={classes.subTitle}>
-            {release_date || first_air_date}
-          </span>
+          <span className={classes.subTitle}>{mediaReleaseDate}</span>
         </span>
       </div>
     </Link>

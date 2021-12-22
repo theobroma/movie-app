@@ -26,17 +26,25 @@ const MovieInfo: React.FC<Props> = ({
 }) => {
   const classes = useStyles();
   const {
-    title,
-    genres,
-    runtime,
     budget,
-    poster_path,
-    release_date,
-    production_countries,
-    vote_average,
-    tagline,
+    first_air_date,
+    genres,
+    original_name,
     overview,
+    poster_path,
+    production_countries,
+    release_date,
+    runtime,
+    tagline,
+    title,
+    vote_average,
   } = movie;
+
+  // DIFFERENT FIELDS FOR MOVIE AND TV
+  const mediaTitle = title || original_name || 'title';
+  const mediaReleaseDate = release_date || first_air_date;
+  // 2 digits after comma
+  const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;
 
   const productionCountries = production_countries
     ?.map((item: any) => {
@@ -77,18 +85,18 @@ const MovieInfo: React.FC<Props> = ({
           <img
             className={classes.poster}
             src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-            alt={`Poster of ${title}`}
+            alt={`Poster of ${mediaTitle}`}
           />
         )}
       </Grid>
       {/* info */}
       <Grid item md={8} style={{ color: 'white' }}>
         <div className={classes.releaseDate}>
-          {release_date && Formatter.formatDate(release_date)}
+          {mediaReleaseDate && Formatter.formatDate(mediaReleaseDate)}
           {` `}({productionCountries})
         </div>
         <Typography variant="h4" style={{ fontWeight: 'bold' }} component="h1">
-          {title}
+          {mediaTitle}
         </Typography>
         <ul className={classes.genreList}>
           {genres?.map((genre: any) => (
@@ -99,8 +107,8 @@ const MovieInfo: React.FC<Props> = ({
         </ul>
         {/* Rating */}
         <div className={classes.vote}>
-          <Rating value={vote_average / 2} readOnly />
-          <span style={{ margin: '2px 0px 0 6px' }}>{vote_average}/10</span>
+          <Rating value={mediaVote / 2} readOnly />
+          <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span>
           <Tooltip
             title={isFavorite ? 'Remove from favourites' : 'Add to favourites'}
           >
@@ -120,10 +128,11 @@ const MovieInfo: React.FC<Props> = ({
         </div>
         <div style={{ marginTop: 10 }}>
           <Typography component="div" style={{ marginRight: 15 }}>
-            <b>Duration:</b> {runtime} min.
+            <b>Duration: </b>
+            {runtime ? `${runtime} min.` : '-'}
           </Typography>
           <Typography component="div">
-            <b>Budget:</b>
+            <b>Budget: </b>
             {budget ? `$${Formatter.numberWithCommas(budget)}` : '-'}
           </Typography>
         </div>
