@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { rootReducer } from './@store/index';
+import { rootReducer } from './index';
 
 const logger = createLogger({
   collapsed: true,
