@@ -52,7 +52,7 @@ const MovieInfo: React.FC<Props> = ({
     })
     .join(', ');
 
-  const CrewBlock = crew?.length && (
+  const CrewBlock = crew?.length > 0 && (
     <>
       <h3 className={classes.subtitle}>Crew</h3>
       <Grid container spacing={3} component="ul" className={classes.crewList}>
@@ -93,7 +93,7 @@ const MovieInfo: React.FC<Props> = ({
       <Grid item md={8} style={{ color: 'white' }}>
         <div className={classes.releaseDate}>
           {mediaReleaseDate && Formatter.formatDate(mediaReleaseDate)}
-          {` `}({productionCountries})
+          {productionCountries && ` (${productionCountries})`}
         </div>
         <Typography variant="h4" style={{ fontWeight: 'bold' }} component="h1">
           {mediaTitle}

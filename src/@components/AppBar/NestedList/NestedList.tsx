@@ -1,17 +1,19 @@
-import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import ListSubheader from '@material-ui/core/ListSubheader';
+import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import HomeIcon from '@material-ui/icons/Home';
+import MovieIcon from '@material-ui/icons/Movie';
+import TvIcon from '@material-ui/icons/Tv';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import React from 'react';
+import { ROUTES } from '../../../@types';
+import ListItemLink from '../SimpleDrawer/ListItemLink';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,50 +30,66 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const NestedList = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open1, setOpen1] = React.useState(true);
+  const [open2, setOpen2] = React.useState(true);
 
-  const handleClick = () => {
-    setOpen(!open);
+  const handleClick1 = () => {
+    setOpen1(!open1);
+  };
+
+  const handleClick2 = () => {
+    setOpen2(!open2);
   };
 
   return (
-    <List
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-          Nested List Items
-        </ListSubheader>
-      }
-      className={classes.root}
-    >
-      <ListItem button>
+    <List component="nav" className={classes.root}>
+      <ListItemLink primary="Home" to={ROUTES.ROOT} icon={<HomeIcon />} />
+      {/* 1 Favourites */}
+      <ListItem button onClick={handleClick1}>
         <ListItemIcon>
-          <SendIcon />
+          <FavoriteIcon />
         </ListItemIcon>
-        <ListItemText primary="Sent mail" />
+        <ListItemText primary="Favourites" />
+        {open1 ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Drafts" />
-      </ListItem>
-      <ListItem button onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={open1} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
+          <ListItemLink
+            primary="Movies"
+            to={ROUTES.FAVOURITES_MOVIES}
+            icon={<MovieIcon />}
+            className={classes.nested}
+          />
+          <ListItemLink
+            primary="TV Shows"
+            to={ROUTES.FAVOURITES_TV}
+            icon={<TvIcon />}
+            className={classes.nested}
+          />
+        </List>
+      </Collapse>
+      {/* 2 Visited */}
+      <ListItem button onClick={handleClick2}>
+        <ListItemIcon>
+          <VisibilityIcon />
+        </ListItemIcon>
+        <ListItemText primary="Visited" />
+        {open2 ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open2} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemLink
+            primary="Movies"
+            to={ROUTES.VISITED_MOVIES}
+            icon={<MovieIcon />}
+            className={classes.nested}
+          />
+          <ListItemLink
+            primary="TV Shows"
+            to={ROUTES.VISITED_TV}
+            icon={<TvIcon />}
+            className={classes.nested}
+          />
         </List>
       </Collapse>
     </List>

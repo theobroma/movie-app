@@ -18,6 +18,7 @@ interface ListItemLinkProps {
   icon?: React.ReactElement;
   primary: string;
   to: string;
+  className?: string;
 }
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -35,7 +36,7 @@ export const useStyles = makeStyles((theme: Theme) =>
 );
 
 const ListItemLink = (props: ListItemLinkProps) => {
-  const { icon, primary, to } = props;
+  const { icon, primary, to, className } = props;
   const classes = useStyles();
 
   const renderLink = React.useMemo(
@@ -55,7 +56,7 @@ const ListItemLink = (props: ListItemLinkProps) => {
       <ListItem
         button
         component={renderLink}
-        className={classes.linkActiveClass}
+        className={`${classes.linkActiveClass} ${className}`}
       >
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         <ListItemText primary={primary} />
