@@ -12,6 +12,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NestedList from '../NestedList';
+import ThemeSwitch from '../ThemeSwitch';
 import { useStyles } from './PersistentDrawerLeft.styles';
 
 const PersistentDrawerLeft: React.FC = ({ children }) => {
@@ -61,6 +62,7 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
               MovieDB App
             </Typography>
           </Link>
+          <ThemeSwitch />
         </Toolbar>
       </AppBar>
       <Drawer
