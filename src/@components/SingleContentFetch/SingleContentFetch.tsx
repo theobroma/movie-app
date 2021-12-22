@@ -7,7 +7,7 @@ import {
 import { getMediaDetailsTC } from '../../@store/entities/slice';
 import { MEDIA_TYPE } from '../../@types';
 import SingleContent from '../SingleContent';
-import SingleContentSkeleton from '../Skeletons/SingleContentSkeleton';
+import SingleContentSkeleton from '../SingleContent/SingleContentSkeleton';
 
 interface Props {
   id?: string | undefined;

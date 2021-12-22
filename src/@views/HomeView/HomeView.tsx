@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useQueryParam, NumberParam } from 'use-query-params';
 import CustomPagination from '../../@components/UI/CustomPagination';
 import SingleContent from '../../@components/SingleContent';
-import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
+import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
 import { trendingSelector } from '../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
 
