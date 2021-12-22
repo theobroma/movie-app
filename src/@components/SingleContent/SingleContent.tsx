@@ -29,6 +29,8 @@ const SingleContent: React.FC<Props> = ({
   const classes = useStyles();
   const mediaType = media_type || parentMediaType;
   const mediaTitle = title || original_name || 'title';
+  const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;
+
   return (
     <Link
       to={{
@@ -44,8 +46,8 @@ const SingleContent: React.FC<Props> = ({
         color="inherit"
       >
         <StyledBadge
-          badgeContent={vote_average}
-          color={vote_average > 6 ? 'primary' : 'secondary'}
+          badgeContent={mediaVote}
+          color={mediaVote > 6 ? 'primary' : 'secondary'}
         />
         <img
           className={classes.poster}
