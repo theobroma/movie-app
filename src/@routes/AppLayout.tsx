@@ -4,12 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Footer from '../@components/Footer';
 import PersistentDrawerLeft from '../@components/AppBar';
 
-interface ILayout {
-  // All other props
-  [x: string]: any;
-}
-
-export const AppLayout: React.FC<ILayout> = ({ children }) => {
+export const AppLayout = () => {
   return (
     <div className="HolyGrail">
       <Box>
@@ -18,6 +13,8 @@ export const AppLayout: React.FC<ILayout> = ({ children }) => {
       <main className="HolyGrail-content">
         <Outlet />
       </main>
+      {/* Test WDYR */}
+      {/* <ComponentWithProblem /> */}
       <Footer />
     </div>
   );
