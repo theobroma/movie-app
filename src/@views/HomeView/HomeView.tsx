@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useQueryParam, NumberParam } from 'use-query-params';
-import CustomPagination from '../../@components/CustomPagination';
+import CustomPagination from '../../@components/UI/CustomPagination';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/Skeletons/SingleContentSkeleton';
 import { trendingSelector } from '../../@store/trending/selectors';
