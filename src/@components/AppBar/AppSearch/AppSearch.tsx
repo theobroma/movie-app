@@ -1,6 +1,7 @@
 import { Box } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import useDebounce from '../../../@hooks/useDebounce';
 import { searchDataSelector } from '../../../@store/search/selectors';
 import { searchTC } from '../../../@store/search/slice';
@@ -9,9 +10,11 @@ import SearchOutput from './SearchOutput';
 
 export const AppSearch = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const searchDataResults = useSelector(searchDataSelector).results || [];
   const [searchVal, setSearchVal] = useState('');
   const debouncedSearchTerm = useDebounce(searchVal, 500);
+  const [showOutput, setShowOutput] = useState(true);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(e.target.value);
@@ -19,9 +22,16 @@ export const AppSearch = () => {
 
   useEffect(() => {
     if (debouncedSearchTerm) {
+      setShowOutput(true);
       dispatch(searchTC(debouncedSearchTerm));
     }
   }, [debouncedSearchTerm, dispatch]);
+
+  // hide output when location (page) has changed
+  useEffect(() => {
+    setShowOutput(false);
+    setSearchVal('');
+  }, [location]);
 
   return (
     <Box>
@@ -34,7 +44,7 @@ export const AppSearch = () => {
           // onFocus={() => setShowOutput(true)}
         />
       </div>
-      {searchDataResults.length > 0 && (
+      {showOutput && searchDataResults.length > 0 && (
         <SearchOutput movies={searchDataResults} />
       )}
     </Box>
