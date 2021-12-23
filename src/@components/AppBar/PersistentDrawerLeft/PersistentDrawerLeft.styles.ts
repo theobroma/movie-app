@@ -6,6 +6,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
   },
+  grow: {
+    flexGrow: 1,
+  },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,

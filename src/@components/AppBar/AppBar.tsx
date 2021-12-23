@@ -137,7 +137,7 @@ const CustomAppBar = () => {
             )}
           </Box>
         </Toolbar>
-        {/* search */}
+        {/* search input */}
         {showMobileSearch && (
           <div style={{ margin: '5px 15px 10px 15px' }}>
             <SearchInput

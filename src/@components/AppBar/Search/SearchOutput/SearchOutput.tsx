@@ -1,5 +1,5 @@
-import React from 'react';
 import { List, ListItem, Typography } from '@material-ui/core';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useStyles } from './SearchOutput.styles';
 
@@ -24,6 +24,7 @@ const SearchOutput: React.FC<Props> = ({ movies = [] }) => {
             component={RouterLink}
             className={classes.item}
             to={`/details/movie/${movie?.id}`}
+            key={movie.id}
           >
             <img
               className={classes.itemImage}

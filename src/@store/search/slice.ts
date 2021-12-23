@@ -30,6 +30,7 @@ export const slice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // TODO: not working without connected-react-router
     builder.addCase('@@router/LOCATION_CHANGE', (state, action) => {
       state.data = [];
     });
