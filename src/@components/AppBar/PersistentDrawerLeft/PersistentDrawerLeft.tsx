@@ -18,8 +18,8 @@ import useDebounce from '../../../@hooks/useDebounce';
 import { searchDataSelector } from '../../../@store/search/selectors';
 import { searchTC } from '../../../@store/search/slice';
 import NestedList from '../NestedList';
-import SearchInput from '../Search/SearchInput';
-import SearchOutput from '../Search/SearchOutput';
+import SearchInput from '../AppSearch/SearchInput';
+import SearchOutput from '../AppSearch/SearchOutput';
 import ThemeSwitch from '../ThemeSwitch';
 import { useStyles } from './PersistentDrawerLeft.styles';
 

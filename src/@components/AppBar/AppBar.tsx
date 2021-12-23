@@ -20,8 +20,8 @@ import { themeSelector } from '../../@store/ui/selectors';
 import { setThemeAC } from '../../@store/ui/slice';
 import { ThemeColorsType, THEME_COLORS } from '../../@types';
 import { useStyles } from './AppBar.styles';
-import SearchInput from './Search/SearchInput/SearchInput';
-import SearchOutput from './Search/SearchOutput';
+import SearchInput from './AppSearch/SearchInput/SearchInput';
+import SearchOutput from './AppSearch/SearchOutput';
 import SimpleDrawer from './SimpleDrawer';
 
 const CustomAppBar = () => {
