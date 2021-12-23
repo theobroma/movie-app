@@ -1,4 +1,3 @@
-import { Box } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -11,27 +10,18 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useDebounce from '../../../@hooks/useDebounce';
-import { searchDataSelector } from '../../../@store/search/selectors';
-import { searchTC } from '../../../@store/search/slice';
+import AppSearch from '../AppSearch';
 import NestedList from '../NestedList';
-import SearchInput from '../AppSearch/SearchInput';
-import SearchOutput from '../AppSearch/SearchOutput';
 import ThemeSwitch from '../ThemeSwitch';
 import { useStyles } from './PersistentDrawerLeft.styles';
 
 const PersistentDrawerLeft: React.FC = ({ children }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const dispatch = useDispatch();
-  const searchDataResults = useSelector(searchDataSelector).results;
   const [open, setOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
-  const [searchVal, setSearchVal] = useState('');
-  const debouncedSearchTerm = useDebounce(searchVal, 500);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -40,16 +30,6 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchVal(e.target.value);
-  };
-
-  useEffect(() => {
-    if (debouncedSearchTerm) {
-      dispatch(searchTC(debouncedSearchTerm));
-    }
-  }, [debouncedSearchTerm, dispatch]);
 
   return (
     <div
@@ -86,32 +66,12 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
             </Typography>
           </Link>
           <div className={classes.grow} />
-          <IconButton
-            onClick={() => setShowMobileSearch(!showMobileSearch)}
-            // style={{ marginLeft: 'auto' }}
-          >
+          <IconButton onClick={() => setShowMobileSearch(!showMobileSearch)}>
             <SearchIcon />
           </IconButton>
           <ThemeSwitch />
         </Toolbar>
-        {/* search input */}
-        <Box>
-          {showMobileSearch && (
-            <div style={{ margin: '5px 15px 10px 15px' }}>
-              <SearchInput
-                value={searchVal}
-                onChange={handleSearchInputChange}
-                style={{ width: '100%', height: 50 }}
-                // onBlur={() => !searchVal && setShowOutput(false)}
-                // onFocus={() => setShowOutput(true)}
-              />
-            </div>
-          )}
-          {/* search output */}
-          {searchVal && showMobileSearch && (
-            <SearchOutput movies={searchDataResults} />
-          )}
-        </Box>
+        {showMobileSearch && <AppSearch />}
       </AppBar>
       {/* Drawer */}
       <Drawer
