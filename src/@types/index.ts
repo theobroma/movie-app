@@ -9,3 +9,4 @@ export * from './i.movie';
 export * from './i.media';
 export * from './z.movie';
 export * from './z.tv';
+export * from './z.media';

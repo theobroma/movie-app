@@ -1,15 +1,20 @@
-import { MoviesResponseType } from '../@types';
+import {
+  MediaAllResponseType,
+  MoviesResponseType,
+  TVResponseType,
+} from '../@types';
 import { instance } from './api';
 
 export const moviesApi = {
+  // TRENDING
   getTrendingAll(page: number) {
-    return instance.get<MoviesResponseType>(`/trending/all/day?page=${page}`);
+    return instance.get<MediaAllResponseType>(`/trending/all/day?page=${page}`);
   },
   getTrendingMovies(page: number) {
     return instance.get<MoviesResponseType>(`/trending/movie/day?page=${page}`);
   },
   getTrendingTV(page: number) {
-    return instance.get<any>(`/trending/tv/day?page=${page}`);
+    return instance.get<TVResponseType>(`/trending/tv/day?page=${page}`);
   },
   // Details
   getMovieDetails(movieID: string | undefined, mediaType: string | undefined) {

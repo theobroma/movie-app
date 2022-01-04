@@ -1,6 +1,6 @@
 import * as z from 'zod';
 
-const TVEntitySchema = z.object({
+export const TVEntitySchema = z.object({
   backdrop_path: z.string(),
   first_air_date: z.string(),
   genre_ids: z.array(z.number()),
@@ -19,7 +19,6 @@ const TVEntitySchema = z.object({
 
 export type TVEntityType = z.infer<typeof TVEntitySchema>;
 
-// TODO: mb generic
 export const TVResponseSchema = z.object({
   page: z.number(),
   results: z.array(TVEntitySchema),

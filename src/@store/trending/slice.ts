@@ -4,6 +4,7 @@ import {
   MoviesResponseType,
   MoviesResponseSchema,
   TVResponseSchema,
+  MediaAllResponseSchema,
 } from '../../@types';
 // import { MoviesResponseType } from '../../@types';
 // import { MoviesResponseSchema } from '../../@types/z.movie';
@@ -27,14 +28,14 @@ export const getTrendingAllTC = createAsyncThunk<any, any, any>(
     try {
       thunkAPI.dispatch(setLoadingAC(true));
       await waitForMe(500);
-      // const res = await moviesApi.getTrendingAll(param.page);
-      const res = await moviesApi.getTrendingTV(param.page);
+      const res = await moviesApi.getTrendingAll(param.page);
       // const res = await moviesApi.getTrendingMovies(param.page);
-
+      // const res = await moviesApi.getTrendingTV(param.page);
       // ZOD validation
       try {
+        MediaAllResponseSchema.parse(res.data);
         // MoviesResponseSchema.parse(res.data);
-        TVResponseSchema.parse(res.data);
+        // TVResponseSchema.parse(res.data);
       } catch (error) {
         // TODO:
         // Log & alert error <-- very important!

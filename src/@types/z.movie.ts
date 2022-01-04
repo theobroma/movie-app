@@ -1,6 +1,6 @@
 import * as z from 'zod';
 
-const MovieEntitySchema = z.object({
+export const MovieEntitySchema = z.object({
   adult: z.boolean(),
   backdrop_path: z.string(),
   genre_ids: z.array(z.number()),
@@ -19,7 +19,6 @@ const MovieEntitySchema = z.object({
 });
 export type MovieEntityType = z.infer<typeof MovieEntitySchema>;
 
-// TODO: mb generic
 export const MoviesResponseSchema = z.object({
   page: z.number(),
   results: z.array(MovieEntitySchema),
