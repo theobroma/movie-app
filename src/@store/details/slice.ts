@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
 import {
+  SimilarMediaAllResponseSchema,
   SimilarMoviesResponseSchema,
   SimilarTVResponseSchema,
 } from '../../@types';
@@ -40,9 +41,9 @@ export const getMovieDetailsTC = createAsyncThunk<any, any, any>(
 
       // ZOD validation
       try {
-        // MediaAllResponseSchema.parse(res4.data);
+        SimilarMediaAllResponseSchema.parse(res4.data);
         // SimilarMoviesResponseSchema.parse(res4.data);
-        SimilarTVResponseSchema.parse(res4.data);
+        // SimilarTVResponseSchema.parse(res4.data);
       } catch (error) {
         // TODO:
         // Log & alert error <-- very important!
