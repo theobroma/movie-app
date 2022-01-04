@@ -8,6 +8,9 @@ export const moviesApi = {
   getTrendingMovies(page: number) {
     return instance.get<MoviesResponseType>(`/trending/movie/day?page=${page}`);
   },
+  getTrendingTV(page: number) {
+    return instance.get<any>(`/trending/tv/day?page=${page}`);
+  },
   // Details
   getMovieDetails(movieID: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`/${mediaType}/${movieID}`);
