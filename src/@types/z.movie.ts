@@ -2,10 +2,11 @@ import * as z from 'zod';
 
 export const MovieEntitySchema = z.object({
   adult: z.boolean(),
-  backdrop_path: z.string(),
+  // backdrop_path: z.string(),
+  backdrop_path: z.string().nullable(),
   genre_ids: z.array(z.number()),
   id: z.number(),
-  media_type: z.string(),
+  media_type: z.string(), // not exist in similar
   original_language: z.string(),
   original_title: z.string(),
   overview: z.string(),
@@ -27,3 +28,23 @@ export const MoviesResponseSchema = z.object({
 });
 
 export type MoviesResponseType = z.infer<typeof MoviesResponseSchema>;
+
+// SIMILAR MOVIES
+export const NoMediaTypeMovieEntitySchema = MovieEntitySchema.omit({
+  media_type: true,
+});
+
+export type NoMediaTypeMovieEntityType = z.infer<
+  typeof NoMediaTypeMovieEntitySchema
+>;
+
+export const SimilarMoviesResponseSchema = z.object({
+  page: z.number(),
+  results: z.array(NoMediaTypeMovieEntitySchema),
+  total_pages: z.number(),
+  total_results: z.number(),
+});
+
+export type SimilarMoviesResponseType = z.infer<
+  typeof SimilarMoviesResponseSchema
+>;

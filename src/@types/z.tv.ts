@@ -1,11 +1,12 @@
 import * as z from 'zod';
 
 export const TVEntitySchema = z.object({
-  backdrop_path: z.string(),
+  // backdrop_path: z.string(),
+  backdrop_path: z.string().nullable(),
   first_air_date: z.string(),
   genre_ids: z.array(z.number()),
   id: z.number(),
-  media_type: z.string(),
+  media_type: z.string(), // not exist in similar
   name: z.string(),
   origin_country: z.array(z.string()),
   original_language: z.string(),

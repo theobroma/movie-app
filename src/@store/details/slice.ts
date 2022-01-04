@@ -1,5 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
+import {
+  MediaAllResponseSchema,
+  MoviesResponseSchema,
+  NoMediaTypeMovieEntitySchema,
+  SimilarMoviesResponseSchema,
+  TVResponseSchema,
+} from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const detailsInitialState = {
@@ -33,6 +40,18 @@ export const getMovieDetailsTC = createAsyncThunk<any, any, any>(
       const res2 = await moviesApi.getTrailers(param.movieID, param.mediaType);
       const res3 = await moviesApi.getCredits(param.movieID, param.mediaType);
       const res4 = await moviesApi.getSimilar(param.movieID, param.mediaType);
+
+      // ZOD validation
+      try {
+        // MediaAllResponseSchema.parse(res4.data);
+        SimilarMoviesResponseSchema.parse(res4.data);
+        // TVResponseSchema.parse(res4.data);
+      } catch (error) {
+        // TODO:
+        // Log & alert error <-- very important!
+        console.log(error);
+      }
+
       return {
         data: res1.data,
         trailers: res2.data,

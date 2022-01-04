@@ -1,6 +1,7 @@
 import {
   MediaAllResponseType,
   MoviesResponseType,
+  SimilarMoviesResponseType,
   TVResponseType,
 } from '../@types';
 import { instance } from './api';
@@ -35,7 +36,9 @@ export const moviesApi = {
     return instance.get<any>(`${mediaType}/${id}/credits`);
   },
   getSimilar(id: string | undefined, mediaType: string | undefined) {
-    return instance.get<any>(`${mediaType}/${id}/similar`);
+    return instance.get<SimilarMoviesResponseType>(
+      `${mediaType}/${id}/similar`,
+    );
   },
   getRecommended(id: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`${mediaType}/${id}/recommendations`);
