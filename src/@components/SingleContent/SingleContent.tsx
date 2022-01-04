@@ -8,7 +8,7 @@ export const unavailable =
   'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
-  movie: MovieType;
+  movie: any;
   parentMediaType?: string; // crutch for similar movies
 }
 

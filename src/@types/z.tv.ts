@@ -1,30 +1,30 @@
 import * as z from 'zod';
 
-const MovieEntitySchema = z.object({
-  adult: z.boolean(),
+const TVEntitySchema = z.object({
   backdrop_path: z.string(),
+  first_air_date: z.string(),
   genre_ids: z.array(z.number()),
   id: z.number(),
   media_type: z.string(),
+  name: z.string(),
+  origin_country: z.array(z.string()),
   original_language: z.string(),
-  original_title: z.string(),
+  original_name: z.string(),
   overview: z.string(),
   popularity: z.number(),
   poster_path: z.string(),
-  release_date: z.string(),
-  title: z.string(),
-  video: z.boolean(),
   vote_average: z.number(),
   vote_count: z.number(),
 });
-export type MovieEntityType = z.infer<typeof MovieEntitySchema>;
+
+export type TVEntityType = z.infer<typeof TVEntitySchema>;
 
 // TODO: mb generic
-export const MoviesResponseSchema = z.object({
+export const TVResponseSchema = z.object({
   page: z.number(),
-  results: z.array(MovieEntitySchema),
+  results: z.array(TVEntitySchema),
   total_pages: z.number(),
   total_results: z.number(),
 });
 
-export type MoviesResponseType = z.infer<typeof MoviesResponseSchema>;
+export type TVResponseType = z.infer<typeof TVResponseSchema>;

@@ -1,4 +1,4 @@
-export type MoviesResponseType = {
+export type MoviesResponseType__unused = {
   page: number;
   results: MovieType[];
   total_pages: number;

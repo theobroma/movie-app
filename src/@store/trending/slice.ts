@@ -1,6 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
-import { MoviesResponseType } from '../../@types';
+import {
+  MoviesResponseType,
+  MoviesResponseSchema,
+  TVResponseSchema,
+} from '../../@types';
+// import { MoviesResponseType } from '../../@types';
+// import { MoviesResponseSchema } from '../../@types/z.movie';
 import { waitForMe } from '../../@utils/waitforme';
 
 const trendingInitialState = {
@@ -22,8 +28,19 @@ export const getTrendingAllTC = createAsyncThunk<any, any, any>(
       thunkAPI.dispatch(setLoadingAC(true));
       await waitForMe(500);
       // const res = await moviesApi.getTrendingAll(param.page);
-      // const res = await moviesApi.getTrendingTV(param.page);
-      const res = await moviesApi.getTrendingMovies(param.page);
+      const res = await moviesApi.getTrendingTV(param.page);
+      // const res = await moviesApi.getTrendingMovies(param.page);
+
+      // ZOD validation
+      try {
+        // MoviesResponseSchema.parse(res.data);
+        TVResponseSchema.parse(res.data);
+      } catch (error) {
+        // TODO:
+        // Log & alert error <-- very important!
+        console.log(error);
+      }
+
       return { data: res.data };
     } catch (err: any) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
