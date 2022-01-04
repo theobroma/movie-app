@@ -29,7 +29,7 @@ export const MoviesResponseSchema = z.object({
 
 export type MoviesResponseType = z.infer<typeof MoviesResponseSchema>;
 
-// SIMILAR MOVIES
+// SIMILAR
 export const NoMediaTypeMovieEntitySchema = MovieEntitySchema.omit({
   media_type: true,
 });

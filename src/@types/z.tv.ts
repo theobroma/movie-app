@@ -28,3 +28,19 @@ export const TVResponseSchema = z.object({
 });
 
 export type TVResponseType = z.infer<typeof TVResponseSchema>;
+
+// SIMILAR
+export const NoMediaTypeTVEntitySchema = TVEntitySchema.omit({
+  media_type: true,
+});
+
+export type NoMediaTypeTVEntityType = z.infer<typeof NoMediaTypeTVEntitySchema>;
+
+export const SimilarTVResponseSchema = z.object({
+  page: z.number(),
+  results: z.array(NoMediaTypeTVEntitySchema),
+  total_pages: z.number(),
+  total_results: z.number(),
+});
+
+export type SimilarTVResponseType = z.infer<typeof SimilarTVResponseSchema>;
