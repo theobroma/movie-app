@@ -51,20 +51,6 @@
         "predeploy": "npm run build",
         "deploy": "netlify deploy -p"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,jsx,ts,tsx}": [
-            "eslint --fix",
-            "prettier --write"
-        ],
-        "*.{yml,json,css,scss,md}": [
-            "prettier --write"
-        ]
-    },
     "eslintConfig": {
         "extends": [
             "react-app",
@@ -86,8 +72,6 @@
     "devDependencies": {
         "eslint": "^8.x",
         "eslint-config-airbnb-typescript-prettier": "^5.0.0",
-        "husky": "^7.0.4",
-        "lint-staged": "^12.1.5",
         "netlify-cli": "^8.6.0",
         "prettier": "^2.5.1"
     },

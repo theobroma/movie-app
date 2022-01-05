@@ -17,7 +17,7 @@ export const moviesApi = {
   getTrendingTV(page: number) {
     return instance.get<TVResponseType>(`/trending/tv/day?page=${page}`);
   },
-  // Details
+  // DETAILS
   getMovieDetails(movieID: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`/${mediaType}/${movieID}`);
   },
@@ -43,13 +43,13 @@ export const moviesApi = {
   getRecommended(id: string | undefined, mediaType: string | undefined) {
     return instance.get<any>(`${mediaType}/${id}/recommendations`);
   },
-  // --/Details
+  // SEARCH
   getSearch(
     searchText: string | undefined,
     mediaType: string | undefined = 'movie',
     page = 1,
   ) {
-    return instance.get<any>(
+    return instance.get<SimilarMoviesResponseType>(
       `/search/${mediaType}?query=${searchText}&page=${page}`,
     );
   },
