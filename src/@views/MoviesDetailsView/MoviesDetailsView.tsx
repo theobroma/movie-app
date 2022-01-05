@@ -40,28 +40,28 @@ const MoviesDetailsView: React.FC = () => {
 
   const trailer = null ?? trailers?.results[0]?.key;
   // const { id, mediaType } = useParams<ParamTypes>();
-  const { id, mediaType } = useParams<any>();
+  const { mediaId, mediaType } = useParams<any>();
 
   let isFavorite = false;
-  if (id && mediaType) {
+  if (mediaId && mediaType) {
     const index = favouriteMedia.findIndex(
-      (element) => element.id === id && element.mediaType === mediaType,
+      (element) => element.id === mediaId && element.mediaType === mediaType,
     );
     isFavorite = index !== -1;
   }
 
   useEffect(() => {
-    if (id) {
-      dispatch(getMovieDetailsTC({ movieID: id, mediaType }));
+    if (mediaId) {
+      dispatch(getMovieDetailsTC({ movieID: mediaId, mediaType }));
     }
-  }, [dispatch, id, mediaType]);
+  }, [dispatch, mediaId, mediaType]);
 
   useEffect(() => {
     // TODO: check if movie exist. for example /details/movie/96677
-    if (id) {
-      dispatch(setMovieVisitedAC({ id, mediaType }));
+    if (mediaId) {
+      dispatch(setMovieVisitedAC({ mediaId, mediaType }));
     }
-  }, [dispatch, id, mediaType]);
+  }, [dispatch, mediaId, mediaType]);
 
   // TODO: problem if change router from one movie to another
   // useNonInitialEffect(() => {
@@ -73,7 +73,7 @@ const MoviesDetailsView: React.FC = () => {
   // }, [enqueueSnackbar, isFavorite]);
 
   const handleOnFavourite = () => {
-    dispatch(toggleMovieFavoriteAC({ id, mediaType }));
+    dispatch(toggleMovieFavoriteAC({ id: mediaId, mediaType }));
     if (!isFavorite) {
       enqueueSnackbar('Added to favourites', { variant: 'success' });
     } else {
@@ -100,7 +100,7 @@ const MoviesDetailsView: React.FC = () => {
           <Box py={3}>
             {!isLoading ? (
               <MovieInfo
-                id={id}
+                id={mediaId}
                 movie={movieDetailsData}
                 trailer={trailer}
                 credits={credits}
@@ -114,7 +114,9 @@ const MoviesDetailsView: React.FC = () => {
         </Container>
       </Box>
       {/* Similar */}
-      <SimilarMedia />
+      {mediaId && mediaType && (
+        <SimilarMedia mediaId={mediaId} mediaType={mediaType} />
+      )}
       <Container maxWidth="lg">
         <Box py={4}>
           {!isLoading && (

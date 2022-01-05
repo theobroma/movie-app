@@ -65,7 +65,7 @@ export const AppContainer = () => {
               {/* index means default */}
               <Route index element={<HomeView />} />
               <Route
-                path="/details/:mediaType/:id"
+                path="/details/:mediaType/:mediaId"
                 element={<MoviesDetailsView />}
               />
               {/* Nested favourites */}
