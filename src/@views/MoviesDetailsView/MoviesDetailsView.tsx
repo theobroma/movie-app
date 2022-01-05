@@ -18,6 +18,7 @@ import {
   toggleMovieFavoriteAC,
 } from '../../@store/user/slice';
 import { useStyles } from './MoviesDetailsView.styles';
+import SimilarMedia from '../../@features/SimilarMedia';
 
 // interface ParamTypes {
 //   id?: string | undefined;
@@ -113,6 +114,7 @@ const MoviesDetailsView: React.FC = () => {
         </Container>
       </Box>
       {/* Similar */}
+      <SimilarMedia />
       <Container maxWidth="lg">
         <Box py={4}>
           {!isLoading && (

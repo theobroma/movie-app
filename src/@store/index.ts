@@ -1,4 +1,8 @@
 import { combineReducers } from 'redux';
+import {
+  SimilarInitialStateType,
+  similarReducer,
+} from '../@features/SimilarMedia/store/slice';
 import { DetailsInitialStateType, detailsReducer } from './details/slice';
 import { EntitiesInitialStateType, entitiesReducer } from './entities/slice';
 import { MoviesInitialStateType, moviesReducer } from './movies/slice';
@@ -12,6 +16,7 @@ export interface RootState {
   entities: EntitiesInitialStateType;
   movies: MoviesInitialStateType;
   search: SearchInitialStateType;
+  similar: SimilarInitialStateType;
   trending: TrendingInitialStateType;
   ui: UIInitialStateType;
   user: UserInitialStateType;
@@ -24,6 +29,7 @@ export const rootReducer = () =>
     entities: entitiesReducer,
     movies: moviesReducer,
     search: searchReducer,
+    similar: similarReducer,
     trending: trendingReducer,
     ui: uiReducer,
     user: userReducer,
