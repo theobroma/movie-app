@@ -26,7 +26,6 @@ export const getSimilarMediaTC = createAsyncThunk<
     thunkAPI,
   ) => {
     try {
-      thunkAPI.dispatch(resetStateAC());
       await waitForMe(500);
       const res = await moviesApi.getSimilar(param.mediaId, param.mediaType);
 
@@ -58,10 +57,17 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getSimilarMediaTC.pending, (state) => {
       state.isFetching = true;
+      //   clear data
+      state.data = {} as SimilarMediaAllResponseType;
+      state.isSuccess = false;
+      state.isError = false;
+      state.errorMessage = '';
     });
     builder.addCase(getSimilarMediaTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.data = action.payload;
+        // simulate empty results
+        // state.data.results = [];
       }
       state.isFetching = false;
       state.isSuccess = true;

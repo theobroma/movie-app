@@ -1,14 +1,11 @@
-import { Box, Container, Grid, Typography } from '@material-ui/core';
-import { nanoid } from '@reduxjs/toolkit';
+import { Box, Container } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import MovieInfo from '../../@components/MovieInfo';
-import SingleContent from '../../@components/SingleContent';
 import MovieInfoSkeleton from '../../@components/MovieInfo/MovieInfoSkeleton';
-import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
-import EmptyBlock from '../../@components/UI/EmptyBlock';
+import SimilarMedia from '../../@features/SimilarMedia';
 // import { useNonInitialEffect } from '../../@hooks/useNonInitialEffect';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMovieDetailsTC } from '../../@store/details/slice';
@@ -18,7 +15,6 @@ import {
   toggleMovieFavoriteAC,
 } from '../../@store/user/slice';
 import { useStyles } from './MoviesDetailsView.styles';
-import SimilarMedia from '../../@features/SimilarMedia';
 
 // interface ParamTypes {
 //   id?: string | undefined;
@@ -34,7 +30,6 @@ const MoviesDetailsView: React.FC = () => {
     isLoading,
     trailers,
     credits,
-    similar,
   } = useSelector(movieDetailsSelector);
   const favouriteMedia = useSelector(favouriteMediaSelector);
 
@@ -81,9 +76,6 @@ const MoviesDetailsView: React.FC = () => {
     }
   };
 
-  const MOVIES_PER_LIST = 6;
-  const similarMovies = similar.results.slice(0, MOVIES_PER_LIST);
-
   return (
     <div>
       <Box style={{ position: 'relative' }}>
@@ -117,37 +109,6 @@ const MoviesDetailsView: React.FC = () => {
       {mediaId && mediaType && (
         <SimilarMedia mediaId={mediaId} mediaType={mediaType} />
       )}
-      <Container maxWidth="lg">
-        <Box py={4}>
-          {!isLoading && (
-            <>
-              <Typography component="h3" variant="h4">
-                Similar movies
-              </Typography>
-              <Grid container spacing={3} style={{ padding: 3 }}>
-                {similarMovies.length > 0 ? (
-                  similarMovies?.map((movie: any) => (
-                    <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                      {isLoading ? (
-                        <SingleContentSkeleton />
-                      ) : (
-                        <SingleContent
-                          movie={movie}
-                          parentMediaType={mediaType}
-                        />
-                      )}
-                    </Grid>
-                  ))
-                ) : (
-                  <Grid item xs={12}>
-                    <EmptyBlock>There is no data</EmptyBlock>
-                  </Grid>
-                )}
-              </Grid>
-            </>
-          )}
-        </Box>
-      </Container>
     </div>
   );
 };

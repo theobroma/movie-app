@@ -14,9 +14,6 @@ const detailsInitialState = {
   },
   credits: {},
   isLoading: false,
-  similar: {
-    results: [],
-  },
 } as any;
 
 export type DetailsInitialStateType = typeof detailsInitialState;
@@ -37,24 +34,22 @@ export const getMovieDetailsTC = createAsyncThunk<any, any, any>(
       );
       const res2 = await moviesApi.getTrailers(param.movieID, param.mediaType);
       const res3 = await moviesApi.getCredits(param.movieID, param.mediaType);
-      const res4 = await moviesApi.getSimilar(param.movieID, param.mediaType);
 
       // ZOD validation
-      try {
-        SimilarMediaAllResponseSchema.parse(res4.data);
-        // SimilarMoviesResponseSchema.parse(res4.data);
-        // SimilarTVResponseSchema.parse(res4.data);
-      } catch (error) {
-        // TODO:
-        // Log & alert error <-- very important!
-        console.log(error);
-      }
+      // try {
+      //   SimilarMediaAllResponseSchema.parse(res4.data);
+      //   // SimilarMoviesResponseSchema.parse(res4.data);
+      //   // SimilarTVResponseSchema.parse(res4.data);
+      // } catch (error) {
+      //   // TODO:
+      //   // Log & alert error <-- very important!
+      //   console.log(error);
+      // }
 
       return {
         data: res1.data,
         trailers: res2.data,
         credits: res3.data,
-        similar: res4.data,
       };
     } catch (err: any) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
