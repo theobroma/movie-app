@@ -1,11 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  MEDIA_TYPE,
-  MovieEntityType,
-  MovieType,
-  TVEntityType,
-} from '../../@types';
+import { MEDIA_TYPE, MovieEntityType, TVEntityType } from '../../@types';
 import { useStyles, StyledBadge } from './SingleContent.styles';
 
 export const img_300 = 'https://image.tmdb.org/t/p/w300';

@@ -1,6 +1,4 @@
 export * from './General';
-export * from './Media';
-export * from './i.route';
 export * from './Routes';
 export * from './i.media-shared';
 export * from './i.tv';
