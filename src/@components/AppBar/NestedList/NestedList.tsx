@@ -13,7 +13,7 @@ import TvIcon from '@material-ui/icons/Tv';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import React from 'react';
 import { ROUTES } from '../../../@types';
-import ListItemLink from '../SimpleDrawer/ListItemLink';
+import ListItemLink from './ListItemLink';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

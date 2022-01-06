@@ -10,7 +10,6 @@ import {
   Routes,
   useLocation,
   useNavigate,
-  Outlet,
 } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
 import LoadingPage from '../@components/UI/LoadingPage';
