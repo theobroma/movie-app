@@ -1,3 +1,4 @@
+// https://github.com/thivi/use-non-initial-effect-hook
 import { useEffect, EffectCallback, DependencyList, useRef } from 'react';
 
 /**
@@ -20,6 +21,7 @@ export const useNonInitialEffect = (
   const initialRender = useRef(true);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let effectReturns: any = () => {
       // do nothing.
     };
@@ -34,5 +36,6 @@ export const useNonInitialEffect = (
       return effectReturns;
     }
     return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 };

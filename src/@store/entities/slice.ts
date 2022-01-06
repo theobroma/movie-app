@@ -16,31 +16,29 @@ const entitiesInitialState = {
 
 export type EntitiesInitialStateType = typeof entitiesInitialState;
 
-export const getMediaDetailsTC = createAsyncThunk<any, any, any>(
-  'entities/getMovieDetails',
-  async (
-    param: { movieID: string | undefined; mediaType: string | undefined },
-    thunkAPI,
-  ) => {
-    try {
-      // thunkAPI.dispatch(resetStateAC());
-      // thunkAPI.dispatch(setLoadingAC(true));
-      await waitForMe(300);
-      const res1 = await moviesApi.getMovieDetails(
-        param.movieID,
-        param.mediaType,
-      );
-      return {
-        data: res1.data,
-        mediaType: param.mediaType,
-      };
-    } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.response.data);
-    } finally {
-      // thunkAPI.dispatch(setLoadingAC(false));
-    }
-  },
-);
+export const getMediaDetailsTC = createAsyncThunk<
+  any,
+  { mediaId: string; mediaType: string },
+  any
+>('entities/getMovieDetails', async (param, thunkAPI) => {
+  try {
+    // thunkAPI.dispatch(resetStateAC());
+    // thunkAPI.dispatch(setLoadingAC(true));
+    await waitForMe(300);
+    const res1 = await moviesApi.getMediaDetails(
+      param.mediaId,
+      param.mediaType,
+    );
+    return {
+      data: res1.data,
+      mediaType: param.mediaType,
+    };
+  } catch (err: any) {
+    return thunkAPI.rejectWithValue(err.response.data);
+  } finally {
+    // thunkAPI.dispatch(setLoadingAC(false));
+  }
+});
 
 export const slice = createSlice({
   name: 'entities',

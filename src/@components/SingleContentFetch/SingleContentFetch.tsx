@@ -22,7 +22,9 @@ const SingleContentFetch: React.FC<Props> = ({ id, mediaType }) => {
   // console.log(entities[ids[0]]);
 
   useEffect(() => {
-    dispatch(getMediaDetailsTC({ movieID: id, mediaType }));
+    if (id && mediaType) {
+      dispatch(getMediaDetailsTC({ mediaId: id, mediaType }));
+    }
   }, [dispatch, id, mediaType]);
 
   let movie = {} as any;

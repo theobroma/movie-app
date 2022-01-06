@@ -1,4 +1,5 @@
 import {
+  CreditsResponseType,
   MediaAllResponseType,
   MoviesResponseType,
   SimilarMoviesResponseType,
@@ -22,8 +23,8 @@ export const moviesApi = {
     return instance.get<TVResponseType>(`/trending/tv/week?page=${page}`);
   },
   // DETAILS
-  getMovieDetails(movieID: string | undefined, mediaType: string | undefined) {
-    return instance.get<any>(`/${mediaType}/${movieID}`);
+  getMediaDetails(mediaId: string, mediaType: string) {
+    return instance.get<any>(`/${mediaType}/${mediaId}`);
   },
   getFullMovieDetails(
     movieID: string | undefined,
@@ -33,11 +34,11 @@ export const moviesApi = {
       `/${mediaType}/${movieID}&append_to_response=videos,credits`,
     );
   },
-  getTrailers(id: string | undefined, mediaType: string | undefined) {
-    return instance.get<any>(`${mediaType}/${id}/videos`);
+  getTrailers(mediaId: string, mediaType: string) {
+    return instance.get<any>(`${mediaType}/${mediaId}/videos`);
   },
-  getCredits(id: string | undefined, mediaType: string | undefined) {
-    return instance.get<any>(`${mediaType}/${id}/credits`);
+  getCredits(mediaId: string, mediaType: string) {
+    return instance.get<CreditsResponseType>(`${mediaType}/${mediaId}/credits`);
   },
   getSimilar(id: string | undefined, mediaType: string | undefined) {
     return instance.get<SimilarMoviesResponseType>(

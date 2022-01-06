@@ -9,7 +9,7 @@ import MovieInfoSkeleton from '../../@components/MovieInfo/MovieInfoSkeleton';
 import SimilarMedia from '../../@features/SimilarMedia';
 // import { useNonInitialEffect } from '../../@hooks/useNonInitialEffect';
 import { movieDetailsSelector } from '../../@store/details/selectors';
-import { getMovieDetailsTC } from '../../@store/details/slice';
+import { getMediaDetailsTC } from '../../@store/details/slice';
 import { favouriteMediaSelector } from '../../@store/user/selectors';
 import {
   setMovieVisitedAC,
@@ -46,8 +46,8 @@ const MoviesDetailsView: React.FC = () => {
   }
 
   useEffect(() => {
-    if (mediaId) {
-      dispatch(getMovieDetailsTC({ movieID: mediaId, mediaType }));
+    if (mediaId && mediaType) {
+      dispatch(getMediaDetailsTC({ mediaId, mediaType }));
     }
   }, [dispatch, mediaId, mediaType]);
 
