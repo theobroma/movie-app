@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
-import { CreditsResponseSchema } from '../../@types';
+import { CreditsResponseSchema, VideosResponseSchema } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const detailsInitialState = {
@@ -32,6 +32,7 @@ export const getMediaDetailsTC = createAsyncThunk<
 
     // ZOD validation
     try {
+      VideosResponseSchema.parse(res2.data);
       CreditsResponseSchema.parse(res3.data);
     } catch (error) {
       // Log & alert error <-- very important!

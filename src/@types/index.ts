@@ -8,3 +8,4 @@ export * from './z.credits';
 export * from './z.media';
 export * from './z.movie';
 export * from './z.tv';
+export * from './z.videos';

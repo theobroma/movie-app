@@ -4,6 +4,7 @@ import {
   MoviesResponseType,
   SimilarMoviesResponseType,
   TVResponseType,
+  VideosResponseType,
 } from '../@types';
 import { instance } from './api';
 
@@ -35,7 +36,7 @@ export const moviesApi = {
     );
   },
   getTrailers(mediaId: string, mediaType: string) {
-    return instance.get<any>(`${mediaType}/${mediaId}/videos`);
+    return instance.get<VideosResponseType>(`${mediaType}/${mediaId}/videos`);
   },
   getCredits(mediaId: string, mediaType: string) {
     return instance.get<CreditsResponseType>(`${mediaType}/${mediaId}/credits`);
