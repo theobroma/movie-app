@@ -1,10 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
-import {
-  SimilarMediaAllResponseSchema,
-  SimilarMoviesResponseSchema,
-  SimilarTVResponseSchema,
-} from '../../@types';
+import { CreditsResponseSchema } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const detailsInitialState = {
@@ -22,7 +18,7 @@ export const getMediaDetailsTC = createAsyncThunk<
   any,
   { mediaId: string; mediaType: string },
   any
->('details/getMovieDetails', async (param, thunkAPI) => {
+>('details/getMediaDetails', async (param, thunkAPI) => {
   try {
     thunkAPI.dispatch(resetStateAC());
     thunkAPI.dispatch(setLoadingAC(true));
@@ -35,15 +31,12 @@ export const getMediaDetailsTC = createAsyncThunk<
     const res3 = await moviesApi.getCredits(param.mediaId, param.mediaType);
 
     // ZOD validation
-    // try {
-    //   SimilarMediaAllResponseSchema.parse(res4.data);
-    //   // SimilarMoviesResponseSchema.parse(res4.data);
-    //   // SimilarTVResponseSchema.parse(res4.data);
-    // } catch (error) {
-    //   // TODO:
-    //   // Log & alert error <-- very important!
-    //   console.log(error);
-    // }
+    try {
+      CreditsResponseSchema.parse(res3.data);
+    } catch (error) {
+      // Log & alert error <-- very important!
+      console.log(error);
+    }
 
     return {
       data: res1.data,
@@ -51,8 +44,6 @@ export const getMediaDetailsTC = createAsyncThunk<
       credits: res3.data,
     };
   } catch (err: any) {
-    // Use `err.response.data` as `action.payload` for a `rejected` action,
-    // by explicitly returning it using the `rejectWithValue()` utility
     return thunkAPI.rejectWithValue(err.response.data);
   } finally {
     thunkAPI.dispatch(setLoadingAC(false));
@@ -77,7 +68,6 @@ export const slice = createSlice({
         state.data = action.payload.data;
         state.trailers = action.payload.trailers;
         state.credits = action.payload.credits;
-        state.similar = action.payload.similar;
       }
       //   state.isLoading = false; !rejected with error!
     });

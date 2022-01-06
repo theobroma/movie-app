@@ -8,7 +8,8 @@ const CastPersonSchema = z.object({
   name: z.string(),
   original_name: z.string(),
   popularity: z.number(),
-  profile_path: z.string(),
+  // profile_path: z.string(),
+  profile_path: z.string().nullable(),
   cast_id: z.number(), // none in crew
   character: z.string(), // none in crew
   credit_id: z.string(),
@@ -23,7 +24,8 @@ const CrewPersonSchema = z.object({
   name: z.string(),
   original_name: z.string(),
   popularity: z.number(),
-  profile_path: z.string(),
+  // profile_path: z.string(),
+  profile_path: z.string().nullable(),
   credit_id: z.string(),
   department: z.string(), // none in cast
   job: z.string(), // none in cast
