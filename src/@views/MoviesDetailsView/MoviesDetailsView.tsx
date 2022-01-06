@@ -1,3 +1,4 @@
+// https://stackoverflow.com/questions/69992370/why-react-router-v6-useparams-returns-object-with-properties-possibly-undefined
 import { Box, Container } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
@@ -16,10 +17,10 @@ import {
 } from '../../@store/user/slice';
 import { useStyles } from './MoviesDetailsView.styles';
 
-// interface ParamTypes {
-//   id?: string | undefined;
-//   mediaType?: string | undefined;
-// }
+interface MyParams {
+  mediaId: string;
+  mediaType: string;
+}
 
 const MoviesDetailsView: React.FC = () => {
   const classes = useStyles();
@@ -34,8 +35,7 @@ const MoviesDetailsView: React.FC = () => {
   const favouriteMedia = useSelector(favouriteMediaSelector);
 
   const trailer = null ?? trailers?.results[0]?.key;
-  // const { id, mediaType } = useParams<ParamTypes>();
-  const { mediaId, mediaType } = useParams<any>();
+  const { mediaId, mediaType } = useParams<keyof MyParams>() as MyParams;
 
   let isFavorite = false;
   if (mediaId && mediaType) {
@@ -54,7 +54,7 @@ const MoviesDetailsView: React.FC = () => {
   useEffect(() => {
     // TODO: check if movie exist. for example /details/movie/96677
     if (mediaId) {
-      dispatch(setMovieVisitedAC({ mediaId, mediaType }));
+      dispatch(setMovieVisitedAC({ id: mediaId, mediaType }));
     }
   }, [dispatch, mediaId, mediaType]);
 

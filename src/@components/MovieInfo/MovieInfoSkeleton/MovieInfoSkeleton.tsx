@@ -62,7 +62,7 @@ const MovieInfoSkeleton: React.FC = () => {
           className={classes.skeleton}
         />
         <div>
-          <Rating value={4} classes={{ iconEmpty: classes.icon }} readOnly />
+          <Rating value={0} classes={{ iconEmpty: classes.icon }} readOnly />
         </div>
         {subtitle(50)}
         {text(4)}
