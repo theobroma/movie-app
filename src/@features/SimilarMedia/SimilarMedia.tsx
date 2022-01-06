@@ -39,7 +39,7 @@ const SimilarMedia: React.FC<Props> = ({ mediaId, mediaType }) => {
     <Container maxWidth="lg">
       <Box py={4}>
         <Typography component="h3" variant="h4">
-          Similar movies
+          Similar
         </Typography>
         <Grid container spacing={3} style={{ padding: 3 }}>
           {/* results */}

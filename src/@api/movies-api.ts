@@ -9,13 +9,17 @@ import { instance } from './api';
 export const moviesApi = {
   // TRENDING
   getTrendingAll(page: number) {
-    return instance.get<MediaAllResponseType>(`/trending/all/day?page=${page}`);
+    return instance.get<MediaAllResponseType>(
+      `/trending/all/week?page=${page}`,
+    );
   },
   getTrendingMovies(page: number) {
-    return instance.get<MoviesResponseType>(`/trending/movie/day?page=${page}`);
+    return instance.get<MoviesResponseType>(
+      `/trending/movie/week?page=${page}`,
+    );
   },
   getTrendingTV(page: number) {
-    return instance.get<TVResponseType>(`/trending/tv/day?page=${page}`);
+    return instance.get<TVResponseType>(`/trending/tv/week?page=${page}`);
   },
   // DETAILS
   getMovieDetails(movieID: string | undefined, mediaType: string | undefined) {

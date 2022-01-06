@@ -17,6 +17,8 @@ const SingleContent: React.FC<Props> = ({
   movie: {
     id,
     title = '',
+    name = '',
+    original_title = '',
     original_name = '',
     poster_path,
     release_date = '',
@@ -29,7 +31,8 @@ const SingleContent: React.FC<Props> = ({
   const classes = useStyles();
   const mediaType = media_type || parentMediaType;
   // DIFFERENT FIELDS FOR MOVIE AND TV
-  const mediaTitle = title || original_name || 'title';
+  const mediaTitle =
+    title || name || original_title || original_name || 'title';
   const mediaReleaseDate = release_date || first_air_date;
   // 2 digits after comma
   const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;

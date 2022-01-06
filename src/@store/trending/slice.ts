@@ -37,7 +37,6 @@ export const getTrendingAllTC = createAsyncThunk<any, any, any>(
         // MoviesResponseSchema.parse(res.data);
         // TVResponseSchema.parse(res.data);
       } catch (error) {
-        // TODO:
         // Log & alert error <-- very important!
         console.log(error);
       }

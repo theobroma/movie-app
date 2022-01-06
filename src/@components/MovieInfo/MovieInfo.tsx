@@ -29,6 +29,9 @@ const MovieInfo: React.FC<Props> = ({
     budget,
     first_air_date,
     genres,
+    title,
+    name,
+    original_title,
     original_name,
     overview,
     poster_path,
@@ -36,12 +39,12 @@ const MovieInfo: React.FC<Props> = ({
     release_date,
     runtime,
     tagline,
-    title,
     vote_average,
   } = movie;
 
   // DIFFERENT FIELDS FOR MOVIE AND TV
-  const mediaTitle = title || original_name || 'title';
+  const mediaTitle =
+    title || name || original_title || original_name || 'title';
   const mediaReleaseDate = release_date || first_air_date;
   // 2 digits after comma
   const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;

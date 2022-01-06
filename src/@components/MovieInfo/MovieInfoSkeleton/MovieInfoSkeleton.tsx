@@ -69,6 +69,9 @@ const MovieInfoSkeleton: React.FC = () => {
         <br />
         {subtitle(70)}
         {text(3)}
+        <br />
+        {subtitle(50)}
+        {text(2)}
       </Grid>
     </Grid>
   );
