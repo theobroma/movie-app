@@ -11,6 +11,10 @@ export const useStyles = makeStyles(() =>
       borderRadius: 10,
       boxShadow: '0px 3px 20px #0000003b',
     },
+    titleDate: {
+      opacity: 0.8,
+      fontWeight: 400,
+    },
     releaseDate: {
       fontSize: '11pt',
       color: '#dadde2',
@@ -36,14 +40,21 @@ export const useStyles = makeStyles(() =>
     },
     subtitle: {
       marginBottom: 8,
-      fontSize: '13pt',
+      fontSize: '1.3em',
     },
     crewList: {
       listStyle: 'none',
       padding: 0,
+      marginTop: '20px',
     },
     trailer: {
       color: 'white',
+    },
+    tagline: {
+      fontSize: '1.1em',
+      fontWeight: 400,
+      fontStyle: 'italic',
+      opacity: 0.7,
     },
   }),
 );

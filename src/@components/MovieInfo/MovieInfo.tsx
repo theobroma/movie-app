@@ -1,9 +1,12 @@
+// almost empty http://localhost:3000/details/tv/29917
+// https://www.themoviedb.org/tv/29917-thirty-minute-theatre
 import React from 'react';
 import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Rating from '@material-ui/lab/Rating';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import { nanoid } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
 import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
 
@@ -57,7 +60,7 @@ const MovieInfo: React.FC<Props> = ({
 
   const CrewBlock = crew?.length > 0 && (
     <>
-      <h3 className={classes.subtitle}>Crew</h3>
+      {/* <h3 className={classes.subtitle}>Crew</h3> */}
       <Grid container spacing={3} component="ul" className={classes.crewList}>
         {crew.slice(0, 4).map((person: any) => (
           <Grid
@@ -71,7 +74,7 @@ const MovieInfo: React.FC<Props> = ({
             <Typography variant="body2" style={{ fontWeight: 'bold' }}>
               {person.name}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body2" style={{ fontSize: '0.9em' }}>
               {person.department}, {person.job}
             </Typography>
           </Grid>
@@ -94,13 +97,17 @@ const MovieInfo: React.FC<Props> = ({
       </Grid>
       {/* info */}
       <Grid item md={8} style={{ color: 'white' }}>
+        <Typography variant="h4" style={{ fontWeight: 'bold' }} component="h1">
+          {mediaTitle}{' '}
+          <span className={classes.titleDate}>
+            ({dayjs(mediaReleaseDate).format('YYYY')})
+          </span>
+        </Typography>
         <div className={classes.releaseDate}>
-          {mediaReleaseDate && Formatter.formatDate(mediaReleaseDate)}
+          {/* {mediaReleaseDate && Formatter.formatDate(mediaReleaseDate)} */}
+          {dayjs(mediaReleaseDate).format('DD/MM/YYYY')}
           {productionCountries && ` (${productionCountries})`}
         </div>
-        <Typography variant="h4" style={{ fontWeight: 'bold' }} component="h1">
-          {mediaTitle}
-        </Typography>
         <ul className={classes.genreList}>
           {genres?.map((genre: any) => (
             <li className={classes.genre} key={genre.id}>
@@ -142,7 +149,9 @@ const MovieInfo: React.FC<Props> = ({
         {tagline && (
           <>
             <h3 className={classes.subtitle}>Legend</h3>
-            <Typography variant="body1">{tagline}</Typography>
+            <Typography variant="body1" className={classes.tagline}>
+              {tagline}
+            </Typography>
           </>
         )}
         {overview && (

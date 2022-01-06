@@ -22,6 +22,7 @@
         "@welldone-software/why-did-you-render": "^6.2.3",
         "axios": "^0.24.0",
         "clsx": "^1.1.1",
+        "dayjs": "^1.10.7",
         "node-sass": "^6.x",
         "normalizr": "^3.6.1",
         "notistack": "^1.x",
