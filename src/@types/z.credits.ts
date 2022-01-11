@@ -10,7 +10,7 @@ const CastPersonSchema = z.object({
   popularity: z.number(),
   // profile_path: z.string(),
   profile_path: z.string().nullable(),
-  cast_id: z.number(), // none in crew
+  cast_id: z.optional(z.number()), // none in crew
   character: z.string(), // none in crew
   credit_id: z.string(),
   order: z.number(), // none in crew

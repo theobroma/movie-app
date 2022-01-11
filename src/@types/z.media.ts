@@ -1,5 +1,6 @@
 // MIXED Movies and TV responses
 import * as z from 'zod';
+// TRENDING
 import { MovieEntitySchema, NoMediaTypeMovieEntitySchema } from './z.movie';
 import { NoMediaTypeTVEntitySchema, TVEntitySchema } from './z.tv';
 

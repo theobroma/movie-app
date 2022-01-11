@@ -1,5 +1,6 @@
 import {
   CreditsResponseType,
+  DetailsMediaAllType,
   MediaAllResponseType,
   MoviesResponseType,
   SimilarMoviesResponseType,
@@ -25,7 +26,7 @@ export const moviesApi = {
   },
   // DETAILS
   getMediaDetails(mediaId: string, mediaType: string) {
-    return instance.get<any>(`/${mediaType}/${mediaId}`);
+    return instance.get<DetailsMediaAllType>(`/${mediaType}/${mediaId}`);
   },
   getFullMovieDetails(
     movieID: string | undefined,

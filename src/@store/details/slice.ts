@@ -1,6 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
-import { CreditsResponseSchema, VideosResponseSchema } from '../../@types';
+import {
+  CreditsResponseSchema,
+  DetailsMediaAllSchema,
+  // DetailsMovieSchema,
+  // DetailsTVSchema,
+  VideosResponseSchema,
+} from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const detailsInitialState = {
@@ -32,6 +38,10 @@ export const getMediaDetailsTC = createAsyncThunk<
 
     // ZOD validation
     try {
+      DetailsMediaAllSchema.parse(res1.data);
+      // DetailsMovieSchema.parse(res1.data);
+      // DetailsTVSchema.parse(res1.data);
+      // ========================================
       VideosResponseSchema.parse(res2.data);
       CreditsResponseSchema.parse(res3.data);
     } catch (error) {
