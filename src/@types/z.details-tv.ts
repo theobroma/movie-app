@@ -1,4 +1,10 @@
 import * as z from 'zod';
+import {
+  GenresSchema,
+  ProductionCompaniesSchema,
+  ProductionCountriesSchema,
+  SpokenLanguagesSchema,
+} from './z.details-shared';
 
 export const DetailsTVSchema = z.object({
   adult: z.boolean(),
@@ -9,12 +15,12 @@ export const DetailsTVSchema = z.object({
       credit_id: z.string(),
       name: z.string(),
       gender: z.number(),
-      profile_path: z.string(),
+      profile_path: z.string().nullable(),
     }),
   ),
   episode_run_time: z.array(z.number()),
   first_air_date: z.string(),
-  genres: z.array(z.object({ id: z.number(), name: z.string() })),
+  genres: GenresSchema,
   homepage: z.string(),
   id: z.number(),
   in_production: z.boolean(),
@@ -28,7 +34,7 @@ export const DetailsTVSchema = z.object({
     overview: z.string(),
     production_code: z.string(),
     season_number: z.number(),
-    still_path: z.string(),
+    still_path: z.string().nullable(),
     vote_average: z.number(),
     vote_count: z.number(),
   }),
@@ -42,7 +48,7 @@ export const DetailsTVSchema = z.object({
       overview: z.string(),
       production_code: z.string(),
       season_number: z.number(),
-      still_path: z.null(),
+      still_path: z.null().nullable(),
       vote_average: z.number(),
       vote_count: z.number(),
     })
@@ -63,17 +69,8 @@ export const DetailsTVSchema = z.object({
   overview: z.string(),
   popularity: z.number(),
   poster_path: z.string(),
-  production_companies: z.array(
-    z.object({
-      id: z.number(),
-      logo_path: z.string().nullable(),
-      name: z.string(),
-      origin_country: z.string(),
-    }),
-  ),
-  production_countries: z.array(
-    z.object({ iso_3166_1: z.string(), name: z.string() }),
-  ),
+  production_companies: ProductionCompaniesSchema,
+  production_countries: ProductionCountriesSchema,
   seasons: z.array(
     z.object({
       air_date: z.string(),
@@ -85,13 +82,7 @@ export const DetailsTVSchema = z.object({
       season_number: z.number(),
     }),
   ),
-  spoken_languages: z.array(
-    z.object({
-      english_name: z.string(),
-      iso_639_1: z.string(),
-      name: z.string(),
-    }),
-  ),
+  spoken_languages: SpokenLanguagesSchema,
   status: z.string(),
   tagline: z.string(),
   type: z.string(),
