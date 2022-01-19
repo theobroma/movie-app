@@ -1,25 +1,29 @@
 // !reducer just for normalizr sandbox
+// https://redux-toolkit.js.org/usage/usage-guide#managing-normalized-data
+// https://habr.com/ru/post/332628/?_ga=2.71738581.778609750.1642412344-1976744204.1615316867
+// https://github.com/paularmstrong/normalizr/blob/master/docs/api.md#normalizedata-schema
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { normalize, schema } from 'normalizr';
 import { moviesApi } from '../../@api/movies-api';
-import { MoviesResponseType } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const moviesInitialState = {
-  // data: {
-  //   page: 1,
-  //   results: Array(20).fill('none'),
-  //   total_pages: 10,
-  //   total_results: 0,
-  // } as MoviesResponseType,
-  // isLoading: true,
   ids: [],
   entities: {},
 } as any;
 
 export type MoviesInitialStateType = typeof moviesInitialState;
 
-const movieEntity = new schema.Entity('movies');
+const movieSchema = new schema.Entity('movie');
+const tvSchema = new schema.Entity('tv');
+
+const mediaAllSchema = new schema.Array(
+  {
+    movie: movieSchema,
+    tv: tvSchema,
+  },
+  (input, parent, key) => `${input.media_type}`,
+);
 
 export const getTrendingMoviesTC = createAsyncThunk<any, any, any>(
   'movies/getTrendingMovies',
@@ -27,10 +31,12 @@ export const getTrendingMoviesTC = createAsyncThunk<any, any, any>(
     try {
       thunkAPI.dispatch(setLoadingAC(true));
       await waitForMe(500);
-      const res = await moviesApi.getTrendingMovies(param.page);
+      const res = await moviesApi.getTrendingAll(param.page);
+      // const res = await moviesApi.getTrendingMovies(param.page);
       // Normalize the data before passing it to our reducer
-      // const normalized = normalize(res.data, [movieEntity]);
-      // console.log(normalized);
+      const originalData = res.data.results;
+      const normalized = normalize(originalData, mediaAllSchema);
+      console.log(normalized);
       // return normalized.entities;
       return { data: res.data };
     } catch (err: any) {

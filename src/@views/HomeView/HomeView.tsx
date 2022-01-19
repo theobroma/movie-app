@@ -8,6 +8,7 @@ import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
 import { trendingSelector } from '../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
+import { getTrendingMoviesTC } from '../../@store/movies/slice';
 
 const HomeView: React.FC = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,8 @@ const HomeView: React.FC = () => {
   useEffect(() => {
     const pageValue = queryPage || 1;
     dispatch(getTrendingAllTC({ page: pageValue }));
+    // TEST
+    dispatch(getTrendingMoviesTC({ page: 1 }));
   }, [dispatch, queryPage]);
 
   return (
