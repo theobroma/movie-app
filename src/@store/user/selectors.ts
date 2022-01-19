@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '..';
 import { MEDIA_TYPE } from '../../@types';
+import { RootState } from '../configureStore';
 
 export const visitedMediaSelector = (state: RootState) => {
   return state.user.visitedMediaIds;

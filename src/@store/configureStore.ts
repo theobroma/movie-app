@@ -1,26 +1,26 @@
 import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
-import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
+  REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { similarSlice } from '../@features/SimilarMedia/store/slice';
-import { userSlice } from './user/slice';
-import { trendingSlice } from './trending/slice';
-import { searchSlice } from './search/slice';
-import { entitiesSlice } from './entities/slice';
+import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
 import { detailsSlice } from './details/slice';
-import { uiSlice } from './ui/slice';
+import { entitiesSlice } from './entities/slice';
 import { moviesSlice } from './movies/slice';
-// import { rootReducer } from './index';
+import { searchSlice } from './search/slice';
+import { trendingSlice } from './trending/slice';
+import { uiSlice } from './ui/slice';
+import { userSlice } from './user/slice';
 
 const logger = createLogger({
   collapsed: true,
@@ -48,9 +48,9 @@ const reducers = {
 const combinedReducer = combineReducers<typeof reducers>(reducers);
 
 export const rootReducer: Reducer<RootState> = (state, action) => {
-  //   if (action.type === RESET_STATE_ACTION_TYPE) {
-  //     state = {} as RootState;
-  //   }
+  if (action.type === RESET_STATE_ACTION_TYPE) {
+    state = {} as RootState;
+  }
 
   return combinedReducer(state, action);
 };

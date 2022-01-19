@@ -1,4 +1,4 @@
-import { RootState } from '..';
+import { RootState } from '../configureStore';
 
 export const entitiesSelector = (state: RootState) => {
   return state.entities;
