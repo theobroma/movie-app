@@ -37,7 +37,7 @@ const HomeView: React.FC = () => {
     const pageValue = queryPage || 1;
     dispatch(getTrendingAllTC({ page: pageValue }));
     // TEST
-    dispatch(getTrendingMoviesTC({ page: 1 }));
+    // dispatch(getTrendingMoviesTC({ page: 1 }));
   }, [dispatch, queryPage]);
 
   return (

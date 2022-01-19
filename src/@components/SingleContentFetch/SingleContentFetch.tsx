@@ -10,8 +10,8 @@ import SingleContent from '../SingleContent';
 import SingleContentSkeleton from '../SingleContent/SingleContentSkeleton';
 
 interface Props {
-  id?: string | undefined;
-  mediaType?: string | undefined;
+  id: string;
+  mediaType: string;
 }
 
 const SingleContentFetch: React.FC<Props> = ({ id, mediaType }) => {

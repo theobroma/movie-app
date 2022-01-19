@@ -6,6 +6,7 @@ import pMinDelay from 'p-min-delay';
 import React, { lazy, Suspense } from 'react';
 import {
   BrowserRouter,
+  Outlet,
   Route,
   Routes,
   useLocation,
@@ -20,9 +21,18 @@ const MIN_LAZY_DELAY = 300;
 const HomeView = lazy(() =>
   pMinDelay(import('../@views/HomeView'), MIN_LAZY_DELAY),
 );
+
+const TrendingMoviesView = lazy(() =>
+  pMinDelay(
+    import('../@views/TrendingView/TrendingMoviesView'),
+    MIN_LAZY_DELAY,
+  ),
+);
+
 const MoviesDetailsView = lazy(() =>
   pMinDelay(import('../@views/MoviesDetailsView'), MIN_LAZY_DELAY),
 );
+
 const FavouritesLayout = lazy(() =>
   pMinDelay(
     import('../@views/FavouritesView/FavouritesLayout'),
@@ -41,6 +51,7 @@ const FavouritesTVView = lazy(() =>
     MIN_LAZY_DELAY,
   ),
 );
+
 const VisitedLayout = lazy(() =>
   pMinDelay(import('../@views/VisitedView/VisitedLayout'), MIN_LAZY_DELAY),
 );
@@ -67,6 +78,12 @@ export const AppContainer = () => {
                 path="/details/:mediaType/:mediaId"
                 element={<MoviesDetailsView />}
               />
+              {/* Trending */}
+              <Route path="trending" element={<Outlet />}>
+                <Route path="movies" element={<TrendingMoviesView />} />
+                {/* <Route path="tv" element={<FavouritesTVView />} /> */}
+                {/* <Route index element={<div>Click any tab.</div>} /> */}
+              </Route>
               {/* Nested favourites */}
               <Route path="favourites" element={<FavouritesLayout />}>
                 <Route path="movies" element={<FavouritesMoviesView />} />
