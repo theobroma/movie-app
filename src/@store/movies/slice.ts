@@ -25,7 +25,7 @@ const mediaAllSchema = new schema.Array(
   (input, parent, key) => `${input.media_type}`,
 );
 
-export const getTrendingMoviesTC = createAsyncThunk<any, any, any>(
+export const getTrendingMoviesNormalizedTC = createAsyncThunk<any, any, any>(
   'movies/getTrendingMovies',
   async (param: { page: number }, thunkAPI) => {
     try {
@@ -56,9 +56,9 @@ export const moviesSlice = createSlice({
   name: 'movies',
   initialState: moviesInitialState,
   reducers: {
-    setPageAC(state, action) {
-      state.data.page = action.payload;
-    },
+    // setPageAC(state, action) {
+    //   state.data.page = action.payload;
+    // },
     setLoadingAC(state, action) {
       state.isLoading = action.payload;
     },
@@ -70,18 +70,21 @@ export const moviesSlice = createSlice({
     //   }
     // });
     //  BY HAND
-    builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
-      // reduce the collection by the id property into a shape of { 1: { ...user }}
-      const entitiesbyId = action.payload.data.results.reduce(
-        (byId: any, movie: any) => {
-          byId[movie.id] = movie;
-          return byId;
-        },
-        {},
-      );
-      state.entities = entitiesbyId;
-      state.ids = Object.keys(entitiesbyId);
-    });
+    builder.addCase(
+      getTrendingMoviesNormalizedTC.fulfilled,
+      (state, action) => {
+        // reduce the collection by the id property into a shape of { 1: { ...user }}
+        const entitiesbyId = action.payload.data.results.reduce(
+          (byId: any, movie: any) => {
+            byId[movie.id] = movie;
+            return byId;
+          },
+          {},
+        );
+        state.entities = entitiesbyId;
+        state.ids = Object.keys(entitiesbyId);
+      },
+    );
     // Normalizr
     // builder.addCase(getTrendingMoviesTC.fulfilled, (state, action) => {
     //   state.entities = action.payload.movies;
@@ -91,4 +94,4 @@ export const moviesSlice = createSlice({
 });
 
 export const moviesReducer = moviesSlice.reducer;
-export const { setPageAC, setLoadingAC } = moviesSlice.actions;
+export const { setLoadingAC } = moviesSlice.actions;
