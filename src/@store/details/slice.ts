@@ -61,7 +61,7 @@ export const getMediaDetailsTC = createAsyncThunk<
   }
 });
 
-export const slice = createSlice({
+export const detailsSlice = createSlice({
   name: 'details',
   initialState: detailsInitialState,
   reducers: {
@@ -85,5 +85,5 @@ export const slice = createSlice({
   },
 });
 
-export const detailsReducer = slice.reducer;
-export const { setLoadingAC, resetStateAC } = slice.actions;
+export const detailsReducer = detailsSlice.reducer;
+export const { setLoadingAC, resetStateAC } = detailsSlice.actions;

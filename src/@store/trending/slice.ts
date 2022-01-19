@@ -52,7 +52,7 @@ export const getTrendingAllTC = createAsyncThunk<any, any, any>(
   },
 );
 
-export const slice = createSlice({
+export const trendingSlice = createSlice({
   name: 'trending',
   initialState: trendingInitialState,
   reducers: {
@@ -72,5 +72,5 @@ export const slice = createSlice({
   },
 });
 
-export const trendingReducer = slice.reducer;
-export const { setPageAC, setLoadingAC } = slice.actions;
+export const trendingReducer = trendingSlice.reducer;
+export const { setPageAC, setLoadingAC } = trendingSlice.actions;

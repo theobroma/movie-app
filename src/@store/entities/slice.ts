@@ -40,7 +40,7 @@ export const getMediaDetailsTC = createAsyncThunk<
   }
 });
 
-export const slice = createSlice({
+export const entitiesSlice = createSlice({
   name: 'entities',
   initialState: entitiesInitialState,
   reducers: {
@@ -68,5 +68,5 @@ export const slice = createSlice({
   },
 });
 
-export const entitiesReducer = slice.reducer;
+export const entitiesReducer = entitiesSlice.reducer;
 // export const { setPageAC } = slice.actions;

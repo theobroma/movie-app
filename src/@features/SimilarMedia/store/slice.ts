@@ -48,7 +48,7 @@ export const getSimilarMediaTC = createAsyncThunk<
 
 export type SimilarInitialStateType = typeof similarInitialState;
 
-export const slice = createSlice({
+export const similarSlice = createSlice({
   name: 'similar',
   initialState: similarInitialState,
   reducers: {
@@ -82,5 +82,5 @@ export const slice = createSlice({
   },
 });
 
-export const similarReducer = slice.reducer;
-export const { resetStateAC } = slice.actions;
+export const similarReducer = similarSlice.reducer;
+export const { resetStateAC } = similarSlice.actions;

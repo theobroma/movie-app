@@ -46,7 +46,7 @@ export const getTrendingMoviesTC = createAsyncThunk<any, any, any>(
 // Define a movie schema
 // const movie = new schema.Entity('movies');
 
-export const slice = createSlice({
+export const moviesSlice = createSlice({
   name: 'movies',
   initialState: moviesInitialState,
   reducers: {
@@ -84,5 +84,5 @@ export const slice = createSlice({
   },
 });
 
-export const moviesReducer = slice.reducer;
-export const { setPageAC, setLoadingAC } = slice.actions;
+export const moviesReducer = moviesSlice.reducer;
+export const { setPageAC, setLoadingAC } = moviesSlice.actions;

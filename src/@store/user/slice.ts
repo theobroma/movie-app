@@ -7,7 +7,7 @@ const userInitialState = {
 
 export type UserInitialStateType = typeof userInitialState;
 
-export const slice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState: userInitialState,
   reducers: {
@@ -44,6 +44,6 @@ export const slice = createSlice({
   },
 });
 
-export const userReducer = slice.reducer;
+export const userReducer = userSlice.reducer;
 export const { setMovieVisitedAC, toggleMovieFavoriteAC, clearVisitedAC } =
-  slice.actions;
+  userSlice.actions;

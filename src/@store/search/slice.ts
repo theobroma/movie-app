@@ -32,7 +32,7 @@ export const searchTC = createAsyncThunk<SimilarMoviesResponseType, string>(
   },
 );
 
-export const slice = createSlice({
+export const searchSlice = createSlice({
   name: 'search',
   initialState: searchInitialState,
   reducers: {
@@ -49,5 +49,5 @@ export const slice = createSlice({
   },
 });
 
-export const searchReducer = slice.reducer;
-export const { clearData: clearDataAC } = slice.actions;
+export const searchReducer = searchSlice.reducer;
+export const { clearData: clearDataAC } = searchSlice.actions;

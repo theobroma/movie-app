@@ -7,7 +7,7 @@ const uiInitialState = {
 
 export type UIInitialStateType = typeof uiInitialState;
 
-export const slice = createSlice({
+export const uiSlice = createSlice({
   name: 'ui',
   initialState: uiInitialState,
   reducers: {
@@ -17,5 +17,5 @@ export const slice = createSlice({
   },
 });
 
-export const uiReducer = slice.reducer;
-export const { setThemeAC } = slice.actions;
+export const uiReducer = uiSlice.reducer;
+export const { setThemeAC } = uiSlice.actions;
