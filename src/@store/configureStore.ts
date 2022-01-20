@@ -18,6 +18,7 @@ import { detailsSlice } from './details/slice';
 import { entitiesSlice } from './entities/slice';
 import { moviesSlice } from './movies/slice';
 import { searchSlice } from './search/slice';
+import { trendingTVapi } from './trending/api';
 import { trendingSlice } from './trending/slice';
 import { uiSlice } from './ui/slice';
 import { userSlice } from './user/slice';
@@ -43,6 +44,7 @@ const reducers = {
   [uiSlice.name]: uiSlice.reducer,
   [userSlice.name]: userSlice.reducer,
   // [anyApi.reducerPath]: anyApi.reducer,
+  [trendingTVapi.reducerPath]: trendingTVapi.reducer,
 };
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);
@@ -65,7 +67,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(logger),
+    }).concat(logger, trendingTVapi.middleware),
   // devTools: process.env.NODE_ENV === 'development',
   devTools: true,
 });
