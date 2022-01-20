@@ -29,6 +29,10 @@ const TrendingMoviesView = lazy(() =>
   ),
 );
 
+const TrendingTVView = lazy(() =>
+  pMinDelay(import('../@views/TrendingView/TrendingTVView'), MIN_LAZY_DELAY),
+);
+
 const MoviesDetailsView = lazy(() =>
   pMinDelay(import('../@views/MoviesDetailsView'), MIN_LAZY_DELAY),
 );
@@ -81,7 +85,7 @@ export const AppContainer = () => {
               {/* Trending */}
               <Route path="trending" element={<Outlet />}>
                 <Route path="movies" element={<TrendingMoviesView />} />
-                {/* <Route path="tv" element={<FavouritesTVView />} /> */}
+                <Route path="tv" element={<TrendingTVView />} />
                 {/* <Route index element={<div>Click any tab.</div>} /> */}
               </Route>
               {/* Nested favourites */}
