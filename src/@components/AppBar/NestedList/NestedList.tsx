@@ -11,6 +11,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import MovieIcon from '@material-ui/icons/Movie';
 import TvIcon from '@material-ui/icons/Tv';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
 import React from 'react';
 import { ROUTES } from '../../../@types';
 import ListItemLink from './ListItemLink';
@@ -32,6 +33,7 @@ const NestedList = () => {
   const classes = useStyles();
   const [open1, setOpen1] = React.useState(true);
   const [open2, setOpen2] = React.useState(true);
+  const [open3, setOpen3] = React.useState(true);
 
   const handleClick1 = () => {
     setOpen1(!open1);
@@ -41,18 +43,46 @@ const NestedList = () => {
     setOpen2(!open2);
   };
 
+  const handleClick3 = () => {
+    setOpen3(!open3);
+  };
+
   return (
     <List component="nav" className={classes.root}>
       <ListItemLink primary="Home" to={ROUTES.ROOT} icon={<HomeIcon />} />
-      {/* 1 Favourites */}
+      {/* 1 Trending */}
       <ListItem button onClick={handleClick1}>
+        <ListItemIcon>
+          <WhatshotIcon />
+        </ListItemIcon>
+        <ListItemText primary="Trending" />
+        {open1 ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open1} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemLink
+            primary="Movies"
+            to={ROUTES.TRENDING_MOVIES}
+            icon={<MovieIcon />}
+            className={classes.nested}
+          />
+          <ListItemLink
+            primary="TV Shows"
+            to={ROUTES.TRENDING_TV}
+            icon={<TvIcon />}
+            className={classes.nested}
+          />
+        </List>
+      </Collapse>
+      {/* 2 Favourites */}
+      <ListItem button onClick={handleClick2}>
         <ListItemIcon>
           <FavoriteIcon />
         </ListItemIcon>
         <ListItemText primary="Favourites" />
         {open1 ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Collapse in={open1} timeout="auto" unmountOnExit>
+      <Collapse in={open2} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemLink
             primary="Movies"
@@ -68,15 +98,15 @@ const NestedList = () => {
           />
         </List>
       </Collapse>
-      {/* 2 Visited */}
-      <ListItem button onClick={handleClick2}>
+      {/* 3 Visited */}
+      <ListItem button onClick={handleClick3}>
         <ListItemIcon>
           <VisibilityIcon />
         </ListItemIcon>
         <ListItemText primary="Visited" />
         {open2 ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Collapse in={open2} timeout="auto" unmountOnExit>
+      <Collapse in={open3} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemLink
             primary="Movies"
