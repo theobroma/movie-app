@@ -22,6 +22,13 @@ export const visitedTVIdsSelector = createSelector(
   },
 );
 
+export const visitedCountSelector = createSelector(
+  visitedMediaSelector,
+  (medias) => {
+    return medias.length;
+  },
+);
+
 // ====================favourites==============================
 
 export const favouriteMediaSelector = (state: RootState) => {
@@ -41,5 +48,12 @@ export const favouriteTVIdsSelector = createSelector(
   favouriteMediaSelector,
   (medias) => {
     return medias.filter((m) => m.mediaType === MEDIA_TYPE.TV).map((m) => m.id);
+  },
+);
+
+export const favouriteCountSelector = createSelector(
+  favouriteMediaSelector,
+  (medias) => {
+    return medias.length;
   },
 );
