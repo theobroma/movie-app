@@ -22,6 +22,10 @@ const HomeView = lazy(() =>
   pMinDelay(import('../@views/HomeView'), MIN_LAZY_DELAY),
 );
 
+const HomeView2 = lazy(() =>
+  pMinDelay(import('../@views/HomeView2'), MIN_LAZY_DELAY),
+);
+
 const TrendingMoviesView = lazy(() =>
   pMinDelay(
     import('../@views/TrendingView/TrendingMoviesView'),
@@ -77,7 +81,7 @@ export const AppContainer = () => {
           <Routes>
             <Route path="/" element={<AppLayout />}>
               {/* index means default */}
-              <Route index element={<HomeView />} />
+              <Route index element={<HomeView2 />} />
               <Route
                 path="/details/:mediaType/:mediaId"
                 element={<MoviesDetailsView />}

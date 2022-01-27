@@ -10,7 +10,7 @@ import CustomPagination from '../../@components/UI/CustomPagination';
 import { trendingSelector } from '../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
 
-const HomeView: React.FC = () => {
+const HomeView2: React.FC = () => {
   const dispatch = useDispatch();
   const {
     data: { page, total_pages, results: trendingAllmovies },
@@ -42,6 +42,7 @@ const HomeView: React.FC = () => {
 
   return (
     <Container maxWidth="lg">
+      HomeView2
       <Grid container spacing={3} style={{ padding: 3 }}>
         {trendingAllmovies?.map((movie) => (
           <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
@@ -66,4 +67,4 @@ const HomeView: React.FC = () => {
   );
 };
 
-export default HomeView;
+export default HomeView2;
