@@ -1,29 +1,25 @@
 import { Container, Grid } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import * as React from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
 import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/SingleContent/SingleContentSkeleton';
 import CustomPagination from '../../../@components/UI/CustomPagination';
-import { trendingSelector } from '../../../@store/trending/selectors';
-import { getTrendingAllTC, setPageAC } from '../../../@store/trending/slice';
-import { getTrendingMoviesNormalizedTC } from '../../../@store/movies/slice';
+import { useTrendingMoviesQuery } from '../../../@store/trending/api';
 
-const TrendingMoviesView: React.FC = () => {
-  const dispatch = useDispatch();
-  const {
-    data: { page, total_pages, results: trendingAllmovies },
-    isLoading,
-  } = useSelector(trendingSelector);
-
+const TrendingMoviesView = () => {
   const [queryPage, setQueryPage] = useQueryParam('page', NumberParam);
+  const { data, isLoading, isFetching } = useTrendingMoviesQuery(
+    queryPage || 1,
+  );
+
+  // console.log('isLoading', isLoading);
+  // console.log('isFetching', isFetching);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     pageValue: number,
   ) => {
-    dispatch(setPageAC(pageValue));
     if (pageValue !== 1) {
       setQueryPage(pageValue);
     } else {
@@ -33,19 +29,12 @@ const TrendingMoviesView: React.FC = () => {
     window.scroll(0, 0);
   };
 
-  useEffect(() => {
-    const pageValue = queryPage || 1;
-    dispatch(getTrendingAllTC({ page: pageValue }));
-    // TEST
-    dispatch(getTrendingMoviesNormalizedTC({ page: 1 }));
-  }, [dispatch, queryPage]);
-
   return (
     <Container maxWidth="lg">
       <Grid container spacing={3} style={{ padding: 3 }}>
-        {trendingAllmovies?.map((movie) => (
+        {data?.results.map((movie) => (
           <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-            {isLoading ? (
+            {isFetching ? (
               <SingleContentSkeleton />
             ) : (
               <SingleContent movie={movie} />
@@ -57,8 +46,9 @@ const TrendingMoviesView: React.FC = () => {
         <Grid item xs={12}>
           <CustomPagination
             onChange={handlePageChange}
-            count={total_pages}
-            page={page}
+            count={data?.total_pages}
+            // page={data?.page}
+            page={queryPage || 1}
           />
         </Grid>
       </Grid>

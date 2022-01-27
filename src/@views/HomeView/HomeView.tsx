@@ -2,10 +2,11 @@ import { Container, Grid } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useQueryParam, NumberParam } from 'use-query-params';
-import CustomPagination from '../../@components/UI/CustomPagination';
+import { NumberParam, useQueryParam } from 'use-query-params';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
+import CustomPagination from '../../@components/UI/CustomPagination';
+import { getTrendingMoviesNormalizedTC } from '../../@store/movies/slice';
 import { trendingSelector } from '../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
 
@@ -35,6 +36,8 @@ const HomeView: React.FC = () => {
   useEffect(() => {
     const pageValue = queryPage || 1;
     dispatch(getTrendingAllTC({ page: pageValue }));
+    // TEST NORMALIZR
+    // dispatch(getTrendingMoviesNormalizedTC({ page: 1 }));
   }, [dispatch, queryPage]);
 
   return (

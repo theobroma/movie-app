@@ -11,8 +11,8 @@ const TrendingTVView = () => {
   const [queryPage, setQueryPage] = useQueryParam('page', NumberParam);
   const { data, isLoading, isFetching } = useTrendingTVQuery(queryPage || 1);
 
-  console.log('isLoading', isLoading);
-  console.log('isFetching', isFetching);
+  // console.log('isLoading', isLoading);
+  // console.log('isFetching', isFetching);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
