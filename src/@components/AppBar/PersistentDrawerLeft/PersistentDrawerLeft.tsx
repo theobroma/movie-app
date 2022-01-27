@@ -13,6 +13,7 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppSearch from '../AppSearch';
+import Badges from '../Badges';
 import NestedList from '../NestedList';
 import ThemeSwitch from '../ThemeSwitch';
 import { useStyles } from './PersistentDrawerLeft.styles';
@@ -66,7 +67,11 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
             </Typography>
           </Link>
           <div className={classes.grow} />
-          <IconButton onClick={() => setShowMobileSearch(!showMobileSearch)}>
+          <Badges />
+          <IconButton
+            onClick={() => setShowMobileSearch(!showMobileSearch)}
+            color="inherit"
+          >
             <SearchIcon />
           </IconButton>
           <ThemeSwitch />

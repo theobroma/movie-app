@@ -34,6 +34,7 @@ export const ThemeSwitch = () => {
           <IconButton
             aria-label="theme"
             onClick={() => handleSwitchDarkMode(THEME_COLORS.DARK)}
+            color="inherit"
           >
             <NightIcon />
           </IconButton>
@@ -43,6 +44,7 @@ export const ThemeSwitch = () => {
           <IconButton
             aria-label="theme"
             onClick={() => handleSwitchDarkMode(THEME_COLORS.LIGHT)}
+            color="inherit"
           >
             <DayIcon />
           </IconButton>
