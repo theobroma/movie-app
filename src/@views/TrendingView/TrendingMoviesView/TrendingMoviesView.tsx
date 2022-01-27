@@ -1,7 +1,7 @@
-import { Container, Grid } from '@material-ui/core';
+import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
-import { useQueryParam, NumberParam } from 'use-query-params';
+import { NumberParam, useQueryParam } from 'use-query-params';
 import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/SingleContent/SingleContentSkeleton';
 import CustomPagination from '../../../@components/UI/CustomPagination';
@@ -32,6 +32,13 @@ const TrendingMoviesView = () => {
   return (
     <Container maxWidth="lg">
       <Grid container spacing={3} style={{ padding: 3 }}>
+        <Grid item xs={12}>
+          <Box justifyContent="space-between" display="flex">
+            <Typography component="h2" variant="h4">
+              Trending Movies
+            </Typography>
+          </Box>
+        </Grid>
         {data?.results.map((movie) => (
           <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
             {isFetching ? (
