@@ -5,11 +5,11 @@ import { useQueryParam, NumberParam } from 'use-query-params';
 import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/SingleContent/SingleContentSkeleton';
 import CustomPagination from '../../../@components/UI/CustomPagination';
-import { useListPostsQuery } from '../../../@store/trending/api';
+import { useTrendingTVQuery } from '../../../@store/trending/api';
 
 const TrendingTVView = () => {
   const [queryPage, setQueryPage] = useQueryParam('page', NumberParam);
-  const { data, isLoading, isFetching } = useListPostsQuery(queryPage || 1);
+  const { data, isLoading, isFetching } = useTrendingTVQuery(queryPage || 1);
 
   console.log('isLoading', isLoading);
   console.log('isFetching', isFetching);

@@ -8,6 +8,7 @@ import SingleContentSkeleton from '../../../@components/SingleContent/SingleCont
 import CustomPagination from '../../../@components/UI/CustomPagination';
 import { trendingSelector } from '../../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../../@store/trending/slice';
+import { getTrendingMoviesNormalizedTC } from '../../../@store/movies/slice';
 
 const TrendingMoviesView: React.FC = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const TrendingMoviesView: React.FC = () => {
     const pageValue = queryPage || 1;
     dispatch(getTrendingAllTC({ page: pageValue }));
     // TEST
-    // dispatch(getTrendingMoviesTC({ page: 1 }));
+    dispatch(getTrendingMoviesNormalizedTC({ page: 1 }));
   }, [dispatch, queryPage]);
 
   return (
