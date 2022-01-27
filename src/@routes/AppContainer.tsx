@@ -18,9 +18,9 @@ import { AppLayout } from './AppLayout';
 
 const MIN_LAZY_DELAY = 300;
 
-const HomeView = lazy(() =>
-  pMinDelay(import('../@views/HomeView'), MIN_LAZY_DELAY),
-);
+// const HomeView = lazy(() =>
+//   pMinDelay(import('../@views/HomeView'), MIN_LAZY_DELAY),
+// );
 
 const HomeView2 = lazy(() =>
   pMinDelay(import('../@views/HomeView2'), MIN_LAZY_DELAY),

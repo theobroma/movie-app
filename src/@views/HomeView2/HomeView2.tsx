@@ -1,52 +1,71 @@
-import { Container, Grid } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Container,
+  createStyles,
+  Grid,
+  makeStyles,
+} from '@material-ui/core';
+import LinkIcon from '@material-ui/icons/Link';
 import { nanoid } from '@reduxjs/toolkit';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NumberParam, useQueryParam } from 'use-query-params';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
-import CustomPagination from '../../@components/UI/CustomPagination';
-// import { getTrendingMoviesNormalizedTC } from '../../@store/movies/slice';
-import { trendingSelector } from '../../@store/trending/selectors';
-import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
+import {
+  useTrendingMoviesQuery,
+  useTrendingTVQuery,
+} from '../../@store/trending/api';
+import { ROUTES } from '../../@types';
 
-const HomeView2: React.FC = () => {
-  const dispatch = useDispatch();
+const useStyles = makeStyles(() =>
+  createStyles({
+    link: {
+      textDecoration: 'none',
+    },
+  }),
+);
+
+const HomeView2 = () => {
+  const classes = useStyles();
   const {
-    data: { page, total_pages, results: trendingAllmovies },
-    isLoading,
-  } = useSelector(trendingSelector);
+    data: moviesData,
+    // isLoading: moviesIsloading,
+    isFetching: moviesIsFetching,
+  } = useTrendingMoviesQuery(1);
+  // Slice just first 6
+  const trendingMovies = moviesData?.results.slice(0, 6);
 
-  const [queryPage, setQueryPage] = useQueryParam('page', NumberParam);
+  const {
+    data: tvData,
+    // isLoading: tvIsLoading,
+    isFetching: tvIsFetching,
+  } = useTrendingTVQuery(1);
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    pageValue: number,
-  ) => {
-    dispatch(setPageAC(pageValue));
-    if (pageValue !== 1) {
-      setQueryPage(pageValue);
-    } else {
-      setQueryPage(undefined);
-    }
-    // Scroll to top when page changes
-    window.scroll(0, 0);
-  };
-
-  useEffect(() => {
-    const pageValue = queryPage || 1;
-    dispatch(getTrendingAllTC({ page: pageValue }));
-    // TEST NORMALIZR
-    // dispatch(getTrendingMoviesNormalizedTC({ page: 1 }));
-  }, [dispatch, queryPage]);
+  // Slice just first 6
+  const trendingTV = tvData?.results.slice(0, 6);
 
   return (
     <Container maxWidth="lg">
-      HomeView2
+      {/* Movies */}
       <Grid container spacing={3} style={{ padding: 3 }}>
-        {trendingAllmovies?.map((movie) => (
-          <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-            {isLoading ? (
+        <Grid item xs={12}>
+          <Box justifyContent="space-between" display="flex">
+            <Link to={ROUTES.TRENDING_MOVIES} className={classes.link}>
+              <Button variant="contained" color="primary">
+                Movies
+              </Button>
+            </Link>
+            <Link to={ROUTES.TRENDING_MOVIES} className={classes.link}>
+              <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
+                More
+              </Button>
+            </Link>
+          </Box>
+        </Grid>
+        {trendingMovies?.map((movie) => (
+          <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
+            {moviesIsFetching ? (
               <SingleContentSkeleton />
             ) : (
               <SingleContent movie={movie} />
@@ -54,14 +73,32 @@ const HomeView2: React.FC = () => {
           </Grid>
         ))}
       </Grid>
+      <Box py={1} />
+      {/* TV */}
       <Grid container spacing={3} style={{ padding: 3 }}>
         <Grid item xs={12}>
-          <CustomPagination
-            onChange={handlePageChange}
-            count={total_pages}
-            page={page}
-          />
+          <Box justifyContent="space-between" display="flex">
+            <Link to={ROUTES.TRENDING_TV} className={classes.link}>
+              <Button variant="contained" color="primary">
+                TV Shows
+              </Button>
+            </Link>
+            <Link to={ROUTES.TRENDING_TV} className={classes.link}>
+              <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
+                More
+              </Button>
+            </Link>
+          </Box>
         </Grid>
+        {trendingTV?.map((movie) => (
+          <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
+            {tvIsFetching ? (
+              <SingleContentSkeleton />
+            ) : (
+              <SingleContent movie={movie} />
+            )}
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );
