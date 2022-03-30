@@ -1,6 +1,7 @@
 module.exports = {
     extends: ['airbnb-typescript-prettier'],
     rules: {
+        '@typescript-eslint/ban-ts-comment': 1,
         '@typescript-eslint/explicit-function-return-type': 0,
         '@typescript-eslint/explicit-module-boundary-types': 0,
         '@typescript-eslint/interface-name-prefix': 0,
@@ -25,7 +26,7 @@ module.exports = {
                 unnamedComponents: 'arrow-function',
             },
         ],
-        'react/jsx-no-useless-fragment':['error', { allowExpressions: true }],
+        'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
         'react/jsx-props-no-spreading': 0,
         'react/prop-types': 0, // Since we do not use prop-types
         'react/require-default-props': 0, // Since we do not use prop-types

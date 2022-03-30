@@ -9,6 +9,7 @@ import {
 import LinkIcon from '@material-ui/icons/Link';
 import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
@@ -28,6 +29,8 @@ const useStyles = makeStyles(() =>
 
 const HomeView2 = () => {
   const classes = useStyles();
+  // @ts-ignore
+  const { t, i18n } = useTranslation();
   const {
     data: moviesData,
     // isLoading: moviesIsloading,
@@ -47,6 +50,8 @@ const HomeView2 = () => {
 
   return (
     <Container maxWidth="lg">
+      {/* i18n test */}
+      <Trans i18nKey="menuItem1" />
       {/* Movies */}
       <Grid container spacing={3} style={{ padding: 3 }}>
         <Grid item xs={12}>
