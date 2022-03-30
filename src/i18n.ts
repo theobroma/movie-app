@@ -5,14 +5,14 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 
 import translationEN from './@locales/en/translation.json';
-import translationRU from './@locales/ru/translation.json';
+import translationUA from './@locales/ua/translation.json';
 
 const resources = {
   en: {
     translation: translationEN,
   },
-  ru: {
-    translation: translationRU,
+  ua: {
+    translation: translationUA,
   },
 };
 
@@ -22,8 +22,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    supportedLngs: ['en', 'ru'],
-    fallbackLng: ['en', 'ru'],
+    supportedLngs: ['en', 'ua'],
+    fallbackLng: ['en', 'ua'],
     // lng: "en",
     interpolation: {
       escapeValue: false,
