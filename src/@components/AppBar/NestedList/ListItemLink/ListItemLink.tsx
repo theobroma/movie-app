@@ -16,7 +16,7 @@ import {
 
 interface ListItemLinkProps {
   icon?: React.ReactElement;
-  primary: string;
+  primary: string | JSX.Element; // cause i18n like <Trans i18nKey="Movies" />
   to: string;
   className?: string;
 }

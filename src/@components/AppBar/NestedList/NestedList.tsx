@@ -13,6 +13,7 @@ import TvIcon from '@material-ui/icons/Tv';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import React from 'react';
+import { Trans } from 'react-i18next';
 import { ROUTES } from '../../../@types';
 import ListItemLink from './ListItemLink';
 
@@ -55,19 +56,39 @@ const NestedList = () => {
         <ListItemIcon>
           <WhatshotIcon />
         </ListItemIcon>
-        <ListItemText primary="Trending" />
+        <ListItemText
+          // primary="Trending"
+          primary={
+            <>
+              {/* @ts-ignore */}
+              <Trans i18nKey="Trending" />
+            </>
+          }
+        />
         {open1 ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open1} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemLink
-            primary="Movies"
+            // primary="Movies"
+            primary={
+              <>
+                {/* @ts-ignore */}
+                <Trans i18nKey="Movies" />
+              </>
+            }
             to={ROUTES.TRENDING_MOVIES}
             icon={<MovieIcon />}
             className={classes.nested}
           />
           <ListItemLink
-            primary="TV Shows"
+            // primary="TV Shows"
+            primary={
+              <>
+                {/* @ts-ignore */}
+                <Trans i18nKey="TVShows" />
+              </>
+            }
             to={ROUTES.TRENDING_TV}
             icon={<TvIcon />}
             className={classes.nested}
@@ -79,19 +100,39 @@ const NestedList = () => {
         <ListItemIcon>
           <FavoriteIcon />
         </ListItemIcon>
-        <ListItemText primary="Favourites" />
+        <ListItemText
+          //  primary="Favourites"
+          primary={
+            <>
+              {/* @ts-ignore */}
+              <Trans i18nKey="Favourites" />
+            </>
+          }
+        />
         {open1 ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open2} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemLink
-            primary="Movies"
+            // primary="Movies"
+            primary={
+              <>
+                {/* @ts-ignore */}
+                <Trans i18nKey="Movies" />
+              </>
+            }
             to={ROUTES.FAVOURITES_MOVIES}
             icon={<MovieIcon />}
             className={classes.nested}
           />
           <ListItemLink
-            primary="TV Shows"
+            // primary="TV Shows"
+            primary={
+              <>
+                {/* @ts-ignore */}
+                <Trans i18nKey="TVShows" />
+              </>
+            }
             to={ROUTES.FAVOURITES_TV}
             icon={<TvIcon />}
             className={classes.nested}
@@ -103,19 +144,39 @@ const NestedList = () => {
         <ListItemIcon>
           <VisibilityIcon />
         </ListItemIcon>
-        <ListItemText primary="Visited" />
+        <ListItemText
+          //  primary="Visited"
+          primary={
+            <>
+              {/* @ts-ignore */}
+              <Trans i18nKey="Visited" />
+            </>
+          }
+        />
         {open2 ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open3} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemLink
-            primary="Movies"
+            // primary="Movies"
+            primary={
+              <>
+                {/* @ts-ignore */}
+                <Trans i18nKey="Movies" />
+              </>
+            }
             to={ROUTES.VISITED_MOVIES}
             icon={<MovieIcon />}
             className={classes.nested}
           />
           <ListItemLink
-            primary="TV Shows"
+            // primary="TV Shows"
+            primary={
+              <>
+                {/* @ts-ignore */}
+                <Trans i18nKey="TVShows" />
+              </>
+            }
             to={ROUTES.VISITED_TV}
             icon={<TvIcon />}
             className={classes.nested}
