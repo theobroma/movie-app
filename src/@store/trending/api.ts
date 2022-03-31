@@ -8,11 +8,12 @@ export const trendingTVapi = createApi({
   }),
   endpoints: (builder) => ({
     trendingTV: builder.query<TVResponseType, number | void>({
-      query: (page = 1) => `/trending/tv/week?page=${page}&api_key=${API_KEY}`,
+      query: (page = 1) =>
+        `/trending/tv/week?page=${page}&api_key=${API_KEY}&language=uk-UA`,
     }),
     trendingMovies: builder.query<MoviesResponseType, number | void>({
       query: (page = 1) =>
-        `/trending/movie/week?page=${page}&api_key=${API_KEY}`,
+        `/trending/movie/week?page=${page}&api_key=${API_KEY}&language=uk-UA`,
     }),
   }),
 });

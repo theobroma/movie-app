@@ -1,7 +1,8 @@
 import React from 'react';
+import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { MEDIA_TYPE, MovieEntityType, TVEntityType } from '../../@types';
-import { useStyles, StyledBadge } from './SingleContent.styles';
+import { MEDIA_TYPE } from '../../@types';
+import { StyledBadge, useStyles } from './SingleContent.styles';
 
 export const img_300 = 'https://image.tmdb.org/t/p/w300';
 export const unavailable =
@@ -62,7 +63,17 @@ const SingleContent: React.FC<Props> = ({
         />
         <b className={classes.title}>{mediaTitle}</b>
         <span className={classes.subTitle}>
-          {mediaType === MEDIA_TYPE.TV ? 'TV Series' : 'Movie'}
+          {mediaType === MEDIA_TYPE.TV ? (
+            <>
+              {/* @ts-ignore */}
+              <Trans i18nKey="TVSeries" />
+            </>
+          ) : (
+            <>
+              {/* @ts-ignore */}
+              <Trans i18nKey="Movie" />
+            </>
+          )}
           <span className={classes.subTitle}>{mediaReleaseDate}</span>
         </span>
       </div>
