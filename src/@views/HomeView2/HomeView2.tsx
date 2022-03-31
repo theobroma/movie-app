@@ -9,7 +9,7 @@ import {
 import LinkIcon from '@material-ui/icons/Link';
 import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
@@ -29,8 +29,6 @@ const useStyles = makeStyles(() =>
 
 const HomeView2 = () => {
   const classes = useStyles();
-  // @ts-ignore
-  const { t, i18n } = useTranslation();
   const {
     data: moviesData,
     // isLoading: moviesIsloading,
@@ -51,19 +49,23 @@ const HomeView2 = () => {
   return (
     <Container maxWidth="lg">
       {/* i18n test */}
-      <Trans i18nKey="menuItem1" />
+      {/* <Trans i18nKey="Home" /> */}
       {/* Movies */}
       <Grid container spacing={3} style={{ padding: 3 }}>
         <Grid item xs={12}>
           <Box justifyContent="space-between" display="flex">
             <Link to={ROUTES.TRENDING_MOVIES} className={classes.link}>
               <Button variant="contained" color="primary">
-                Movies
+                {/* Movies */}
+                {/* @ts-ignore */}
+                <Trans i18nKey="Movies" />
               </Button>
             </Link>
             <Link to={ROUTES.TRENDING_MOVIES} className={classes.link}>
               <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
-                More
+                {/* More */}
+                {/* @ts-ignore */}
+                <Trans i18nKey="btn.more" />
               </Button>
             </Link>
           </Box>
@@ -85,12 +87,16 @@ const HomeView2 = () => {
           <Box justifyContent="space-between" display="flex">
             <Link to={ROUTES.TRENDING_TV} className={classes.link}>
               <Button variant="contained" color="primary">
-                TV Shows
+                {/* TV Shows */}
+                {/* @ts-ignore */}
+                <Trans i18nKey="TVShows" />
               </Button>
             </Link>
             <Link to={ROUTES.TRENDING_TV} className={classes.link}>
               <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
-                More
+                {/* More */}
+                {/* @ts-ignore */}
+                <Trans i18nKey="btn.more" />
               </Button>
             </Link>
           </Box>

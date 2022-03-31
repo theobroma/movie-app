@@ -1,9 +1,11 @@
 {
-    "menuItem1": "Home",
     "Home": "Home",
     "Visited": "Visited",
     "Favourites": "Favourites",
     "Trending": "Trending",
     "Movies": "Movies",
-    "TVShows": "TVShows"
+    "TVShows": "TVShows",
+    "btn": {
+        "more": "more"
+    }
 }
