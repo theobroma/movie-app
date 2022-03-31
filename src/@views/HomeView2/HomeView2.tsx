@@ -9,7 +9,7 @@ import {
 import LinkIcon from '@material-ui/icons/Link';
 import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
@@ -29,6 +29,13 @@ const useStyles = makeStyles(() =>
 
 const HomeView2 = () => {
   const classes = useStyles();
+  /* @ts-ignore */
+  const { i18n } = useTranslation();
+  // console.log(i18n.language);
+  if (i18n.language !== 'ua') {
+    i18n.changeLanguage('ua');
+  }
+  // console.log(i18n.language);
   const {
     data: moviesData,
     // isLoading: moviesIsloading,

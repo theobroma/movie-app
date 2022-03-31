@@ -50,7 +50,17 @@ const NestedList = () => {
 
   return (
     <List component="nav" className={classes.root}>
-      <ListItemLink primary="Home" to={ROUTES.ROOT} icon={<HomeIcon />} />
+      <ListItemLink
+        // primary="Home"
+        primary={
+          <>
+            {/* @ts-ignore */}
+            <Trans i18nKey="Home" />
+          </>
+        }
+        to={ROUTES.ROOT}
+        icon={<HomeIcon />}
+      />
       {/* 1 Trending */}
       <ListItem button onClick={handleClick1}>
         <ListItemIcon>

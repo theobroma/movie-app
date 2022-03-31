@@ -1,11 +1,11 @@
 {
-    "Home": "Home",
-    "Visited": "Visited",
-    "Favourites": "Favourites",
-    "Trending": "Trending",
-    "Movies": "Movies",
-    "TVShows": "TVShows",
+    "Home": "Головна",
+    "Visited": "Відвідане",
+    "Favourites": "Улюблене",
+    "Trending": "Тренди",
+    "Movies": "Фільми",
+    "TVShows": "Серіали",
     "btn": {
-        "more": "more"
+        "more": "більше"
     }
 }
