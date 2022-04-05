@@ -14,6 +14,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppSearch from '../AppSearch';
 import Badges from '../Badges';
+import LanguageMenu from '../LanguageMenu/LanguageMenu';
 import NestedList from '../NestedList';
 import ThemeSwitch from '../ThemeSwitch';
 import { useStyles } from './PersistentDrawerLeft.styles';
@@ -75,6 +76,7 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
             <SearchIcon />
           </IconButton>
           <ThemeSwitch />
+          <LanguageMenu />
         </Toolbar>
         {showMobileSearch && <AppSearch />}
       </AppBar>
