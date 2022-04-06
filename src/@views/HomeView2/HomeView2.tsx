@@ -8,8 +8,8 @@ import {
 } from '@material-ui/core';
 import LinkIcon from '@material-ui/icons/Link';
 import { nanoid } from '@reduxjs/toolkit';
-import React, { useEffect } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import React from 'react';
+import { Trans } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SingleContent from '../../@components/SingleContent';
@@ -33,15 +33,7 @@ const useStyles = makeStyles(() =>
 const HomeView2 = () => {
   const classes = useStyles();
   const currentLanguage = useSelector(languageSelector);
-  /* @ts-ignore */
-  const { i18n } = useTranslation();
-  // TODO: mb move somewhere
-  useEffect(() => {
-    i18n.changeLanguage(currentLanguage);
-  }, [i18n, currentLanguage]);
-
   const langISOCode = alpha2iso(currentLanguage);
-  // console.log('alpha2iso', alpha2iso(currentLanguage));
 
   const {
     data: moviesData,
@@ -62,8 +54,6 @@ const HomeView2 = () => {
 
   return (
     <Container maxWidth="lg">
-      {/* i18n test */}
-      {/* <Trans i18nKey="Home" /> */}
       {/* Movies */}
       <Grid container spacing={3} style={{ padding: 3 }}>
         <Grid item xs={12}>
