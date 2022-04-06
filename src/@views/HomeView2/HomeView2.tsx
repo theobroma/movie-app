@@ -8,8 +8,9 @@ import {
 } from '@material-ui/core';
 import LinkIcon from '@material-ui/icons/Link';
 import { nanoid } from '@reduxjs/toolkit';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
@@ -17,6 +18,7 @@ import {
   useTrendingMoviesQuery,
   useTrendingTVQuery,
 } from '../../@store/trending/api';
+import { languageSelector } from '../../@store/ui/selectors';
 import { ROUTES } from '../../@types';
 
 const useStyles = makeStyles(() =>
@@ -29,13 +31,13 @@ const useStyles = makeStyles(() =>
 
 const HomeView2 = () => {
   const classes = useStyles();
+  const currentLanguage = useSelector(languageSelector);
   /* @ts-ignore */
   const { i18n } = useTranslation();
-  // console.log(i18n.language);
-  if (i18n.language !== 'ua') {
-    i18n.changeLanguage('ua');
-  }
-  // console.log(i18n.language);
+  useEffect(() => {
+    i18n.changeLanguage(currentLanguage);
+  }, [currentLanguage]);
+
   const {
     data: moviesData,
     // isLoading: moviesIsloading,

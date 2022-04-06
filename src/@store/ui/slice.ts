@@ -3,7 +3,7 @@ import { ThemeColorsType } from '../../@types';
 
 const uiInitialState = {
   theme: 'light' as ThemeColorsType,
-  language: null,
+  language: 'en' as any,
 };
 
 export type UIInitialStateType = typeof uiInitialState;

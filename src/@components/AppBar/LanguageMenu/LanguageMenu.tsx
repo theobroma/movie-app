@@ -1,8 +1,9 @@
 // https://stackoverflow.com/a/55533600/3988363
-import { IconButton } from '@material-ui/core';
+import { IconButton, Tooltip } from '@material-ui/core';
 import FormatColorFillIcon from '@material-ui/icons/FormatColorFill';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import TranslateIcon from '@material-ui/icons/Translate';
 import { useSnackbar } from 'notistack';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -49,14 +50,18 @@ const LanguageMenu = () => {
 
   return (
     <div>
-      <IconButton
-        aria-label="more"
-        aria-controls="long-menu"
-        aria-haspopup="true"
-        onClick={(e) => handleClickListItem(e)}
-      >
-        <FormatColorFillIcon />
-      </IconButton>
+      <Tooltip title="Change language">
+        <IconButton
+          aria-label="more"
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          color="inherit"
+          onClick={(e) => handleClickListItem(e)}
+        >
+          <TranslateIcon />
+        </IconButton>
+      </Tooltip>
+
       {/* Dropdown */}
       <StyledMenu
         id="language-menu"
