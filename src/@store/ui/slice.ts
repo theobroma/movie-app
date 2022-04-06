@@ -3,6 +3,7 @@ import { ThemeColorsType } from '../../@types';
 
 const uiInitialState = {
   theme: 'light' as ThemeColorsType,
+  language: null,
 };
 
 export type UIInitialStateType = typeof uiInitialState;
@@ -14,8 +15,11 @@ export const uiSlice = createSlice({
     setThemeAC(state, action) {
       state.theme = action.payload;
     },
+    setLanguageAC(state, action) {
+      state.language = action.payload;
+    },
   },
 });
 
 export const uiReducer = uiSlice.reducer;
-export const { setThemeAC } = uiSlice.actions;
+export const { setThemeAC, setLanguageAC } = uiSlice.actions;

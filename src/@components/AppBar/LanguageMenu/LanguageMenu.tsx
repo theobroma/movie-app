@@ -7,25 +7,21 @@ import { useSnackbar } from 'notistack';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
-import { themeSelector } from '../../../@store/ui/selectors';
-import { setThemeAC } from '../../../@store/ui/slice';
+import { languageSelector, themeSelector } from '../../../@store/ui/selectors';
+import { setLanguageAC, setThemeAC } from '../../../@store/ui/slice';
 import { ThemeColorsType } from '../../../@types';
 import { StyledMenu, StyledMenuItem } from './LanguageMenu.styles';
 
-const options = [
-  'light',
-  'dark',
-  'deepPurpleAmber',
-  'pinkBlueGrey',
-] as ThemeColorsType[];
+const options = ['en', 'ua'] as any[];
 
 const LanguageMenu = () => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const currentLanguage = useSelector(languageSelector);
   const currentTheme = useSelector(themeSelector);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(
-    options.indexOf(currentTheme),
+    options.indexOf(currentLanguage),
   );
 
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
@@ -37,7 +33,7 @@ const LanguageMenu = () => {
     index: number,
   ) => {
     setSelectedIndex(index);
-    dispatch(setThemeAC(options[index]));
+    dispatch(setLanguageAC(options[index]));
     setAnchorEl(null);
   };
 
@@ -46,10 +42,10 @@ const LanguageMenu = () => {
   };
 
   useNonInitialEffect(() => {
-    enqueueSnackbar(`Theme changed to ${currentTheme}`, {
+    enqueueSnackbar(`Language changed to ${currentLanguage}`, {
       variant: 'warning',
     });
-  }, [enqueueSnackbar, currentTheme]);
+  }, [enqueueSnackbar, currentLanguage]);
 
   return (
     <div>
@@ -61,6 +57,7 @@ const LanguageMenu = () => {
       >
         <FormatColorFillIcon />
       </IconButton>
+      {/* Dropdown */}
       <StyledMenu
         id="language-menu"
         anchorEl={anchorEl}
