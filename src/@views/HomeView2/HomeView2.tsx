@@ -20,6 +20,7 @@ import {
 } from '../../@store/trending/api';
 import { languageSelector } from '../../@store/ui/selectors';
 import { ROUTES } from '../../@types';
+import { alpha2iso } from '../../@utils/alpha2iso';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -36,13 +37,16 @@ const HomeView2 = () => {
   const { i18n } = useTranslation();
   useEffect(() => {
     i18n.changeLanguage(currentLanguage);
-  }, [currentLanguage]);
+  }, [i18n, currentLanguage]);
+
+  const langISOCode = alpha2iso(currentLanguage);
+  // console.log('alpha2iso', alpha2iso(currentLanguage));
 
   const {
     data: moviesData,
     // isLoading: moviesIsloading,
     isFetching: moviesIsFetching,
-  } = useTrendingMoviesQuery(1);
+  } = useTrendingMoviesQuery({ page: 1, isoCode: langISOCode });
   // Slice just first 6
   const trendingMovies = moviesData?.results.slice(0, 6);
 
@@ -50,7 +54,7 @@ const HomeView2 = () => {
     data: tvData,
     // isLoading: tvIsLoading,
     isFetching: tvIsFetching,
-  } = useTrendingTVQuery(1);
+  } = useTrendingTVQuery({ page: 1, isoCode: langISOCode });
 
   // Slice just first 6
   const trendingTV = tvData?.results.slice(0, 6);
