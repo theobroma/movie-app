@@ -35,6 +35,7 @@ const HomeView2 = () => {
   const currentLanguage = useSelector(languageSelector);
   /* @ts-ignore */
   const { i18n } = useTranslation();
+  // TODO: mb move somewhere
   useEffect(() => {
     i18n.changeLanguage(currentLanguage);
   }, [i18n, currentLanguage]);

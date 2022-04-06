@@ -7,7 +7,8 @@ import Backend from 'i18next-http-backend';
 import translationEN from './@locales/en/translation.json';
 import translationUA from './@locales/ua/translation.json';
 
-const resources = {
+export const defaultNS = 'ns1';
+export const resources = {
   en: {
     translation: translationEN,
   },
