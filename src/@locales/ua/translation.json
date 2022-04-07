@@ -9,5 +9,9 @@
     "TVSeries": "Серіал",
     "btn": {
         "more": "більше"
+    },
+    "Heading": {
+        "TrendingMovies": "Фільми у тренді",
+        "TrendingTV": "Серіали у тренді"
     }
 }

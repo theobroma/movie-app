@@ -9,5 +9,9 @@
     "TVSeries": "TV Series",
     "btn": {
         "more": "more"
+    },
+    "Heading": {
+        "TrendingMovies": "TrendingMovies",
+        "TrendingTV": "TrendingTV"
     }
 }

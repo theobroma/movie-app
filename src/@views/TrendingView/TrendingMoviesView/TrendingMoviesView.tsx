@@ -2,6 +2,7 @@ import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
+import { Trans } from 'react-i18next';
 import { NumberParam, useQueryParam } from 'use-query-params';
 import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/SingleContent/SingleContentSkeleton';
@@ -37,7 +38,9 @@ const TrendingMoviesView = () => {
         <Grid item xs={12}>
           <Box justifyContent="space-between" display="flex">
             <Typography component="h2" variant="h4">
-              Trending Movies
+              {/* Trending Movies */}
+              {/* @ts-ignore */}
+              <Trans i18nKey="Heading.TrendingMovies" />
             </Typography>
           </Box>
         </Grid>
