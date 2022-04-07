@@ -7,14 +7,11 @@ import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/SingleContent/SingleContentSkeleton';
 import CustomPagination from '../../../@components/UI/CustomPagination';
 import { useTrendingMoviesQuery } from '../../../@store/trending/api';
-import { languageSelector } from '../../../@store/ui/selectors';
-import { alpha2iso } from '../../../@utils/alpha2iso';
+import { languageISOSelector } from '../../../@store/ui/selectors';
 
 const TrendingMoviesView = () => {
   const [queryPage, setQueryPage] = useQueryParam('page', NumberParam);
-
-  const currentLanguage = useSelector(languageSelector);
-  const langISOCode = alpha2iso(currentLanguage);
+  const langISOCode = useSelector(languageISOSelector);
 
   const { data, isFetching } = useTrendingMoviesQuery({
     page: queryPage || 1,

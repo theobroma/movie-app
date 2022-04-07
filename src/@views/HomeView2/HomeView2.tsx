@@ -18,9 +18,8 @@ import {
   useTrendingMoviesQuery,
   useTrendingTVQuery,
 } from '../../@store/trending/api';
-import { languageSelector } from '../../@store/ui/selectors';
+import { languageISOSelector } from '../../@store/ui/selectors';
 import { ROUTES } from '../../@types';
-import { alpha2iso } from '../../@utils/alpha2iso';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -32,8 +31,7 @@ const useStyles = makeStyles(() =>
 
 const HomeView2 = () => {
   const classes = useStyles();
-  const currentLanguage = useSelector(languageSelector);
-  const langISOCode = alpha2iso(currentLanguage);
+  const langISOCode = useSelector(languageISOSelector);
 
   const {
     data: moviesData,
