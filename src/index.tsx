@@ -9,6 +9,9 @@ import { store, persistor } from './@store/configureStore';
 import LoadingPage from './@components/UI/LoadingPage';
 import SnackBarProvider from './@components/UI/SnackBar/SnackBarProvider';
 import AppThemeProvider from './@themes/theme';
+import './i18n';
+import { instance } from './@api/api';
+import { alpha2iso } from './@utils/alpha2iso';
 import reportWebVitals from './reportWebVitals';
 
 // All styles
@@ -20,18 +23,25 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import './i18n';
-
 const rootEl = document.getElementById('root');
+
+// Request interceptors for API calls
+instance.interceptors.request.use(
+  (config) => {
+    // grab current state
+    const state = store.getState();
+    config.params.language = alpha2iso(state.ui.language);
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate
-        loading={<LoadingPage />}
-        persistor={persistor}
-        // TODO: implement onBeforeLift delay
-      >
+      <PersistGate loading={<LoadingPage />} persistor={persistor}>
         <AppThemeProvider>
           <SnackBarProvider>
             <AppContainer />
