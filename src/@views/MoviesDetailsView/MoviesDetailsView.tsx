@@ -10,6 +10,7 @@ import SimilarMedia from '../../@features/SimilarMedia';
 // import { useNonInitialEffect } from '../../@hooks/useNonInitialEffect';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMediaDetailsTC } from '../../@store/details/slice';
+import { languageISOSelector } from '../../@store/ui/selectors';
 import { favouriteMediaSelector } from '../../@store/user/selectors';
 import {
   setMovieVisitedAC,
@@ -33,6 +34,8 @@ const MoviesDetailsView: React.FC = () => {
     credits,
   } = useSelector(movieDetailsSelector);
   const favouriteMedia = useSelector(favouriteMediaSelector);
+  // just for useEffect refetch if changed
+  const langISOCode = useSelector(languageISOSelector);
 
   const trailer = null ?? trailers?.results[0]?.key;
   const { mediaId, mediaType } = useParams<keyof MyParams>() as MyParams;
@@ -49,7 +52,7 @@ const MoviesDetailsView: React.FC = () => {
     if (mediaId && mediaType) {
       dispatch(getMediaDetailsTC({ mediaId, mediaType }));
     }
-  }, [dispatch, mediaId, mediaType]);
+  }, [dispatch, mediaId, mediaType, langISOCode]);
 
   useEffect(() => {
     // TODO: check if movie exist. for example /details/movie/96677

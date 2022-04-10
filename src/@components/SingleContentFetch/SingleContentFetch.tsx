@@ -5,6 +5,7 @@ import {
   entitiesTVSelector,
 } from '../../@store/entities/selectors';
 import { getMediaDetailsTC } from '../../@store/entities/slice';
+import { languageISOSelector } from '../../@store/ui/selectors';
 import { MEDIA_TYPE } from '../../@types';
 import SingleContent from '../SingleContent';
 import SingleContentSkeleton from '../SingleContent/SingleContentSkeleton';
@@ -20,12 +21,14 @@ const SingleContentFetch: React.FC<Props> = ({ id, mediaType }) => {
     mediaType === MEDIA_TYPE.TV ? entitiesTVSelector : entitiesMoviesSelector;
   const { ids, entities } = useSelector(entitiesSelector);
   // console.log(entities[ids[0]]);
+  // just for useEffect refetch if changed
+  const langISOCode = useSelector(languageISOSelector);
 
   useEffect(() => {
     if (id && mediaType) {
       dispatch(getMediaDetailsTC({ mediaId: id, mediaType }));
     }
-  }, [dispatch, id, mediaType]);
+  }, [dispatch, id, mediaType, langISOCode]);
 
   let movie = {} as any;
   const index = ids.indexOf(id);

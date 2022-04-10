@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
 import EmptyBlock from '../../@components/UI/EmptyBlock';
+import { languageISOSelector } from '../../@store/ui/selectors';
 import { SimilarMediaAllResponseType } from '../../@types';
 import { similarMediaSelector } from './store/selectors';
 import { getSimilarMediaTC } from './store/slice';
@@ -21,12 +22,14 @@ const SimilarMedia: React.FC<Props> = ({ mediaId, mediaType }) => {
     isFetching,
     isSuccess,
   } = useSelector(similarMediaSelector);
+  // just for useEffect refetch if changed
+  const langISOCode = useSelector(languageISOSelector);
 
   useEffect(() => {
     if (mediaId && mediaType) {
       dispatch(getSimilarMediaTC({ mediaId, mediaType }));
     }
-  }, [dispatch, mediaId, mediaType]);
+  }, [dispatch, mediaId, mediaType, langISOCode]);
 
   const ITEMS_TO_SHOW = 6;
   const resultsToShow =
