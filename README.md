@@ -9,33 +9,40 @@ Search, See primary information, See trailers of different movies.
 Register your API Key at
 [https://www.themoviedb.org/](https://www.themoviedb.org/)
 
-## Quick Start
+## :fire: Built With
+
+This project was built using these technologies.
+
+- React.js v17
+- [Material UI v4](https://v4.mui.com/ru/)
+
+## 🛠 Quick Start
 
 ```bash
 # Install dependencies
-npm install
+yarn
 
 # Serve on localhost:3000
-npm start
+yarn start
 
 # Build for production
-npm run build
+yarn run build
 
 # Format with prettier
-npm run format
+yarn run format
 
 # Lint with eslint
-npm run lint
+yarn run lint
 ```
 
-## Deploy to Netlify
+## :package: Deploy to Netlify
 
 ```bash
 # Generate a production build and deploy it
 
   "scripts": {
     ...
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "netlify deploy -p"
   },
 ```

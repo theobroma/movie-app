@@ -53,7 +53,7 @@
         "format": "prettier --write src/**/*.{js,jsx,ts,tsx,yml,json,css,scss,md}",
         "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
         "serve": "serve -s build",
-        "predeploy": "npm run build",
+        "predeploy": "yarn run build",
         "deploy": "netlify deploy -p"
     },
     "eslintConfig": {
