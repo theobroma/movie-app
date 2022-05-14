@@ -24,12 +24,12 @@ const Badges = () => {
     <>
       <div className={classes.sectionDesktop}>
         <Tooltip title="Navigate to favourites">
-          <IconButton aria-label="show favourites" color="inherit">
-            <Badge
-              badgeContent={favouriteCount}
-              color="secondary"
-              onClick={() => navigate(ROUTES.FAVOURITES_MOVIES)}
-            >
+          <IconButton
+            aria-label="show favourites"
+            color="inherit"
+            onClick={() => navigate(ROUTES.FAVOURITES_MOVIES)}
+          >
+            <Badge badgeContent={favouriteCount} color="secondary">
               <FavoriteIcon />
             </Badge>
           </IconButton>

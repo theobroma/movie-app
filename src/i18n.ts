@@ -29,7 +29,8 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    debug: true,
+    // enable/disable console.log
+    debug: false,
   });
 
 export default i18n;
