@@ -1,22 +1,30 @@
+// example https://github.com/michey85/rtk-ts/blob/async/src/store/todoSlice.ts
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { moviesApi } from '../../@api/movies-api';
 import {
   CreditsResponseSchema,
+  CreditsResponseType,
   DetailsMediaAllSchema,
+  // DetailsMediaAllType,
+  // DetailsMovieType,
   // DetailsMovieSchema,
   // DetailsTVSchema,
   VideosResponseSchema,
+  VideosResponseType,
 } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const detailsInitialState = {
-  data: {},
+  data: {} as any,
+  // data: {} as DetailsMediaAllType,
   trailers: {
+    id: 0,
     results: [],
-  },
-  credits: {},
-  isLoading: false,
-} as any;
+  } as VideosResponseType,
+  credits: {} as CreditsResponseType,
+  isLoading: false as boolean,
+  error: null as string | null,
+};
 
 export type DetailsInitialStateType = typeof detailsInitialState;
 

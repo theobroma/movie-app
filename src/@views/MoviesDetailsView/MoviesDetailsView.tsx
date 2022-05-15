@@ -79,6 +79,13 @@ const MoviesDetailsView: React.FC = () => {
     }
   };
 
+  const backdropTitle =
+    movieDetailsData?.title ||
+    movieDetailsData?.name ||
+    movieDetailsData?.original_title ||
+    movieDetailsData?.original_name ||
+    'title';
+
   return (
     <div>
       <Box style={{ position: 'relative' }}>
@@ -87,7 +94,8 @@ const MoviesDetailsView: React.FC = () => {
             <img
               className={classes.backdropImage}
               src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}
-              alt={`Backdrop of ${movieDetailsData.title}`}
+              // alt="Backdrop of media"
+              alt={`Backdrop of ${backdropTitle}`}
             />
           )}
         </div>
