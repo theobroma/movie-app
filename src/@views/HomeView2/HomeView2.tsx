@@ -59,14 +59,12 @@ const HomeView2 = () => {
             <Link to={ROUTES.TRENDING_MOVIES} className={classes.link}>
               <Button variant="contained" color="primary">
                 {/* Movies */}
-                {/* @ts-ignore */}
                 <Trans i18nKey="Movies" />
               </Button>
             </Link>
             <Link to={ROUTES.TRENDING_MOVIES} className={classes.link}>
               <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
                 {/* More */}
-                {/* @ts-ignore */}
                 <Trans i18nKey="btn.more" />
               </Button>
             </Link>
@@ -90,14 +88,12 @@ const HomeView2 = () => {
             <Link to={ROUTES.TRENDING_TV} className={classes.link}>
               <Button variant="contained" color="primary">
                 {/* TV Shows */}
-                {/* @ts-ignore */}
                 <Trans i18nKey="TVShows" />
               </Button>
             </Link>
             <Link to={ROUTES.TRENDING_TV} className={classes.link}>
               <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
                 {/* More */}
-                {/* @ts-ignore */}
                 <Trans i18nKey="btn.more" />
               </Button>
             </Link>

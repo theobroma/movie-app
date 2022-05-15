@@ -39,7 +39,6 @@ const TrendingTVView = () => {
           <Box justifyContent="space-between" display="flex">
             <Typography component="h2" variant="h4">
               {/* Trending TV Shows */}
-              {/* @ts-ignore */}
               <Trans i18nKey="Heading.TrendingTV" />
             </Typography>
           </Box>

@@ -9,7 +9,6 @@ import { languageSelector } from '../@store/ui/selectors';
 
 export const AppLayout = () => {
   const currentLanguage = useSelector(languageSelector);
-  /* @ts-ignore */
   const { i18n } = useTranslation();
   useEffect(() => {
     i18n.changeLanguage(currentLanguage);

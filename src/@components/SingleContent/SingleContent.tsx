@@ -64,15 +64,9 @@ const SingleContent: React.FC<Props> = ({
         <b className={classes.title}>{mediaTitle}</b>
         <span className={classes.subTitle}>
           {mediaType === MEDIA_TYPE.TV ? (
-            <>
-              {/* @ts-ignore */}
-              <Trans i18nKey="TVSeries" />
-            </>
+            <Trans i18nKey="TVSeries" />
           ) : (
-            <>
-              {/* @ts-ignore */}
-              <Trans i18nKey="Movie" />
-            </>
+            <Trans i18nKey="Movie" />
           )}
           <span className={classes.subTitle}>{mediaReleaseDate}</span>
         </span>

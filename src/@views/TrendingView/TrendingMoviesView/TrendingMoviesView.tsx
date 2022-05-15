@@ -39,7 +39,6 @@ const TrendingMoviesView = () => {
           <Box justifyContent="space-between" display="flex">
             <Typography component="h2" variant="h4">
               {/* Trending Movies */}
-              {/* @ts-ignore */}
               <Trans i18nKey="Heading.TrendingMovies" />
             </Typography>
           </Box>
