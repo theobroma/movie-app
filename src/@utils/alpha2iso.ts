@@ -1,8 +1,8 @@
 // https://bobbyhadz.com/blog/typescript-object-with-dynamic-keys
 
 interface IISOmap {
-  // 👇️ key         value
-  [key: string]: string | number;
+  // 👇️ key      value
+  [key: string]: string;
 }
 
 export const alpha2ISOMap: IISOmap = {

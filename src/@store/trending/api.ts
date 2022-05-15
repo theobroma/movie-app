@@ -7,11 +7,17 @@ export const trendingTVapi = createApi({
     baseUrl: `${API_URL}`,
   }),
   endpoints: (builder) => ({
-    trendingTV: builder.query<TVResponseType, any>({
+    trendingTV: builder.query<
+      TVResponseType,
+      { page: number | void; isoCode: string }
+    >({
       query: ({ page, isoCode }) =>
         `/trending/tv/week?page=${page}&api_key=${API_KEY}&language=${isoCode}`,
     }),
-    trendingMovies: builder.query<MoviesResponseType, any>({
+    trendingMovies: builder.query<
+      MoviesResponseType,
+      { page: number | void; isoCode: string }
+    >({
       query: ({ page, isoCode }) =>
         `/trending/movie/week?page=${page}&api_key=${API_KEY}&language=${isoCode}`,
     }),
