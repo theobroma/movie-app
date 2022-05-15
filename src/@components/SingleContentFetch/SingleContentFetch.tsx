@@ -4,7 +4,7 @@ import {
   entitiesMoviesSelector,
   entitiesTVSelector,
 } from '../../@store/entities/selectors';
-import { getMediaDetailsTC } from '../../@store/entities/slice';
+import { getEntityMediaDetailsTC } from '../../@store/entities/slice';
 import { languageISOSelector } from '../../@store/ui/selectors';
 import { MEDIA_TYPE } from '../../@types';
 import SingleContent from '../SingleContent';
@@ -26,7 +26,7 @@ const SingleContentFetch: React.FC<Props> = ({ id, mediaType }) => {
 
   useEffect(() => {
     if (id && mediaType) {
-      dispatch(getMediaDetailsTC({ mediaId: id, mediaType }));
+      dispatch(getEntityMediaDetailsTC({ mediaId: id, mediaType }));
     }
   }, [dispatch, id, mediaType, langISOCode]);
 

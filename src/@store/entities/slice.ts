@@ -16,7 +16,7 @@ const entitiesInitialState = {
 
 export type EntitiesInitialStateType = typeof entitiesInitialState;
 
-export const getMediaDetailsTC = createAsyncThunk<
+export const getEntityMediaDetailsTC = createAsyncThunk<
   any,
   { mediaId: string; mediaType: string },
   any
@@ -53,7 +53,7 @@ export const entitiesSlice = createSlice({
   },
   extraReducers: (builder) => {
     //  BY HAND
-    builder.addCase(getMediaDetailsTC.fulfilled, (state, action) => {
+    builder.addCase(getEntityMediaDetailsTC.fulfilled, (state, action) => {
       // reduce the collection by the id property into a shape of { 1: { ...user }}
       const obj = action.payload.data;
       const { mediaType } = action.payload;
