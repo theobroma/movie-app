@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
 import { themeSelector } from '../../../@store/ui/selectors';
 import { setThemeAC } from '../../../@store/ui/slice';
-import { ThemeColorsType, THEME_COLORS } from '../../../@types';
+import { ThemeColorsType, ThemeColors } from '../../../@types';
 
 export const ThemeSwitch = () => {
   const dispatch = useDispatch();
@@ -29,11 +29,11 @@ export const ThemeSwitch = () => {
 
   return (
     <Box>
-      {currentTheme === THEME_COLORS.LIGHT ? (
+      {currentTheme === ThemeColors.LIGHT ? (
         <Tooltip title="Switch theme to Dark">
           <IconButton
             aria-label="theme"
-            onClick={() => handleSwitchDarkMode(THEME_COLORS.DARK)}
+            onClick={() => handleSwitchDarkMode(ThemeColors.DARK)}
             color="inherit"
           >
             <NightIcon />
@@ -43,7 +43,7 @@ export const ThemeSwitch = () => {
         <Tooltip title="Switch theme to Light">
           <IconButton
             aria-label="theme"
-            onClick={() => handleSwitchDarkMode(THEME_COLORS.LIGHT)}
+            onClick={() => handleSwitchDarkMode(ThemeColors.LIGHT)}
             color="inherit"
           >
             <DayIcon />
