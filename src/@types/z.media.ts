@@ -1,8 +1,8 @@
 // MIXED Movies and TV responses
 import * as z from 'zod';
 // TRENDING
-import { MovieEntitySchema, NoMediaTypeMovieEntitySchema } from './z.movie';
-import { NoMediaTypeTVEntitySchema, TVEntitySchema } from './z.tv';
+import { MovieEntitySchema, MovieEntityOmitMediaTypeSchema } from './z.movie';
+import { TVEntityOmitMediaTypeSchema, TVEntitySchema } from './z.tv';
 
 export const MediaAllResponseSchema = z.object({
   page: z.number(),
@@ -17,7 +17,7 @@ export type MediaAllResponseType = z.infer<typeof MediaAllResponseSchema>;
 export const SimilarMediaAllResponseSchema = z.object({
   page: z.number(),
   results: z.array(
-    z.union([NoMediaTypeMovieEntitySchema, NoMediaTypeTVEntitySchema]),
+    z.union([MovieEntityOmitMediaTypeSchema, TVEntityOmitMediaTypeSchema]),
   ),
   total_pages: z.number(),
   total_results: z.number(),

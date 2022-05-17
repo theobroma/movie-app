@@ -31,17 +31,17 @@ export const MoviesResponseSchema = z.object({
 export type MoviesResponseType = z.infer<typeof MoviesResponseSchema>;
 
 // SIMILAR
-export const NoMediaTypeMovieEntitySchema = MovieEntitySchema.omit({
+export const MovieEntityOmitMediaTypeSchema = MovieEntitySchema.omit({
   media_type: true,
 });
 
-export type NoMediaTypeMovieEntityType = z.infer<
-  typeof NoMediaTypeMovieEntitySchema
+export type MovieEntityOmitMediaType = z.infer<
+  typeof MovieEntityOmitMediaTypeSchema
 >;
 
 export const SimilarMoviesResponseSchema = z.object({
   page: z.number(),
-  results: z.array(NoMediaTypeMovieEntitySchema),
+  results: z.array(MovieEntityOmitMediaTypeSchema),
   total_pages: z.number(),
   total_results: z.number(),
 });

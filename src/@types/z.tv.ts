@@ -30,15 +30,15 @@ export const TVResponseSchema = z.object({
 export type TVResponseType = z.infer<typeof TVResponseSchema>;
 
 // SIMILAR
-export const NoMediaTypeTVEntitySchema = TVEntitySchema.omit({
+export const TVEntityOmitMediaTypeSchema = TVEntitySchema.omit({
   media_type: true,
 });
 
-export type NoMediaTypeTVEntityType = z.infer<typeof NoMediaTypeTVEntitySchema>;
+export type TVEntityOmitMediaType = z.infer<typeof TVEntityOmitMediaTypeSchema>;
 
 export const SimilarTVResponseSchema = z.object({
   page: z.number(),
-  results: z.array(NoMediaTypeTVEntitySchema),
+  results: z.array(TVEntityOmitMediaTypeSchema),
   total_pages: z.number(),
   total_results: z.number(),
 });
