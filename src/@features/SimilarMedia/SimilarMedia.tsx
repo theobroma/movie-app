@@ -15,7 +15,7 @@ interface Props {
   mediaType: string;
 }
 
-const SimilarMedia: React.FC<Props> = ({ mediaId, mediaType }) => {
+const SimilarMedia = ({ mediaId, mediaType }: Props) => {
   const dispatch = useDispatch();
   const {
     data: { results },

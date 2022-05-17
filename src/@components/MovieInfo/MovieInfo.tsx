@@ -12,19 +12,19 @@ import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
 
 interface Props {
-  movie: any;
-  trailer: TrailerType['key'];
   credits: CreditsResponseType;
-  onFavourite: any;
   isFavorite: boolean;
+  movie: any;
+  onFavourite: any;
+  trailerKey: TrailerType['key'];
 }
 
 const MovieInfo = ({
-  movie,
-  trailer,
   credits: { crew },
-  onFavourite,
   isFavorite,
+  movie,
+  onFavourite,
+  trailerKey,
 }: Props) => {
   const classes = useStyles();
   const {
@@ -162,14 +162,14 @@ const MovieInfo = ({
         {CrewBlock}
 
         <Box py={3}>
-          {trailer ? (
+          {trailerKey ? (
             <Button
               className={classes.trailer}
               variant="contained"
               startIcon={<YouTubeIcon />}
               color="secondary"
               target="__blank"
-              href={`https://www.youtube.com/watch?v=${trailer}`}
+              href={`https://www.youtube.com/watch?v=${trailerKey}`}
             >
               Watch the Trailer
             </Button>

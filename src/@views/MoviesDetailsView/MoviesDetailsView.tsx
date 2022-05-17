@@ -37,7 +37,7 @@ const MoviesDetailsView = () => {
   // just for useEffect refetch if changed
   const langISOCode = useSelector(languageISOSelector);
 
-  const trailer = null ?? trailers?.results[0]?.key;
+  const trailerKey = null ?? trailers?.results[0]?.key;
   const { mediaId, mediaType } = useParams<keyof MyParams>() as MyParams;
 
   let isFavorite = false;
@@ -104,7 +104,7 @@ const MoviesDetailsView = () => {
             {!isLoading ? (
               <MovieInfo
                 movie={movieDetailsData}
-                trailer={trailer}
+                trailerKey={trailerKey}
                 credits={credits}
                 onFavourite={handleOnFavourite}
                 isFavorite={isFavorite}
