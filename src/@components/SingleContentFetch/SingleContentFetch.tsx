@@ -15,7 +15,7 @@ interface Props {
   mediaType: string;
 }
 
-const SingleContentFetch: React.FC<Props> = ({ id, mediaType }) => {
+const SingleContentFetch = ({ id, mediaType }: Props) => {
   const dispatch = useDispatch();
   const entitiesSelector =
     mediaType === MEDIA_TYPE.TV ? entitiesTVSelector : entitiesMoviesSelector;

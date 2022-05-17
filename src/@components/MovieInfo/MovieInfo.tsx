@@ -1,27 +1,25 @@
 // almost empty http://localhost:3000/details/tv/29917
 // https://www.themoviedb.org/tv/29917-thirty-minute-theatre
-import React from 'react';
 import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import Rating from '@material-ui/lab/Rating';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import Rating from '@material-ui/lab/Rating';
 import { nanoid } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
+import React from 'react';
+import { CreditsResponseType, TrailerType } from '../../@types';
 import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
-import { TrailerType } from '../../@types';
 
 interface Props {
-  id: string | undefined;
   movie: any;
-  trailer: any;
-  credits: any;
+  trailer: TrailerType['key'];
+  credits: CreditsResponseType;
   onFavourite: any;
   isFavorite: boolean;
 }
 
 const MovieInfo = ({
-  id,
   movie,
   trailer,
   credits: { crew },
@@ -63,7 +61,7 @@ const MovieInfo = ({
     <>
       {/* <h3 className={classes.subtitle}>Crew</h3> */}
       <Grid container spacing={3} component="ul" className={classes.crewList}>
-        {crew.slice(0, 4).map((person: any) => (
+        {crew.slice(0, 4).map((person) => (
           <Grid
             item
             md={3}
@@ -125,7 +123,7 @@ const MovieInfo = ({
           >
             <Button
               style={{ marginLeft: 16 }}
-              onClick={() => onFavourite(id)}
+              onClick={() => onFavourite()}
               variant={isFavorite ? 'contained' : 'outlined'}
               // variant="outlined"
               color="secondary"

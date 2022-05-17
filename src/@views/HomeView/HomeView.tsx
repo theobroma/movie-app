@@ -10,7 +10,7 @@ import CustomPagination from '../../@components/UI/CustomPagination';
 import { trendingSelector } from '../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
 
-const HomeView: React.FC = () => {
+const HomeView = () => {
   const dispatch = useDispatch();
   const {
     data: { page, total_pages, results: trendingAllmovies },

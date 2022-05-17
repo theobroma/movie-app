@@ -8,7 +8,7 @@ import { visitedTVIdsSelector } from '../../../@store/user/selectors';
 import { clearVisitedAC } from '../../../@store/user/slice';
 import { MEDIA_TYPE } from '../../../@types';
 
-const VisitedTVView: React.FC = () => {
+const VisitedTVView = () => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const visitedTVIds = useSelector(visitedTVIdsSelector);

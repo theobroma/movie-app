@@ -103,7 +103,6 @@ const MoviesDetailsView = () => {
           <Box py={3}>
             {!isLoading ? (
               <MovieInfo
-                id={mediaId}
                 movie={movieDetailsData}
                 trailer={trailer}
                 credits={credits}

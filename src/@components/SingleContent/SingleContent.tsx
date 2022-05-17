@@ -14,7 +14,7 @@ interface Props {
   parentMediaType?: string; // crutch for similar movies
 }
 
-const SingleContent: React.FC<Props> = ({
+const SingleContent = ({
   movie: {
     id,
     title = '',
@@ -28,7 +28,7 @@ const SingleContent: React.FC<Props> = ({
     media_type,
   } = {},
   parentMediaType,
-}) => {
+}: Props) => {
   const classes = useStyles();
   const mediaType = media_type || parentMediaType;
   // DIFFERENT FIELDS FOR MOVIE AND TV

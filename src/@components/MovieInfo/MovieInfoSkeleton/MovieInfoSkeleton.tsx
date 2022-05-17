@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MovieInfoSkeleton: React.FC = () => {
+const MovieInfoSkeleton = () => {
   const classes = useStyles();
 
   const subtitle = (width: number) => (

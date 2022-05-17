@@ -5,7 +5,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useStyles } from './Page404View.styles';
 
-const Page404View: React.FC = () => {
+const Page404View = () => {
   const classes = useStyles();
   return (
     <Container maxWidth="lg">

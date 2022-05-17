@@ -8,7 +8,7 @@ import { visitedMovieIdsSelector } from '../../../@store/user/selectors';
 import { clearVisitedAC } from '../../../@store/user/slice';
 import { MEDIA_TYPE } from '../../../@types';
 
-const VisitedMovieView: React.FC = () => {
+const VisitedMovieView = () => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const visitedMovieIds = useSelector(visitedMovieIdsSelector);

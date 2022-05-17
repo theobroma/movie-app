@@ -6,7 +6,7 @@ import SingleContentFetch from '../../../@components/SingleContentFetch';
 import { favouriteTVIdsSelector } from '../../../@store/user/selectors';
 import { MEDIA_TYPE } from '../../../@types';
 
-const FavouritesTVView: React.FC = () => {
+const FavouritesTVView = () => {
   const favouriteTVIds = useSelector(favouriteTVIdsSelector);
 
   return (

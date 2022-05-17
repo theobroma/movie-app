@@ -6,7 +6,7 @@ import SingleContentFetch from '../../../@components/SingleContentFetch';
 import { favouriteMovieIdsSelector } from '../../../@store/user/selectors';
 import { MEDIA_TYPE } from '../../../@types';
 
-const FavouritesMoviesView: React.FC = () => {
+const FavouritesMoviesView = () => {
   const favouriteMovieIds = useSelector(favouriteMovieIdsSelector);
 
   return (
