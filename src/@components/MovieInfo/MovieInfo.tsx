@@ -9,6 +9,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
 import { Formatter } from '../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
+import { TrailerType } from '../../@types';
 
 interface Props {
   id: string | undefined;
@@ -19,14 +20,14 @@ interface Props {
   isFavorite: boolean;
 }
 
-const MovieInfo: React.FC<Props> = ({
+const MovieInfo = ({
   id,
   movie,
   trailer,
   credits: { crew },
   onFavourite,
   isFavorite,
-}) => {
+}: Props) => {
   const classes = useStyles();
   const {
     budget,

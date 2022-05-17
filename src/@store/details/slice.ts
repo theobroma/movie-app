@@ -9,8 +9,8 @@ import {
   // DetailsMovieType,
   // DetailsMovieSchema,
   // DetailsTVSchema,
-  VideosResponseSchema,
-  VideosResponseType,
+  TrailersResponseSchema,
+  TrailersResponseType,
 } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
@@ -20,7 +20,7 @@ const detailsInitialState = {
   trailers: {
     id: 0,
     results: [],
-  } as VideosResponseType,
+  } as TrailersResponseType,
   credits: {} as CreditsResponseType,
   isLoading: false as boolean,
   error: null as string | null,
@@ -50,7 +50,7 @@ export const getMediaDetailsTC = createAsyncThunk<
       // DetailsMovieSchema.parse(res1.data);
       // DetailsTVSchema.parse(res1.data);
       // ========================================
-      VideosResponseSchema.parse(res2.data);
+      TrailersResponseSchema.parse(res2.data);
       CreditsResponseSchema.parse(res3.data);
     } catch (error) {
       // Log & alert error <-- very important!

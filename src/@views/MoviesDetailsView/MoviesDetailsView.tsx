@@ -23,7 +23,7 @@ interface MyParams {
   mediaType: string;
 }
 
-const MoviesDetailsView: React.FC = () => {
+const MoviesDetailsView = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();

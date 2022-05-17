@@ -1,6 +1,6 @@
 import * as z from 'zod';
 
-const VideosItemSchema = z.object({
+const TrailerSchema = z.object({
   iso_639_1: z.string(),
   iso_3166_1: z.string(),
   name: z.string(),
@@ -13,9 +13,11 @@ const VideosItemSchema = z.object({
   id: z.string(),
 });
 
-export const VideosResponseSchema = z.object({
+export type TrailerType = z.infer<typeof TrailerSchema>;
+
+export const TrailersResponseSchema = z.object({
   id: z.number(),
-  results: z.array(VideosItemSchema),
+  results: z.array(TrailerSchema),
 });
 
-export type VideosResponseType = z.infer<typeof VideosResponseSchema>;
+export type TrailersResponseType = z.infer<typeof TrailersResponseSchema>;
