@@ -8,7 +8,7 @@ import clsx from 'clsx';
  */
 const APP_ALERT_SEVERITY = 'error'; // 'error' | 'info'| 'success' | 'warning'
 const APP_ALERT_VARIANT = 'filled'; // 'filled' | 'outlined' | 'standard'
-const APP_ALERT_ELEVATION = 5;
+// const APP_ALERT_ELEVATION = 5;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,26 +22,27 @@ type Variant = 'standard' | 'filled' | 'outlined';
 interface Props {
   severity?: Color;
   variant: Variant;
-  elevation: number;
+  // elevation?: number;
   className?: string;
   // onClose?: (event: React.SyntheticEvent) => void;
   onClose?: any;
+  children: React.ReactNode;
 }
 
-const AppAlert: React.FC<Props> = ({
+const AppAlert = ({
   severity = APP_ALERT_SEVERITY,
   variant = APP_ALERT_VARIANT,
-  elevation = APP_ALERT_ELEVATION,
+  // elevation = APP_ALERT_ELEVATION,
   className,
   onClose,
   ...props
-}) => {
+}: Props) => {
   const classes = useStyles();
 
   return (
     <MuiAlert
       className={clsx(classes.root, className)}
-      elevation={elevation}
+      // elevation={elevation}
       severity={severity}
       variant={variant}
       onClose={onClose}

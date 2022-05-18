@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
+import AppAlert from '../../@components/UI/AppAlert';
 import EmptyBlock from '../../@components/UI/EmptyBlock';
 import { languageISOSelector } from '../../@store/ui/selectors';
 import { SimilarMediaAllResponseType } from '../../@types';
@@ -19,6 +20,8 @@ const SimilarMedia = ({ mediaId, mediaType }: Props) => {
   const dispatch = useDispatch();
   const {
     data: { results },
+    error,
+    isError,
     isFetching,
     isSuccess,
   } = useSelector(similarMediaSelector);
@@ -46,19 +49,28 @@ const SimilarMedia = ({ mediaId, mediaType }: Props) => {
         </Typography>
         <Grid container spacing={3} style={{ padding: 3 }}>
           {/* results */}
-          {resultsToShow?.map((media) => (
-            <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-              {isFetching ? (
-                <SingleContentSkeleton />
-              ) : (
-                <SingleContent movie={media} parentMediaType={mediaType} />
-              )}
-            </Grid>
-          ))}
+          {!isError &&
+            resultsToShow?.map((media) => (
+              <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
+                {isFetching ? (
+                  <SingleContentSkeleton />
+                ) : (
+                  <SingleContent movie={media} parentMediaType={mediaType} />
+                )}
+              </Grid>
+            ))}
           {/* no results */}
           {isSuccess && resultsToShow.length === 0 && (
             <Grid item xs={12}>
               <EmptyBlock>There is no data</EmptyBlock>
+            </Grid>
+          )}
+          {/* error */}
+          {isError && (
+            <Grid item xs={12}>
+              <AppAlert variant="standard" severity="error">
+                {error}
+              </AppAlert>
             </Grid>
           )}
         </Grid>
