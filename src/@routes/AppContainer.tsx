@@ -38,7 +38,7 @@ const TrendingTVView = lazy(() =>
 );
 
 const MoviesDetailsView = lazy(() =>
-  pMinDelay(import('../@views/MoviesDetailsView'), MIN_LAZY_DELAY),
+  pMinDelay(import('../@views/DetailsView'), MIN_LAZY_DELAY),
 );
 
 const FavouritesLayout = lazy(() =>
