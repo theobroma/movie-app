@@ -1,4 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  AnyAction,
+  createAsyncThunk,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
 import { moviesApi } from '../../../@api/movies-api';
 import {
   SimilarMediaAllResponseSchema,
@@ -54,32 +59,42 @@ export const similarSlice = createSlice({
     resetStateAC: () => similarInitialState,
   },
   extraReducers: (builder) => {
-    builder.addCase(getSimilarMediaTC.pending, (state) => {
-      state.isFetching = true;
-      //   clear data
-      state.data = {} as SimilarMediaAllResponseType;
-      state.isSuccess = false;
-      state.isError = false;
-      state.error = '';
-    });
-    builder.addCase(getSimilarMediaTC.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.data = action.payload;
-        // simulate empty results
-        // state.data.results = [];
-      }
-      state.isFetching = false;
-      state.isSuccess = true;
-    });
-    builder.addCase(getSimilarMediaTC.rejected, (state, action) => {
-      state.isFetching = false;
-      state.isError = true;
-      if (action.payload) {
+    builder
+      .addCase(getSimilarMediaTC.pending, (state) => {
+        state.isFetching = true;
+        //   clear data
+        state.data = {} as SimilarMediaAllResponseType;
+        state.isSuccess = false;
+        state.isError = false;
+        state.error = '';
+      })
+      .addCase(getSimilarMediaTC.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.data = action.payload;
+          // simulate empty results
+          // state.data.results = [];
+        }
+        state.isFetching = false;
+        state.isSuccess = true;
+      })
+      // .addCase(getSimilarMediaTC.rejected, (state, action) => {
+      //   state.isFetching = false;
+      //   state.isError = true;
+      //   if (action.payload) {
+      //     state.error = action.payload;
+      //   }
+      // })
+      .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
-      }
-    });
+        state.isError = true;
+        state.isFetching = false;
+      });
   },
 });
+
+function isError(action: AnyAction) {
+  return action.type.endsWith('rejected');
+}
 
 export const similarReducer = similarSlice.reducer;
 export const { resetStateAC } = similarSlice.actions;
