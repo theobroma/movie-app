@@ -7,8 +7,8 @@ import Rating from '@material-ui/lab/Rating';
 import { nanoid } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
 import React from 'react';
-import { CreditsResponseType, TrailerType } from '../../@types';
-import { Formatter } from '../../@utils/formatter';
+import { CreditsResponseType, TrailerType } from '../../../@types';
+import { Formatter } from '../../../@utils/formatter';
 import { useStyles } from './MovieInfo.styles';
 
 interface Props {
