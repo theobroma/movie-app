@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   entitiesMoviesSelector,
   entitiesTVSelector,
-} from '../../@store/entities/selectors';
-import { getEntityMediaDetailsTC } from '../../@store/entities/slice';
-import { languageISOSelector } from '../../@store/ui/selectors';
-import { MEDIA_TYPE } from '../../@types';
-import SingleContent from '../SingleContent';
-import SingleContentSkeleton from '../SingleContent/SingleContentSkeleton';
+} from '../../../@store/entities/selectors';
+import { getEntityMediaDetailsTC } from '../../../@store/entities/slice';
+import { languageISOSelector } from '../../../@store/ui/selectors';
+import { MEDIA_TYPE } from '../../../@types';
+import SingleContent from '..';
+import SingleContentSkeleton from '../SingleContentSkeleton';
 
 interface Props {
   id: string;

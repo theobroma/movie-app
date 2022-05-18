@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import SingleContentFetch from '../../../@components/SingleContentFetch';
+import SingleContentFetch from '../../../@components/SingleContent/SingleContentFetch';
 import { favouriteTVIdsSelector } from '../../../@store/user/selectors';
 import { MEDIA_TYPE } from '../../../@types';
 

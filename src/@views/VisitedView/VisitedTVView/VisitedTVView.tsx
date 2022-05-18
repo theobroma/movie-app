@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import SingleContentFetch from '../../../@components/SingleContentFetch';
+import SingleContentFetch from '../../../@components/SingleContent/SingleContentFetch';
 import { visitedTVIdsSelector } from '../../../@store/user/selectors';
 import { clearVisitedAC } from '../../../@store/user/slice';
 import { MEDIA_TYPE } from '../../../@types';
