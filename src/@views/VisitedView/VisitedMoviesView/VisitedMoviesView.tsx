@@ -2,16 +2,16 @@ import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import { useSnackbar } from 'notistack';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import SingleContentFetch from '../../../@components/SingleContent/SingleContentFetch';
+import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { visitedMovieIdsSelector } from '../../../@store/user/selectors';
 import { clearVisitedAC } from '../../../@store/user/slice';
 import { MEDIA_TYPE } from '../../../@types';
 
 const VisitedMovieView = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const visitedMovieIds = useSelector(visitedMovieIdsSelector);
+  const visitedMovieIds = useAppSelector(visitedMovieIdsSelector);
 
   const handleClearButton = () => {
     dispatch(clearVisitedAC());

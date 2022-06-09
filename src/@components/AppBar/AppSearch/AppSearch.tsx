@@ -1,17 +1,17 @@
 import { Box } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import useDebounce from '../../../@hooks/useDebounce';
+import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { searchDataSelector } from '../../../@store/search/selectors';
 import { searchTC } from '../../../@store/search/slice';
 import SearchInput from './SearchInput';
 import SearchOutput from './SearchOutput';
 
 export const AppSearch = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
-  const searchDataResults = useSelector(searchDataSelector).results || [];
+  const searchDataResults = useAppSelector(searchDataSelector).results || [];
   const [searchVal, setSearchVal] = useState('');
   const debouncedSearchTerm = useDebounce(searchVal, 500);
   const [showOutput, setShowOutput] = useState(true);

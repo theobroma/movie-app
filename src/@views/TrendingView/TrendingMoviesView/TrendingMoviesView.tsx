@@ -1,18 +1,18 @@
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
-import { useSelector } from 'react-redux';
 import { Trans } from 'react-i18next';
 import { NumberParam, useQueryParam } from 'use-query-params';
 import SingleContent from '../../../@components/SingleContent';
 import SingleContentSkeleton from '../../../@components/SingleContent/SingleContentSkeleton';
 import CustomPagination from '../../../@components/UI/CustomPagination';
+import { useAppSelector } from '../../../@store/configureStore';
 import { useTrendingMoviesQuery } from '../../../@store/trending/api';
 import { languageISOSelector } from '../../../@store/ui/selectors';
 
 const TrendingMoviesView = () => {
   const [queryPage, setQueryPage] = useQueryParam('page', NumberParam);
-  const langISOCode = useSelector(languageISOSelector);
+  const langISOCode = useAppSelector(languageISOSelector);
 
   const { data, isFetching } = useTrendingMoviesQuery({
     page: queryPage || 1,

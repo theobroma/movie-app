@@ -1,8 +1,8 @@
 import { Container, Grid } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { NumberParam, useQueryParam } from 'use-query-params';
+import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
 import CustomPagination from '../../@components/UI/CustomPagination';
@@ -11,11 +11,11 @@ import { trendingSelector } from '../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';
 
 const HomeView = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     data: { page, total_pages, results: trendingAllmovies },
     isLoading,
-  } = useSelector(trendingSelector);
+  } = useAppSelector(trendingSelector);
 
   const [queryPage, setQueryPage] = useQueryParam('page', NumberParam);
 

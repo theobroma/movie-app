@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { useAppSelector } from '../@store/configureStore';
 import PersistentDrawerLeft from '../@components/AppBar/PersistentDrawerLeft';
 import Footer from '../@components/Footer';
 import { languageSelector } from '../@store/ui/selectors';
 // import ComponentWithProblem from '../@components/WDYR/ComponentWithProblem';
 
 export const AppLayout = () => {
-  const currentLanguage = useSelector(languageSelector);
+  const currentLanguage = useAppSelector(languageSelector);
   const { i18n } = useTranslation();
   useEffect(() => {
     i18n.changeLanguage(currentLanguage);

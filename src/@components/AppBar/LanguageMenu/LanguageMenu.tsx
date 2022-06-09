@@ -5,8 +5,8 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import TranslateIcon from '@material-ui/icons/Translate';
 import { useSnackbar } from 'notistack';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
+import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { languageSelector } from '../../../@store/ui/selectors';
 import { setLanguageAC } from '../../../@store/ui/slice';
 import { StyledMenu, StyledMenuItem } from './LanguageMenu.styles';
@@ -14,9 +14,9 @@ import { StyledMenu, StyledMenuItem } from './LanguageMenu.styles';
 const options = ['en', 'ua'] as any[];
 
 const LanguageMenu = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const currentLanguage = useSelector(languageSelector);
+  const currentLanguage = useAppSelector(languageSelector);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(
     options.indexOf(currentLanguage),

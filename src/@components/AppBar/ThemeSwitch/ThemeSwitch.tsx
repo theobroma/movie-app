@@ -3,16 +3,16 @@ import NightIcon from '@material-ui/icons/Brightness3';
 import DayIcon from '@material-ui/icons/Brightness5';
 import { useSnackbar } from 'notistack';
 import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
+import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { themeSelector } from '../../../@store/ui/selectors';
 import { setThemeAC } from '../../../@store/ui/slice';
-import { ThemeColorsType, ThemeColors } from '../../../@types';
+import { ThemeColors, ThemeColorsType } from '../../../@types';
 
 export const ThemeSwitch = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const currentTheme = useSelector(themeSelector);
+  const currentTheme = useAppSelector(themeSelector);
 
   useNonInitialEffect(() => {
     enqueueSnackbar(`Theme changed to ${currentTheme}`, {

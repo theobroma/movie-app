@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import SingleContent from '..';
+import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import {
   entitiesMoviesSelector,
   entitiesTVSelector,
@@ -7,7 +8,6 @@ import {
 import { getEntityMediaDetailsTC } from '../../../@store/entities/slice';
 import { languageISOSelector } from '../../../@store/ui/selectors';
 import { MEDIA_TYPE } from '../../../@types';
-import SingleContent from '..';
 import SingleContentSkeleton from '../SingleContentSkeleton';
 
 interface Props {
@@ -16,13 +16,13 @@ interface Props {
 }
 
 const SingleContentFetch = ({ id, mediaType }: Props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const entitiesSelector =
     mediaType === MEDIA_TYPE.TV ? entitiesTVSelector : entitiesMoviesSelector;
-  const { ids, entities } = useSelector(entitiesSelector);
+  const { ids, entities } = useAppSelector(entitiesSelector);
   // console.log(entities[ids[0]]);
   // just for useEffect refetch if changed
-  const langISOCode = useSelector(languageISOSelector);
+  const langISOCode = useAppSelector(languageISOSelector);
 
   useEffect(() => {
     if (id && mediaType) {

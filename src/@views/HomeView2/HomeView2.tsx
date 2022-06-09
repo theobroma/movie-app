@@ -10,8 +10,8 @@ import LinkIcon from '@material-ui/icons/Link';
 import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
 import { Trans } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../@store/configureStore';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
 import {
@@ -31,7 +31,7 @@ const useStyles = makeStyles(() =>
 
 const HomeView2 = () => {
   const classes = useStyles();
-  const langISOCode = useSelector(languageISOSelector);
+  const langISOCode = useAppSelector(languageISOSelector);
 
   const {
     data: moviesData,

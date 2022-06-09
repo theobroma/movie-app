@@ -1,7 +1,7 @@
 import React from 'react';
 import { CssBaseline, PaletteType } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../@store/configureStore';
 import { themeSelector } from '../@store/ui/selectors';
 
 /**
@@ -121,7 +121,7 @@ const themeMap = {
 };
 
 const AppThemeProvider: React.FC = ({ children }) => {
-  const currentTheme = useSelector(themeSelector);
+  const currentTheme = useAppSelector(themeSelector);
   const theme = createTheme(themeMap[currentTheme]);
 
   return (

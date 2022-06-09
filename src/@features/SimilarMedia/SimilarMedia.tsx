@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
 import AppAlert from '../../@components/UI/AppAlert';
@@ -17,16 +17,16 @@ interface Props {
 }
 
 const SimilarMedia = ({ mediaId, mediaType }: Props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     data: { results },
     error,
     isError,
     isFetching,
     isSuccess,
-  } = useSelector(similarMediaSelector);
+  } = useAppSelector(similarMediaSelector);
   // just for useEffect refetch if changed
-  const langISOCode = useSelector(languageISOSelector);
+  const langISOCode = useAppSelector(languageISOSelector);
 
   useEffect(() => {
     if (mediaId && mediaType) {

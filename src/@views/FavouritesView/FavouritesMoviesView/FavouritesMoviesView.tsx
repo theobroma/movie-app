@@ -1,13 +1,13 @@
 import { Box, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import SingleContentFetch from '../../../@components/SingleContent/SingleContentFetch';
+import { useAppSelector } from '../../../@store/configureStore';
 import { favouriteMovieIdsSelector } from '../../../@store/user/selectors';
 import { MEDIA_TYPE } from '../../../@types';
 
 const FavouritesMoviesView = () => {
-  const favouriteMovieIds = useSelector(favouriteMovieIdsSelector);
+  const favouriteMovieIds = useAppSelector(favouriteMovieIdsSelector);
 
   return (
     <>

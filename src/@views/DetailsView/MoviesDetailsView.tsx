@@ -2,11 +2,9 @@
 import { Box, Container } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import MovieInfo from './MovieInfo';
-import MovieInfoSkeleton from './MovieInfo/MovieInfoSkeleton';
 import SimilarMedia from '../../@features/SimilarMedia';
+import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 // import { useNonInitialEffect } from '../../@hooks/useNonInitialEffect';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMediaDetailsTC } from '../../@store/details/slice';
@@ -16,6 +14,8 @@ import {
   setMovieVisitedAC,
   toggleMovieFavoriteAC,
 } from '../../@store/user/slice';
+import MovieInfo from './MovieInfo';
+import MovieInfoSkeleton from './MovieInfo/MovieInfoSkeleton';
 import { useStyles } from './MoviesDetailsView.styles';
 
 interface MyParams {
@@ -25,17 +25,17 @@ interface MyParams {
 
 const MoviesDetailsView = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const {
     data: movieDetailsData,
     isLoading,
     trailers,
     credits,
-  } = useSelector(movieDetailsSelector);
-  const favouriteMedia = useSelector(favouriteMediaSelector);
+  } = useAppSelector(movieDetailsSelector);
+  const favouriteMedia = useAppSelector(favouriteMediaSelector);
   // just for useEffect refetch if changed
-  const langISOCode = useSelector(languageISOSelector);
+  const langISOCode = useAppSelector(languageISOSelector);
 
   const trailerKey = null ?? trailers?.results[0]?.key;
   const { mediaId, mediaType } = useParams<keyof MyParams>() as MyParams;

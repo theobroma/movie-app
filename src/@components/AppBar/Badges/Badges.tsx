@@ -5,8 +5,8 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../../@store/configureStore';
 import {
   favouriteCountSelector,
   visitedCountSelector,
@@ -17,8 +17,8 @@ import { useStyles } from './Badges.style';
 const Badges = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const favouriteCount = useSelector(favouriteCountSelector);
-  const visitedCount = useSelector(visitedCountSelector);
+  const favouriteCount = useAppSelector(favouriteCountSelector);
+  const visitedCount = useAppSelector(visitedCountSelector);
 
   return (
     <>
