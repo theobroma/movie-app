@@ -2,6 +2,7 @@
 import { Box, Container } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import { useParams } from 'react-router-dom';
 import SimilarMedia from '../../@features/SimilarMedia';
 import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
@@ -17,6 +18,8 @@ import {
 import MovieInfo from './MovieInfo';
 import MovieInfoSkeleton from './MovieInfo/MovieInfoSkeleton';
 import { useStyles } from './MoviesDetailsView.styles';
+
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 interface MyParams {
   mediaId: string;
@@ -115,6 +118,13 @@ const MoviesDetailsView = () => {
           </Box>
         </Container>
       </Box>
+      {!isLoading && (
+        <Container maxWidth="lg">
+          <Box py={3}>
+            <LiteYouTubeEmbed id={trailerKey} title="Trailer" webp />
+          </Box>
+        </Container>
+      )}
       {/* Similar */}
       {mediaId && mediaType && (
         <SimilarMedia mediaId={mediaId} mediaType={mediaType} />
