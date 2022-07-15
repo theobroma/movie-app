@@ -8,6 +8,7 @@ export const useStyles = makeStyles(() =>
     },
     poster: {
       width: '100%',
+      maxHeight: '450px',
       borderRadius: 10,
       boxShadow: '0px 3px 20px #0000003b',
     },

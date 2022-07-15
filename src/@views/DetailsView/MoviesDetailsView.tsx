@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/69992370/why-react-router-v6-useparams-returns-object-with-properties-possibly-undefined
-import { Box, Container } from '@material-ui/core';
+import { Box, Container, Grid } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
@@ -118,11 +118,19 @@ const MoviesDetailsView = () => {
           </Box>
         </Container>
       </Box>
-      {!isLoading && (
+      {/* no trailer test : http://localhost:3000/details/movie/112160 */}
+      {!isLoading && trailerKey && (
         <Container maxWidth="lg">
-          <Box py={3}>
-            <LiteYouTubeEmbed id={trailerKey} title="Trailer" webp />
-          </Box>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={3}>
+              {/* offset */}
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box py={3}>
+                <LiteYouTubeEmbed id={trailerKey} title="Trailer" webp />
+              </Box>
+            </Grid>
+          </Grid>
         </Container>
       )}
       {/* Similar */}
