@@ -1,3 +1,7 @@
+import React from 'react';
+import { Trans } from 'react-i18next';
+import { Link } from 'react-router-dom';
+
 import {
   Box,
   Button,
@@ -8,12 +12,10 @@ import {
 } from '@material-ui/core';
 import LinkIcon from '@material-ui/icons/Link';
 import { nanoid } from '@reduxjs/toolkit';
-import React from 'react';
-import { Trans } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../@store/configureStore';
+
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
+import { useAppSelector } from '../../@store/configureStore';
 import {
   useTrendingMoviesQuery,
   useTrendingTVQuery,

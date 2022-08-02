@@ -1,13 +1,16 @@
+import React, { useEffect } from 'react';
+
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
-import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
+
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
 import AppAlert from '../../@components/UI/AppAlert';
 import EmptyBlock from '../../@components/UI/EmptyBlock';
+import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 import { languageISOSelector } from '../../@store/ui/selectors';
-import { SimilarMediaAllResponseType } from '../../@types';
+import type { SimilarMediaAllResponseType } from '../../@types';
+
 import { similarMediaSelector } from './store/selectors';
 import { getSimilarMediaTC } from './store/slice';
 

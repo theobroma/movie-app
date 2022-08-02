@@ -1,7 +1,8 @@
 // https://stackoverflow.com/a/61839489/3988363
-import { Paper, Tab, Tabs } from '@material-ui/core';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+import { Paper, Tab, Tabs } from '@material-ui/core';
 
 const MediaTabs = () => {
   const location = useLocation();

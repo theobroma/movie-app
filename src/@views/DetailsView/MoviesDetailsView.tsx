@@ -1,9 +1,11 @@
 // https://stackoverflow.com/questions/69992370/why-react-router-v6-useparams-returns-object-with-properties-possibly-undefined
-import { Box, Container, Grid } from '@material-ui/core';
-import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
+import { useSnackbar } from 'notistack';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import { useParams } from 'react-router-dom';
+
+import { Box, Container, Grid } from '@material-ui/core';
+
 import SimilarMedia from '../../@features/SimilarMedia';
 import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 // import { useNonInitialEffect } from '../../@hooks/useNonInitialEffect';
@@ -15,8 +17,9 @@ import {
   setMovieVisitedAC,
   toggleMovieFavoriteAC,
 } from '../../@store/user/slice';
-import MovieInfo from './MovieInfo';
+
 import MovieInfoSkeleton from './MovieInfo/MovieInfoSkeleton';
+import MovieInfo from './MovieInfo';
 import { useStyles } from './MoviesDetailsView.styles';
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';

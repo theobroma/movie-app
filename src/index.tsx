@@ -1,27 +1,30 @@
+// eslint-disable-next-line simple-import-sort/imports
 import './wdyr'; // <--- first import
+
 import React from 'react';
 import { render } from 'react-dom';
-import './index.css';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { AppContainer } from './@routes/AppContainer';
-import { store, persistor } from './@store/configureStore';
+
+import { instance } from './@api/api';
 import LoadingPage from './@components/UI/LoadingPage';
 import SnackBarProvider from './@components/UI/SnackBar/SnackBarProvider';
+import { AppContainer } from './@routes/AppContainer';
+import { persistor, store } from './@store/configureStore';
 import AppThemeProvider from './@themes/theme';
-import './i18n';
-import { instance } from './@api/api';
 import { alpha2iso } from './@utils/alpha2iso';
 import reportWebVitals from './reportWebVitals';
 
+import './index.css';
 // All styles
 import './@assets/styles/index.scss';
-
 // Open Source fonts
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+
+import './i18n';
 
 const rootEl = document.getElementById('root');
 

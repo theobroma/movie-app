@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import { moviesApi } from '../../@api/movies-api';
-import {
-  SimilarMoviesResponseSchema,
-  SimilarMoviesResponseType,
-} from '../../@types';
+import type { SimilarMoviesResponseType } from '../../@types';
+import { SimilarMoviesResponseSchema } from '../../@types';
 
 const searchInitialState = {
   data: {} as SimilarMoviesResponseType,

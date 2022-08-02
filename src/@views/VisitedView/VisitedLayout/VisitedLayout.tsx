@@ -1,6 +1,8 @@
-import { Container, Grid } from '@material-ui/core';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+
+import { Container, Grid } from '@material-ui/core';
+
 import MediaTabs from '../MediaTabs';
 
 const VisitedLayout = () => {

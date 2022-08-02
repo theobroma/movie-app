@@ -1,4 +1,5 @@
 import * as z from 'zod';
+
 import { DetailsMovieSchema } from './z.details-movie';
 import { DetailsTVSchema } from './z.details-tv';
 

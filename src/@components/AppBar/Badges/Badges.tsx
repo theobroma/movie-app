@@ -1,17 +1,20 @@
 // https://stackoverflow.com/questions/62036213/how-to-put-routerlink-in-iconbutton-in-reactjs
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Tooltip } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { useAppSelector } from '../../../@store/configureStore';
 import {
   favouriteCountSelector,
   visitedCountSelector,
 } from '../../../@store/user/selectors';
 import { ROUTES } from '../../../@types';
+
 import { useStyles } from './Badges.style';
 
 const Badges = () => {

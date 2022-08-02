@@ -1,6 +1,8 @@
-import { List, ListItem, Typography } from '@material-ui/core';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+
+import { List, ListItem, Typography } from '@material-ui/core';
+
 import { useStyles } from './SearchOutput.styles';
 
 export const img_154 = 'https://image.tmdb.org/t/p/w154';

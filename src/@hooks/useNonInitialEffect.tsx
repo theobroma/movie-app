@@ -1,5 +1,6 @@
 // https://github.com/thivi/use-non-initial-effect-hook
-import { useEffect, EffectCallback, DependencyList, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import type { DependencyList, EffectCallback } from 'react';
 
 /**
  * This hook gets called only when the dependencies change but not during initial render.

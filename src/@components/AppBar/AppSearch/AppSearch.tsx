@@ -1,10 +1,13 @@
-import { Box } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import { Box } from '@material-ui/core';
+
 import useDebounce from '../../../@hooks/useDebounce';
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { searchDataSelector } from '../../../@store/search/selectors';
 import { searchTC } from '../../../@store/search/slice';
+
 import SearchInput from './SearchInput';
 import SearchOutput from './SearchOutput';
 

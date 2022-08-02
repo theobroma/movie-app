@@ -1,13 +1,14 @@
 import React from 'react';
+
 import {
-  makeStyles,
-  createStyles,
   AppBar,
+  Box,
   Container,
+  createStyles,
+  IconButton,
+  makeStyles,
   Toolbar,
   Typography,
-  IconButton,
-  Box,
 } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 

@@ -1,16 +1,16 @@
 // example https://github.com/michey85/rtk-ts/blob/async/src/store/todoSlice.ts
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import { moviesApi } from '../../@api/movies-api';
+import type { CreditsResponseType, TrailersResponseType } from '../../@types';
 import {
   CreditsResponseSchema,
-  CreditsResponseType,
   DetailsMediaAllSchema,
   // DetailsMediaAllType,
   // DetailsMovieType,
   // DetailsMovieSchema,
   // DetailsTVSchema,
   TrailersResponseSchema,
-  TrailersResponseType,
 } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 

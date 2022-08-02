@@ -1,6 +1,8 @@
+import React from 'react';
+
 import { Box, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
-import React from 'react';
+
 import SingleContentFetch from '../../../@components/SingleContent/SingleContentFetch';
 import { useAppSelector } from '../../../@store/configureStore';
 import { favouriteTVIdsSelector } from '../../../@store/user/selectors';

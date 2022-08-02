@@ -1,7 +1,9 @@
 import React from 'react';
 import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
+
 import { MEDIA_TYPE } from '../../@types';
+
 import { StyledBadge, useStyles } from './SingleContent.styles';
 
 export const img_300 = 'https://image.tmdb.org/t/p/w300';

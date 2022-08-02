@@ -1,18 +1,19 @@
+import React from 'react';
+import type { NavLinkProps } from 'react-router-dom';
+import {
+  // Link as RouterLink,
+  // LinkProps as RouterLinkProps,
+  NavLink as RouterLink,
+} from 'react-router-dom';
+
+import type { Theme } from '@material-ui/core';
 import {
   createStyles,
   ListItem,
   ListItemIcon,
   ListItemText,
   makeStyles,
-  Theme,
 } from '@material-ui/core';
-import React from 'react';
-import {
-  // Link as RouterLink,
-  // LinkProps as RouterLinkProps,
-  NavLink as RouterLink,
-  NavLinkProps,
-} from 'react-router-dom';
 
 interface ListItemLinkProps {
   icon?: React.ReactElement;

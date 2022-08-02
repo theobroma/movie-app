@@ -1,11 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import { moviesApi } from '../../@api/movies-api';
-import {
-  MoviesResponseType,
-  MoviesResponseSchema,
-  TVResponseSchema,
-  MediaAllResponseSchema,
-} from '../../@types';
+import type { MoviesResponseType } from '../../@types';
+import { MediaAllResponseSchema } from '../../@types';
 // import { MoviesResponseType } from '../../@types';
 // import { MoviesResponseSchema } from '../../@types/z.movie';
 import { waitForMe } from '../../@utils/waitforme';

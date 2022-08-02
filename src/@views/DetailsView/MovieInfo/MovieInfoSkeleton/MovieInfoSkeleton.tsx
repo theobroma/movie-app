@@ -1,9 +1,10 @@
+import React from 'react';
+
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { nanoid } from '@reduxjs/toolkit';
-import React from 'react';
 
 const useStyles = makeStyles(() => ({
   skeleton: {

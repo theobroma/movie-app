@@ -1,7 +1,9 @@
+import React from 'react';
+import { useSnackbar } from 'notistack';
+
 import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
-import { useSnackbar } from 'notistack';
-import React from 'react';
+
 import SingleContentFetch from '../../../@components/SingleContent/SingleContentFetch';
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { visitedTVIdsSelector } from '../../../@store/user/selectors';

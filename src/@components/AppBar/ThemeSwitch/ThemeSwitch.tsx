@@ -1,13 +1,16 @@
+import React, { useCallback } from 'react';
+import { useSnackbar } from 'notistack';
+
 import { Box, IconButton, Tooltip } from '@material-ui/core';
 import NightIcon from '@material-ui/icons/Brightness3';
 import DayIcon from '@material-ui/icons/Brightness5';
-import { useSnackbar } from 'notistack';
-import React, { useCallback } from 'react';
+
 import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { themeSelector } from '../../../@store/ui/selectors';
 import { setThemeAC } from '../../../@store/ui/slice';
-import { ThemeColors, ThemeColorsType } from '../../../@types';
+import type { ThemeColorsType } from '../../../@types';
+import { ThemeColors } from '../../../@types';
 
 export const ThemeSwitch = () => {
   const dispatch = useAppDispatch();

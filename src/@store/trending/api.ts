@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_URL, API_KEY } from '../../@api/api';
-import { MoviesResponseType, TVResponseType } from '../../@types';
+
+import { API_KEY, API_URL } from '../../@api/api';
+import type { MoviesResponseType, TVResponseType } from '../../@types';
 
 export const trendingTVapi = createApi({
   baseQuery: fetchBaseQuery({

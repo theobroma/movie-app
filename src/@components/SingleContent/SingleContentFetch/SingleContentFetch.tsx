@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import SingleContent from '..';
+
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import {
   entitiesMoviesSelector,
@@ -9,6 +9,7 @@ import { getEntityMediaDetailsTC } from '../../../@store/entities/slice';
 import { languageISOSelector } from '../../../@store/ui/selectors';
 import { MEDIA_TYPE } from '../../../@types';
 import SingleContentSkeleton from '../SingleContentSkeleton';
+import SingleContent from '..';
 
 interface Props {
   id: string;

@@ -1,3 +1,7 @@
+import React, { useState } from 'react';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+
 import AppBar from '@material-ui/core/AppBar';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -9,14 +13,13 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import clsx from 'clsx';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import AppSearch from '../AppSearch';
 import Badges from '../Badges';
 import LanguageMenu from '../LanguageMenu/LanguageMenu';
 import NestedList from '../NestedList';
 import ThemeSwitch from '../ThemeSwitch';
+
 import { useStyles } from './PersistentDrawerLeft.styles';
 
 const PersistentDrawerLeft: React.FC = ({ children }) => {

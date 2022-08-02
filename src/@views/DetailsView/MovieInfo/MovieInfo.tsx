@@ -1,14 +1,17 @@
 // almost empty http://localhost:3000/details/tv/29917
 // https://www.themoviedb.org/tv/29917-thirty-minute-theatre
+import React from 'react';
+import dayjs from 'dayjs';
+
 import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import Rating from '@material-ui/lab/Rating';
 import { nanoid } from '@reduxjs/toolkit';
-import dayjs from 'dayjs';
-import React from 'react';
-import { CreditsResponseType, TrailerType } from '../../../@types';
+
+import type { CreditsResponseType, TrailerType } from '../../../@types';
 import { Formatter } from '../../../@utils/formatter';
+
 import { useStyles } from './MovieInfo.styles';
 
 interface Props {

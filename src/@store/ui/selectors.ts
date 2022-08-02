@@ -1,5 +1,5 @@
 import { alpha2iso } from '../../@utils/alpha2iso';
-import { RootState } from '../configureStore';
+import type { RootState } from '../configureStore';
 
 export const themeSelector = (state: RootState) => {
   return state.ui.theme;

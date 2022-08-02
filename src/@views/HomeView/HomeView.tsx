@@ -1,11 +1,13 @@
-import { Container, Grid } from '@material-ui/core';
-import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
 import { NumberParam, useQueryParam } from 'use-query-params';
-import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
+
+import { Container, Grid } from '@material-ui/core';
+import { nanoid } from '@reduxjs/toolkit';
+
 import SingleContent from '../../@components/SingleContent';
 import SingleContentSkeleton from '../../@components/SingleContent/SingleContentSkeleton';
 import CustomPagination from '../../@components/UI/CustomPagination';
+import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 // import { getTrendingMoviesNormalizedTC } from '../../@store/movies/slice';
 import { trendingSelector } from '../../@store/trending/selectors';
 import { getTrendingAllTC, setPageAC } from '../../@store/trending/slice';

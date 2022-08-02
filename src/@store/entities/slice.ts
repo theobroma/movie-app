@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import { moviesApi } from '../../@api/movies-api';
 import { MEDIA_TYPE } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';

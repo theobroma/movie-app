@@ -1,10 +1,5 @@
-import {
-  makeStyles,
-  Theme,
-  createStyles,
-  Badge,
-  withStyles,
-} from '@material-ui/core';
+import type { Theme } from '@material-ui/core';
+import { Badge, createStyles, makeStyles, withStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles(() =>
   createStyles({

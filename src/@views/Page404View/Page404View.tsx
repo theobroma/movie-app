@@ -1,8 +1,10 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import MovieIcon from '@material-ui/icons/Movie';
-import React from 'react';
-import { Link } from 'react-router-dom';
+
 import { useStyles } from './Page404View.styles';
 
 const Page404View = () => {

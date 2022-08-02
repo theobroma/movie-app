@@ -2,8 +2,8 @@
 // https://stackoverflow.com/a/37491381/3988363
 // https://github.com/pbeshai/use-query-params/issues/108
 // https://github.com/pbeshai/use-query-params/issues/196
-import pMinDelay from 'p-min-delay';
 import React, { lazy, Suspense } from 'react';
+import pMinDelay from 'p-min-delay';
 import {
   BrowserRouter,
   Outlet,
@@ -13,7 +13,9 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
+
 import LoadingPage from '../@components/UI/LoadingPage';
+
 import { AppLayout } from './AppLayout';
 
 const MIN_LAZY_DELAY = 300;

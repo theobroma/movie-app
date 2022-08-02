@@ -1,14 +1,9 @@
-import {
-  AnyAction,
-  createAsyncThunk,
-  createSlice,
-  PayloadAction,
-} from '@reduxjs/toolkit';
+import type { AnyAction, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import { moviesApi } from '../../../@api/movies-api';
-import {
-  SimilarMediaAllResponseSchema,
-  SimilarMediaAllResponseType,
-} from '../../../@types';
+import type { SimilarMediaAllResponseType } from '../../../@types';
+import { SimilarMediaAllResponseSchema } from '../../../@types';
 import { waitForMe } from '../../../@utils/waitforme';
 
 const similarInitialState = {

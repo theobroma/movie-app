@@ -1,14 +1,17 @@
 // https://stackoverflow.com/a/55533600/3988363
+import React, { useState } from 'react';
+import { useSnackbar } from 'notistack';
+
 import { IconButton, Tooltip } from '@material-ui/core';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import TranslateIcon from '@material-ui/icons/Translate';
-import { useSnackbar } from 'notistack';
-import React, { useState } from 'react';
+
 import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { languageSelector } from '../../../@store/ui/selectors';
 import { setLanguageAC } from '../../../@store/ui/slice';
+
 import { StyledMenu, StyledMenuItem } from './LanguageMenu.styles';
 
 const options = ['en', 'ua'] as any[];

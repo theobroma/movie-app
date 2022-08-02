@@ -1,4 +1,4 @@
-import {
+import type {
   CreditsResponseType,
   DetailsMediaAllType,
   MediaAllResponseType,
@@ -7,6 +7,7 @@ import {
   TrailersResponseType,
   TVResponseType,
 } from '../@types';
+
 import { instance } from './api';
 
 export const moviesApi = {

@@ -1,6 +1,8 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
-import { Pagination, UsePaginationProps } from '@material-ui/lab';
+
+import { createStyles, makeStyles } from '@material-ui/core';
+import type { UsePaginationProps } from '@material-ui/lab';
+import { Pagination } from '@material-ui/lab';
 
 const useStyles = makeStyles(() => {
   return {

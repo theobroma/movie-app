@@ -1,9 +1,13 @@
+import React from 'react';
+import { Trans } from 'react-i18next';
+
 import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import type { Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -12,9 +16,9 @@ import MovieIcon from '@material-ui/icons/Movie';
 import TvIcon from '@material-ui/icons/Tv';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
-import React from 'react';
-import { Trans } from 'react-i18next';
+
 import { ROUTES } from '../../../@types';
+
 import ListItemLink from './ListItemLink';
 
 const useStyles = makeStyles((theme: Theme) =>
