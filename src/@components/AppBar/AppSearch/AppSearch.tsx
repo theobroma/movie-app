@@ -11,7 +11,7 @@ import { searchTC } from '../../../@store/search/slice';
 import SearchInput from './SearchInput';
 import SearchOutput from './SearchOutput';
 
-export const AppSearch = () => {
+const AppSearch = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const searchDataResults = useAppSelector(searchDataSelector).results || [];

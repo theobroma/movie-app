@@ -28,4 +28,5 @@ const ComponentWithProblem = () => {
 
 ComponentWithProblem.whyDidYouRender = true;
 
+// eslint-disable-next-line import/no-unused-modules
 export default ComponentWithProblem;

@@ -5,7 +5,7 @@ interface IISOmap {
   [key: string]: string;
 }
 
-export const alpha2ISOMap: IISOmap = {
+const alpha2ISOMap: IISOmap = {
   ua: 'uk-UA',
   en: 'en-US',
 };

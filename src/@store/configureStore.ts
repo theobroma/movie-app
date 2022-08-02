@@ -54,7 +54,7 @@ const reducers = {
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);
 
-export const rootReducer: Reducer<RootState> = (state, action) => {
+const rootReducer: Reducer<RootState> = (state, action) => {
   if (action.type === RESET_STATE_ACTION_TYPE) {
     state = {} as RootState;
   }
@@ -78,9 +78,9 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-export default { store, persistor };
 
 // ==================== TYPES ====================
+// eslint-disable-next-line import/no-unused-modules
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof combinedReducer>;
 

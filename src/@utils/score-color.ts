@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unused-modules */
 export const VoteColors = {
   UNKNOWN: '#999',
   BAD: '#d63737',

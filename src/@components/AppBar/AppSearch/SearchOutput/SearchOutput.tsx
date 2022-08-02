@@ -5,9 +5,8 @@ import { List, ListItem, Typography } from '@material-ui/core';
 
 import { useStyles } from './SearchOutput.styles';
 
-export const img_154 = 'https://image.tmdb.org/t/p/w154';
-export const unavailable =
-  'https://www.movienewz.com/img/films/poster-holder.jpg';
+const img_154 = 'https://image.tmdb.org/t/p/w154';
+const unavailable = 'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
   movies: any;

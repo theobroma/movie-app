@@ -33,4 +33,5 @@ i18n
     debug: false,
   });
 
+// eslint-disable-next-line import/no-unused-modules
 export default i18n;

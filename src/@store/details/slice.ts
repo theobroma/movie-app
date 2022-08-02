@@ -26,7 +26,7 @@ const detailsInitialState = {
   error: null as string | null,
 };
 
-export type DetailsInitialStateType = typeof detailsInitialState;
+// export type DetailsInitialStateType = typeof detailsInitialState;
 
 export const getMediaDetailsTC = createAsyncThunk<
   any,
@@ -93,5 +93,5 @@ export const detailsSlice = createSlice({
   },
 });
 
-export const detailsReducer = detailsSlice.reducer;
-export const { setLoadingAC, resetStateAC } = detailsSlice.actions;
+// export const detailsReducer = detailsSlice.reducer;
+const { setLoadingAC, resetStateAC } = detailsSlice.actions;

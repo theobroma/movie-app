@@ -12,7 +12,7 @@ import { setThemeAC } from '../../../@store/ui/slice';
 import type { ThemeColorsType } from '../../../@types';
 import { ThemeColors } from '../../../@types';
 
-export const ThemeSwitch = () => {
+const ThemeSwitch = () => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const currentTheme = useAppSelector(themeSelector);

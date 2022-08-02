@@ -22,7 +22,7 @@ interface ListItemLinkProps {
   className?: string;
 }
 
-export const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     // Applied when "associated page" is selected
     linkActiveClass: {

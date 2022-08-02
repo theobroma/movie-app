@@ -15,7 +15,7 @@ const entitiesInitialState = {
   },
 } as any;
 
-export type EntitiesInitialStateType = typeof entitiesInitialState;
+// export type EntitiesInitialStateType = typeof entitiesInitialState;
 
 export const getEntityMediaDetailsTC = createAsyncThunk<
   any,
@@ -69,5 +69,5 @@ export const entitiesSlice = createSlice({
   },
 });
 
-export const entitiesReducer = entitiesSlice.reducer;
+// export const entitiesReducer = entitiesSlice.reducer;
 // export const { setPageAC } = slice.actions;

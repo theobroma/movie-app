@@ -6,9 +6,8 @@ import { MEDIA_TYPE } from '../../@types';
 
 import { StyledBadge, useStyles } from './SingleContent.styles';
 
-export const img_300 = 'https://image.tmdb.org/t/p/w300';
-export const unavailable =
-  'https://www.movienewz.com/img/films/poster-holder.jpg';
+const img_300 = 'https://image.tmdb.org/t/p/w300';
+const unavailable = 'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
   // movie: MovieEntityType | TVEntityType;

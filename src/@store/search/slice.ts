@@ -8,7 +8,7 @@ const searchInitialState = {
   data: {} as SimilarMoviesResponseType,
 };
 
-export type SearchInitialStateType = typeof searchInitialState;
+// export type SearchInitialStateType = typeof searchInitialState;
 
 export const searchTC = createAsyncThunk<SimilarMoviesResponseType, string>(
   'search/searchTC',
@@ -35,9 +35,9 @@ export const searchSlice = createSlice({
   name: 'search',
   initialState: searchInitialState,
   reducers: {
-    clearData(state) {
-      state.data = {} as SimilarMoviesResponseType;
-    },
+    // clearData(state) {
+    //   state.data = {} as SimilarMoviesResponseType;
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(searchTC.fulfilled, (state, action) => {
@@ -48,5 +48,5 @@ export const searchSlice = createSlice({
   },
 });
 
-export const searchReducer = searchSlice.reducer;
-export const { clearData: clearDataAC } = searchSlice.actions;
+// export const searchReducer = searchSlice.reducer;
+// export const { clearData: clearDataAC } = searchSlice.actions;

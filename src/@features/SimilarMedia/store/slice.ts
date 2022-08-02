@@ -45,7 +45,7 @@ export const getSimilarMediaTC = createAsyncThunk<
   }
 });
 
-export type SimilarInitialStateType = typeof similarInitialState;
+// export type SimilarInitialStateType = typeof similarInitialState;
 
 export const similarSlice = createSlice({
   name: 'similar',
@@ -91,5 +91,5 @@ function isError(action: AnyAction) {
   return action.type.endsWith('rejected');
 }
 
-export const similarReducer = similarSlice.reducer;
-export const { resetStateAC } = similarSlice.actions;
+// export const similarReducer = similarSlice.reducer;
+// export const { resetStateAC } = similarSlice.actions;

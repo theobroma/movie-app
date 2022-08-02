@@ -15,7 +15,7 @@ const moviesInitialState = {
   isLoading: false,
 } as any;
 
-export type MoviesInitialStateType = typeof moviesInitialState;
+// export type MoviesInitialStateType = typeof moviesInitialState;
 
 // SCHEMA
 const movieSchema = new schema.Entity('movie');
@@ -30,6 +30,7 @@ const mediaAllSchema = new schema.Array(
 );
 // end SCHEMA
 
+// eslint-disable-next-line import/no-unused-modules
 export const getTrendingMoviesNormalizedTC = createAsyncThunk<
   any,
   { page: number },
@@ -91,5 +92,5 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const moviesReducer = moviesSlice.reducer;
-export const { setLoadingAC } = moviesSlice.actions;
+// export const moviesReducer = moviesSlice.reducer;
+const { setLoadingAC } = moviesSlice.actions;

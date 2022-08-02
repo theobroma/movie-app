@@ -5,7 +5,7 @@ const userInitialState = {
   favoriteMediaIds: [] as Array<{ id: string; mediaType: string }>,
 };
 
-export type UserInitialStateType = typeof userInitialState;
+// export type UserInitialStateType = typeof userInitialState;
 
 export const userSlice = createSlice({
   name: 'user',
@@ -44,6 +44,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const userReducer = userSlice.reducer;
+// export const userReducer = userSlice.reducer;
 export const { setMovieVisitedAC, toggleMovieFavoriteAC, clearVisitedAC } =
   userSlice.actions;

@@ -17,7 +17,7 @@ const trendingInitialState = {
   isLoading: true,
 };
 
-export type TrendingInitialStateType = typeof trendingInitialState;
+// export type TrendingInitialStateType = typeof trendingInitialState;
 
 export const getTrendingAllTC = createAsyncThunk<any, any, any>(
   'trending/getTrendingAll',
@@ -69,5 +69,5 @@ export const trendingSlice = createSlice({
   },
 });
 
-export const trendingReducer = trendingSlice.reducer;
+// export const trendingReducer = trendingSlice.reducer;
 export const { setPageAC, setLoadingAC } = trendingSlice.actions;
