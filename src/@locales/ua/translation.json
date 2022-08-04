@@ -1,17 +1,21 @@
 {
-    "Home": "Головна",
-    "Visited": "Відвідане",
-    "Favourites": "Улюблене",
-    "Trending": "Тренди",
-    "Movies": "Фільми",
-    "TVShows": "Серіали",
-    "Movie": "Фільм",
-    "TVSeries": "Серіал",
-    "btn": {
-        "more": "більше"
-    },
-    "Heading": {
-        "TrendingMovies": "Фільми у тренді",
-        "TrendingTV": "Серіали у тренді"
-    }
+  "Home": "Головна",
+  "Visited": "Відвідане",
+  "Favourites": "Улюблене",
+  "Trending": "Тренди",
+  "Movies": "Фільми",
+  "TVShows": "Серіали",
+  "Movie": "Фільм",
+  "TVSeries": "Серіал",
+  "btn": {
+    "more": "більше"
+  },
+  "Heading": {
+    "TrendingMovies": "Фільми у тренді",
+    "TrendingTV": "Серіали у тренді",
+    "FavouritesMovies": "Улюблені фільми",
+    "FavouritesTV": "Улюблені серіали",
+    "VisitedMovies": "Відвідані фільми",
+    "VisitedTV": "Відвідані серіали"
+  }
 }

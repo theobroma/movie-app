@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSnackbar } from 'notistack';
+import { Trans } from 'react-i18next';
 
 import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
@@ -25,7 +26,8 @@ const VisitedTVView = () => {
       <Grid item xs={12}>
         <Box justifyContent="space-between" display="flex">
           <Typography component="h2" variant="h4">
-            Visited TV Shows
+            {/* Visited TV Shows */}
+            <Trans i18nKey="Heading.VisitedTV" />
           </Typography>
           <Tooltip title="Clear visited movies and tv shows">
             <Button

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Trans } from 'react-i18next';
 
 import { Box, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
@@ -16,7 +17,8 @@ const FavouritesMoviesView = () => {
       <Grid item xs={12}>
         <Box justifyContent="space-between" display="flex">
           <Typography component="h2" variant="h4">
-            Favourites Movies
+            {/* Favourites Movies */}
+            <Trans i18nKey="Heading.FavouritesMovies" />
           </Typography>
         </Box>
       </Grid>

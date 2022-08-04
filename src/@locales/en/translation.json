@@ -1,17 +1,21 @@
 {
-    "Home": "Home",
-    "Visited": "Visited",
-    "Favourites": "Favourites",
-    "Trending": "Trending",
-    "Movies": "Movies",
-    "TVShows": "TVShows",
-    "Movie": "Movie",
-    "TVSeries": "TV Series",
-    "btn": {
-        "more": "more"
-    },
-    "Heading": {
-        "TrendingMovies": "TrendingMovies",
-        "TrendingTV": "TrendingTV"
-    }
+  "Home": "Home",
+  "Visited": "Visited",
+  "Favourites": "Favourites",
+  "Trending": "Trending",
+  "Movies": "Movies",
+  "TVShows": "TVShows",
+  "Movie": "Movie",
+  "TVSeries": "TV Series",
+  "btn": {
+    "more": "more"
+  },
+  "Heading": {
+    "TrendingMovies": "Trending Movies",
+    "TrendingTV": "Trending TV",
+    "FavouritesMovies": "Favourites Movies",
+    "FavouritesTV": "Favourites TV",
+    "VisitedMovies": "Visited Movies",
+    "VisitedTV": "Visited TV"
+  }
 }
