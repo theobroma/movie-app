@@ -183,7 +183,7 @@ const MovieInfo = ({
               href={`https://www.youtube.com/watch?v=${trailerKey}`}
             >
               {/* Watch the Trailer */}
-              <Trans i18nKey="btn.WatchTrailer" />
+              <Trans i18nKey="Btn.WatchTrailer" />
             </Button>
           ) : (
             // 'No video trailer'

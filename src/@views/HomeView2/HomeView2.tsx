@@ -67,7 +67,7 @@ const HomeView2 = () => {
             <Link to={ROUTES.TRENDING_MOVIES} className={classes.link}>
               <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
                 {/* More */}
-                <Trans i18nKey="btn.more" />
+                <Trans i18nKey="Btn.More" />
               </Button>
             </Link>
           </Box>
@@ -96,7 +96,7 @@ const HomeView2 = () => {
             <Link to={ROUTES.TRENDING_TV} className={classes.link}>
               <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
                 {/* More */}
-                <Trans i18nKey="btn.more" />
+                <Trans i18nKey="Btn.More" />
               </Button>
             </Link>
           </Box>

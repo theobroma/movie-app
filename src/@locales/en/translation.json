@@ -7,8 +7,8 @@
   "TVShows": "TVShows",
   "Movie": "Movie",
   "TVSeries": "TV Series",
-  "btn": {
-    "more": "more",
+  "Btn": {
+    "More": "more",
     "WatchTrailer": "Watch the trailer"
   },
   "Heading": {
