@@ -1,6 +1,7 @@
 // https://stackoverflow.com/questions/69992370/why-react-router-v6-useparams-returns-object-with-properties-possibly-undefined
 import React, { useEffect } from 'react';
 import { useSnackbar } from 'notistack';
+import { Trans } from 'react-i18next';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import { useParams } from 'react-router-dom';
 
@@ -79,9 +80,15 @@ const MoviesDetailsView = () => {
   const handleOnFavourite = () => {
     dispatch(toggleMovieFavoriteAC({ id: mediaId, mediaType }));
     if (!isFavorite) {
-      enqueueSnackbar('Added to favourites', { variant: 'success' });
+      // enqueueSnackbar('Added to favourites', { variant: 'success' });
+      enqueueSnackbar(<Trans i18nKey="Snack.AddedToFavourites" />, {
+        variant: 'success',
+      });
     } else {
-      enqueueSnackbar('Removed from favourites', { variant: 'success' });
+      // enqueueSnackbar('Removed from favourites', { variant: 'success' });
+      enqueueSnackbar(<Trans i18nKey="Snack.RemovedFromFavourites" />, {
+        variant: 'success',
+      });
     }
   };
 

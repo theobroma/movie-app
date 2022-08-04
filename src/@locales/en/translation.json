@@ -19,6 +19,8 @@
     "VisitedTV": "Visited TV"
   },
   "Snack": {
-    "ChangedLanguage": "Language changed to"
+    "ChangedLanguage": "Language changed to",
+    "AddedToFavourites": "Added to favourites",
+    "RemovedFromFavourites": "Removed from favourites"
   }
 }

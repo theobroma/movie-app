@@ -19,6 +19,8 @@
     "VisitedTV": "Відвідані серіали"
   },
   "Snack": {
-    "ChangedLanguage": "Мову змінено на"
+    "ChangedLanguage": "Мову змінено на",
+    "AddedToFavourites": "Додано в улюблені",
+    "RemovedFromFavourites": "Видалено з улюблених"
   }
 }
