@@ -12,10 +12,11 @@
     "WatchTrailer": "Дивитися трейлер"
   },
   "Heading": {
-    "TrendingMovies": "Фільми у тренді",
-    "TrendingTV": "Серіали у тренді",
     "FavouritesMovies": "Улюблені фільми",
     "FavouritesTV": "Улюблені серіали",
+    "Similar": "Схожі",
+    "TrendingMovies": "Фільми у тренді",
+    "TrendingTV": "Серіали у тренді",
     "VisitedMovies": "Відвідані фільми",
     "VisitedTV": "Відвідані серіали"
   },

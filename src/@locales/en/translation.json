@@ -12,10 +12,11 @@
     "WatchTrailer": "Watch the trailer"
   },
   "Heading": {
-    "TrendingMovies": "Trending Movies",
-    "TrendingTV": "Trending TV",
     "FavouritesMovies": "Favourites Movies",
     "FavouritesTV": "Favourites TV",
+    "Similar": "Similar",
+    "TrendingMovies": "Trending Movies",
+    "TrendingTV": "Trending TV",
     "VisitedMovies": "Visited Movies",
     "VisitedTV": "Visited TV"
   },

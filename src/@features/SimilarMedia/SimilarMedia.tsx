@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Trans } from 'react-i18next';
 
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
@@ -48,7 +49,8 @@ const SimilarMedia = ({ mediaId, mediaType }: Props) => {
     <Container maxWidth="lg">
       <Box py={4}>
         <Typography component="h3" variant="h4">
-          Similar
+          {/* Similar */}
+          <Trans i18nKey="Heading.Similar" />
         </Typography>
         <Grid container spacing={3} style={{ padding: 3 }}>
           {/* results */}
