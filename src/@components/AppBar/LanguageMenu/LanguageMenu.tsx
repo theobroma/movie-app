@@ -1,6 +1,7 @@
 // https://stackoverflow.com/a/55533600/3988363
 import React, { useState } from 'react';
 import { useSnackbar } from 'notistack';
+import { Trans } from 'react-i18next';
 
 import { IconButton, Tooltip } from '@material-ui/core';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
@@ -43,9 +44,17 @@ const LanguageMenu = () => {
   };
 
   useNonInitialEffect(() => {
-    enqueueSnackbar(`Language changed to ${currentLanguage}`, {
-      variant: 'warning',
-    });
+    enqueueSnackbar(
+      // `Language changed to ${currentLanguage}`
+      <>
+        <Trans i18nKey="Snack.ChangedLanguage" />
+        &nbsp;
+        {currentLanguage.toUpperCase()}
+      </>,
+      {
+        variant: 'warning',
+      },
+    );
   }, [enqueueSnackbar, currentLanguage]);
 
   return (

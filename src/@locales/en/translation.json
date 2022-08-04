@@ -17,5 +17,8 @@
     "FavouritesTV": "Favourites TV",
     "VisitedMovies": "Visited Movies",
     "VisitedTV": "Visited TV"
+  },
+  "Snack": {
+    "ChangedLanguage": "Language changed to"
   }
 }

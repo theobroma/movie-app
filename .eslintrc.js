@@ -20,7 +20,13 @@ module.exports = {
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-restricted-exports': 0, // Nothing to restrict.
     'no-underscore-dangle': 0,
-    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      // add deps for custom hooks
+      {
+        additionalHooks: 'useNonInitialEffect',
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
     'react/function-component-definition': [
       2,
