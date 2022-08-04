@@ -10,10 +10,14 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import Rating from '@material-ui/lab/Rating';
 import { nanoid } from '@reduxjs/toolkit';
 
+import { useAppSelector } from '../../../@store/configureStore';
+import { languageSelector } from '../../../@store/ui/selectors';
 import type { CreditsResponseType, TrailerType } from '../../../@types';
 import { Formatter } from '../../../@utils/formatter';
 
 import { useStyles } from './MovieInfo.styles';
+/* eslint-disable-next-line @typescript-eslint/no-var-requires */
+const countries = require('i18n-iso-countries');
 
 interface Props {
   credits: CreditsResponseType;
@@ -30,7 +34,6 @@ const MovieInfo = ({
   onFavourite,
   trailerKey,
 }: Props) => {
-  const classes = useStyles();
   const {
     budget,
     first_air_date,
@@ -47,6 +50,8 @@ const MovieInfo = ({
     tagline,
     vote_average,
   } = movie;
+  const classes = useStyles();
+  const currentLanguage = useAppSelector(languageSelector);
 
   // DIFFERENT FIELDS FOR MOVIE AND TV
   const mediaTitle =
@@ -60,6 +65,18 @@ const MovieInfo = ({
       return item.name;
     })
     .join(', ');
+
+  const productionCountriesI18N = production_countries
+    ?.map((item: any) => {
+      // return   item.iso_3166_1;
+      return countries.getName(item.iso_3166_1, currentLanguage, {
+        select: 'official',
+      });
+    })
+    .join(', ');
+
+  console.log(currentLanguage);
+  console.log(countries.isValid('en'));
 
   const CrewBlock = crew?.length > 0 && (
     <>
@@ -109,7 +126,8 @@ const MovieInfo = ({
         <div className={classes.releaseDate}>
           {/* {mediaReleaseDate && Formatter.formatDate(mediaReleaseDate)} */}
           {dayjs(mediaReleaseDate).format('DD/MM/YYYY')}
-          {productionCountries && ` (${productionCountries})`}
+          {/* {productionCountries && ` (${productionCountries})`} */}
+          {productionCountriesI18N && ` (${productionCountriesI18N})`}
         </div>
         <ul className={classes.genreList}>
           {genres?.map((genre: any) => (

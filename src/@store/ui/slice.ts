@@ -7,7 +7,7 @@ const uiInitialState = {
   language: 'en' as string,
 };
 
-export type UIInitialStateType = typeof uiInitialState;
+// export type UIInitialStateType = typeof uiInitialState;
 
 export const uiSlice = createSlice({
   name: 'ui',
@@ -22,5 +22,5 @@ export const uiSlice = createSlice({
   },
 });
 
-export const uiReducer = uiSlice.reducer;
+// export const uiReducer = uiSlice.reducer;
 export const { setThemeAC, setLanguageAC } = uiSlice.actions;

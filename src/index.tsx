@@ -26,6 +26,13 @@ import '@fontsource/roboto/700.css';
 
 import './i18n';
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+const countries = require('i18n-iso-countries');
+// import all supported languages
+countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
+countries.registerLocale(require('i18n-iso-countries/langs/uk.json'));
+/* eslint-enable @typescript-eslint/no-var-requires */
+
 const rootEl = document.getElementById('root');
 
 // Request interceptors for API calls
