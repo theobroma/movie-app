@@ -5,15 +5,15 @@ import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
 import translationEN from './@locales/en/translation.json';
-import translationUA from './@locales/ua/translation.json';
+import translationUK from './@locales/uk/translation.json';
 
 export const defaultNS = 'ns1';
 export const resources = {
   en: {
     translation: translationEN,
   },
-  ua: {
-    translation: translationUA,
+  uk: {
+    translation: translationUK,
   },
 };
 
@@ -23,8 +23,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    supportedLngs: ['en', 'ua'],
-    fallbackLng: ['en', 'ua'],
+    supportedLngs: ['en', 'uk'],
+    fallbackLng: ['en', 'uk'],
     // lng: "en",
     interpolation: {
       escapeValue: false,

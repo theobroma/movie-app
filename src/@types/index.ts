@@ -1,6 +1,7 @@
 export * from './details/z.details-media';
 export * from './details/z.details-movie';
 export * from './details/z.details-tv';
+export * from './languages';
 export * from './media';
 export * from './Routes';
 export * from './theme';

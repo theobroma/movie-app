@@ -1,15 +1,12 @@
 // https://bobbyhadz.com/blog/typescript-object-with-dynamic-keys
 
-interface IISOmap {
-  // 👇️ key      value
-  [key: string]: string;
-}
+import type { Language } from '../@types';
 
-const alpha2ISOMap: IISOmap = {
-  ua: 'uk-UA',
+const alpha2ISOMap: Record<Language, string> = {
+  uk: 'uk-UA',
   en: 'en-US',
 };
 
-export function alpha2iso(code: string) {
+export function alpha2iso(code: Language) {
   return alpha2ISOMap[code];
 }

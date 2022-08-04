@@ -60,11 +60,11 @@ const MovieInfo = ({
   // 2 digits after comma
   const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;
 
-  const productionCountries = production_countries
-    ?.map((item: any) => {
-      return item.name;
-    })
-    .join(', ');
+  // const productionCountries = production_countries
+  //   ?.map((item: any) => {
+  //     return item.name;
+  //   })
+  //   .join(', ');
 
   const productionCountriesI18N = production_countries
     ?.map((item: any) => {
@@ -74,9 +74,6 @@ const MovieInfo = ({
       });
     })
     .join(', ');
-
-  console.log(currentLanguage);
-  console.log(countries.isValid('en'));
 
   const CrewBlock = crew?.length > 0 && (
     <>

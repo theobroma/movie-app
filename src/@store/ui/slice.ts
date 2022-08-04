@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { ThemeColorsType } from '../../@types';
+import type { Language, ThemeColorsType } from '../../@types';
 
 const uiInitialState = {
   theme: 'light' as ThemeColorsType,
-  language: 'en' as string,
+  language: 'en' as Language,
 };
 
 // export type UIInitialStateType = typeof uiInitialState;

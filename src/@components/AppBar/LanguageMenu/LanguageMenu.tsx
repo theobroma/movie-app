@@ -12,10 +12,11 @@ import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { languageSelector } from '../../../@store/ui/selectors';
 import { setLanguageAC } from '../../../@store/ui/slice';
+import type { Language } from '../../../@types';
 
 import { StyledMenu, StyledMenuItem } from './LanguageMenu.styles';
 
-const options = ['en', 'ua'] as any[];
+const options = ['en', 'uk'] as Language[];
 
 const LanguageMenu = () => {
   const dispatch = useAppDispatch();
