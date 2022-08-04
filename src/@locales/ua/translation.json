@@ -22,5 +22,9 @@
     "ChangedLanguage": "Мову змінено на",
     "AddedToFavourites": "Додано в улюблені",
     "RemovedFromFavourites": "Видалено з улюблених"
+  },
+  "Tooltip": {
+    "AddToFavourites": "Додати в улюблені",
+    "RemoveFromFavourites": "Видалити з улюблених"
   }
 }

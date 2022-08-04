@@ -22,5 +22,9 @@
     "ChangedLanguage": "Language changed to",
     "AddedToFavourites": "Added to favourites",
     "RemovedFromFavourites": "Removed from favourites"
+  },
+  "Tooltip": {
+    "AddToFavourites": "Add to favourites",
+    "RemoveFromFavourites": "Remove from favourites"
   }
 }

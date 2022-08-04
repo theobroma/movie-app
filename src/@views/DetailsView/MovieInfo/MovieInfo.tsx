@@ -2,6 +2,7 @@
 // https://www.themoviedb.org/tv/29917-thirty-minute-theatre
 import React from 'react';
 import dayjs from 'dayjs';
+import { Trans } from 'react-i18next';
 
 import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -122,7 +123,14 @@ const MovieInfo = ({
           <Rating value={mediaVote / 2} readOnly />
           <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span>
           <Tooltip
-            title={isFavorite ? 'Remove from favourites' : 'Add to favourites'}
+            // title={isFavorite ? 'Remove from favourites' : 'Add to favourites'}
+            title={
+              isFavorite ? (
+                <Trans i18nKey="Tooltip.RemoveFromFavourites" />
+              ) : (
+                <Trans i18nKey="Tooltip.AddToFavourites" />
+              )
+            }
           >
             <Button
               style={{ marginLeft: 16 }}
