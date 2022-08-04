@@ -8,7 +8,8 @@
   "Movie": "Фільм",
   "TVSeries": "Серіал",
   "btn": {
-    "more": "більше"
+    "more": "більше",
+    "WatchTrailer": "Дивитися трейлер"
   },
   "Heading": {
     "TrendingMovies": "Фільми у тренді",
@@ -26,5 +27,8 @@
   "Tooltip": {
     "AddToFavourites": "Додати в улюблені",
     "RemoveFromFavourites": "Видалити з улюблених"
+  },
+  "Message": {
+    "NoVideoTrailer": "Без відео трейлера. Але можливо він доступний на іншій мові..."
   }
 }

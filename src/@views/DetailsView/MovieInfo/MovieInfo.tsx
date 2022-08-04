@@ -182,10 +182,12 @@ const MovieInfo = ({
               target="__blank"
               href={`https://www.youtube.com/watch?v=${trailerKey}`}
             >
-              Watch the Trailer
+              {/* Watch the Trailer */}
+              <Trans i18nKey="btn.WatchTrailer" />
             </Button>
           ) : (
-            'No video trailer'
+            // 'No video trailer'
+            <Trans i18nKey="Message.NoVideoTrailer" />
           )}
         </Box>
       </Grid>

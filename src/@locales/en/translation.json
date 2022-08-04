@@ -8,7 +8,8 @@
   "Movie": "Movie",
   "TVSeries": "TV Series",
   "btn": {
-    "more": "more"
+    "more": "more",
+    "WatchTrailer": "Watch the trailer"
   },
   "Heading": {
     "TrendingMovies": "Trending Movies",
@@ -26,5 +27,8 @@
   "Tooltip": {
     "AddToFavourites": "Add to favourites",
     "RemoveFromFavourites": "Remove from favourites"
+  },
+  "Message": {
+    "NoVideoTrailer": "No video trailer. But maybe it is available in another language..."
   }
 }
