@@ -8,7 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { instance } from './@api/api';
 import LoadingPage from './@components/UI/LoadingPage';
-import SnackBarProvider from './@components/UI/SnackBar/SnackBarProvider';
+import SnackBarProvider from './@components/UI/SnackBar';
 import { AppContainer } from './@routes/AppContainer';
 import { persistor, store } from './@store/configureStore';
 import AppThemeProvider from './@themes/theme';

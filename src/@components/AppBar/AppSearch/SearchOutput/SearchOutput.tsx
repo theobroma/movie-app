@@ -49,7 +49,7 @@ const SearchOutput: React.FC<Props> = ({ movies = [] }) => {
                 component="span"
                 style={{ color: 'grey' }}
               >
-                {/* TODO: */}
+                {/* TODO */}
                 {movie?.genres?.length ? movie?.genres.join(', ') : '—'}
               </Typography>
             </div>

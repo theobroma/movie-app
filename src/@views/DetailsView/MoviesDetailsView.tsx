@@ -62,13 +62,13 @@ const MoviesDetailsView = () => {
   }, [dispatch, mediaId, mediaType, langISOCode]);
 
   useEffect(() => {
-    // TODO: check if movie exist. for example /details/movie/96677
+    // TODO check if movie exist. for example /details/movie/96677
     if (mediaId) {
       dispatch(setMovieVisitedAC({ id: mediaId, mediaType }));
     }
   }, [dispatch, mediaId, mediaType]);
 
-  // TODO: problem if change router from one movie to another
+  // TODO problem if change router from one movie to another
   // useNonInitialEffect(() => {
   //   if (isFavorite) {
   //     enqueueSnackbar('Added to favourites', { variant: 'success' });

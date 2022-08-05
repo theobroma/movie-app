@@ -115,7 +115,7 @@ export const AppContainer = () => {
   );
 };
 
-// TODO: mb move from this
+// TODO mb move from this
 // https://github.com/pbeshai/use-query-params/issues/108#issuecomment-785209454
 
 /**
