@@ -14,6 +14,7 @@ import { useAppSelector } from '../../../@store/configureStore';
 import { languageSelector } from '../../../@store/ui/selectors';
 import type {
   CreditsResponseType,
+  GenreType,
   ProductionCountryType,
   TrailerType,
 } from '../../../@types';
@@ -123,7 +124,7 @@ const MovieInfo = ({
           {productionCountries && ` (${productionCountries})`}
         </div>
         <ul className={classes.genreList}>
-          {genres?.map((genre: any) => (
+          {genres?.map((genre: GenreType) => (
             <li className={classes.genre} key={genre.id}>
               {genre.name}
             </li>
