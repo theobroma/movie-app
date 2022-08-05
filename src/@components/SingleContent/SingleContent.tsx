@@ -56,6 +56,7 @@ const SingleContent = ({
         <StyledBadge
           badgeContent={mediaVote}
           color={mediaVote > 6 ? 'primary' : 'secondary'}
+          overlap="rectangular"
         />
         <img
           className={classes.poster}

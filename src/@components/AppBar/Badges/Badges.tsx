@@ -32,7 +32,11 @@ const Badges = () => {
             color="inherit"
             onClick={() => navigate(ROUTES.FAVOURITES_MOVIES)}
           >
-            <Badge badgeContent={favouriteCount} color="secondary">
+            <Badge
+              badgeContent={favouriteCount}
+              color="secondary"
+              overlap="rectangular"
+            >
               <FavoriteIcon />
             </Badge>
           </IconButton>
@@ -43,7 +47,11 @@ const Badges = () => {
             color="inherit"
             onClick={() => navigate(ROUTES.VISITED_MOVIES)}
           >
-            <Badge badgeContent={visitedCount} color="secondary">
+            <Badge
+              badgeContent={visitedCount}
+              color="secondary"
+              overlap="rectangular"
+            >
               <VisibilityIcon />
             </Badge>
           </IconButton>
