@@ -5,11 +5,12 @@ import { moviesApi } from '../../@api/movies-api';
 import type { CreditsResponseType, TrailersResponseType } from '../../@types';
 import {
   CreditsResponseSchema,
-  DetailsMediaAllSchema,
+  // DetailsMediaAllSchema,
   // DetailsMediaAllType,
   // DetailsMovieType,
-  // DetailsMovieSchema,
-  // DetailsTVSchema,
+  DetailsMovieSchema,
+  DetailsTVSchema,
+  MEDIA_TYPE,
   TrailersResponseSchema,
 } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
@@ -46,14 +47,17 @@ export const getMediaDetailsTC = createAsyncThunk<
 
     // ZOD validation
     try {
-      DetailsMediaAllSchema.parse(res1.data);
-      // DetailsMovieSchema.parse(res1.data);
-      // DetailsTVSchema.parse(res1.data);
+      // DetailsMediaAllSchema.parse(res1.data);
+      if (param.mediaType === MEDIA_TYPE.TV) {
+        DetailsTVSchema.parse(res1.data);
+      }
+      if (param.mediaType === MEDIA_TYPE.MOVIE) {
+        DetailsMovieSchema.parse(res1.data);
+      }
       // ========================================
       TrailersResponseSchema.parse(res2.data);
       CreditsResponseSchema.parse(res3.data);
     } catch (error) {
-      // Log & alert error <-- very important!
       console.log(error);
     }
 

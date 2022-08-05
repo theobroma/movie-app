@@ -14,8 +14,8 @@ export const DetailsMovieSchema = z.object({
     .object({
       id: z.number(),
       name: z.string(),
-      poster_path: z.string(),
-      backdrop_path: z.string(),
+      poster_path: z.string().nullable(),
+      backdrop_path: z.string().nullable(),
     })
     .nullable(),
   budget: z.number(),
