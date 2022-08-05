@@ -12,7 +12,11 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppSelector } from '../../../@store/configureStore';
 import { languageSelector } from '../../../@store/ui/selectors';
-import type { CreditsResponseType, TrailerType } from '../../../@types';
+import type {
+  CreditsResponseType,
+  ProductionCountryType,
+  TrailerType,
+} from '../../../@types';
 import { Formatter } from '../../../@utils/formatter';
 
 import { useStyles } from './MovieInfo.styles';
@@ -60,15 +64,8 @@ const MovieInfo = ({
   // 2 digits after comma
   const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;
 
-  // const productionCountries = production_countries
-  //   ?.map((item: any) => {
-  //     return item.name;
-  //   })
-  //   .join(', ');
-
-  const productionCountriesI18N = production_countries
-    ?.map((item: any) => {
-      // return   item.iso_3166_1;
+  const productionCountries = production_countries
+    ?.map((item: ProductionCountryType) => {
       return countries.getName(item.iso_3166_1, currentLanguage, {
         select: 'official',
       });
@@ -123,8 +120,7 @@ const MovieInfo = ({
         <div className={classes.releaseDate}>
           {/* {mediaReleaseDate && Formatter.formatDate(mediaReleaseDate)} */}
           {dayjs(mediaReleaseDate).format('DD/MM/YYYY')}
-          {/* {productionCountries && ` (${productionCountries})`} */}
-          {productionCountriesI18N && ` (${productionCountriesI18N})`}
+          {productionCountries && ` (${productionCountries})`}
         </div>
         <ul className={classes.genreList}>
           {genres?.map((genre: any) => (

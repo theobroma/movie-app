@@ -1,5 +1,6 @@
 export * from './details/z.details-media';
 export * from './details/z.details-movie';
+export * from './details/z.details-shared';
 export * from './details/z.details-tv';
 export * from './general';
 export * from './media';
