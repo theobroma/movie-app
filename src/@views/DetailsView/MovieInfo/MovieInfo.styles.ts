@@ -56,6 +56,7 @@ export const useStyles = makeStyles(() =>
       fontWeight: 400,
       fontStyle: 'italic',
       opacity: 0.7,
+      marginTop: '18px',
     },
   }),
 );

@@ -7,6 +7,9 @@
   "TVShows": "TVShows",
   "Movie": "Movie",
   "TVSeries": "TV Series",
+  "Duration": "Duration",
+  "Budget": " Budget",
+  "Overview": "Overview",
   "Btn": {
     "More": "more",
     "WatchTrailer": "Watch the trailer"

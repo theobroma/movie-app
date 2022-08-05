@@ -7,6 +7,9 @@
   "TVShows": "Серіали",
   "Movie": "Фільм",
   "TVSeries": "Серіал",
+  "Duration": "Tривалість",
+  "Budget": "Бюджет",
+  "Overview": "Опис",
   "Btn": {
     "More": "більше",
     "WatchTrailer": "Дивитися трейлер"

@@ -159,26 +159,38 @@ const MovieInfo = ({
           </Tooltip>
         </div>
         <div style={{ marginTop: 10 }}>
-          <Typography component="div" style={{ marginRight: 15 }}>
-            <b>Duration: </b>
-            {runtime ? `${runtime} min.` : '-'}
-          </Typography>
-          <Typography component="div">
-            <b>Budget: </b>
-            {budget ? `$${Formatter.numberWithCommas(budget)}` : '-'}
-          </Typography>
+          {runtime && (
+            <Typography component="div" style={{ marginRight: 15 }}>
+              <b>
+                {/* Duration:  */}
+                <Trans i18nKey="Duration" />
+                &nbsp;:&nbsp;
+              </b>
+              {runtime ? `${runtime} min.` : '-'}
+            </Typography>
+          )}
+          {budget && (
+            <Typography component="div">
+              <b>
+                {/* Budget:  */}
+                <Trans i18nKey="Budget" />
+                &nbsp;:&nbsp;
+              </b>
+              {budget ? `$${Formatter.numberWithCommas(budget)}` : '-'}
+            </Typography>
+          )}
         </div>
         {tagline && (
-          <>
-            <h3 className={classes.subtitle}>Legend</h3>
-            <Typography variant="body1" className={classes.tagline}>
-              {tagline}
-            </Typography>
-          </>
+          <Typography variant="body1" className={classes.tagline}>
+            {tagline}
+          </Typography>
         )}
         {overview && (
           <>
-            <h3 className={classes.subtitle}>Overview</h3>
+            <h3 className={classes.subtitle}>
+              {/* Overview */}
+              <Trans i18nKey="Overview" />
+            </h3>
             <Typography variant="body1">{overview}</Typography>
           </>
         )}
