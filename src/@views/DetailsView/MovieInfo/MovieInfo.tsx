@@ -1,6 +1,7 @@
 // almost empty http://localhost:3000/details/tv/29917
 // https://www.themoviedb.org/tv/29917-thirty-minute-theatre
 // https://blog.thoughtspile.tech/2022/01/17/jsx-conditionals/
+// https://github.com/jsx-eslint/eslint-plugin-react/issues/2073
 import React from 'react';
 import dayjs from 'dayjs';
 import { Trans } from 'react-i18next';

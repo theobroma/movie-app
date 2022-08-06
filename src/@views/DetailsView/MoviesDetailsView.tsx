@@ -103,7 +103,8 @@ const MoviesDetailsView = () => {
     <div>
       <Box style={{ position: 'relative' }}>
         <div className={classes.backdrop}>
-          {movieDetailsData?.backdrop_path && (
+          {/* no backdrop test http://localhost:3000/details/movie/857983 */}
+          {!!movieDetailsData?.backdrop_path && (
             <img
               className={classes.backdropImage}
               src={`https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`}
@@ -129,7 +130,7 @@ const MoviesDetailsView = () => {
         </Container>
       </Box>
       {/* no trailer test : http://localhost:3000/details/movie/112160 */}
-      {!isLoading && trailerKey && (
+      {!isLoading && !!trailerKey && (
         <Container maxWidth="lg">
           <Grid container spacing={3}>
             <Grid item xs={12} md={3}>
@@ -144,7 +145,7 @@ const MoviesDetailsView = () => {
         </Container>
       )}
       {/* Similar */}
-      {mediaId && mediaType && (
+      {!!mediaId && !!mediaType && (
         <SimilarMedia mediaId={mediaId} mediaType={mediaType} />
       )}
     </div>
