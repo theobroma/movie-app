@@ -13,29 +13,38 @@ export const useStyles = makeStyles(() =>
       color: 'black',
       borderRadius: 10,
       position: 'relative',
-      fontFamily: 'Montserrat", sans-serif',
-      '&:hover': {
-        backgroundColor: '#282c34',
-        color: 'white',
-      },
+      // fontFamily: 'Montserrat", sans-serif',
+      // '&:hover': {
+      //   backgroundColor: '#282c34',
+      //   color: 'white',
+      // },
     },
 
     poster: {
+      width: '100%',
       borderRadius: 10,
     },
 
     title: {
-      width: '100%',
-      textAlign: 'center',
-      fontSize: 17,
-      padding: '8px 0',
-      minHeight: 65,
+      display: 'block',
+      fontSize: 14,
+      fontWeight: 500,
+      // color: '#fff',
+      margin: '10px 0 0',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
     },
 
     subTitle: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      padding: '0 2px 3px',
+      // display: 'flex',
+      // justifyContent: 'space-between',
+      // padding: '0 2px 3px',
+      color: '#8f95a3',
+      margin: '0 0 5px',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
     },
   }),
 );
