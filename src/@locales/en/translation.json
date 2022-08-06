@@ -27,6 +27,7 @@
   "Snack": {
     "AddedToFavourites": "Added to favourites",
     "ChangedLanguage": "Language changed to",
+    "ChangedTheme": "Theme changed to",
     "ClearedVisited": "Cleared visited movies and tv shows",
     "RemovedFromFavourites": "Removed from favourites"
   },

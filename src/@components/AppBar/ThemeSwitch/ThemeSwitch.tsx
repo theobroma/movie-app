@@ -19,9 +19,17 @@ const ThemeSwitch = () => {
   const currentTheme = useAppSelector(themeSelector);
 
   useNonInitialEffect(() => {
-    enqueueSnackbar(`Theme changed to ${currentTheme}`, {
-      variant: 'warning',
-    });
+    enqueueSnackbar(
+      // `Theme changed to ${currentTheme}`
+      <>
+        <Trans i18nKey="Snack.ChangedTheme" />
+        &nbsp;
+        {currentTheme}
+      </>,
+      {
+        variant: 'warning',
+      },
+    );
   }, [enqueueSnackbar, currentTheme]);
 
   const handleSwitchDarkMode = useCallback(
