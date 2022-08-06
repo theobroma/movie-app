@@ -18,7 +18,11 @@ const VisitedMovieView = () => {
 
   const handleClearButton = () => {
     dispatch(clearVisitedAC());
-    enqueueSnackbar('Cleared visited movies and tv shows', { variant: 'info' });
+    enqueueSnackbar(
+      // 'Cleared visited movies and tv shows'
+      <Trans i18nKey="Tooltip.ClearedVisited" />,
+      { variant: 'info' },
+    );
   };
 
   return (
@@ -36,7 +40,7 @@ const VisitedMovieView = () => {
               variant="outlined"
               disabled={!visitedMovieIds.length}
             >
-              Clear history
+              <Trans i18nKey="Btn.ClearHistory" />
             </Button>
           </Tooltip>
         </Box>

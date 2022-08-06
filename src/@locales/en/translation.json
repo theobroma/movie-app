@@ -11,6 +11,7 @@
   "Budget": " Budget",
   "Overview": "Overview",
   "Btn": {
+    "ClearHistory": "Clear history",
     "More": "more",
     "WatchTrailer": "Watch the trailer"
   },
@@ -30,6 +31,7 @@
   },
   "Tooltip": {
     "AddToFavourites": "Add to favourites",
+    "ClearedVisited": "Cleared visited movies and tv shows",
     "RemoveFromFavourites": "Remove from favourites"
   },
   "Message": {

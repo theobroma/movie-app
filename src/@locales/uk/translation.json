@@ -11,6 +11,7 @@
   "Budget": "Бюджет",
   "Overview": "Опис",
   "Btn": {
+    "ClearHistory": "Очистити історію",
     "More": "більше",
     "WatchTrailer": "Дивитися трейлер"
   },
@@ -30,6 +31,7 @@
   },
   "Tooltip": {
     "AddToFavourites": "Додати в улюблені",
+    "ClearedVisited": "Очищено відвідані фільми та серіали",
     "RemoveFromFavourites": "Видалити з улюблених"
   },
   "Message": {
