@@ -44,14 +44,14 @@ const SearchOutput: React.FC<Props> = ({ movies = [] }) => {
                   {movie?.release_date || movie?.first_air_date}
                 </span>
               </Typography>
-              <Typography
+              {/* TODO convert genres from id's */}
+              {/* <Typography
                 variant="body2"
                 component="span"
                 style={{ color: 'grey' }}
               >
-                {/* TODO */}
                 {movie?.genres?.length ? movie?.genres.join(', ') : '—'}
-              </Typography>
+              </Typography> */}
             </div>
             <Typography
               variant="body2"

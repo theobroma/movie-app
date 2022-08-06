@@ -1,5 +1,6 @@
 // almost empty http://localhost:3000/details/tv/29917
 // https://www.themoviedb.org/tv/29917-thirty-minute-theatre
+// https://blog.thoughtspile.tech/2022/01/17/jsx-conditionals/
 import React from 'react';
 import dayjs from 'dayjs';
 import { Trans } from 'react-i18next';
@@ -102,7 +103,7 @@ const MovieInfo = ({
     <Grid container spacing={3} style={{ padding: 3 }}>
       {/* poster */}
       <Grid item md={3}>
-        {poster_path && (
+        {!!poster_path && (
           <img
             className={classes.poster}
             src={`https://image.tmdb.org/t/p/original/${poster_path}`}
@@ -159,33 +160,34 @@ const MovieInfo = ({
           </Tooltip>
         </div>
         <div style={{ marginTop: 10 }}>
-          {runtime && (
+          {!!runtime && (
             <Typography component="div" style={{ marginRight: 15 }}>
               <b>
                 {/* Duration:  */}
                 <Trans i18nKey="Duration" />
                 &nbsp;:&nbsp;
               </b>
-              {runtime ? `${runtime} min.` : '-'}
+              {`${runtime} min.`}
             </Typography>
           )}
-          {budget && (
+          {/*  */}
+          {!!budget && (
             <Typography component="div">
               <b>
                 {/* Budget:  */}
                 <Trans i18nKey="Budget" />
                 &nbsp;:&nbsp;
               </b>
-              {budget ? `$${Formatter.numberWithCommas(budget)}` : '-'}
+              {`$${Formatter.numberWithCommas(budget)}`}
             </Typography>
           )}
         </div>
-        {tagline && (
+        {!!tagline && (
           <Typography variant="body1" className={classes.tagline}>
             {tagline}
           </Typography>
         )}
-        {overview && (
+        {!!overview && (
           <>
             <h3 className={classes.subtitle}>
               {/* Overview */}
