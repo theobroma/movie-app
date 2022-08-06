@@ -65,13 +65,13 @@ const SimilarMedia = ({ mediaId, mediaType }: Props) => {
               </Grid>
             ))}
           {/* no results */}
-          {isSuccess && resultsToShow.length === 0 && (
+          {!!isSuccess && resultsToShow.length === 0 && (
             <Grid item xs={12}>
               <EmptyBlock>There is no data</EmptyBlock>
             </Grid>
           )}
           {/* error */}
-          {isError && (
+          {!!isError && (
             <Grid item xs={12}>
               <AppAlert variant="standard" severity="error">
                 {error}

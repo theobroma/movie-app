@@ -81,7 +81,7 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
           <ThemeSwitch />
           <LanguageMenu />
         </Toolbar>
-        {showMobileSearch && <AppSearch />}
+        {!!showMobileSearch && <AppSearch />}
       </AppBar>
       {/* Drawer */}
       <Drawer

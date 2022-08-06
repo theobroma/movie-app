@@ -35,6 +35,10 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'react/jsx-no-leaked-render': [
+      'error',
+      { validStrategies: ['coerce', 'ternary'] },
+    ],
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0, // Since we do not use prop-types

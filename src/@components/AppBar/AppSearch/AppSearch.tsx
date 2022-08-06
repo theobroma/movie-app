@@ -47,7 +47,7 @@ const AppSearch = () => {
           // onFocus={() => setShowOutput(true)}
         />
       </div>
-      {showOutput && searchDataResults.length > 0 && (
+      {!!showOutput && searchDataResults.length > 0 && (
         <SearchOutput movies={searchDataResults} />
       )}
     </Box>
