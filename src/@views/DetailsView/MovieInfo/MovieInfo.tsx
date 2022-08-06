@@ -9,7 +9,6 @@ import { Box, Button, Grid, Tooltip, Typography } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import Rating from '@material-ui/lab/Rating';
-import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppSelector } from '../../../@store/configureStore';
 import { languageSelector } from '../../../@store/ui/selectors';
@@ -21,6 +20,7 @@ import type {
 } from '../../../@types';
 import { Formatter } from '../../../@utils/formatter';
 
+import CrewList from './CrewList';
 import { useStyles } from './MovieInfo.styles';
 /* eslint-disable-next-line @typescript-eslint/no-var-requires */
 const countries = require('i18n-iso-countries');
@@ -34,7 +34,7 @@ interface Props {
 }
 
 const MovieInfo = ({
-  credits: { crew },
+  credits,
   isFavorite,
   movie,
   onFavourite,
@@ -73,31 +73,6 @@ const MovieInfo = ({
       });
     })
     .join(', ');
-
-  const CrewBlock = crew?.length > 0 && (
-    <>
-      {/* <h3 className={classes.subtitle}>Crew</h3> */}
-      <Grid container spacing={3} component="ul" className={classes.crewList}>
-        {crew.slice(0, 4).map((person) => (
-          <Grid
-            item
-            md={3}
-            sm={6}
-            component="li"
-            key={nanoid()}
-            style={{ paddingRight: 16 }}
-          >
-            <Typography variant="body2" style={{ fontWeight: 'bold' }}>
-              {person.name}
-            </Typography>
-            <Typography variant="body2" style={{ fontSize: '0.9em' }}>
-              {person.department}, {person.job}
-            </Typography>
-          </Grid>
-        ))}
-      </Grid>
-    </>
-  );
 
   return (
     <Grid container spacing={3} style={{ padding: 3 }}>
@@ -196,7 +171,7 @@ const MovieInfo = ({
             <Typography variant="body1">{overview}</Typography>
           </>
         )}
-        {CrewBlock}
+        <CrewList credits={credits} />
 
         <Box py={3}>
           {trailerKey ? (
