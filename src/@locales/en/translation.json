@@ -25,13 +25,14 @@
     "VisitedTV": "Visited TV"
   },
   "Snack": {
-    "ChangedLanguage": "Language changed to",
     "AddedToFavourites": "Added to favourites",
+    "ChangedLanguage": "Language changed to",
+    "ClearedVisited": "Cleared visited movies and tv shows",
     "RemovedFromFavourites": "Removed from favourites"
   },
   "Tooltip": {
     "AddToFavourites": "Add to favourites",
-    "ClearedVisited": "Cleared visited movies and tv shows",
+    "ClearVisited": "Clear visited movies and tv shows",
     "RemoveFromFavourites": "Remove from favourites"
   },
   "Message": {

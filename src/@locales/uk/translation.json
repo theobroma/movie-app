@@ -25,13 +25,14 @@
     "VisitedTV": "Відвідані серіали"
   },
   "Snack": {
-    "ChangedLanguage": "Мову змінено на",
     "AddedToFavourites": "Додано в улюблені",
+    "ChangedLanguage": "Мову змінено на",
+    "ClearedVisited": "Очищено відвідані фільми та серіали",
     "RemovedFromFavourites": "Видалено з улюблених"
   },
   "Tooltip": {
     "AddToFavourites": "Додати в улюблені",
-    "ClearedVisited": "Очищено відвідані фільми та серіали",
+    "ClearVisited": "Очистити відвідані фільми та серіали",
     "RemoveFromFavourites": "Видалити з улюблених"
   },
   "Message": {

@@ -20,7 +20,7 @@ const VisitedMovieView = () => {
     dispatch(clearVisitedAC());
     enqueueSnackbar(
       // 'Cleared visited movies and tv shows'
-      <Trans i18nKey="Tooltip.ClearedVisited" />,
+      <Trans i18nKey="Snack.ClearedVisited" />,
       { variant: 'info' },
     );
   };
@@ -33,7 +33,7 @@ const VisitedMovieView = () => {
             {/* Visited Movies */}
             <Trans i18nKey="Heading.VisitedMovies" />
           </Typography>
-          <Tooltip title="Clear visited movies and tv shows">
+          <Tooltip title={<Trans i18nKey="Tooltip.ClearVisited" />}>
             <Button
               onClick={handleClearButton}
               style={{ marginLeft: 'auto' }}
