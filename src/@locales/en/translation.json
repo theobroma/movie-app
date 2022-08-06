@@ -41,6 +41,7 @@
     "RemoveFromFavourites": "Remove from favourites"
   },
   "Message": {
+    "CopyRight": "created by Aleksandr Siryi",
     "NoVideoTrailer": "No video trailer. But maybe it is available in another language..."
   }
 }

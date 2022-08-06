@@ -1,4 +1,5 @@
 import React from 'react';
+import { Trans } from 'react-i18next';
 
 import {
   AppBar,
@@ -27,7 +28,7 @@ const useStyles = makeStyles(() => {
   };
 });
 
-const Footer: React.FC = () => {
+const Footer = () => {
   const classes = useStyles();
   return (
     <AppBar position="static">
@@ -41,7 +42,9 @@ const Footer: React.FC = () => {
         >
           <Box>
             <Typography className={classes.copyright} variant="h6" noWrap>
-              © created by Aleksandr Siryi
+              {/* © created by Aleksandr Siryi */}
+              ©&nbsp;{new Date().getFullYear()},&nbsp;
+              <Trans i18nKey="Message.CopyRight" />
             </Typography>
           </Box>
           <Box>
