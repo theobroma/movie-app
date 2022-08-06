@@ -1,5 +1,6 @@
 // https://stackoverflow.com/questions/62036213/how-to-put-routerlink-in-iconbutton-in-reactjs
 import React from 'react';
+import { Trans } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { Tooltip } from '@material-ui/core';
@@ -26,7 +27,10 @@ const Badges = () => {
   return (
     <>
       <div className={classes.sectionDesktop}>
-        <Tooltip title="Navigate to favourites">
+        <Tooltip
+          // title="Navigate to favourites"
+          title={<Trans i18nKey="Tooltip.NavigateToFavourites" />}
+        >
           <IconButton
             aria-label="show favourites"
             color="inherit"
@@ -41,7 +45,10 @@ const Badges = () => {
             </Badge>
           </IconButton>
         </Tooltip>
-        <Tooltip title="Navigate to visited">
+        <Tooltip
+          //  title="Navigate to visited"
+          title={<Trans i18nKey="Tooltip.NavigateToVisited" />}
+        >
           <IconButton
             aria-label="show visited"
             color="inherit"

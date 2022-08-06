@@ -60,7 +60,10 @@ const LanguageMenu = () => {
 
   return (
     <div>
-      <Tooltip title="Change language">
+      <Tooltip
+        //  title="Change language"
+        title={<Trans i18nKey="Tooltip.ChangeLanguage" />}
+      >
         <IconButton
           aria-label="more"
           aria-controls="long-menu"

@@ -32,7 +32,11 @@
   },
   "Tooltip": {
     "AddToFavourites": "Додати в улюблені",
+    "ChangeLanguage": "Змінити мову",
+    "ChangeTheme": "Змінити тему на",
     "ClearVisited": "Очистити відвідані фільми та серіали",
+    "NavigateToFavourites": "Перейти до улюблених",
+    "NavigateToVisited": "Перейти до відвіданих",
     "RemoveFromFavourites": "Видалити з улюблених"
   },
   "Message": {

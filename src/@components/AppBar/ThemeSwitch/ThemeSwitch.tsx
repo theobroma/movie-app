@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
+import { Trans } from 'react-i18next';
 
 import { Box, IconButton, Tooltip } from '@material-ui/core';
 import NightIcon from '@material-ui/icons/Brightness3';
@@ -33,7 +34,15 @@ const ThemeSwitch = () => {
   return (
     <Box>
       {currentTheme === ThemeColors.LIGHT ? (
-        <Tooltip title="Switch theme to Dark">
+        <Tooltip
+          // title="Switch theme to Dark"
+          title={
+            <>
+              <Trans i18nKey="Tooltip.ChangeTheme" />
+              &nbsp;`Dark`
+            </>
+          }
+        >
           <IconButton
             aria-label="theme"
             onClick={() => handleSwitchDarkMode(ThemeColors.DARK)}
@@ -43,7 +52,15 @@ const ThemeSwitch = () => {
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Switch theme to Light">
+        <Tooltip
+          // title="Switch theme to Light"
+          title={
+            <>
+              <Trans i18nKey="Tooltip.ChangeTheme" />
+              &nbsp;`Light`
+            </>
+          }
+        >
           <IconButton
             aria-label="theme"
             onClick={() => handleSwitchDarkMode(ThemeColors.LIGHT)}

@@ -32,7 +32,11 @@
   },
   "Tooltip": {
     "AddToFavourites": "Add to favourites",
+    "ChangeLanguage": "Change language",
+    "ChangeTheme": "Switch theme to",
     "ClearVisited": "Clear visited movies and tv shows",
+    "NavigateToFavourites": "Navigate to favourites",
+    "NavigateToVisited": "Navigate to visited",
     "RemoveFromFavourites": "Remove from favourites"
   },
   "Message": {
