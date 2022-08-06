@@ -34,14 +34,16 @@ const VisitedTVView = () => {
             <Trans i18nKey="Heading.VisitedTV" />
           </Typography>
           <Tooltip title={<Trans i18nKey="Tooltip.ClearVisited" />}>
-            <Button
-              onClick={handleClearButton}
-              style={{ marginLeft: 'auto' }}
-              variant="outlined"
-              disabled={!visitedTVIds.length}
-            >
-              <Trans i18nKey="Btn.ClearHistory" />
-            </Button>
+            <span>
+              <Button
+                onClick={handleClearButton}
+                style={{ marginLeft: 'auto' }}
+                variant="outlined"
+                disabled={!visitedTVIds.length}
+              >
+                <Trans i18nKey="Btn.ClearHistory" />
+              </Button>
+            </span>
           </Tooltip>
         </Box>
       </Grid>
