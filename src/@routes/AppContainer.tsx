@@ -1,18 +1,10 @@
 // https://stackoverflow.com/questions/54158994/react-suspense-lazy-delay
 // https://stackoverflow.com/a/37491381/3988363
-// https://github.com/pbeshai/use-query-params/issues/108
-// https://github.com/pbeshai/use-query-params/issues/196
 import React, { lazy, Suspense } from 'react';
 import pMinDelay from 'p-min-delay';
-import {
-  BrowserRouter,
-  Outlet,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
+import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 
 import LoadingPage from '../@components/UI/LoadingPage';
 
@@ -79,7 +71,7 @@ export const AppContainer = () => {
     <Suspense fallback={<LoadingPage />}>
       <BrowserRouter>
         {/* adapt for react-router v6 */}
-        <QueryParamProvider ReactRouterRoute={RouteAdapter}>
+        <QueryParamProvider adapter={ReactRouter6Adapter}>
           <Routes>
             <Route path="/" element={<AppLayout />}>
               {/* index means default */}
@@ -113,31 +105,4 @@ export const AppContainer = () => {
       </BrowserRouter>
     </Suspense>
   );
-};
-
-// TODO mb move from this
-// https://github.com/pbeshai/use-query-params/issues/108#issuecomment-785209454
-
-/**
- * This is the main thing you need to use to adapt the react-router v6
- * API to what use-query-params expects.
- *
- * Pass this as the `ReactRouterRoute` prop to QueryParamProvider.
- */
-const RouteAdapter = ({ children }: any) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const adaptedHistory = React.useMemo(
-    () => ({
-      replace(loc: Location) {
-        navigate(loc, { replace: true, state: location.state });
-      },
-      push(loc: Location) {
-        navigate(loc, { replace: false, state: location.state });
-      },
-    }),
-    [navigate, location],
-  );
-  return children({ history: adaptedHistory, location });
 };
