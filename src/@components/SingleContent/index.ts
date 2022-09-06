@@ -1,1 +1,6 @@
-export { default } from './SingleContent';
+/*
+ * *choose one
+ */
+
+export { default } from './SingleContentNew/SingleContentNew';
+// export { default } from './SingleContentOld/SingleContentOld';

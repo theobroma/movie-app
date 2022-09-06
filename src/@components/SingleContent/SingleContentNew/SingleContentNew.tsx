@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // import { MEDIA_TYPE } from '../../@types';
-import { StyledBadge, useStyles } from './SingleContent.styles';
+import { StyledBadge, useStyles } from './SingleContentNew.styles';
 
 const img_300 = 'https://image.tmdb.org/t/p/w300';
 const unavailable = 'https://www.movienewz.com/img/films/poster-holder.jpg';
