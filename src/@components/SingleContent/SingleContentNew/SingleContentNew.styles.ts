@@ -1,7 +1,8 @@
+// https://stackoverflow.com/questions/59339321/how-to-change-visibility-of-another-class-when-hovering-using-jss
 import type { Theme } from '@material-ui/core';
 import { Badge, createStyles, makeStyles, withStyles } from '@material-ui/core';
 
-export const useStyles = makeStyles(() =>
+export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     media: {
       display: 'flex',
@@ -11,7 +12,7 @@ export const useStyles = makeStyles(() =>
       margin: '5px 0',
       backgroundColor: 'white',
       color: 'black',
-      borderRadius: 10,
+      // borderRadius: 10,
       position: 'relative',
       // fontFamily: 'Montserrat", sans-serif',
       // '&:hover': {
@@ -19,23 +20,34 @@ export const useStyles = makeStyles(() =>
       //   color: 'white',
       // },
     },
-
     poster: {
       width: '100%',
       borderRadius: 10,
+      marginBottom: '-5px', // workaround
     },
+    posterLink: {
+      textDecoration: 'none',
+      position: 'relative',
 
+      '&:hover $mask': {
+        opacity: 1,
+      },
+    },
     title: {
       display: 'block',
+      textDecoration: 'none',
       fontSize: 14,
       fontWeight: 500,
-      // color: '#fff',
+      color: `${theme.palette.text.primary}`,
       margin: '10px 0 0',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
+      transition: 'all .3s',
+      '&:hover': {
+        color: '#31C469',
+      },
     },
-
     subTitle: {
       // display: 'flex',
       // justifyContent: 'space-between',
@@ -46,13 +58,42 @@ export const useStyles = makeStyles(() =>
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     },
+    mask: {
+      display: 'flex ',
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      width: '100%',
+      height: '100%',
+      fontSize: 28,
+      textAlign: 'center',
+      padding: 10,
+      borderRadius: 10,
+      // background: '#151617b8',
+      background: 'linear-gradient(to bottom,#151617b8,#151617b8)',
+      opacity: 0,
+      zIndex: 5,
+      transition: 'all .3s',
+      '& > div': {
+        position: 'relative',
+        height: 60,
+        width: 60,
+        backgroundColor: '#1e1d21',
+        borderRadius: '50%',
+        // for icon
+        fontSize: '54px',
+        color: ' #31C469',
+      },
+    },
   }),
 );
 
 export const StyledBadge = withStyles((theme: Theme) =>
   createStyles({
     badge: {
-      right: 0,
+      right: 30,
       top: 24,
       border: `2px solid ${theme.palette.background.paper}`,
       padding: '0 4px',

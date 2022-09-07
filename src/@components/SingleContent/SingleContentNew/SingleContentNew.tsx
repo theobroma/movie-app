@@ -2,6 +2,8 @@ import React from 'react';
 // import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+
 // import { MEDIA_TYPE } from '../../@types';
 import { StyledBadge, useStyles } from './SingleContentNew.styles';
 
@@ -56,26 +58,27 @@ const SingleContent = ({
         to={{
           pathname: `/details/${mediaType}/${id}`,
         }}
-        style={{
-          textDecoration: 'none',
-        }}
+        className={classes.posterLink}
       >
         <img
           className={classes.poster}
           src={poster_path ? `${img_300}${poster_path}` : unavailable}
           alt={title}
         />
+        <div className={classes.mask}>
+          <div>
+            <PlayArrowIcon fontSize="inherit" />
+          </div>
+        </div>
       </Link>
       {/* title */}
       <Link
         to={{
           pathname: `/details/${mediaType}/${id}`,
         }}
-        style={{
-          textDecoration: 'none',
-        }}
+        className={classes.title}
       >
-        <b className={classes.title}>{mediaTitle}</b>
+        <b>{mediaTitle}</b>
       </Link>
       <div className={classes.subTitle}>
         {/* {mediaType === MEDIA_TYPE.TV ? (

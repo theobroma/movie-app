@@ -37,7 +37,7 @@ export const getMediaDetailsTC = createAsyncThunk<
   try {
     thunkAPI.dispatch(resetStateAC());
     thunkAPI.dispatch(setLoadingAC(true));
-    await waitForMe(500);
+    await waitForMe(300);
     const res1 = await moviesApi.getMediaDetails(
       param.mediaId,
       param.mediaType,
