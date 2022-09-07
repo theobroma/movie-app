@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       /* width: 200px; */
       padding: 5,
       margin: '5px 0',
-      backgroundColor: 'white',
+      // backgroundColor: 'white',
       color: 'black',
       // borderRadius: 10,
       position: 'relative',
@@ -39,6 +39,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       fontSize: 14,
       fontWeight: 500,
       color: `${theme.palette.text.primary}`,
+      // color: 'rgba(0, 0, 0, 0.87)',
       margin: '10px 0 0',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -46,13 +47,15 @@ export const useStyles = makeStyles((theme: Theme) =>
       transition: 'all .3s',
       '&:hover': {
         color: '#31C469',
+        // color: `${theme.palette.primary.main}`,
       },
     },
     subTitle: {
       // display: 'flex',
       // justifyContent: 'space-between',
       // padding: '0 2px 3px',
-      color: '#8f95a3',
+      // color: '#8f95a3',
+      color: `${theme.palette.text.secondary}`,
       margin: '0 0 5px',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -85,6 +88,7 @@ export const useStyles = makeStyles((theme: Theme) =>
         // for icon
         fontSize: '54px',
         color: ' #31C469',
+        // color: `${theme.palette.primary.main}`,
       },
     },
   }),

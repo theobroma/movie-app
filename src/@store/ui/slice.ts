@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { Language, ThemeColorsType } from '../../@types';
 
 const uiInitialState = {
-  theme: 'light' as ThemeColorsType,
+  theme: 'dark' as ThemeColorsType,
   language: 'uk' as Language,
 };
 

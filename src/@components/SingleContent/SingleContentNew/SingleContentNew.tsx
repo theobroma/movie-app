@@ -1,10 +1,11 @@
 import React from 'react';
-// import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
-// import { MEDIA_TYPE } from '../../@types';
+import { useAppSelector } from '../../../@store/configureStore';
+import { languageSelector } from '../../../@store/ui/selectors';
+
 import { StyledBadge, useStyles } from './SingleContentNew.styles';
 
 const img_300 = 'https://image.tmdb.org/t/p/w300';
@@ -33,6 +34,7 @@ const SingleContent = ({
   parentMediaType,
 }: Props) => {
   const classes = useStyles();
+  const currentLanguage = useAppSelector(languageSelector);
   const mediaType = media_type || parentMediaType;
   // DIFFERENT FIELDS FOR MOVIE AND TV
   const mediaTitle =
@@ -43,11 +45,7 @@ const SingleContent = ({
   const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;
 
   return (
-    <div
-      className={classes.media}
-      // style={{ cursor: 'pointer' }}
-      color="inherit"
-    >
+    <div className={classes.media} color="inherit">
       <StyledBadge
         badgeContent={mediaVote}
         color={mediaVote > 6 ? 'primary' : 'secondary'}
@@ -81,14 +79,13 @@ const SingleContent = ({
         <b>{mediaTitle}</b>
       </Link>
       <div className={classes.subTitle}>
-        {/* {mediaType === MEDIA_TYPE.TV ? (
-          <Trans i18nKey="TVSeries" />
-        ) : (
-          <Trans i18nKey="Movie" />
-        )} */}
         <span>{mediaReleaseDate.split('-')[0]}</span>
-        &nbsp;•&nbsp;
-        <span>{mediaTitleOriginal}</span>
+        {original_language !== currentLanguage && (
+          <>
+            &nbsp;•&nbsp;
+            <span>{mediaTitleOriginal}</span>
+          </>
+        )}
       </div>
     </div>
   );
