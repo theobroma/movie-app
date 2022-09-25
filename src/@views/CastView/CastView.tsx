@@ -10,6 +10,8 @@ import { getMediaDetailsTC } from '../../@store/details/slice';
 import { languageISOSelector } from '../../@store/ui/selectors';
 import { groupBy } from '../../@utils/groupBy';
 
+import CastCard from './CastCard';
+
 interface RouteParams {
   mediaId: string;
   mediaType: string;
@@ -58,8 +60,7 @@ const CastView = () => {
             </Typography>
             {credits?.cast?.map((person) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                {person.name}
-                {person.character}
+                <CastCard person={person} />
               </Grid>
             ))}
           </Grid>
@@ -70,7 +71,7 @@ const CastView = () => {
             </Typography>
             {credits?.crew?.map((person) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                {person.name}
+                <CastCard person={person} />
               </Grid>
             ))}
           </Grid>

@@ -16,6 +16,8 @@ const CastPersonSchema = z.object({
   order: z.number(), // none in crew
 });
 
+export type CastPersonType = z.infer<typeof CastPersonSchema>;
+
 const CrewPersonSchema = z.object({
   adult: z.boolean(),
   gender: z.number(),
@@ -30,6 +32,8 @@ const CrewPersonSchema = z.object({
   department: z.string(), // none in cast
   job: z.string(), // none in cast
 });
+
+export type CrewPersonType = z.infer<typeof CrewPersonSchema>;
 
 export const CreditsResponseSchema = z.object({
   cast: z.array(CastPersonSchema),
