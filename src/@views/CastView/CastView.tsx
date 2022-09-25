@@ -1,3 +1,4 @@
+// https://stackoverflow.com/questions/39965579/how-to-loop-an-object-in-react
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -45,6 +46,22 @@ const CastView = () => {
   const groupedCrew = groupBy(credits?.crew || [], 'department');
   console.log('groupedCrew :>> ', groupedCrew);
 
+  const CrewBlock = Object.keys(groupedCrew).map((key) => {
+    return (
+      <div key={nanoid()}>
+        <Typography component="h3" variant="h4">
+          {groupedCrew[key][0].department}
+          {/* <Trans i18nKey="Heading.Similar" /> */}
+        </Typography>
+        {groupedCrew[key].map((person: any) => (
+          <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
+            <CastCard person={person} />
+          </Grid>
+        ))}
+      </div>
+    );
+  });
+
   return (
     <Container maxWidth="lg">
       <Box py={4}>
@@ -69,11 +86,12 @@ const CastView = () => {
               Series Crew {!!credits?.crew && credits?.crew?.length}
               {/* <Trans i18nKey="Heading.Similar" /> */}
             </Typography>
-            {credits?.crew?.map((person) => (
+            {/* {credits?.crew?.map((person) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                 <CastCard person={person} />
               </Grid>
-            ))}
+            ))} */}
+            {CrewBlock}
           </Grid>
         </Grid>
       </Box>
