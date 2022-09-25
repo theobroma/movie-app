@@ -1,6 +1,7 @@
 export enum ROUTES {
   ROOT = '/',
   SINGLE_DETAILS = '/details/:mediaType/:id',
+  SINGLE_DETAILS_CAST = '/details/:mediaType/:id/cast',
   // =====================================
   TRENDING = '/trending',
   TRENDING_MOVIES = '/trending/movies',
