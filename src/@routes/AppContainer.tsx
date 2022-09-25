@@ -35,6 +35,10 @@ const MoviesDetailsView = lazy(() =>
   pMinDelay(import('../@views/DetailsView'), MIN_LAZY_DELAY),
 );
 
+const CastView = lazy(() =>
+  pMinDelay(import('../@views/CastView'), MIN_LAZY_DELAY),
+);
+
 const FavouritesLayout = lazy(() =>
   pMinDelay(
     import('../@views/FavouritesView/FavouritesLayout'),
@@ -79,6 +83,10 @@ export const AppContainer = () => {
               <Route
                 path="/details/:mediaType/:mediaId"
                 element={<MoviesDetailsView />}
+              />
+              <Route
+                path="/details/:mediaType/:mediaId/cast"
+                element={<CastView />}
               />
               {/* Trending */}
               <Route path="trending" element={<Outlet />}>

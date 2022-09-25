@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 
 import { Box, Container, Grid } from '@material-ui/core';
 
+import CastMedia from '../../@features/CastMedia';
 import SimilarMedia from '../../@features/SimilarMedia';
 import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 // import { useNonInitialEffect } from '../../@hooks/useNonInitialEffect';
@@ -129,6 +130,8 @@ const MoviesDetailsView = () => {
           </Box>
         </Container>
       </Box>
+      {/* Cast */}
+      <CastMedia />
       {/* no trailer test : http://localhost:3000/details/movie/112160 */}
       {!isLoading && !!trailerKey && (
         <Container maxWidth="lg">
