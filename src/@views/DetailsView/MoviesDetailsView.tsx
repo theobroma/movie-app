@@ -26,7 +26,7 @@ import { useStyles } from './MoviesDetailsView.styles';
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
-interface MyParams {
+interface RouteParams {
   mediaId: string;
   mediaType: string;
 }
@@ -46,7 +46,7 @@ const MoviesDetailsView = () => {
   const langISOCode = useAppSelector(languageISOSelector);
 
   const trailerKey = null ?? trailers?.results[0]?.key;
-  const { mediaId, mediaType } = useParams<keyof MyParams>() as MyParams;
+  const { mediaId, mediaType } = useParams<keyof RouteParams>() as RouteParams;
 
   let isFavorite = false;
   if (mediaId && mediaType) {
