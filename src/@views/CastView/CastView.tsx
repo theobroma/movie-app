@@ -2,7 +2,15 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Box, Container, Grid, Typography } from '@material-ui/core';
+import type { Theme } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  createStyles,
+  Grid,
+  makeStyles,
+  Typography,
+} from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
@@ -14,6 +22,25 @@ import { groupBy } from '../../@utils/groupBy';
 import SmallHeader from './SmallHeader/SmallHeader';
 import CastCard from './CastCard';
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    title: {
+      fontWeight: 600,
+      fontSize: '1.4em',
+      marginBottom: '18px',
+    },
+    count: {
+      fontWeight: 400,
+      opacity: 0.6,
+    },
+    departmentTitle: {
+      fontWeight: 600,
+      fontSize: '1.2em',
+      marginBottom: '8px',
+    },
+  }),
+);
+
 interface RouteParams {
   mediaId: string;
   mediaType: string;
@@ -22,7 +49,7 @@ interface RouteParams {
 // type Props = {};
 
 const CastView = () => {
-  //   const classes = useStyles();
+  const classes = useStyles();
   const dispatch = useAppDispatch();
   const {
     data: movieDetailsData,
@@ -49,8 +76,12 @@ const CastView = () => {
 
   const CrewBlock = Object.keys(groupedCrew).map((key) => {
     return (
-      <div key={nanoid()}>
-        <Typography component="h3" variant="h4">
+      <Box mb={5} key={nanoid()}>
+        <Typography
+          className={classes.departmentTitle}
+          component="h3"
+          variant="h4"
+        >
           {groupedCrew[key][0].department}
           {/* <Trans i18nKey="Heading.Similar" /> */}
         </Typography>
@@ -59,7 +90,7 @@ const CastView = () => {
             <CastCard person={person} />
           </Box>
         ))}
-      </div>
+      </Box>
     );
   });
 
@@ -74,8 +105,11 @@ const CastView = () => {
           </Typography>
           <Grid container spacing={3} style={{ padding: 3 }}>
             <Grid item xs={12} sm={6} key={nanoid()}>
-              <Typography component="h3" variant="h4">
-                Series Cast {!!credits?.cast && `${credits?.cast?.length}`}
+              <Typography className={classes.title} component="h3" variant="h4">
+                Series Cast &nbsp;
+                {!!credits?.cast && (
+                  <span className={classes.count}>{credits?.cast?.length}</span>
+                )}
                 {/* <Trans i18nKey="Heading.Similar" /> */}
               </Typography>
               {credits?.cast?.map((person) => (
@@ -85,8 +119,11 @@ const CastView = () => {
               ))}
             </Grid>
             <Grid item xs={12} sm={6} key={nanoid()}>
-              <Typography component="h3" variant="h4">
-                Series Crew {!!credits?.crew && credits?.crew?.length}
+              <Typography className={classes.title} component="h3" variant="h4">
+                Series Crew &nbsp;
+                {!!credits?.crew && (
+                  <span className={classes.count}>{credits?.crew?.length}</span>
+                )}
                 {/* <Trans i18nKey="Heading.Similar" /> */}
               </Typography>
               {/* {credits?.crew?.map((person) => (
