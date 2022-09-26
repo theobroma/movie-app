@@ -50,7 +50,7 @@ const SmallHeader = ({
               style={{ textDecoration: 'none !important' }}
             >
               <img
-                className={classes.poster}
+                className={classes.mediaFigure}
                 src={`${poster_base_url}${poster_path}`}
                 //   srcSet="/t/p/w58_and_h87_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 1x, /t/p/w116_and_h174_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 2x"
                 alt={original_title}

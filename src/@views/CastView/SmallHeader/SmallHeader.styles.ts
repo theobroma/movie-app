@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     mediaBody: {
       flex: 1,
     },
-    poster: {
+    mediaFigure: {
       marginRight: '1em',
     },
     titleMedia: {

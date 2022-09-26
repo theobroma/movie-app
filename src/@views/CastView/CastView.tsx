@@ -55,9 +55,9 @@ const CastView = () => {
           {/* <Trans i18nKey="Heading.Similar" /> */}
         </Typography>
         {groupedCrew[key].map((person: any) => (
-          <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
+          <Box mb={3} key={nanoid()}>
             <CastCard person={person} />
-          </Grid>
+          </Box>
         ))}
       </div>
     );
@@ -79,9 +79,9 @@ const CastView = () => {
                 {/* <Trans i18nKey="Heading.Similar" /> */}
               </Typography>
               {credits?.cast?.map((person) => (
-                <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
+                <Box mb={3} key={nanoid()}>
                   <CastCard person={person} />
-                </Grid>
+                </Box>
               ))}
             </Grid>
             <Grid item xs={12} sm={6} key={nanoid()}>
