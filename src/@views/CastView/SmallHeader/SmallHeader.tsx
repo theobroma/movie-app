@@ -1,13 +1,18 @@
 import React from 'react';
 import dayjs from 'dayjs';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 import {
   Box,
   Container,
   createStyles,
+  Link,
   makeStyles,
   Typography,
 } from '@material-ui/core';
+
+const poster_base_url =
+  'https://image.tmdb.org/t/p/original/t/p/w58_and_h87_face';
 
 const useStyles = makeStyles(() => {
   return {
@@ -15,13 +20,33 @@ const useStyles = makeStyles(() => {
       root: {
         background: 'rgb(56 56 56)',
       },
+      titleMedia: {
+        fontWeight: 700,
+        color: '#fff',
+      },
       titleDate: {
         opacity: 0.8,
         fontWeight: 400,
       },
+      link: {
+        color: '#fff',
+        // fontFamily: 'Source Sans Pro', Arial, sans-serif,
+        fontSize: '1.1em',
+        fontWeight: 600,
+        margin: 0,
+        opacity: 0.6,
+        '&.hover': {
+          color: 'rgba(255, 255, 255, 0.7)',
+        },
+      },
     }),
   };
 });
+
+interface RouteParams {
+  mediaId: string;
+  mediaType: string;
+}
 
 type Props = {
   data: any;
@@ -35,7 +60,7 @@ const SmallHeader = ({
     original_title = '',
     original_name = '',
     // original_language,
-    // poster_path,
+    poster_path,
     release_date = '',
     first_air_date = '',
     // vote_average = 0,
@@ -43,6 +68,7 @@ const SmallHeader = ({
   } = {},
 }: Props) => {
   const classes = useStyles();
+  const { mediaId, mediaType } = useParams<keyof RouteParams>() as RouteParams;
   const mediaTitle =
     title || name || original_title || original_name || 'title';
   const mediaReleaseDate = dayjs(release_date || first_air_date).format('YYYY');
@@ -55,12 +81,14 @@ const SmallHeader = ({
               <a href="/tv/92783-she-hulk-attorney-at-law?language=ru">
                 <img
                   className="poster"
-                  src="/t/p/w58_and_h87_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg"
-                  srcSet="/t/p/w58_and_h87_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 1x, /t/p/w116_and_h174_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 2x"
-                  alt="She-Hulk: Attorney at Law"
+                  src={`${poster_base_url}${poster_path}`}
+                  //   srcSet="/t/p/w58_and_h87_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 1x, /t/p/w116_and_h174_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 2x"
+                  alt={original_title}
+                  width="58"
+                  height="87"
                 />
               </a>
-
+              {/* Title */}
               <span>
                 <div className="title ott_false" dir="auto">
                   {/* <h2 className="25">
@@ -72,8 +100,8 @@ const SmallHeader = ({
 
                   <Typography
                     variant="h4"
-                    style={{ fontWeight: 'bold' }}
                     component="h1"
+                    className={classes.titleMedia}
                   >
                     {mediaTitle}{' '}
                     <span className={classes.titleDate}>
@@ -81,15 +109,23 @@ const SmallHeader = ({
                     </span>
                   </Typography>
                 </div>
-
-                <h3>
+                {/* Link */}
+                {/* <h3>
                   <a
                     className="keyboard_s parent"
                     href="/tv/92783-she-hulk-attorney-at-law?language=ru"
                   >
                     ← На головну
                   </a>
-                </h3>
+                </h3> */}
+                {/*  */}
+                <Link
+                  component={RouterLink}
+                  to={`/details/${mediaType}/${mediaId}`}
+                  className={classes.link}
+                >
+                  ← На головну
+                </Link>
               </span>
             </span>
           </section>
