@@ -2,63 +2,12 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 
-import {
-  Box,
-  Container,
-  createStyles,
-  Link,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { Box, Container, Link, Typography } from '@material-ui/core';
+
+import { useStyles } from './SmallHeader.styles';
 
 const poster_base_url =
   'https://image.tmdb.org/t/p/original/t/p/w58_and_h87_face';
-
-const useStyles = makeStyles(() => {
-  return {
-    ...createStyles({
-      root: {
-        background: 'rgb(56 56 56)',
-      },
-      media: {
-        display: 'flex',
-        alignItems: 'center',
-      },
-      mediaBody: {
-        flex: 1,
-      },
-      poster: {
-        marginRight: '1em',
-      },
-      titleMedia: {
-        fontWeight: 700,
-        color: '#fff',
-        textDecoration: 'none',
-        '&:hover': {
-          color: 'rgba(255, 255, 255, 0.7)',
-          textDecoration: 'none',
-        },
-      },
-      titleDate: {
-        opacity: 0.8,
-        fontWeight: 400,
-        color: '#fff',
-      },
-      link: {
-        color: '#fff',
-        // fontFamily: 'Source Sans Pro', Arial, sans-serif,
-        fontSize: '1.1em',
-        fontWeight: 600,
-        margin: 0,
-        opacity: 0.6,
-        '&:hover': {
-          color: 'rgba(255, 255, 255, 0.7)',
-          textDecoration: 'none',
-        },
-      },
-    }),
-  };
-});
 
 interface RouteParams {
   mediaId: string;
