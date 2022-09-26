@@ -20,13 +20,29 @@ const useStyles = makeStyles(() => {
       root: {
         background: 'rgb(56 56 56)',
       },
+      media: {
+        display: 'flex',
+        alignItems: 'center',
+      },
+      mediaBody: {
+        flex: 1,
+      },
+      poster: {
+        marginRight: '1em',
+      },
       titleMedia: {
         fontWeight: 700,
         color: '#fff',
+        textDecoration: 'none',
+        '&:hover': {
+          color: 'rgba(255, 255, 255, 0.7)',
+          textDecoration: 'none',
+        },
       },
       titleDate: {
         opacity: 0.8,
         fontWeight: 400,
+        color: '#fff',
       },
       link: {
         color: '#fff',
@@ -35,8 +51,9 @@ const useStyles = makeStyles(() => {
         fontWeight: 600,
         margin: 0,
         opacity: 0.6,
-        '&.hover': {
+        '&:hover': {
           color: 'rgba(255, 255, 255, 0.7)',
+          textDecoration: 'none',
         },
       },
     }),
@@ -76,58 +93,43 @@ const SmallHeader = ({
     <div className={classes.root}>
       <Container maxWidth="lg">
         <Box py={4}>
-          <section className="header small">
-            <span className="flex poster">
-              <a href="/tv/92783-she-hulk-attorney-at-law?language=ru">
-                <img
-                  className="poster"
-                  src={`${poster_base_url}${poster_path}`}
-                  //   srcSet="/t/p/w58_and_h87_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 1x, /t/p/w116_and_h174_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 2x"
-                  alt={original_title}
-                  width="58"
-                  height="87"
-                />
-              </a>
+          <section className={classes.media}>
+            {/* poster */}
+            <Link
+              component={RouterLink}
+              to={`/details/${mediaType}/${mediaId}`}
+              style={{ textDecoration: 'none !important' }}
+            >
+              <img
+                className={classes.poster}
+                src={`${poster_base_url}${poster_path}`}
+                //   srcSet="/t/p/w58_and_h87_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 1x, /t/p/w116_and_h174_face/cvesYM2Cp8y0p2IlFnEnGVxb9f1.jpg 2x"
+                alt={original_title}
+                width="58"
+                height="87"
+              />
+            </Link>
+            <div className={classes.mediaBody}>
               {/* Title */}
-              <span>
-                <div className="title ott_false" dir="auto">
-                  {/* <h2 className="25">
-                    <a href="/tv/92783-she-hulk-attorney-at-law?language=ru">
-                      {mediaTitle}
-                    </a>
-                    <span className="tag release_date">(2022)</span>
-                  </h2> */}
-
-                  <Typography
-                    variant="h4"
-                    component="h1"
-                    className={classes.titleMedia}
-                  >
-                    {mediaTitle}{' '}
-                    <span className={classes.titleDate}>
-                      {mediaReleaseDate}
-                    </span>
-                  </Typography>
-                </div>
-                {/* Link */}
-                {/* <h3>
-                  <a
-                    className="keyboard_s parent"
-                    href="/tv/92783-she-hulk-attorney-at-law?language=ru"
-                  >
-                    ← На головну
-                  </a>
-                </h3> */}
-                {/*  */}
+              <Typography variant="h4" component="h2">
                 <Link
+                  className={classes.titleMedia}
                   component={RouterLink}
                   to={`/details/${mediaType}/${mediaId}`}
-                  className={classes.link}
                 >
-                  ← На головну
+                  {mediaTitle}&nbsp;
                 </Link>
-              </span>
-            </span>
+                <span className={classes.titleDate}>({mediaReleaseDate})</span>
+              </Typography>
+              {/* Link */}
+              <Link
+                component={RouterLink}
+                to={`/details/${mediaType}/${mediaId}`}
+                className={classes.link}
+              >
+                ← На головну
+              </Link>
+            </div>
           </section>
         </Box>
       </Container>
