@@ -15,6 +15,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       flex: 1,
     },
     mediaFigure: {
+      borderRadius: 4,
       marginRight: '1em',
     },
     titleMedia: {
