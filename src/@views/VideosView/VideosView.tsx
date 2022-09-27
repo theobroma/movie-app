@@ -79,28 +79,35 @@ const VideosView = () => {
             Videos
             {/* <Trans i18nKey="Heading.Similar" /> */}
           </Typography>
+          {/*  */}
           <Grid container spacing={3} style={{ padding: 3 }}>
-            {trailers?.results?.map((video) => (
-              <Grid item xs={12}>
-                <Box py={3} key={nanoid()}>
-                  <Grid container spacing={3} style={{ padding: 3 }}>
-                    <Grid item xs={4}>
-                      <LiteYouTubeEmbed id={video.key} title="Trailer" webp />
+            <Grid item xs={3}>
+              v
+            </Grid>
+            <Grid item xs={9}>
+              {trailers?.results?.map((video) => (
+                <Grid item xs={12}>
+                  <Box py={3} key={nanoid()}>
+                    <Grid container spacing={3} style={{ padding: 3 }}>
+                      <Grid item xs={4}>
+                        <LiteYouTubeEmbed id={video.key} title="Trailer" webp />
+                      </Grid>
+                      <Grid item xs={8}>
+                        <Box component="span" className={classes.title}>
+                          {video.name} &nbsp;-&nbsp;{' '}
+                          {/* {video.published_at} */}
+                          {dayjs(video.published_at).format('YYYY')}
+                        </Box>
+                        <br />
+                        {video.official}
+                        &nbsp;-&nbsp;
+                        {video.type}
+                      </Grid>
                     </Grid>
-                    <Grid item xs={8}>
-                      {video.name}
-                      &nbsp;-&nbsp;
-                      {video.official}
-                      &nbsp;-&nbsp;
-                      {/* {video.published_at} */}
-                      {dayjs(video.published_at).format('YYYY')}
-                      &nbsp;-&nbsp;
-                      {video.type}
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Grid>
-            ))}
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Box>
       </Container>
