@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trans } from 'react-i18next';
+// import { Trans } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 
 // import { Trans } from 'react-i18next';
@@ -44,8 +44,19 @@ const CastMedia = () => {
         >
           <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
             {/* More */}
-            Оглянути всі &nbsp;
-            <Trans i18nKey="Btn.More" />
+            Оглянути увест склад &nbsp;
+            {/* <Trans i18nKey="Btn.More" /> */}
+          </Button>
+        </Link>
+        {/* tmp */}
+        <Link
+          to={`/details/${mediaType}/${mediaId}/videos`}
+          className={classes.link}
+        >
+          <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
+            {/* More */}
+            Оглянути всі відео &nbsp;
+            {/* <Trans i18nKey="Btn.More" /> */}
           </Button>
         </Link>
       </Box>
