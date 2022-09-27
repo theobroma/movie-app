@@ -11,6 +11,7 @@ import {
   createStyles,
   Grid,
   makeStyles,
+  Paper,
   Typography,
 } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
@@ -86,26 +87,33 @@ const VideosView = () => {
             </Grid>
             <Grid item xs={9}>
               {trailers?.results?.map((video) => (
-                <Grid item xs={12}>
-                  <Box py={3} key={nanoid()}>
-                    <Grid container spacing={3} style={{ padding: 3 }}>
-                      <Grid item xs={4}>
-                        <LiteYouTubeEmbed id={video.key} title="Trailer" webp />
-                      </Grid>
-                      <Grid item xs={8}>
-                        <Box component="span" className={classes.title}>
-                          {video.name} &nbsp;-&nbsp;{' '}
-                          {/* {video.published_at} */}
-                          {dayjs(video.published_at).format('YYYY')}
-                        </Box>
-                        <br />
-                        {video.official}
-                        &nbsp;-&nbsp;
-                        {video.type}
+                <Box py={3} key={nanoid()}>
+                  <Paper elevation={3}>
+                    <Grid item xs={12}>
+                      <Grid container>
+                        <Grid item xs={4}>
+                          <LiteYouTubeEmbed
+                            id={video.key}
+                            title="Trailer"
+                            webp
+                          />
+                        </Grid>
+                        <Grid item xs={8}>
+                          <Box p={3}>
+                            <Box component="span" className={classes.title}>
+                              {video.name}
+                            </Box>
+                            <br />
+                            {video.type}
+                            &nbsp;-&nbsp;
+                            {/* {video.published_at} */}
+                            {dayjs(video.published_at).format('DD MMMM YYYY')}
+                          </Box>
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Box>
-                </Grid>
+                  </Paper>
+                </Box>
               ))}
             </Grid>
           </Grid>
