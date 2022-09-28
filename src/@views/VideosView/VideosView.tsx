@@ -4,7 +4,6 @@ import dayjs from 'dayjs';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import { useParams } from 'react-router-dom';
 
-import type { Theme } from '@material-ui/core';
 import {
   Box,
   Container,
@@ -12,7 +11,6 @@ import {
   Grid,
   makeStyles,
   Paper,
-  Typography,
 } from '@material-ui/core';
 import { nanoid } from '@reduxjs/toolkit';
 
@@ -22,7 +20,9 @@ import { getMediaDetailsTC } from '../../@store/details/slice';
 import { languageISOSelector } from '../../@store/ui/selectors';
 import SmallHeader from '../CastView/SmallHeader';
 
-const useStyles = makeStyles((theme: Theme) =>
+import VideosFilter from './VideosFilter';
+
+const useStyles = makeStyles(() =>
   createStyles({
     title: {
       fontWeight: 600,
@@ -76,18 +76,13 @@ const VideosView = () => {
       <SmallHeader data={movieDetailsData} />
       <Container maxWidth="lg">
         <Box py={4}>
-          <Typography component="h3" variant="h4">
-            Videos
-            {/* <Trans i18nKey="Heading.Similar" /> */}
-          </Typography>
-          {/*  */}
           <Grid container spacing={3} style={{ padding: 3 }}>
             <Grid item xs={3}>
-              v
+              <VideosFilter />
             </Grid>
             <Grid item xs={9}>
               {trailers?.results?.map((video) => (
-                <Box py={3} key={nanoid()}>
+                <Box pb={3} key={nanoid()}>
                   <Paper elevation={3}>
                     <Grid item xs={12}>
                       <Grid container>
