@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 import { movieDetailsSelector } from '../../@store/details/selectors';
 import { getMediaDetailsTC } from '../../@store/details/slice';
 import { languageISOSelector } from '../../@store/ui/selectors';
+import { groupBy } from '../../@utils/groupBy';
 import SmallHeader from '../CastView/SmallHeader';
 
 import VideosFilter from './VideosFilter';
@@ -61,6 +62,8 @@ const VideosView = () => {
   const langISOCode = useAppSelector(languageISOSelector);
   const { mediaId, mediaType } = useParams<keyof RouteParams>() as RouteParams;
 
+  const groupedVideos = groupBy(trailers.results || [], 'type');
+
   // useEffect(() => {
   //   console.log('credits', credits);
   // }, [credits]);
@@ -78,7 +81,7 @@ const VideosView = () => {
         <Box py={4}>
           <Grid container spacing={3} style={{ padding: 3 }}>
             <Grid item xs={3}>
-              <VideosFilter />
+              <VideosFilter groupedVideos={groupedVideos} />
             </Grid>
             <Grid item xs={9}>
               {trailers?.results?.map((video) => (
