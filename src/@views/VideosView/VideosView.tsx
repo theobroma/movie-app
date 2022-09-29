@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/39965579/how-to-loop-an-object-in-react
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import { useParams } from 'react-router-dom';
@@ -52,6 +52,7 @@ interface RouteParams {
 const VideosView = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
+  const [filter, setFilter] = useState('Trailer');
   const {
     data: movieDetailsData,
     // isLoading,
@@ -63,10 +64,11 @@ const VideosView = () => {
   const { mediaId, mediaType } = useParams<keyof RouteParams>() as RouteParams;
 
   const groupedVideos = groupBy(trailers.results || [], 'type');
+  const filteredVideos = groupedVideos[filter] || [];
 
   // useEffect(() => {
-  //   console.log('credits', credits);
-  // }, [credits]);
+  //   console.log('filter', filter);
+  // }, [filter]);
 
   useEffect(() => {
     if (mediaId && mediaType) {
@@ -81,10 +83,13 @@ const VideosView = () => {
         <Box py={4}>
           <Grid container spacing={3} style={{ padding: 3 }}>
             <Grid item xs={3}>
-              <VideosFilter groupedVideos={groupedVideos} />
+              <VideosFilter
+                groupedVideos={groupedVideos}
+                handleClick={setFilter}
+              />
             </Grid>
             <Grid item xs={9}>
-              {trailers?.results?.map((video) => (
+              {filteredVideos.map((video: any) => (
                 <Box pb={3} key={nanoid()}>
                   <Paper elevation={3}>
                     <Grid item xs={12}>

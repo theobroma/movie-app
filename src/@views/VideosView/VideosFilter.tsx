@@ -29,15 +29,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 interface Props {
   groupedVideos: any;
+  handleClick: any;
 }
 
-const VideosFilter = ({ groupedVideos }: Props) => {
+const VideosFilter = ({ groupedVideos, handleClick }: Props) => {
   const classes = useStyles();
 
   const FilterBlock = Object.keys(groupedVideos).map((key) => {
     return (
       <List>
-        <ListItem>
+        <ListItem onClick={(e) => handleClick(key)}>
           <ListItemAvatar>
             <Avatar>{/* <FolderIcon /> */}</Avatar>
           </ListItemAvatar>
