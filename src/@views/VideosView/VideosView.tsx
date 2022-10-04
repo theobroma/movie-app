@@ -82,13 +82,13 @@ const VideosView = () => {
       <Container maxWidth="lg">
         <Box py={4}>
           <Grid container spacing={3} style={{ padding: 3 }}>
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <VideosFilter
                 groupedVideos={groupedVideos}
                 handleClick={setFilter}
               />
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={12} md={9}>
               {filteredVideos.map((video: any) => (
                 <Box pb={3} key={nanoid()}>
                   <Paper elevation={3}>

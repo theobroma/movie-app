@@ -26,5 +26,13 @@ export const useStyles = makeStyles(() =>
       height: '100%',
       objectFit: 'cover',
     },
+    link: {
+      textDecoration: 'none',
+    },
+    linkBox: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   }),
 );

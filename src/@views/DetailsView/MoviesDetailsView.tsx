@@ -3,9 +3,10 @@ import React, { useEffect } from 'react';
 import { useSnackbar } from 'notistack';
 import { Trans } from 'react-i18next';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-import { Box, Container, Grid } from '@material-ui/core';
+import { Box, Button, Container, Grid } from '@material-ui/core';
+import LinkIcon from '@material-ui/icons/Link';
 
 import CastMedia from '../../@features/CastMedia';
 import SimilarMedia from '../../@features/SimilarMedia';
@@ -143,6 +144,22 @@ const MoviesDetailsView = () => {
               <Box py={3}>
                 <LiteYouTubeEmbed id={trailerKey} title="Trailer" webp />
               </Box>
+            </Grid>
+            <Grid item xs={12} md={3} className={classes.linkBox}>
+              <Link
+                to={`/details/${mediaType}/${mediaId}/videos`}
+                className={classes.link}
+              >
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  endIcon={<LinkIcon />}
+                >
+                  {/* More */}
+                  Оглянути всі відео &nbsp;
+                  {/* <Trans i18nKey="Btn.More" /> */}
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </Container>
