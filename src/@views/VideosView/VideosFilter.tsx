@@ -12,6 +12,7 @@ import {
 import Grid from '@material-ui/core/Grid';
 import type { Theme } from '@material-ui/core/styles';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { nanoid } from '@reduxjs/toolkit';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,23 +38,21 @@ const VideosFilter = ({ groupedVideos, handleClick }: Props) => {
 
   const FilterBlock = Object.keys(groupedVideos).map((key) => {
     return (
-      <List>
-        <ListItem onClick={(e) => handleClick(key)}>
-          <ListItemAvatar>
-            <Avatar>{/* <FolderIcon /> */}</Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary={groupedVideos[key][0].type}
-            // secondary={secondary ? 'Secondary text' : null}
-          />
-          <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete">
-              {/* <DeleteIcon /> */}
-              {groupedVideos[key].length}
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      </List>
+      <ListItem onClick={(e) => handleClick(key)} key={nanoid()}>
+        <ListItemAvatar>
+          <Avatar>{/* <FolderIcon /> */}</Avatar>
+        </ListItemAvatar>
+        <ListItemText
+          primary={groupedVideos[key][0].type}
+          // secondary={secondary ? 'Secondary text' : null}
+        />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" aria-label="delete">
+            {/* <DeleteIcon /> */}
+            {groupedVideos[key].length}
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
     );
   });
 
@@ -61,7 +60,9 @@ const VideosFilter = ({ groupedVideos, handleClick }: Props) => {
     <div className={classes.root}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <div className={classes.demo}>{FilterBlock}</div>
+          <div className={classes.demo}>
+            <List>{FilterBlock}</List>
+          </div>
         </Grid>
       </Grid>
     </div>
