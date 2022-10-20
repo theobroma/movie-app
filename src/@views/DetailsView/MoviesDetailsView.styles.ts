@@ -34,5 +34,9 @@ export const useStyles = makeStyles(() =>
       justifyContent: 'center',
       alignItems: 'center',
     },
+    linkMore: {
+      display: 'flex',
+      alignItems: 'center',
+    },
   }),
 );

@@ -5,18 +5,22 @@ import { Link, useParams } from 'react-router-dom';
 // import { Trans } from 'react-i18next';
 import {
   Box,
-  Button,
   Container,
   createStyles,
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import LinkIcon from '@material-ui/icons/Link';
+import MUILink from '@material-ui/core/Link';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 const useStyles = makeStyles(() =>
   createStyles({
     link: {
       textDecoration: 'none',
+    },
+    linkMore: {
+      display: 'flex',
+      alignItems: 'center',
     },
   }),
 );
@@ -42,22 +46,12 @@ const CastMedia = () => {
           to={`/details/${mediaType}/${mediaId}/cast`}
           className={classes.link}
         >
-          <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
+          <MUILink variant="body2" className={classes.linkMore}>
             {/* More */}
-            Оглянути увест склад &nbsp;
+            Оглянути увесь склад &nbsp;
+            <ArrowRightAltIcon />
             {/* <Trans i18nKey="Btn.More" /> */}
-          </Button>
-        </Link>
-        {/* tmp */}
-        <Link
-          to={`/details/${mediaType}/${mediaId}/videos`}
-          className={classes.link}
-        >
-          <Button variant="outlined" color="primary" endIcon={<LinkIcon />}>
-            {/* More */}
-            Оглянути всі відео &nbsp;
-            {/* <Trans i18nKey="Btn.More" /> */}
-          </Button>
+          </MUILink>
         </Link>
       </Box>
     </Container>

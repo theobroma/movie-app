@@ -5,8 +5,9 @@ import { Trans } from 'react-i18next';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import { Link, useParams } from 'react-router-dom';
 
-import { Box, Button, Container, Grid } from '@material-ui/core';
-import LinkIcon from '@material-ui/icons/Link';
+import { Box, Container, Grid } from '@material-ui/core';
+import MUILink from '@material-ui/core/Link';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 import CastMedia from '../../@features/CastMedia';
 import SimilarMedia from '../../@features/SimilarMedia';
@@ -150,15 +151,12 @@ const MoviesDetailsView = () => {
                 to={`/details/${mediaType}/${mediaId}/videos`}
                 className={classes.link}
               >
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  endIcon={<LinkIcon />}
-                >
+                <MUILink variant="body2" className={classes.linkMore}>
                   {/* More */}
                   Оглянути всі відео &nbsp;
+                  <ArrowRightAltIcon />
                   {/* <Trans i18nKey="Btn.More" /> */}
-                </Button>
+                </MUILink>
               </Link>
             </Grid>
           </Grid>
