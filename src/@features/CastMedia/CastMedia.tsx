@@ -1,6 +1,7 @@
+// https://stackoverflow.com/questions/63216730/can-you-use-material-ui-link-with-react-router-dom-link
 import React from 'react';
 // import { Trans } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 // import { Trans } from 'react-i18next';
 import {
@@ -16,11 +17,9 @@ import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 const useStyles = makeStyles(() =>
   createStyles({
     link: {
-      textDecoration: 'none',
-    },
-    linkMore: {
       display: 'flex',
       alignItems: 'center',
+      textDecoration: 'none',
     },
   }),
 );
@@ -42,17 +41,17 @@ const CastMedia = () => {
           Cast
           {/* <Trans i18nKey="Heading.Similar" /> */}
         </Typography>
-        <Link
+        <MUILink
+          component={RouterLink}
           to={`/details/${mediaType}/${mediaId}/cast`}
           className={classes.link}
+          variant="body2"
         >
-          <MUILink variant="body2" className={classes.linkMore}>
-            {/* More */}
-            Оглянути увесь склад &nbsp;
-            <ArrowRightAltIcon />
-            {/* <Trans i18nKey="Btn.More" /> */}
-          </MUILink>
-        </Link>
+          {/* More */}
+          Оглянути увесь склад &nbsp;
+          <ArrowRightAltIcon />
+          {/* <Trans i18nKey="Btn.More" /> */}
+        </MUILink>
       </Box>
     </Container>
   );

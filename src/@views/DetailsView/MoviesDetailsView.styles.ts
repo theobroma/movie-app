@@ -27,15 +27,13 @@ export const useStyles = makeStyles(() =>
       objectFit: 'cover',
     },
     link: {
+      display: 'flex',
+      alignItems: 'center',
       textDecoration: 'none',
     },
     linkBox: {
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-    },
-    linkMore: {
-      display: 'flex',
       alignItems: 'center',
     },
   }),

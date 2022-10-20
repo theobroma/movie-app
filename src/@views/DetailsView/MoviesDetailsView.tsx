@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useSnackbar } from 'notistack';
 import { Trans } from 'react-i18next';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import { Link, useParams } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 import { Box, Container, Grid } from '@material-ui/core';
 import MUILink from '@material-ui/core/Link';
@@ -147,17 +147,17 @@ const MoviesDetailsView = () => {
               </Box>
             </Grid>
             <Grid item xs={12} md={3} className={classes.linkBox}>
-              <Link
+              <MUILink
+                component={RouterLink}
                 to={`/details/${mediaType}/${mediaId}/videos`}
                 className={classes.link}
+                variant="body2"
               >
-                <MUILink variant="body2" className={classes.linkMore}>
-                  {/* More */}
-                  Оглянути всі відео &nbsp;
-                  <ArrowRightAltIcon />
-                  {/* <Trans i18nKey="Btn.More" /> */}
-                </MUILink>
-              </Link>
+                {/* More */}
+                Оглянути всі відео &nbsp;
+                <ArrowRightAltIcon />
+                {/* <Trans i18nKey="Btn.More" /> */}
+              </MUILink>
             </Grid>
           </Grid>
         </Container>
