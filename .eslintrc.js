@@ -20,6 +20,7 @@ module.exports = {
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-restricted-exports': 0, // Nothing to restrict.
     'no-underscore-dangle': 0,
+
     'react-hooks/exhaustive-deps': [
       'warn',
       // add deps for custom hooks
@@ -35,6 +36,8 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'react/jsx-boolean-value': 2,
+    'react/jsx-closing-bracket-location': [1, 'line-aligned'],
     'react/jsx-no-leaked-render': [
       'error',
       { validStrategies: ['coerce', 'ternary'] },
@@ -45,6 +48,7 @@ module.exports = {
     // 'react/react-in-jsx-scope': 0, // Since React 18 "react-jsx"
     'react/require-default-props': 0, // Since we do not use prop-types
     'react/state-in-constructor': 0,
+
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'unused-imports/no-unused-imports': 'error',
