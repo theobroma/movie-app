@@ -2,7 +2,7 @@ import type { defaultNS, resources } from './i18n';
 
 // react-i18next versions lower than 11.11.0
 declare module 'react-i18next' {
-  type DefaultResources = typeof resources['en'];
+  type DefaultResources = (typeof resources)['en'];
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface Resources extends DefaultResources {}
 }
@@ -11,6 +11,6 @@ declare module 'react-i18next' {
 declare module 'react-i18next' {
   interface CustomTypeOptions {
     defaultNS: typeof defaultNS;
-    resources: typeof resources['en'];
+    resources: (typeof resources)['en'];
   }
 }

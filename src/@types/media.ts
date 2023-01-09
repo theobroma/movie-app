@@ -3,4 +3,4 @@ export const MEDIA_TYPE = {
   TV: 'tv',
 } as const;
 
-export type MediaType = typeof MEDIA_TYPE[keyof typeof MEDIA_TYPE];
+export type MediaType = (typeof MEDIA_TYPE)[keyof typeof MEDIA_TYPE];

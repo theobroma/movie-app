@@ -6,4 +6,4 @@ export const ThemeColors = {
   PINK_BLUE_GREY_THEME: 'pinkBlueGrey',
 } as const;
 
-export type ThemeColorsType = typeof ThemeColors[keyof typeof ThemeColors];
+export type ThemeColorsType = (typeof ThemeColors)[keyof typeof ThemeColors];
